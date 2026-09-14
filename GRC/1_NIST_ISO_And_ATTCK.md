@@ -9,7 +9,7 @@
 - How frameworks nest
 - SOC 2 / ISO 27001 literacy at program grain
 
-## Sister (do not rewrite here)
+## Related home (do not rewrite here)
 
 - Wire / TLS / firewalls → Networks-Deep-Dive `Security/`
 - Pipeline gates, secrets in CI → DevOps-Handbook `Security/`
@@ -19,4 +19,4 @@
 ## Checklist before marking done
 
 - [ ] Prose in this file only for the *program* slice
-- [ ] Sister links above, no second writeup
+- [ ] Related links above, no second writeup
