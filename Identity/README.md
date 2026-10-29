@@ -2,13 +2,11 @@
 
 [← README](../README.md)
 
-*(Content TBD — stub created September 2026 — Security program, fill last)*
-
-Who is the caller. OAuth protocol *stack* stays in Tooling Specs.
+Federation and Zero Trust as program concepts. Protocol install/how-to stays in Tooling; HLD patterns in System-Design.
 
 ## Topic files
 
 | # | Topic | Status |
 |---|--------|--------|
-| 1 | [OAuth, OIDC, SAML](./1_OAuth_OIDC_SAML.md) | stub |
-| 2 | [Zero trust](./2_Zero_Trust.md) | stub |
+| 1 | [OAuth, OIDC, SAML](./1_OAuth_OIDC_SAML.md) | **filled** |
+| 2 | [Zero Trust](./2_Zero_Trust.md) | **filled** |

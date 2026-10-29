@@ -1,22 +1,30 @@
-# Supply chain
+# Supply chain (cloud / delivery)
 
 [← Cloud-Security](./README.md)
 
-*(Content TBD — stub created September 2026 — Security program, fill last)*
+You inherit risk from **dependencies, base images, build systems, and vendors**. Program controls: know what you ship, prove who built it, refuse tampered artifacts.
 
-## Planned coverage
+## Controls (map)
 
-- SBOM, signing — program view
-- Pointer: DevOps CiCd/6_Supply_Chain_And_Signing.md
+| Control | Job |
+|---------|-----|
+| **Lockfiles / pins** | Reproducible dependency sets |
+| **SCA** | Known vulns in packages |
+| **SBOM** | Inventory of what is in the artifact |
+| **Sign / attest** | Prove provenance (Cosign-class) |
+| **Trusted builders** | Harden CI; OIDC to registries |
+| **Admission verify** | Cluster/runtime rejects unsigned |
 
-## Related home (do not rewrite here)
+Ordered gates: [Handbook gate chain](https://github.com/thisiskushal31/DevOps-Handbook/blob/main/Security/4_Security_Gate_Chain.md) and [CiCd/6 Supply chain](https://github.com/thisiskushal31/DevOps-Handbook/blob/main/CiCd/6_Supply_Chain_And_Signing.md). Tool literacy: Cosign, Trivy, Snyk folders under Handbook Security.
 
-- Wire / TLS / firewalls → Networks-Deep-Dive `Security/`
-- Pipeline gates, secrets in CI → DevOps-Handbook `Security/`
-- Design-time trade-offs → System-Design-Concepts `Security-Tradeoffs/`
-- OAuth *stack how-to* → Tooling `Specs-Standards/OAuth/`
+## Program habits
 
-## Checklist before marking done
+1. Prefer minimal base images; rebuild on a cadence.  
+2. Separate build identities from deploy identities.  
+3. Treat a compromised CI secret as production incident fuel.  
+4. Track critical vendor advisories for anything in the trust path.
 
-- [ ] Prose in this file only for the *program* slice
-- [ ] Related links above, no second writeup
+## Related
+
+- Threats supply-chain vector → [Threats/2](../Threats/2_Vectors_And_Surfaces.md)
+- Do not rewrite Cosign tutorials here — link Handbook/Tooling.

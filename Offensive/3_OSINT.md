@@ -2,18 +2,27 @@
 
 [← Offensive](./README.md)
 
-*(Content TBD — stub created September 2026 — lab only, systems you own)*
+**Open-source intelligence**: public facts about the target *within scope* (domains, employees’ public profiles, leaked pastes you are allowed to use, certificate transparency). Lab OSINT often uses intentionally public lab brands.
 
-## Planned coverage
+## What you collect
 
-- Passive footprint
-- Tools: theHarvester, Maltego, Shodan, Amass
-- No scanning yet
+| Class | Example use |
+|-------|-------------|
+| Domains / subdomains | Attack surface map |
+| Public IPs / ASN | What is internet-facing |
+| Tech fingerprints | Focus later scans |
+| People / email patterns | Phishing *only if RoE allows* |
 
-## Checklist before marking done
+## Tools (install elsewhere)
 
-- [ ] Install + first command on the isolated lab
-- [ ] What the tool is *for* in the pentest path
-- [ ] When *not* to use it
-- [ ] No writeups against systems you do not own
+theHarvester, Amass, Maltego, SpiderFoot, Shodan → [Tooling Reconnaissance](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance). This note is the **phase**, not the CLI.
 
+## Boundaries
+
+- Do not social-engineer real people without explicit RoE.  
+- Do not scrape in ways that violate law or ToS for “practice.”  
+- Prefer lab-provided OSINT targets when learning.
+
+## Next
+
+- [Scanning and enumeration](./4_Scanning_And_Enumeration.md)

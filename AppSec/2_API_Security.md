@@ -2,21 +2,43 @@
 
 [← AppSec](./README.md)
 
-*(Content TBD — stub created September 2026 — Security program, fill last)*
+APIs are the main product surface for many systems. Secure the **contract**, the **identity**, and the **abuse cases** — not only the framework tutorial.
 
-## Planned coverage
+## Authn and authz at the API
 
-- Authn/z at the API
-- Pointer: System Design 11-api-styles; Tooling Specs
+| Concern | Practice |
+|---------|----------|
+| Authentication | Who is calling (user, app, service)? Prefer standards ([Identity](../Identity/README.md)) |
+| Authorization | What may they do on *this* resource? Check object-level authZ (IDOR is common) |
+| Transport | TLS everywhere; no “internal HTTP is fine” without a written trust model |
+| Tokens | Short-lived; audience/scope bound; store refresh tokens carefully |
+| Service-to-service | Workload identity / mTLS — see System-Design Security-Tradeoffs |
 
-## Related home (do not rewrite here)
+## API-specific risks
 
-- Wire / TLS / firewalls → Networks-Deep-Dive `Security/`
-- Pipeline gates, secrets in CI → DevOps-Handbook `Security/`
-- Design-time trade-offs → System-Design-Concepts `Security-Tradeoffs/`
-- OAuth *stack how-to* → Tooling `Specs-Standards/OAuth/`
+| Risk | Mitigation grain |
+|------|------------------|
+| Excessive data exposure | Explicit DTOs; never dump ORM entities |
+| Broken object/function authZ | Central policy or consistent middleware; tests |
+| Mass assignment | Allowlists on write fields |
+| Rate abuse / scraping | Quotas, auth, bot controls at edge |
+| SSRF via URL fields | Allowlist schemes/hosts; block link-local metadata |
+| Verbose errors | Generic client errors; detail in logs only |
 
-## Checklist before marking done
+Style and API taxonomy (REST/gRPC/GraphQL): System-Design API notes and Tooling `Specs-Standards/` — do not copy protocol primers here.
 
-- [ ] Prose in this file only for the *program* slice
-- [ ] Related links above, no second writeup
+## Verify
+
+- Contract tests + authZ cases in CI  
+- Authenticated DAST / API scan on staging ([Handbook ZAP](https://github.com/thisiskushal31/DevOps-Handbook/tree/main/Security/ZAP); Tooling OWASP ZAP install)  
+- Threat model when adding a new public route or partner webhook  
+
+## Related home
+
+- Federated identity patterns → [System-Design Security/2](https://github.com/thisiskushal31/System-Design-Concepts/blob/main/Security/2_Federated_Identity.md)
+- Gatekeeper / valet key → System-Design `Security/`
+- OAuth stack → Tooling `Specs-Standards/OAuth/`
+
+## Next
+
+- [Identity](../Identity/README.md)

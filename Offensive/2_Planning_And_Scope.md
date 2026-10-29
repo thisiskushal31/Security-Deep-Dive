@@ -2,18 +2,27 @@
 
 [← Offensive](./README.md)
 
-*(Content TBD — stub created September 2026 — lab only, systems you own)*
+**Written authorization** defines what you may touch. No ticket, no test — including “just a quick nmap.”
 
-## Planned coverage
+## Rules of engagement (minimum)
 
-- Rules of engagement
-- What is in / out
-- Written authorization
+| Item | Why |
+|------|-----|
+| In-scope hosts / apps / accounts | Prevent collateral damage |
+| Out-of-scope (prod DR, third parties) | Legal and safety |
+| Allowed techniques | e.g. no DoS, no phishing employees without HR |
+| Time windows | Avoid business-critical moments |
+| Contacts / emergency stop | Who to call if something breaks |
+| Data handling | How findings and screenshots are stored |
 
-## Checklist before marking done
+## Lab vs customer engagement
 
-- [ ] Install + first command on the isolated lab
-- [ ] What the tool is *for* in the pentest path
-- [ ] When *not* to use it
-- [ ] No writeups against systems you do not own
+| Lab | Customer |
+|-----|----------|
+| You are the authorizing party | Signed RoE / SOW |
+| Snapshots and resets are fine | Change control may apply |
+| Goal is learning | Goal is risk reduction + report |
 
+## Next
+
+- [OSINT](./3_OSINT.md) only after scope is clear — even in a lab, decide what “the target org” means.

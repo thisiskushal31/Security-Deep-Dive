@@ -2,14 +2,20 @@
 
 [← README](../README.md)
 
-*(Content TBD — stub created September 2026 — Security program, fill last)*
+Detect, respond, learn. On-call culture stays in DevOps Methodologies. Named capture/memory tools live in [Tooling Security / Defensive](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Defensive).
 
-Detect, respond, learn. On-call culture stays in DevOps Methodologies.
+## Purple team (no separate folder)
+
+**Purple** work is offense informing defense: agree on ATT&CK techniques, run lab exercises, and improve detections. Use [Offensive/](../Offensive/README.md) for PTES-shaped phases and this folder for SIEM/IR/forensics outcomes. Share technique IDs from [GRC ATT&CK](../GRC/1_NIST_ISO_And_ATTCK.md).
 
 ## Topic files
 
 | # | Topic | Status |
 |---|--------|--------|
-| 1 | [SIEM and detection](./1_SIEM_And_Detection.md) | stub |
-| 2 | [Incident response](./2_Incident_Response.md) | stub |
-| 3 | [Forensics](./3_Forensics.md) | stub |
+| 1 | [SIEM and detection](./1_SIEM_And_Detection.md) | **filled** |
+| 2 | [Incident response](./2_Incident_Response.md) | **filled** |
+| 3 | [Forensics](./3_Forensics.md) | **filled** |
+
+## Related
+
+- Networks blue-team perspective → [Networks Security](https://github.com/thisiskushal31/Networks-Deep-Dive)

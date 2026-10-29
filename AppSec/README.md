@@ -2,13 +2,16 @@
 
 [← README](../README.md)
 
-*(Content TBD — stub created September 2026 — Security program, fill last)*
-
-Application security as a program. Not a second OWASP blog.
+OWASP-minded application and API security as a program. Pipeline enforcement stays in DevOps-Handbook `Security/`.
 
 ## Topic files
 
 | # | Topic | Status |
 |---|--------|--------|
-| 1 | [OWASP and secure SDLC](./1_OWASP_And_Secure_SDLC.md) | stub |
-| 2 | [API security](./2_API_Security.md) | stub |
+| 1 | [OWASP and secure SDLC](./1_OWASP_And_Secure_SDLC.md) | **filled** |
+| 2 | [API security](./2_API_Security.md) | **filled** |
+
+## Related
+
+- [Identity](../Identity/README.md) · [Cloud-Security](../Cloud-Security/README.md)
+- Gates → [DevOps-Handbook Security](https://github.com/thisiskushal31/DevOps-Handbook/tree/main/Security)

@@ -2,21 +2,36 @@
 
 [← Defensive-Ops](./README.md)
 
-*(Content TBD — stub created September 2026 — Security program, fill last)*
+**Digital forensics** answers what happened on a system using preserved evidence. This is literacy for engineers and IR — not a law-enforcement curriculum (NICE Investigation depth is deeper than this folder).
 
-## Planned coverage
+## Goals
 
-- Evidence, chain of custody
-- Lab-only detail in Labs/
+| Goal | Practice |
+|------|----------|
+| Preserve | Snapshot disk/memory; keep chain-of-custody notes |
+| Analyze | Timeline from logs, files, memory, network |
+| Attribute (careful) | Indicators, not courtroom claims without process |
+| Support IR | Feed containment and eradication |
 
-## Related home (do not rewrite here)
+## Common evidence types
 
-- Wire / TLS / firewalls → Networks-Deep-Dive `Security/`
-- Pipeline gates, secrets in CI → DevOps-Handbook `Security/`
-- Design-time trade-offs → System-Design-Concepts `Security-Tradeoffs/`
-- OAuth *stack how-to* → Tooling `Specs-Standards/OAuth/`
+| Source | Use |
+|--------|-----|
+| Disk image | Files, persistence, deleted artifacts |
+| Memory | Running malware, keys, processes ([Volatility](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Defensive/Volatility)) |
+| Packet capture | C2, exfil ([Wireshark](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Defensive/Wireshark)) |
+| Cloud audit / IdP logs | Who did what from where |
+| Endpoint telemetry | EDR timelines |
 
-## Checklist before marking done
+## Engineer rules of thumb
 
-- [ ] Prose in this file only for the *program* slice
-- [ ] Related links above, no second writeup
+1. Do not power-wash a box you may need to image.  
+2. Prefer read-only mounts and documented hashes.  
+3. Lab practice only on images you are allowed to analyze.  
+4. Legal holds and HR cases escalate to counsel / specialized DFIR.
+
+## Related home
+
+- Networks blue team → Networks `Security/`  
+- Tool install → Tooling `Security/Defensive/`  
+- IR process → [2 Incident response](./2_Incident_Response.md)

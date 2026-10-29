@@ -1,22 +1,33 @@
-# Secrets and Kubernetes
+# Secrets and Kubernetes security
 
 [← Cloud-Security](./README.md)
 
-*(Content TBD — stub created September 2026 — Security program, fill last)*
+How secrets and cluster identity fail in cloud-native delivery — program view. Helm/kubectl install stays in Tooling/Containers; cluster depth in Containerization-Deep-Dive.
 
-## Planned coverage
+## Secrets
 
-- Pointer: DevOps Security secrets
-- Pointer: Containerization Security-Advanced
+| Anti-pattern | Better |
+|--------------|--------|
+| Secret in Git / plaintext ConfigMap | External store + CSI / ESO; sealed only if process is solid |
+| Secret baked into image | Inject at runtime ([Handbook Vault](https://github.com/thisiskushal31/DevOps-Handbook/tree/main/Security/Vault)) |
+| One token for all namespaces | Per-workload policy paths |
+| Forever static cloud keys on nodes | Workload identity / IRSA-class federation |
 
-## Related home (do not rewrite here)
+Practices overview: [Handbook Security/1](https://github.com/thisiskushal31/DevOps-Handbook/blob/main/Security/1_Security_Practices_And_Secrets.md).
 
-- Wire / TLS / firewalls → Networks-Deep-Dive `Security/`
-- Pipeline gates, secrets in CI → DevOps-Handbook `Security/`
-- Design-time trade-offs → System-Design-Concepts `Security-Tradeoffs/`
-- OAuth *stack how-to* → Tooling `Specs-Standards/OAuth/`
+## Kubernetes posture (KSPM grain)
 
-## Checklist before marking done
+| Area | Ask |
+|------|-----|
+| RBAC | Who can create pods that mount secrets or hostPath? |
+| Privileged / capabilities | Are privileged pods justified and gated? |
+| Images | Pinned digests? Scanned? From trusted registry? |
+| NetworkPolicy | Default deny where needed? |
+| etcd / control plane | Encrypted at rest; access limited |
+| Admission | Kyverno/OPA policies on apply |
 
-- [ ] Prose in this file only for the *program* slice
-- [ ] Related links above, no second writeup
+Container runtime and orchestration depth: [Containerization-Deep-Dive](https://github.com/thisiskushal31/Containerization-Deep-Dive). Policy-as-code tools: Handbook OPA/Kyverno.
+
+## Next
+
+- [Supply chain](./3_Supply_Chain.md)

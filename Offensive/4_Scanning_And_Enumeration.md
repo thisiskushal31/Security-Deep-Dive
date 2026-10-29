@@ -2,17 +2,35 @@
 
 [← Offensive](./README.md)
 
-*(Content TBD — stub created September 2026 — lab only, systems you own)*
+Discover what is listening and what software answers — **only on in-scope lab targets**.
 
-## Planned coverage
+## Goals
 
-- Nmap, Masscan, Nikto, Nuclei
-- What you write down
+| Goal | Output |
+|------|--------|
+| Host discovery | Which IPs respond |
+| Port / service | What is open; version hints |
+| Web surface | Paths, APIs, vhosts |
+| Auth surfaces | Login panels, SSO |
 
-## Checklist before marking done
+## Tool mapping
 
-- [ ] Install + first command on the isolated lab
-- [ ] What the tool is *for* in the pentest path
-- [ ] When *not* to use it
-- [ ] No writeups against systems you do not own
+| Job | Tooling home |
+|-----|--------------|
+| Ports / scripts | [Nmap](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance/Nmap) |
+| Fast port sweep | Masscan (lab only; easy to be rude) |
+| Web dirs / fuzz | Gobuster, ffuf |
+| Templates / known issues | Nuclei |
+| Vuln scanners | GVM / Nikto — noisy; lab or approved windows |
 
+Wire-level scan types: [Networks Security](https://github.com/thisiskushal31/Networks-Deep-Dive) — do not duplicate TCP handshake theory here.
+
+## When not to scan
+
+- Outside scope or without auth  
+- Production during peak without RoE window  
+- Aggressive timing that is effectively DoS  
+
+## Next
+
+- [Web application attacks](./5_Web_Application_Attacks.md) (issue classes)

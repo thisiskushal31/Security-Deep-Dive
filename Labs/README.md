@@ -2,12 +2,10 @@
 
 [← README](../README.md)
 
-*(Content TBD — stub created September 2026 — Security program, fill last)*
-
-Paths on HTB / TryHackMe. Fill when you actually run a lab.
+Where practice paths live. Software installs stay in Tooling; methodology in Offensive / Defensive-Ops.
 
 ## Topic files
 
 | # | Topic | Status |
 |---|--------|--------|
-| 1 | [Lab paths](./1_Paths.md) | stub |
+| 1 | [Paths](./1_Paths.md) | **filled** |

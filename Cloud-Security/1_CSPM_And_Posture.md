@@ -2,21 +2,33 @@
 
 [← Cloud-Security](./README.md)
 
-*(Content TBD — stub created September 2026 — Security program, fill last)*
+Most cloud breaches are **misconfiguration and identity**, not novel zero-days. CSPM reads the **live account**; IaC scan reads the **diff**.
 
-## Planned coverage
+## Misconfig as the common failure
 
-- Misconfig as the common failure
-- GCP / AWS literacy only — not a cert dump
+| Pattern | Why it hurts |
+|---------|--------------|
+| Public storage / world-open shares | Data disclosure without an exploit |
+| `0.0.0.0/0` admin ports | Opportunistic takeover |
+| Missing logging / CloudTrail-class audit | Blind IR |
+| Over-broad IAM (`*:*` on humans or CI) | Blast radius |
+| Root / owner keys in daily use | No accountability |
 
-## Related home (do not rewrite here)
+## CSPM vs IaC vs admission
 
-- Wire / TLS / firewalls → Networks-Deep-Dive `Security/`
-- Pipeline gates, secrets in CI → DevOps-Handbook `Security/`
-- Design-time trade-offs → System-Design-Concepts `Security-Tradeoffs/`
-- OAuth *stack how-to* → Tooling `Specs-Standards/OAuth/`
+| Check | Sees | When |
+|-------|------|------|
+| **IaC policy** (Checkov/OPA) | Planned change | PR |
+| **Admission** | Object at apply | Deploy |
+| **CSPM** | Account as-is (drift, console clicks) | Continuous |
+| **KSPM** | Cluster API state | Continuous |
 
-## Checklist before marking done
+DevOps posture vs PR: [Handbook Security/2](https://github.com/thisiskushal31/DevOps-Handbook/blob/main/Security/2_Compliance_And_Threat_Mitigation.md).
 
-- [ ] Prose in this file only for the *program* slice
-- [ ] Related links above, no second writeup
+## Literacy (not a cert dump)
+
+Know for your cloud: where IAM lives, how public exposure is shown, how audit logs are enabled, and who owns each account. Deep product click-paths stay in Handbook `Cloud/` notes.
+
+## Next
+
+- [Secrets and K8s](./2_Secrets_And_K8s.md)
