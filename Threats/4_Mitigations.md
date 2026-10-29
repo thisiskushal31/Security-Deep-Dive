@@ -24,7 +24,7 @@ For each high risk from threat modeling:
 1. Pick at least one **preventive** control.  
 2. Add a **detective** control if residual risk matters.  
 3. Confirm a **corrective** path (revoke, restore, rotate).  
-4. Name an **owner** and a review date ([Foundations/3](../Foundations/3_Controls_And_Physical.md)).
+4. Name an **owner** and a review date ([Foundations/2](../Foundations/2_Controls_And_Physical.md)).
 
 ## Do not rewrite the gate chain here
 

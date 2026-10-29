@@ -25,7 +25,7 @@ Align with [OWASP SAMM](https://owaspsamm.org/model/) functions without rebuildi
 
 | Phase | AppSec habit |
 |-------|--------------|
-| Design | Threat model ([Foundations/2](../Foundations/2_STRIDE_And_Threat_Modeling.md)); data class |
+| Design | Threat model ([Foundations/12](../Foundations/12_STRIDE_And_Threat_Modeling.md)); data class |
 | Implementation | Secure coding standards; dependency hygiene |
 | Verification | Code review + SAST/DAST/SCA in CI |
 | Operations | Patch, WAF tune, incident learnings back into design |

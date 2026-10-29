@@ -22,3 +22,5 @@ Named tools: [Tooling Security](https://github.com/thisiskushal31/Tooling-and-Fr
 ## Ethics
 
 Unauthorized access is illegal. Lab writeups that teach **classes of issues** and **defenses** are in scope; copy-paste exploit recipes aimed at live third-party systems are not.
+
+Foundation vocabulary: [Ethics, authorization, and lab rules](../Foundations/3_Ethics_Authorization_And_Lab_Rules.md).

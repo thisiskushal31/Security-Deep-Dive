@@ -4,11 +4,11 @@ Cybersecurity as a **program**: AppSec, identity, cloud, SOC, GRC, and PTES phas
 
 Named lab software (Nmap, Burp, Wireshark) lives in [Tooling Security](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security). Practice only in an isolated lab — never scan the public internet.
 
-New here? Start at [Foundations](./Foundations/README.md) (CIA, STRIDE, controls), then [Threats](./Threats/README.md). Install Nmap first in [Tooling Security / Nmap](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance/Nmap).
+New here? Start at [Foundations](./Foundations/README.md) (21 notes, ordered concept → advanced → apply), then [Threats](./Threats/README.md). Install Nmap first in [Tooling Security / Nmap](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance/Nmap).
 
 | Folder | Owns |
 |--------|------|
-| [Foundations/](./Foundations/README.md) | CIA, STRIDE, controls, physical |
+| [Foundations/](./Foundations/README.md) | Bedrock → program frame → technical literacy → design → operate → adversary/ops (concept → advanced → apply) |
 | [Threats/](./Threats/README.md) | Actors, vectors, vulns, mitigations |
 | [Identity/](./Identity/README.md) | Federation and zero trust |
 | [AppSec/](./AppSec/README.md) | OWASP, API, secure SDLC |
@@ -16,6 +16,9 @@ New here? Start at [Foundations](./Foundations/README.md) (CIA, STRIDE, controls
 | [Cloud-Security/](./Cloud-Security/README.md) | Posture, secrets/K8s, supply chain |
 | [Defensive-Ops/](./Defensive-Ops/README.md) | SIEM, IR, forensics |
 | [Offensive/](./Offensive/README.md) | PTES phases (OSINT → report), lab only |
+| [Threat-Modeling/](./Threat-Modeling/README.md) | Workshop/method depth (**stub**) |
+| [Threat-Intelligence/](./Threat-Intelligence/README.md) | CTI analytic depth (**stub**) |
+| [Vulnerability-Management/](./Vulnerability-Management/README.md) | Vuln program depth (**stub**) |
 | [GRC/](./GRC/README.md) | NIST, ISO, ATT&CK |
 | [Labs/](./Labs/README.md) | HTB / TryHackMe paths |
 
