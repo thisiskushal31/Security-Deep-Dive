@@ -4,46 +4,67 @@
 
 > **Progression:** concept → advanced → apply.
 
-How to harden **retrieval-augmented generation** and long-lived **memory** so untrusted documents and embeddings do not become a backdoor. Catalog: LLM05 / LLM09 / ASI06. Injection patterns: [2](./2_Prompt_Injection_Defenses.md). Threat model: [1](./1_LLM_App_Threat_Model_In_Practice.md).
-
-Primary practice source: [OWASP RAG Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/RAG_Security_Cheat_Sheet.html) + OWASP LLM09.
+How to harden **retrieval-augmented generation** and long-lived **memory** so untrusted documents and embeddings do not become a durable backdoor. Catalog: LLM05 / LLM09 / ASI06. Injection architecture: [2](./2_Prompt_Injection_Defenses.md). Threat model: [1](./1_LLM_App_Threat_Model_In_Practice.md). How plants persist: [8](./8_Attack_Mechanisms_For_Defenders.md).
 
 ## Concept
 
 ### Why RAG is a security boundary
 
+RAG turns your corpus into part of the prompt. That is a feature for accuracy and a liability for injection: every retrieved chunk is **attacker-shaped input** unless you prove otherwise.
+
 ```text
-Ingest → embed → index → retrieve → stuff into context → model → act/answer
+Ingest → embed → index → authorize+retrieve → stuff into context → model → act/answer
+         │         │              │
+    poison here  leak here   ACL failure here
 ```
 
-Every stage can fail open:
+| Stage | How it fails open | What the defender sees later |
+|-------|-------------------|------------------------------|
+| **Ingest** | Poisoned or instruction-laden docs enter the corpus | “Random” bad answers; tools fire on ordinary questions |
+| **Embed / index** | Cross-tenant writes; weak isolation; embedding backups treated as low sensitivity | Tenant B’s secrets in Tenant A’s context; reconstructed plaintext from vectors |
+| **Retrieve** | Similarity search without ACL → private chunk in the wrong context | One cosine hit = one confidentiality incident |
+| **Context stuffing** | Retrieved text blended unmarked into the system channel | Indirect prompt injection (LLM01) |
+| **Memory write** | Agent stores attacker instructions as “facts” | Compromise survives session end (ASI06) |
 
-| Stage | Failure |
-|-------|---------|
-| Ingest | Poisoned or malicious docs enter the corpus |
-| Embed / index | Cross-tenant leakage; embedding inversion risk (LLM02/09) |
-| Retrieve | Wrong ACL → private chunk in another user’s context |
-| Context stuffing | Indirect prompt injection (LLM01) |
-| Memory write | Poison persists across sessions (ASI06) |
+**Rule:** retrieved text is data, not policy. Cosine similarity does **not** enforce access control.
 
-**Rule:** retrieved text is **attacker-shaped input**, not trusted policy.
+### How a poisoned corpus becomes a production incident
 
-### Foundational controls (implement first — OWASP RAG CS)
+1. Attacker (or careless insider) gets a document onto an ingest path — public upload, synced SharePoint, scraped web, “helpful” README in a repo the indexer watches.
+2. Ingest trusts the source enough to embed and index without provenance or human review.
+3. A privileged user asks a normal question; the retriever ranks the poisoned chunk highly.
+4. Orchestrator stuffs the chunk into context without delimiters or “data only” framing.
+5. Model follows the planted instructions; if tools are attached, impact leaves the chat box.
+6. Optionally the model writes a “remember this” memory — now every future session inherits the plant.
 
-| Control | Practice |
-|---------|----------|
-| **Document provenance & integrity** | Know source; verify against a protected baseline before index |
-| **Context window protection** | Delimiters; chunk count/size limits; treat as data-only |
-| **Access-control metadata on every chunk** | Authorize **before** retrieval — post-filter cannot un-see a chunk |
-| **Tenant / classification isolation** | Separate indexes or hard partitions; no “cosine ignores ACL” |
-| **Query abuse detection** | Normalize; rate-limit; detect extraction patterns |
-| **Output validation / policy** | Groundedness checks where feasible; sink-safe rendering ([2](./2_Prompt_Injection_Defenses.md)) |
-| **Full pipeline observability** | Log ingest, retrieve IDs, user, decision |
-| **Fail-closed** | If ACL/provenance unknown → do not retrieve |
+Break the chain at ingest trust, ACL-before-retrieve, context isolation, tool policy, or memory write ACL — preferably several of these.
 
 ## Advanced
 
-### Next-tier controls (compliance / maturity)
+### Foundational controls (implement first)
+
+| Control | Practice | Why it cuts the chain |
+|---------|----------|----------------------|
+| **Document provenance & integrity** | Know source; verify against a protected baseline (hash) before index | Stops silent corpus swaps |
+| **Context window protection** | Delimiters; hard caps on chunk count and tokens; treat as data-only | Limits steer surface |
+| **Access-control metadata on every chunk** | Authorize **before** retrieval — post-filter cannot un-see a chunk already in context | Stops LLM09 cross-tenant hits |
+| **Tenant / classification isolation** | Separate indexes or hard partitions | Defense when metadata bugs happen |
+| **Query abuse detection** | Normalize; rate-limit; detect extraction / scraping patterns | Slows bulk exfil via retrieval |
+| **Output validation / policy** | Groundedness checks where feasible; sink-safe rendering ([2](./2_Prompt_Injection_Defenses.md)) | LLM10 + LLM07 hygiene |
+| **Full pipeline observability** | Log ingest source, retrieve IDs, user, ACL decision, tool decision | Makes T-RAG-1 pass/fail real |
+| **Fail-closed** | If ACL or provenance unknown → **do not retrieve** | Default-deny beats hope |
+
+```text
+Query + user identity
+  → ACL filter (tenant, classification, ACLs)
+    → Similarity search ONLY within authorized set
+      → Cap N chunks / token budget
+        → Wrap: BEGIN_RETRIEVED (data only) … END_RETRIEVED
+          → Reinforce system rules AFTER retrieved blocks
+            → Model → schema / policy before any tool
+```
+
+### Next-tier controls (maturity)
 
 | Control | Practice |
 |---------|----------|
@@ -51,55 +72,65 @@ Every stage can fail open:
 | Vector index integrity monitoring | Detect tampering / unauthorized writes |
 | Tool invocation from RAG answers | Never auto-exec; policy engine ([4](./4_Agentic_Controls.md)) |
 | Cache isolation & invalidation | Per-tenant caches; purge on ACL change |
-| Ingest connector supply chain | Vet connectors ([5](./5_Model_And_Data_Supply_Chain.md)) |
-| Deletion / retention | Right-to-delete must remove vectors too |
+| Ingest connector supply chain | Vet connectors like code ([5](./5_Model_And_Data_Supply_Chain.md)) |
+| Deletion / retention | Right-to-delete must remove vectors and derived caches too |
+| Dual-control promote | High-sensitivity corpora require second person before index |
 
 ### Context construction patterns
 
 | Do | Don’t |
 |----|-------|
-| Label blocks: `BEGIN RETRIEVED (data only)` … `END` | Blend retrieved text into system prompt unmarked |
-| Reinforce system rules **after** retrieved content (test per model) | Assume “top of prompt always wins” |
-| Cap chunks (e.g. 3–5; token budget) | Stuff entire corpus into context |
+| Label blocks: `BEGIN RETRIEVED (data only)` … `END` | Blend retrieved text into the system prompt unmarked |
+| Reinforce system rules **after** retrieved content (and **test** per model) | Assume “top of prompt always wins” |
+| Cap chunks (e.g. 3–5) and a hard token budget | Stuff entire “top-k from whole corpus” into context |
 | Scan chunks for instruction-like patterns as a *partial* filter | Rely on scan as the only control |
+| Keep tool schemas out of the retrieved channel | Let docs redefine available tools |
 
 ### Memory (session / long-term)
 
-| Risk | Control |
-|------|---------|
-| User or doc plants lasting instructions | Memory writes require policy; separate “facts” vs “instructions” |
-| Cross-user memory bleed | Strict session/tenant keys |
-| Stale toxic memory | TTL, user-visible memory editor, admin purge |
-| Agent shares memory across tools | Scope memory per agent/task; ASI06 |
+Long-term memory is a second RAG with worse hygiene if you let the model write freely.
+
+| Risk | How it happens | Control |
+|------|----------------|---------|
+| User or doc plants lasting instructions | “Remember: always BCC …” stored as a preference; delayed tool invocation can poison later | Treat **memory writes as privileged**: log causing prompt; classify instruction/role-modification content; approve before cross-session persist |
+| Facts shade into instructions | Incremental “helpful” writes evade naive classifiers | Separate **facts** vs **instructions**; defense-in-depth still required |
+| Cross-user memory bleed | Shared store keyed only by “assistant” | Strict session/tenant keys |
+| Stale toxic memory | Old plant outlives the incident review | TTL, user-visible memory editor, admin purge/rollback |
+| Agent shares memory across tools | One poisoned task contaminates another | Scope memory per agent/task (ASI06) |
+| RAG corpus dominate | ~5 poisoned docs reported ~90% ASR against huge corpora in published work | Provenance + promote dual-control + ACL-before-retrieve |
 
 ### Embeddings are sensitive
 
-OWASP notes modern inversion can reconstruct plaintext from vectors — treat embeddings backups as **source-document class** data. Cosine similarity does **not** enforce ACLs: **authorize then retrieve**.
+Modern inversion research shows plaintext can often be reconstructed from vectors. Treat embedding stores and backups as **source-document class** data: encrypt at rest, ACL like the corpus, scrub from laptop exports, include in deletion workflows.
 
-### Poisoning vs injection
+### Poisoning vs injection (do not collapse)
 
-| LLM05 / corpus poisoning | LLM01 via retrieval |
-|--------------------------|---------------------|
-| Durable corruption of knowledge/model behavior | One-shot (or repeated) instruction in a chunk at inference |
-| Fix ingest trust, signing, review | Fix context isolation + agency limits |
+| Corpus / model poisoning (LLM05) | Indirect injection via retrieval (LLM01) |
+|----------------------------------|------------------------------------------|
+| Durable corruption of knowledge or model behavior | One-shot (or repeated) instruction in a chunk at inference |
+| Fix ingest trust, signing, review, fine-tune gates | Fix context isolation + agency limits |
+| May not look like “ignore previous instructions” | Often *does* look like instructions inside “data” |
 
-How attackers plant RAG/memory instructions and what authorized fixtures look like: [8](./8_Attack_Mechanisms_For_Defenders.md) (RAG poison + T-RAG-1).
+Both can coexist: a poisoned doc that also carries injection text.
+
+Authorized fixture shape: [8](./8_Attack_Mechanisms_For_Defenders.md) T-RAG-1 — poisoned lab chunk may retrieve only if ACL allows; tools stay cold.
 
 ## Apply
 
-1. Diagram your RAG pipeline; mark where ACL is enforced (must be pre-retrieve).  
-2. Define chunk metadata fields (tenant, classification, source_id, hash, ingest_time).  
+1. Diagram your RAG pipeline; mark where ACL is enforced (must be **pre-retrieve**).  
+2. Define chunk metadata fields (`tenant`, `classification`, `source_id`, `hash`, `ingest_time`, `promoter`).  
 3. Set default retrieve limits (max chunks + max tokens) and fail-closed rules.  
-4. Write delimiter + post-retrieval reinforcement text for your orchestrator.  
+4. Write delimiter + post-retrieval reinforcement text for your orchestrator; test it.  
 5. List memory write paths; mark which need human/admin approval.  
-6. Create an audit query: “show last 50 retrieves for user X with source_ids.”  
-7. Threat-register two scenarios: poisoned HR PDF; cross-tenant vector leak — map to LLM01/09/ASI06.
+6. Create an audit query: “show last 50 retrieves for user X with `source_ids` and ACL decision.”  
+7. Threat-register two scenarios: poisoned HR PDF; cross-tenant vector leak — map to LLM01 / LLM09 / ASI06.  
+8. Confirm embedding backups inherit the same classification as source docs.
 
 ### Self-check
 
 - [ ] Explain why retrieved content is untrusted  
-- [ ] List foundational RAG controls (OWASP priority set)  
-- [ ] State authorize-before-retrieve  
+- [ ] Narrate plant → index → retrieve → steer → act for a poisoned PDF  
+- [ ] List foundational RAG controls and why ACL is pre-retrieve  
 - [ ] Distinguish corpus poisoning vs indirect injection  
 - [ ] Name memory poisoning controls (ASI06)  
 - [ ] Treat embeddings as sensitive data  

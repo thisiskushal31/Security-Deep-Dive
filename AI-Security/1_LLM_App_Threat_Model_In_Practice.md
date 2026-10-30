@@ -25,7 +25,19 @@ No jailbreak recipes. Authorized testing process: [6](./6_Authorized_AI_Evaluati
 | **Model as component** | Chat, summarize, classify, RAG Q&A with limited/no tools | OWASP **LLM Top 10 (2026)** + STRIDE |
 | **Model as actor (agentic)** | Plans, tools, memory, multi-agent, side effects | LLM Top 10 **plus** OWASP **ASI Top 10 (2026)** + MAESTRO layers |
 
-CCCS / Five Eyes caution (program): prefer **low-risk, non-sensitive** agentic tasks; never grant broad unrestricted access; human gates for high-impact actions; AI controls **add to** patching, identity, logging — they do not replace them.
+Program floor for agents: prefer **low-risk, non-sensitive** agentic tasks; never grant broad unrestricted access; human gates for high-impact actions; AI controls **add to** patching, identity, logging — they do not replace them.
+
+### How practice threat modeling prevents the usual miss
+
+Teams that “did a workshop once” still ship the lethal trifecta because ownership never landed on a living register. Practice depth means:
+
+1. **Draw** the DFD with every untrusted content path and every tool principal.  
+2. **Walk** LLM (and ASI if agentic) catalogs against that diagram — not against a slide template.  
+3. **Record** each gap as a register row with ticket + eval coverage.  
+4. **Gate** releases and tool grants on open critical rows.  
+5. **Re-walk** when you add MCP, a new retrieve source, or a new autonomy tier.
+
+If step 4 is missing, Map never becomes Manage.
 
 ### Minimum DFD elements (must appear on the diagram)
 
@@ -54,13 +66,26 @@ Untrusted content (user, RAG, tools, memory)
   Memory / RAG ────────────┘
 ```
 
-**Lethal trifecta check (OWASP LLM01 narrative):** if an agent can **(1)** access private data, **(2)** ingest untrusted content, and **(3)** communicate externally — high-impact exploitation conditions exist. Remove or tightly gate at least one leg before production.
+**Lethal trifecta / Rule of Two check:** if an agent has **(A)** untrusted input, **(B)** sensitive data, and **(C)** state-change or external communication together — high-impact exploitation conditions exist. `[A,B,C]` needs per-action human approval; `[A,B]` / `[A,C]` need residual-risk acceptance; removing any leg collapses the high-impact case. How that chain plays out: [8](./8_Attack_Mechanisms_For_Defenders.md).
+
+Program risk work sits in four continuous functions — govern the culture, map context and risks, measure them, manage treatments:
+
+![NIST AI RMF Core — GOVERN, MAP, MEASURE, MANAGE](../Assets/AI-Security/NIST_AI_RMF_Fig5_Core_Functions.png)
+
+*Credit: NIST AI RMF 1.0 (AI 100-1), Figure 5.*
+
+```text
+Govern (policy, roles, accountability)
+  → Map (DFD + catalogs + register)     ← this note
+    → Measure (eval, metrics)           ← [6](./6_Authorized_AI_Evaluation.md)
+      → Manage (tickets, controls, accept residual risk)
+```
 
 ## Advanced
 
-### OWASP LLM Top 10 (2026) — control ownership map
+### LLM Top 10 (2026) — control ownership map
 
-Use as a **release checklist** against your diagram (IDs from OWASP GenAI LLM Top 10 2026):
+Use as a **release checklist** against your diagram:
 
 | ID | Risk | Primary control owners | Deepen in |
 |----|------|------------------------|-----------|
@@ -77,7 +102,9 @@ Use as a **release checklist** against your diagram (IDs from OWASP GenAI LLM To
 
 2026 ranking signal: **Excessive Agency** rose (damage lands in tools); **Unbounded Consumption** rose (cost/availability). Do not stop at “we filtered prompts.”
 
-### ASI Top 10 (2026) — when the model acts
+### Agentic Top 10 (2026) — when the model acts
+
+When the system plans, calls tools, keeps memory, or talks to other agents, walk these after (or with) the LLM list:
 
 | ID | Risk | Practice gate |
 |----|------|---------------|
@@ -92,13 +119,26 @@ Use as a **release checklist** against your diagram (IDs from OWASP GenAI LLM To
 | **ASI09** | Human-Agent Trust Exploitation | Approval UX that shows risk, not just fluent prose |
 | **ASI10** | Rogue Agents | Drift monitoring; kill switch ([4](./4_Agentic_Controls.md)) |
 
-### NIST AI RMF + CISA/NCSC lifecycle (program spine)
+### Who must be in the room across the lifecycle
 
-| Framework | How to use in this folder |
-|-----------|---------------------------|
-| **NIST AI RMF** (Govern / Map / Measure / Manage) | Threat model = **Map**; eval = **Measure**; tickets/controls = **Manage**; policies = **Govern** |
-| **NIST AI 600-1** GenAI Profile | GenAI-specific risk profile alongside RMF |
-| **CISA/NCSC Guidelines for secure AI system development** | Secure **design → development → deployment → operation** checklist for providers of AI systems |
+Threat modeling is not only “security week.” Actors change by stage — planners, data people, model builders, validators, operators, and people impacted by the system:
+
+![NIST AI RMF — AI actors across lifecycle stages](../Assets/AI-Security/NIST_AI_RMF_Fig3_Actors_Lifecycle.png)
+
+*Credit: NIST AI RMF 1.0 (AI 100-1), Figure 3.*
+
+Separate **builders** of models from **validators** of models when you can — so production pressure does not rubber-stamp testing, evaluation, verification, and validation (TEVV).
+
+### Secure AI lifecycle checklist (providers)
+
+For systems you build or deeply configure, drive Map/Measure/Manage through four engineering stages:
+
+| Stage | Threat-model questions |
+|-------|------------------------|
+| **Design** | Where is untrusted content? Which tools? Which identities? Trifecta? |
+| **Development** | Are prompts/tools reviewed like code? Dependencies pinned? |
+| **Deployment** | Signed artifacts? Secrets out of images? Kill switch wired? |
+| **Operation** | Logging, drift, eval cadence, incident paths for AI failures? |
 
 ### Living threat register (minimum fields)
 
@@ -111,6 +151,16 @@ Use as a **release checklist** against your diagram (IDs from OWASP GenAI LLM To
 | Control | Deterministic policy engine; human gate |
 | Ticket / status | SEC-1234 Mitigated |
 | Eval coverage | Red-team case ID ([6](./6_Authorized_AI_Evaluation.md)) |
+| Residual risk | Accepted by whom / until when (if not mitigated) |
+
+### Release and tool-grant gates (examples)
+
+| Gate | Block if |
+|------|----------|
+| New MCP / tool | No owner, no risk tier, no policy rules, not in AIBOM |
+| New retrieve source | No ACL metadata plan, no ingest provenance |
+| Raise autonomy (fewer human gates) | Open critical LLM03/ASI02 rows; no kill-switch drill in last quarter |
+| Production agent with trifecta | No explicit residual-risk acceptance + per-action approval design |
 
 ## Apply
 
@@ -118,8 +168,10 @@ Use as a **release checklist** against your diagram (IDs from OWASP GenAI LLM To
 2. Draw the minimum DFD elements; mark the lethal-trifecta legs present/absent.  
 3. Walk LLM01–LLM10 against the diagram; open a ticket for every “no control.”  
 4. If agentic, walk ASI01–ASI10; assign owners.  
-5. Map five threats to AI RMF Map → Measure → Manage actions.  
-6. Write a release gate: “No new tool grant without …” (three bullets).
+5. Map five threats to Map → Measure → Manage actions.  
+6. Write a release gate: “No new tool grant without …” (three bullets).  
+7. Add eval coverage IDs for the top three register rows ([6](./6_Authorized_AI_Evaluation.md)).  
+8. Mark which actors from Fig. 3 must sign the next agent go-live.
 
 ### Self-check
 
@@ -127,8 +179,10 @@ Use as a **release checklist** against your diagram (IDs from OWASP GenAI LLM To
 - [ ] Name the lethal trifecta and why it matters  
 - [ ] List minimum DFD elements for LLM apps  
 - [ ] Recite LLM Top 10 IDs at headline level with a control owner each  
-- [ ] Know when ASI Top 10 is mandatory  
-- [ ] Place RMF and CISA/NCSC lifecycle in the program  
+- [ ] Know when the agentic Top 10 is mandatory  
+- [ ] Place Govern / Map / Measure / Manage on your program  
+- [ ] Name design → development → deployment → operation questions  
+- [ ] Define a tool-grant gate that can actually block a release  
 
 ## Next
 

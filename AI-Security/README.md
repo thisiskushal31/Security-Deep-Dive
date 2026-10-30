@@ -36,14 +36,14 @@ Each note follows **concept → advanced → apply**. Official Further reading o
 
 | Area | Home |
 |------|------|
-| Component vs agent, lethal trifecta, LLM/ASI control ownership, living register | 1 |
-| Assume injection; containment stack; schema/output handling; Unicode/modality | 2 |
-| RAG ACL-before-retrieve, provenance, delimiters, embeddings sensitivity, memory | 3 |
-| Tools, identity, human gates, budgets, out-of-band kill switch | 4 |
-| SBOM/AIBOM/ML-BOM, NIST 800-218A, MCP trust principles, pin/sign/allowlist | 5 |
-| Authorized adversarial eval process, metrics, ATLAS tagging, JCDC literacy | 6 |
-| Shadow AI policy, approved alternatives, DLP signals, private deploy patterns | 7 |
-| Jailbreak vs injection, OWASP scenario anatomies, mechanism classes, authorized test shapes | 8 |
+| Component vs agent, lethal trifecta, LLM/ASI ownership, RMF Map, living register, release gates | 1 |
+| Assume injection; plant→act chain; containment stack; schema/output; Unicode/modality | 2 |
+| RAG poison path; ACL-before-retrieve; provenance; delimiters; embeddings; memory | 3 |
+| Model proposes / code disposes; tools; identity; human gates; budgets; kill switch | 4 |
+| AIBOM/ML-BOM; MCP host/client/server; pin/sign/allowlist; supply-chain plant path | 5 |
+| Authorized adversarial eval; trustworthiness; metrics; log-based pass/fail; ATLAS tags | 6 |
+| Shadow AI incident paths; data tiers; approved alternatives; DLP; private deploy | 7 |
+| Jailbreak vs injection vs ASI01; OWASP #1–#9 anatomies; ATLAS IDs; Unicode; MCP poison/rug-pull; fixtures | 8 |
 
 ## Related homes (do not duplicate)
 
