@@ -19,7 +19,7 @@ New here? Start at [Foundations](./Foundations/README.md) (21 notes, ordered con
 | [Offensive/](./Offensive/README.md) | PTES phases (OSINT → report), lab only |
 | [Threat-Modeling/](./Threat-Modeling/README.md) | Workshop/method depth (**stub**) |
 | [Threat-Intelligence/](./Threat-Intelligence/README.md) | CTI analytic depth (**stub**) |
-| [Vulnerability-Management/](./Vulnerability-Management/README.md) | Vuln program depth (**stub**) |
+| [Vulnerability-Management/](./Vulnerability-Management/README.md) | Program, scanning (SBOM/VEX), KEV/EPSS/SSVC/BOD, exceptions, metrics, disclosure |
 | [GRC/](./GRC/README.md) | Nesting, CSF 2.0, RMF, 800-53/CIS, ISO 27001, SOC 2, NICE |
 | [Labs/](./Labs/README.md) | HTB / TryHackMe paths |
 

@@ -6,7 +6,7 @@ General security concepts before AppSec, cloud, SOC, CTI practice, threat-modeli
 
 **How this path is ordered:** each note and the sequence itself move **concept → advanced → apply**. *Apply* at Foundations means literacy and builder habits — not specialty implementation (that lives in AppSec, Offensive, Defensive-Ops, Networks, Tooling, or the stubs below).
 
-Practice deep dives beyond literacy (stubs): [Threat-Modeling](../Threat-Modeling/README.md) · [Threat-Intelligence](../Threat-Intelligence/README.md) · [Vulnerability-Management](../Vulnerability-Management/README.md).
+Practice deep dives beyond literacy: [Vulnerability-Management](../Vulnerability-Management/README.md) (filled) · stubs: [Threat-Modeling](../Threat-Modeling/README.md) · [Threat-Intelligence](../Threat-Intelligence/README.md).
 
 Threat actors and vectors continue in [Threats](../Threats/README.md). Framework nesting: [GRC](../GRC/README.md). Authorized offense: [Offensive](../Offensive/README.md). Detection/IR: [Defensive-Ops](../Defensive-Ops/README.md).
 
@@ -83,7 +83,7 @@ Part F  Adversary & ops  18 → 21  → Threats
 | Threat modeling workshops | Note 12 · [Threat-Modeling](../Threat-Modeling/README.md) (stub) · [Security-Tradeoffs](https://github.com/thisiskushal31/System-Design-Concepts/tree/main/Security-Tradeoffs) |
 | CTI practice | Notes 18–19 · [Threat-Intelligence](../Threat-Intelligence/README.md) (stub) · [Defensive-Ops](../Defensive-Ops/README.md) |
 | Penetration testing (lab) | Note 3 · [Offensive](../Offensive/README.md) · [Tooling Security](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security) |
-| Vuln program | Note 20 · [Vulnerability-Management](../Vulnerability-Management/README.md) (stub) |
+| Vuln program | Note 20 · [Vulnerability-Management](../Vulnerability-Management/README.md) |
 | Wire / TLS depth | Note 14 · [Networks-Deep-Dive](https://github.com/thisiskushal31/Networks-Deep-Dive) |
 
 ## Topic map

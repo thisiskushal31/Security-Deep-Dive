@@ -68,7 +68,7 @@ Availability controls without tested recovery are incomplete Protect/Recover cov
 
 Foundations complete → [Threats](../Threats/README.md)
 
-Practice depth stubs when ready: [Threat-Modeling](../Threat-Modeling/README.md) · [Threat-Intelligence](../Threat-Intelligence/README.md) · [Vulnerability-Management](../Vulnerability-Management/README.md)
+Practice depth: [Vulnerability-Management](../Vulnerability-Management/README.md) · stubs when ready: [Threat-Modeling](../Threat-Modeling/README.md) · [Threat-Intelligence](../Threat-Intelligence/README.md)
 
 ## Further reading
 
