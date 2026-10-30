@@ -108,6 +108,7 @@ Use the self-check below as the apply gate for this note.
 
 ## Next
 
+- Practice depth → [Threat-Intelligence](../Threat-Intelligence/README.md)
 - [Vulnerability management literacy](./20_Vulnerability_Management_Literacy.md)
 
 ## Further reading
