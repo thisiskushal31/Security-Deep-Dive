@@ -86,6 +86,8 @@ ATT&CK is a knowledge base of adversary **tactics** (goals) and **techniques** (
 
 It is not a compliance checklist. Program use: [GRC/1](../GRC/1_NIST_ISO_And_ATTCK.md). Full matrix: [attack.mitre.org](https://attack.mitre.org/).
 
+For adversary behavior **involving AI** (attacks on AI systems, abuse of AI capabilities, harmful autonomous behavior), use [MITRE ATLAS](https://atlas.mitre.org/) alongside ATT&CK. Literacy: [Threats/8](../Threats/8_AI_Era_Threats.md).
+
 ## Pyramid of Pain (detection literacy)
 
 Not all indicators are equal. Rough ordering from easy for attackers to change → hard:
@@ -137,4 +139,5 @@ Use the self-check below as the apply gate for this note.
 - [Lockheed Martin — Cyber Kill Chain](https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html)
 - [The Diamond Model of Intrusion Analysis (Caltagirone, Pendergast, Betz)](https://www.activeresponse.org/wp-content/uploads/2013/07/diamond.pdf)
 - [MITRE ATT&CK](https://attack.mitre.org/)
+- [MITRE ATLAS](https://atlas.mitre.org/)
 - [Pyramid of Pain (David Bianco)](https://detect-respond.blogspot.com/2013/03/the-pyramid-of-pain.html)

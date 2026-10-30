@@ -133,7 +133,7 @@ Alert when a decoy is touched; route into [Defensive-Ops](../Defensive-Ops/READM
 
 - Networks security → [Networks-Deep-Dive](https://github.com/thisiskushal31/Networks-Deep-Dive)
 - Pipeline and secrets → [DevOps-Handbook Security](https://github.com/thisiskushal31/DevOps-Handbook/tree/main/Security)
-- Mitigations catalog → [Threats/4](../Threats/4_Mitigations.md)
+- Mitigations catalog → [Threats/7](../Threats/7_Mitigations.md)
 
 ## Self-check
 

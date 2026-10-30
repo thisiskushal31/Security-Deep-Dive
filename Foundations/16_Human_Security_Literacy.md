@@ -29,6 +29,7 @@ Vectors catalog: [Threats/2](../Threats/2_Vectors_And_Surfaces.md). Ethics bound
 | Tailgating / piggybacking | Follow authorized people through physical controls |
 | Business email compromise (BEC) | Impersonate executives or vendors to redirect payments or data |
 | Helpdesk / MFA fatigue abuse | Socially engineer reset or approval flows |
+| Deepfake / voice-clone assisted fraud | Synthetic audio/video that mimics a trusted person — verify out-of-band; see [Threats/8](../Threats/8_AI_Era_Threats.md) |
 
 ```text
 Lure → trust / urgency → action (click, send, approve)
@@ -72,3 +73,6 @@ Use the self-check below as the apply gate for this note.
 - [CISA — Phishing Guidance](https://www.cisa.gov/phishing)
 - [NIST SP 800-50 — Building an Information Technology Security Awareness and Training Program](https://csrc.nist.gov/pubs/sp/800/50/final)
 - [Threats — vectors and surfaces](../Threats/2_Vectors_And_Surfaces.md)
+- [Threats — AI-era threats](../Threats/8_AI_Era_Threats.md)
+- [CISA — Risk in Focus: Generative AI and the 2024 Election Cycle](https://www.cisa.gov/sites/default/files/2024-05/Consolidated_Risk_in_Focus_Gen_AI_ElectionsV2_508c.pdf)
+- [CCCS — Top 10 AI security actions](https://www.cyber.gc.ca/en/guidance/top-10-artificial-intelligence-security-actions-primer-itsap10049) (deepfake / impersonation actions)
