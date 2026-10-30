@@ -15,15 +15,15 @@ Each note follows **concept → advanced → apply** (basics → depth → imple
 
 ## Topic files
 
-| # | Topic | Status |
-|---|--------|--------|
-| 1 | [Framework nesting (NIST, ISO, ATT&CK)](./1_NIST_ISO_And_ATTCK.md) | filled |
-| 2 | [NIST CSF 2.0 outcomes](./2_NIST_CSF_2_Outcomes.md) | filled |
-| 3 | [NIST RMF lifecycle](./3_NIST_RMF_Lifecycle.md) | filled |
-| 4 | [Control catalogs (800-53 and CIS)](./4_Control_Catalogs_800-53_And_CIS.md) | filled |
-| 5 | [ISO 27001 ISMS literacy](./5_ISO_27001_ISMS_Literacy.md) | filled |
-| 6 | [SOC 2 and evidence](./6_SOC2_And_Evidence.md) | filled |
-| 7 | [NICE workforce literacy](./7_NICE_Workforce_Literacy.md) | filled |
+| # | Topic |
+|---|--------|
+| 1 | [Framework nesting (NIST, ISO, ATT&CK)](./1_NIST_ISO_And_ATTCK.md) |
+| 2 | [NIST CSF 2.0 outcomes](./2_NIST_CSF_2_Outcomes.md) |
+| 3 | [NIST RMF lifecycle](./3_NIST_RMF_Lifecycle.md) |
+| 4 | [Control catalogs (800-53 and CIS)](./4_Control_Catalogs_800-53_And_CIS.md) |
+| 5 | [ISO 27001 ISMS literacy](./5_ISO_27001_ISMS_Literacy.md) |
+| 6 | [SOC 2 and evidence](./6_SOC2_And_Evidence.md) |
+| 7 | [NICE workforce literacy](./7_NICE_Workforce_Literacy.md) |
 
 ## Learning path
 

@@ -6,10 +6,10 @@ OWASP-minded application and API security as a program. Pipeline enforcement sta
 
 ## Topic files
 
-| # | Topic | Status |
-|---|--------|--------|
-| 1 | [OWASP and secure SDLC](./1_OWASP_And_Secure_SDLC.md) | **filled** |
-| 2 | [API security](./2_API_Security.md) | **filled** |
+| # | Topic |
+|---|--------|
+| 1 | [OWASP and secure SDLC](./1_OWASP_And_Secure_SDLC.md) |
+| 2 | [API security](./2_API_Security.md) |
 
 ## Related
 

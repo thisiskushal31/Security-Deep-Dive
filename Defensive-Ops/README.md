@@ -10,11 +10,11 @@ Detect, respond, learn. On-call culture stays in DevOps Methodologies. Named cap
 
 ## Topic files
 
-| # | Topic | Status |
-|---|--------|--------|
-| 1 | [SIEM and detection](./1_SIEM_And_Detection.md) | **filled** |
-| 2 | [Incident response](./2_Incident_Response.md) | **filled** |
-| 3 | [Forensics](./3_Forensics.md) | **filled** |
+| # | Topic |
+|---|--------|
+| 1 | [SIEM and detection](./1_SIEM_And_Detection.md) |
+| 2 | [Incident response](./2_Incident_Response.md) |
+| 3 | [Forensics](./3_Forensics.md) |
 
 ## Related
 

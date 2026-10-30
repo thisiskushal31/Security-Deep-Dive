@@ -85,7 +85,7 @@ Exercise a basic cyber incident response plan and communications plan — the ab
 |-------|------|
 | PR→prod gate chain | [DevOps-Handbook Security](https://github.com/thisiskushal31/DevOps-Handbook/tree/main/Security) |
 | App mitigations | [AppSec](../AppSec/README.md) |
-| LLM / agent depth | [AI-Security](../AI-Security/README.md) (**stub**) |
+| LLM / agent depth | [AI-Security](../AI-Security/README.md) |
 | Identity / Zero Trust | [Identity](../Identity/README.md) |
 | Detection / IR | [Defensive-Ops](../Defensive-Ops/README.md) |
 | Cloud posture | [Cloud-Security](../Cloud-Security/README.md) |

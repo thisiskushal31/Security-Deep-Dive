@@ -6,6 +6,6 @@ Where practice paths live. Software installs stay in Tooling; methodology in Off
 
 ## Topic files
 
-| # | Topic | Status |
-|---|--------|--------|
-| 1 | [Paths](./1_Paths.md) | **filled** |
+| # | Topic |
+|---|--------|
+| 1 | [Paths](./1_Paths.md) |

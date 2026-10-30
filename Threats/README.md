@@ -39,20 +39,20 @@ AI-era risk sits *on top of* that chain: same actors and many same vectors, plus
 
 ## Topic files
 
-| # | Topic | Status |
-|---|--------|--------|
-| 1 | [Actors and motivations](./1_Actors_And_Motivations.md) | filled |
-| 2 | [Vectors and attack surfaces](./2_Vectors_And_Surfaces.md) | filled |
-| 3 | [Vulnerabilities](./3_Vulnerabilities.md) | filled |
-| 4 | [Malware](./4_Malware.md) | filled |
-| 5 | [Attack classes](./5_Attack_Classes.md) | filled |
-| 6 | [Indicators and analysis](./6_Indicators_And_Analysis.md) | filled |
-| 7 | [Mitigations](./7_Mitigations.md) | filled |
-| 8 | [AI-era threats](./8_AI_Era_Threats.md) | filled |
+| # | Topic |
+|---|--------|
+| 1 | [Actors and motivations](./1_Actors_And_Motivations.md) |
+| 2 | [Vectors and attack surfaces](./2_Vectors_And_Surfaces.md) |
+| 3 | [Vulnerabilities](./3_Vulnerabilities.md) |
+| 4 | [Malware](./4_Malware.md) |
+| 5 | [Attack classes](./5_Attack_Classes.md) |
+| 6 | [Indicators and analysis](./6_Indicators_And_Analysis.md) |
+| 7 | [Mitigations](./7_Mitigations.md) |
+| 8 | [AI-era threats](./8_AI_Era_Threats.md) |
 
 ## Learning path
 
-`1 → 2 → 3 → 4 → 5 → 6 → 7 → 8` → [AppSec](../AppSec/README.md) or [Defensive-Ops](../Defensive-Ops/README.md) · AI TM workshops → [Threat-Modeling/6](../Threat-Modeling/6_AI_And_Agentic_Threat_Modeling.md) · AI build depth → [AI-Security](../AI-Security/README.md) (**stub**) · lab → [Offensive](../Offensive/README.md)
+`1 → 2 → 3 → 4 → 5 → 6 → 7 → 8` → [AppSec](../AppSec/README.md) or [Defensive-Ops](../Defensive-Ops/README.md) · AI TM workshops → [Threat-Modeling/6](../Threat-Modeling/6_AI_And_Agentic_Threat_Modeling.md) · AI build depth → [AI-Security](../AI-Security/README.md) · lab → [Offensive](../Offensive/README.md)
 
 ## What kinds of threats are covered (landscape)
 
@@ -119,7 +119,7 @@ Network packet labs: [Networks-Deep-Dive Security](https://github.com/thisiskush
 |------|--------|
 | Build secure software | [AppSec](../AppSec/README.md) |
 | Threat-model LLM / agent designs | [Threat-Modeling/6](../Threat-Modeling/6_AI_And_Agentic_Threat_Modeling.md) |
-| Secure LLM / agent products | [AI-Security](../AI-Security/README.md) (**stub**) |
+| Secure LLM / agent products | [AI-Security](../AI-Security/README.md) |
 | Detect and respond | [Defensive-Ops](../Defensive-Ops/README.md) |
 | Authorized lab offense | [Offensive](../Offensive/README.md) |
 | Framework nesting | [GRC](../GRC/README.md) |

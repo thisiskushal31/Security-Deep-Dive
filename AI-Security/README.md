@@ -2,7 +2,7 @@
 
 [← README](../README.md)
 
-**Status: stub** — literacy lives in [Threats/8](../Threats/8_AI_Era_Threats.md) (DHS/CISA three risk categories, NIST AI 600-1 + AML, OWASP LLM + Agentic Top 10, CCCS pillars, ENISA landscape notes, ATLAS pointer). Workshop / method for threat-modeling LLM and agentic systems lives in [Threat-Modeling/6](../Threat-Modeling/6_AI_And_Agentic_Threat_Modeling.md) (DFD extensions, LLM/ASI checklists, MAESTRO, ATLAS nesting).
+Literacy lives in [Threats/8](../Threats/8_AI_Era_Threats.md) (DHS/CISA three risk categories, NIST AI 600-1 + AML, OWASP LLM + Agentic Top 10, CCCS pillars, ENISA landscape notes, ATLAS pointer). Workshop / method for threat-modeling LLM and agentic systems lives in [Threat-Modeling/6](../Threat-Modeling/6_AI_And_Agentic_Threat_Modeling.md) (DFD extensions, LLM/ASI checklists, MAESTRO, ATLAS nesting).
 
 This folder is for **build/operate depth** beyond Threats literacy and TM workshops: securing LLM apps and agents, RAG/vector stores, MCP/tool supply chain, AIBOM, authorized AI red-team process, and mappings to NIST AI RMF / SSDF GenAI profile / CISA–NCSC secure AI lifecycle.
 
@@ -10,15 +10,15 @@ Do **not** put jailbreak recipes or unauthorized attack procedures here. Lab wor
 
 ## Planned topic files
 
-| # | Topic | Status |
-|---|--------|--------|
-| 1 | LLM application threat model (component vs agent) | planned — start from [Threat-Modeling/6](../Threat-Modeling/6_AI_And_Agentic_Threat_Modeling.md) |
-| 2 | Prompt injection defenses (architecture, not payloads) | planned |
-| 3 | RAG / vector store / memory hardening | planned |
-| 4 | Agentic controls (tools, identity, human gates, kill switch) | planned |
-| 5 | Model and data supply chain (SBOM/AIBOM, signing, MCP) | planned |
-| 6 | Authorized AI red team / evaluation process | planned |
-| 7 | Shadow AI governance and private GenAI deployment | planned |
+| # | Topic |
+|---|--------|
+| 1 | LLM application threat model (component vs agent) — start from [Threat-Modeling/6](../Threat-Modeling/6_AI_And_Agentic_Threat_Modeling.md) |
+| 2 | Prompt injection defenses (architecture, not payloads) |
+| 3 | RAG / vector store / memory hardening |
+| 4 | Agentic controls (tools, identity, human gates, kill switch) |
+| 5 | Model and data supply chain (SBOM/AIBOM, signing, MCP) |
+| 6 | Authorized AI red team / evaluation process |
+| 7 | Shadow AI governance and private GenAI deployment |
 
 ## Related homes (do not duplicate)
 

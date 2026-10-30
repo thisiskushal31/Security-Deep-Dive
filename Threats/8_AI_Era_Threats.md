@@ -6,7 +6,7 @@
 
 How generative AI and machine learning change the threat picture: **attacks that use AI**, **attacks that target AI systems**, and **failures in AI design/implementation**. Classical Domain 2 ([1](./1_Actors_And_Motivations.md)–[7](./7_Mitigations.md)) still applies — phishing, malware, supply chain, DoS — but AI **amplifies scale/quality** and adds **model-specific** and **agent-specific** attack classes. Read this after the classical path so you can see what is *new* versus what is the *same threat, louder*.
 
-Technique catalogs: [MITRE ATLAS](https://atlas.mitre.org/) (AI) · [ATT&CK](https://attack.mitre.org/) (host/network) via [Foundations/18](../Foundations/18_Adversary_Models_Kill_Chain_And_ATTCK.md) · [GRC](../GRC/1_NIST_ISO_And_ATTCK.md). Threat-*modeling* practice for LLM/agents: [Threat-Modeling/6](../Threat-Modeling/6_AI_And_Agentic_Threat_Modeling.md). App/agent build depth: [AI-Security](../AI-Security/README.md) (**stub**) · [AppSec](../AppSec/README.md).
+Technique catalogs: [MITRE ATLAS](https://atlas.mitre.org/) (AI) · [ATT&CK](https://attack.mitre.org/) (host/network) via [Foundations/18](../Foundations/18_Adversary_Models_Kill_Chain_And_ATTCK.md) · [GRC](../GRC/1_NIST_ISO_And_ATTCK.md). Threat-*modeling* practice for LLM/agents: [Threat-Modeling/6](../Threat-Modeling/6_AI_And_Agentic_Threat_Modeling.md). App/agent build depth: [AI-Security](../AI-Security/README.md) · [AppSec](../AppSec/README.md).
 
 No jailbreak recipes, red-team payloads, or misuse enablement steps here — definitions and program framing only.
 
@@ -297,7 +297,7 @@ Short examples from official public reports so you know this is not theory. Link
 
 ## Next
 
-- [Mitigations](./7_Mitigations.md) (if you skipped) · [Threat-Modeling/6](../Threat-Modeling/6_AI_And_Agentic_Threat_Modeling.md) · [AI-Security](../AI-Security/README.md) (**stub**) · [AppSec](../AppSec/README.md) · [Defensive-Ops](../Defensive-Ops/README.md)
+- [Mitigations](./7_Mitigations.md) (if you skipped) · [Threat-Modeling/6](../Threat-Modeling/6_AI_And_Agentic_Threat_Modeling.md) · [AI-Security](../AI-Security/README.md) · [AppSec](../AppSec/README.md) · [Defensive-Ops](../Defensive-Ops/README.md)
 
 ## Further reading
 

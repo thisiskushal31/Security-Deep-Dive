@@ -16,14 +16,14 @@ Each note follows **concept → advanced → apply**. Inside a note: explain in 
 
 ## Topic files
 
-| # | Topic | Status |
-|---|--------|--------|
-| 1 | [Workshop process and facilitation](./1_Workshop_Process.md) | filled (final) |
-| 2 | [DFD and STRIDE in practice](./2_DFD_And_STRIDE_In_Practice.md) | filled (final) |
-| 3 | [PASTA staged walkthrough](./3_PASTA_Staged_Walkthrough.md) | filled (final) |
-| 4 | [Attack trees and LINDDUN](./4_Attack_Trees_And_LINDDUN.md) | filled (final) |
-| 5 | [Tooling and closing the loop](./5_Tooling_And_Closing_The_Loop.md) | filled (final) |
-| 6 | [AI and agentic threat modeling](./6_AI_And_Agentic_Threat_Modeling.md) | filled (final) |
+| # | Topic |
+|---|--------|
+| 1 | [Workshop process and facilitation](./1_Workshop_Process.md) |
+| 2 | [DFD and STRIDE in practice](./2_DFD_And_STRIDE_In_Practice.md) |
+| 3 | [PASTA staged walkthrough](./3_PASTA_Staged_Walkthrough.md) |
+| 4 | [Attack trees and LINDDUN](./4_Attack_Trees_And_LINDDUN.md) |
+| 5 | [Tooling and closing the loop](./5_Tooling_And_Closing_The_Loop.md) |
+| 6 | [AI and agentic threat modeling](./6_AI_And_Agentic_Threat_Modeling.md) |
 
 Program depth for this folder is **complete** for handbook purposes (including modern AI/agent stacks). Refresh when major methods, OWASP LLM/ASI lists, MAESTRO, ATLAS, or official SDL/ASVS guidance change.
 
@@ -50,4 +50,4 @@ Skip to **6** after **2** if you already run classical workshops and only need t
 - Change / revisit → [Foundations/9](../Foundations/9_Change_Management_And_Security.md)
 - Accept residual risk → [Vulnerability-Management/4](../Vulnerability-Management/4_Exception_And_Acceptance_Workflows.md)
 - AI-era threat literacy → [Threats/8](../Threats/8_AI_Era_Threats.md)
-- AI build/operate depth → [AI-Security](../AI-Security/README.md) (stub)
+- AI build/operate depth → [AI-Security](../AI-Security/README.md)
