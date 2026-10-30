@@ -6,7 +6,7 @@
 
 Threat modeling is a structured way to find what can go wrong in a design before you ship a new trust boundary. The goal is prioritized mitigations with owners — not a diagram for its own sake.
 
-Architecture worked examples: [System-Design Security-Tradeoffs/1](https://github.com/thisiskushal31/System-Design-Concepts/blob/main/Security-Tradeoffs/1_Threat_Modeling_At_Design_Time.md). SDLC placement: [AppSec/1](../AppSec/1_OWASP_And_Secure_SDLC.md). Attacker-centric models: [18](./18_Adversary_Models_Kill_Chain_And_ATTCK.md). Workshop / method depth beyond literacy: [Threat-Modeling](../Threat-Modeling/README.md) (stub).
+Architecture worked examples: [System-Design Security-Tradeoffs/1](https://github.com/thisiskushal31/System-Design-Concepts/blob/main/Security-Tradeoffs/1_Threat_Modeling_At_Design_Time.md). SDLC placement: [AppSec/1](../AppSec/1_OWASP_And_Secure_SDLC.md). Attacker-centric models: [18](./18_Adversary_Models_Kill_Chain_And_ATTCK.md). Workshop / method depth beyond literacy: [Threat-Modeling](../Threat-Modeling/README.md) (including [AI/agentic TM](../Threat-Modeling/6_AI_And_Agentic_Threat_Modeling.md)).
 
 ## Concept
 

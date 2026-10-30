@@ -2,43 +2,52 @@
 
 [← README](../README.md)
 
-Workshop and method depth beyond foundation literacy — how teams actually run models, pick methods, and close the loop into tickets and tests.
+Workshop and method **depth** beyond foundation literacy — enough in these notes to run sessions, walk STRIDE-per-element, stage PASTA, build attack trees, apply LINDDUN, close tickets/tests, and threat-model **LLM/agentic** systems. Further reading is optional enrichment, not required to learn the craft.
 
-Literacy intro: [Foundations/12](../Foundations/12_STRIDE_And_Threat_Modeling.md). Adversary models: [Foundations/18](../Foundations/18_Adversary_Models_Kill_Chain_And_ATTCK.md). Secure SDLC home: [AppSec](../AppSec/README.md). Design examples: [System-Design Security-Tradeoffs](https://github.com/thisiskushal31/System-Design-Concepts/tree/main/Security-Tradeoffs).
+Literacy intro: [Foundations/12](../Foundations/12_STRIDE_And_Threat_Modeling.md). Adversary models: [Foundations/18](../Foundations/18_Adversary_Models_Kill_Chain_And_ATTCK.md). Secure SDLC: [AppSec](../AppSec/README.md). Design examples: [System-Design Security-Tradeoffs](https://github.com/thisiskushal31/System-Design-Concepts/tree/main/Security-Tradeoffs).
 
 Each note follows **concept → advanced → apply**. Inside a note: explain in text, then an official image when one fits, then a short diagram only if it still helps.
 
 ```text
 1 Workshop process → 2 DFD + STRIDE practice → 3 PASTA
   → 4 Attack trees + LINDDUN → 5 Tooling + close the loop
+  → 6 AI / agentic threat modeling
 ```
 
 ## Topic files
 
 | # | Topic | Status |
 |---|--------|--------|
-| 1 | [Workshop process and facilitation](./1_Workshop_Process.md) | filled |
-| 2 | [DFD and STRIDE in practice](./2_DFD_And_STRIDE_In_Practice.md) | filled |
-| 3 | [PASTA staged walkthrough](./3_PASTA_Staged_Walkthrough.md) | filled |
-| 4 | [Attack trees and LINDDUN](./4_Attack_Trees_And_LINDDUN.md) | filled |
-| 5 | [Tooling and closing the loop](./5_Tooling_And_Closing_The_Loop.md) | filled |
+| 1 | [Workshop process and facilitation](./1_Workshop_Process.md) | filled (final) |
+| 2 | [DFD and STRIDE in practice](./2_DFD_And_STRIDE_In_Practice.md) | filled (final) |
+| 3 | [PASTA staged walkthrough](./3_PASTA_Staged_Walkthrough.md) | filled (final) |
+| 4 | [Attack trees and LINDDUN](./4_Attack_Trees_And_LINDDUN.md) | filled (final) |
+| 5 | [Tooling and closing the loop](./5_Tooling_And_Closing_The_Loop.md) | filled (final) |
+| 6 | [AI and agentic threat modeling](./6_AI_And_Agentic_Threat_Modeling.md) | filled (final) |
+
+Program depth for this folder is **complete** for handbook purposes (including modern AI/agent stacks). Refresh when major methods, OWASP LLM/ASI lists, MAESTRO, ATLAS, or official SDL/ASVS guidance change.
 
 ## Learning path
 
-`1 → 2 → 3 → 4 → 5`
+`1 → 2 → 3 → 4 → 5 → 6`
+
+Skip to **6** after **2** if you already run classical workshops and only need the AI overlay. Do **not** skip DFD/STRIDE entirely — note 6 assumes that craft.
 
 ## Topic map
 
 | Area | Home |
 |------|------|
-| Four questions, agenda, facilitation, Manifesto values | 1 |
-| DFD elements, trust boundaries, STRIDE-per-element | 2 |
-| Risk-centric seven stages (PASTA) | 3 |
-| Goal decomposition; privacy threats (LINDDUN) | 4 |
-| Threat Dragon / TMT / pytm literacy; tickets, tests, revisit | 5 |
+| Four questions, attacker model, EoP/Cornucopia, mature-team traps | 1 |
+| DFD hygiene (data labels, CI/CD, zoom level), STRIDE-per-element | 2 |
+| PASTA seven stages with DoD, escalate-from-STRIDE | 3 |
+| Attack trees (AND/OR); full LINDDUN type depth | 4 |
+| Dragon/TMT/pytm/Threagile; ASVS; detection+prevention; Q4 | 5 |
+| LLM/ASI checklists, MAESTRO layers, ATLAS nesting, AI DFD extensions | 6 |
 
 ## Related
 
 - Privacy literacy → [Foundations/17](../Foundations/17_Privacy_Literacy.md)
-- Change / revisit triggers → [Foundations/9](../Foundations/9_Change_Management_And_Security.md)
-- Exceptions when accepting residual risk → [Vulnerability-Management/4](../Vulnerability-Management/4_Exception_And_Acceptance_Workflows.md)
+- Change / revisit → [Foundations/9](../Foundations/9_Change_Management_And_Security.md)
+- Accept residual risk → [Vulnerability-Management/4](../Vulnerability-Management/4_Exception_And_Acceptance_Workflows.md)
+- AI-era threat literacy → [Threats/8](../Threats/8_AI_Era_Threats.md)
+- AI build/operate depth → [AI-Security](../AI-Security/README.md) (stub)

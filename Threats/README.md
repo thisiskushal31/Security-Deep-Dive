@@ -52,7 +52,7 @@ AI-era risk sits *on top of* that chain: same actors and many same vectors, plus
 
 ## Learning path
 
-`1 → 2 → 3 → 4 → 5 → 6 → 7 → 8` → [AppSec](../AppSec/README.md) or [Defensive-Ops](../Defensive-Ops/README.md) · AI build depth → [AI-Security](../AI-Security/README.md) (**stub**) · lab → [Offensive](../Offensive/README.md)
+`1 → 2 → 3 → 4 → 5 → 6 → 7 → 8` → [AppSec](../AppSec/README.md) or [Defensive-Ops](../Defensive-Ops/README.md) · AI TM workshops → [Threat-Modeling/6](../Threat-Modeling/6_AI_And_Agentic_Threat_Modeling.md) · AI build depth → [AI-Security](../AI-Security/README.md) (**stub**) · lab → [Offensive](../Offensive/README.md)
 
 ## What kinds of threats are covered (landscape)
 
@@ -118,6 +118,7 @@ Network packet labs: [Networks-Deep-Dive Security](https://github.com/thisiskush
 | Goal | Folder |
 |------|--------|
 | Build secure software | [AppSec](../AppSec/README.md) |
+| Threat-model LLM / agent designs | [Threat-Modeling/6](../Threat-Modeling/6_AI_And_Agentic_Threat_Modeling.md) |
 | Secure LLM / agent products | [AI-Security](../AI-Security/README.md) (**stub**) |
 | Detect and respond | [Defensive-Ops](../Defensive-Ops/README.md) |
 | Authorized lab offense | [Offensive](../Offensive/README.md) |

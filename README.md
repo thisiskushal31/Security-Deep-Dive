@@ -12,12 +12,12 @@ New here? Start at [Foundations](./Foundations/README.md) (21 notes, ordered con
 | [Threats/](./Threats/README.md) | Security+ Domain 2 + AI-era literacy: actors → … → mitigations → AI-era threats |
 | [Identity/](./Identity/README.md) | Federation and zero trust |
 | [AppSec/](./AppSec/README.md) | OWASP, API, secure SDLC |
-| [AI-Security/](./AI-Security/README.md) | LLM/agent security practice depth (**stub**; literacy in Threats/8) |
+| [AI-Security/](./AI-Security/README.md) | LLM/agent security practice depth (**stub**; literacy in Threats/8; TM method in Threat-Modeling/6) |
 | [Cryptography/](./Cryptography/README.md) | Practical pitfalls |
 | [Cloud-Security/](./Cloud-Security/README.md) | Posture, secrets/K8s, supply chain |
 | [Defensive-Ops/](./Defensive-Ops/README.md) | SIEM, IR, forensics |
 | [Offensive/](./Offensive/README.md) | PTES phases (OSINT → report), lab only |
-| [Threat-Modeling/](./Threat-Modeling/README.md) | Workshop/method depth (**stub**) |
+| [Threat-Modeling/](./Threat-Modeling/README.md) | Workshop process, DFD/STRIDE, PASTA, trees/LINDDUN, tooling, AI/agentic TM |
 | [Threat-Intelligence/](./Threat-Intelligence/README.md) | CTI analytic depth (**stub**) |
 | [Vulnerability-Management/](./Vulnerability-Management/README.md) | Program, scanning (SBOM/VEX), KEV/EPSS/SSVC/BOD, exceptions, metrics, disclosure |
 | [GRC/](./GRC/README.md) | Nesting, CSF 2.0, RMF, 800-53/CIS, ISO 27001, SOC 2, NICE |

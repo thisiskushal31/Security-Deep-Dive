@@ -2,9 +2,9 @@
 
 [← README](../README.md)
 
-**Status: stub** — literacy lives in [Threats/8](../Threats/8_AI_Era_Threats.md) (DHS/CISA three risk categories, NIST AI 600-1 + AML, OWASP LLM + Agentic Top 10, CCCS pillars, ENISA landscape notes, ATLAS pointer).
+**Status: stub** — literacy lives in [Threats/8](../Threats/8_AI_Era_Threats.md) (DHS/CISA three risk categories, NIST AI 600-1 + AML, OWASP LLM + Agentic Top 10, CCCS pillars, ENISA landscape notes, ATLAS pointer). Workshop / method for threat-modeling LLM and agentic systems lives in [Threat-Modeling/6](../Threat-Modeling/6_AI_And_Agentic_Threat_Modeling.md) (DFD extensions, LLM/ASI checklists, MAESTRO, ATLAS nesting).
 
-This folder is for **build/operate depth** beyond Threats literacy: securing LLM apps and agents, RAG/vector stores, MCP/tool supply chain, AIBOM, authorized AI red-team process, and mappings to NIST AI RMF / SSDF GenAI profile / CISA–NCSC secure AI lifecycle.
+This folder is for **build/operate depth** beyond Threats literacy and TM workshops: securing LLM apps and agents, RAG/vector stores, MCP/tool supply chain, AIBOM, authorized AI red-team process, and mappings to NIST AI RMF / SSDF GenAI profile / CISA–NCSC secure AI lifecycle.
 
 Do **not** put jailbreak recipes or unauthorized attack procedures here. Lab work stays authorized and isolated — same ethics boundary as [Foundations/3](../Foundations/3_Ethics_Authorization_And_Lab_Rules.md).
 
@@ -12,7 +12,7 @@ Do **not** put jailbreak recipes or unauthorized attack procedures here. Lab wor
 
 | # | Topic | Status |
 |---|--------|--------|
-| 1 | LLM application threat model (component vs agent) | planned |
+| 1 | LLM application threat model (component vs agent) | planned — start from [Threat-Modeling/6](../Threat-Modeling/6_AI_And_Agentic_Threat_Modeling.md) |
 | 2 | Prompt injection defenses (architecture, not payloads) | planned |
 | 3 | RAG / vector store / memory hardening | planned |
 | 4 | Agentic controls (tools, identity, human gates, kill switch) | planned |
@@ -25,6 +25,7 @@ Do **not** put jailbreak recipes or unauthorized attack procedures here. Lab wor
 | Topic | Home |
 |-------|------|
 | AI-era threat literacy | [Threats/8](../Threats/8_AI_Era_Threats.md) |
+| AI / agentic threat modeling (workshops) | [Threat-Modeling/6](../Threat-Modeling/6_AI_And_Agentic_Threat_Modeling.md) |
 | Classic AppSec / OWASP web | [AppSec](../AppSec/README.md) |
 | Supply chain (general) | [Cloud-Security/3](../Cloud-Security/3_Supply_Chain.md) |
 | Human / social engineering | [Foundations/16](../Foundations/16_Human_Security_Literacy.md) |
@@ -32,4 +33,4 @@ Do **not** put jailbreak recipes or unauthorized attack procedures here. Lab wor
 
 ## When to fill
 
-Fill when you are shipping or securing LLM/agent products and Threats/8 literacy is already done — not before.
+Fill when you are shipping or securing LLM/agent products and Threats/8 literacy plus Threat-Modeling/6 workshop method are already done — not before.
