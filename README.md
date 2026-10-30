@@ -20,7 +20,7 @@ New here? Start at [Foundations](./Foundations/README.md) (21 notes, ordered con
 | [Threat-Modeling/](./Threat-Modeling/README.md) | Workshop/method depth (**stub**) |
 | [Threat-Intelligence/](./Threat-Intelligence/README.md) | CTI analytic depth (**stub**) |
 | [Vulnerability-Management/](./Vulnerability-Management/README.md) | Vuln program depth (**stub**) |
-| [GRC/](./GRC/README.md) | NIST, ISO, ATT&CK |
+| [GRC/](./GRC/README.md) | Nesting, CSF 2.0, RMF, 800-53/CIS, ISO 27001, SOC 2, NICE |
 | [Labs/](./Labs/README.md) | HTB / TryHackMe paths |
 
 Related repos (depth lives there): [Tooling Security](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive) (Nmap, Burp, Wireshark — install) · [Networks](https://github.com/thisiskushal31/Networks-Deep-Dive) (wire / TLS) · [DevOps Security](https://github.com/thisiskushal31/DevOps-Handbook) (CI gates) · [System Design](https://github.com/thisiskushal31/System-Design-Concepts) (`Security-Tradeoffs/`) · [Tooling OAuth](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive) (`Specs-Standards/OAuth`)
