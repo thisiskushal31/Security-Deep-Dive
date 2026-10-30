@@ -4,9 +4,9 @@
 
 General security concepts before AppSec, cloud, SOC, CTI practice, threat-modeling workshops, or lab offense.
 
-**How this path is ordered:** each note and the sequence itself move **concept → advanced → apply**. *Apply* at Foundations means literacy and builder habits — not specialty implementation (that lives in AppSec, Offensive, Defensive-Ops, Networks, Tooling, or the stubs below).
+**How this path is ordered:** each note and the sequence itself move **concept → advanced → apply**. *Apply* at Foundations means literacy and builder habits — not specialty implementation (that lives in AppSec, Offensive, Defensive-Ops, Networks, Tooling, and the practice folders below).
 
-Practice deep dives beyond literacy: [Vulnerability-Management](../Vulnerability-Management/README.md) · [Threat-Modeling](../Threat-Modeling/README.md) · stub: [Threat-Intelligence](../Threat-Intelligence/README.md).
+Practice deep dives beyond literacy: [Vulnerability-Management](../Vulnerability-Management/README.md) · [Threat-Modeling](../Threat-Modeling/README.md) · [Threat-Intelligence](../Threat-Intelligence/README.md).
 
 Threat actors and vectors continue in [Threats](../Threats/README.md). Framework nesting: [GRC](../GRC/README.md). Authorized offense: [Offensive](../Offensive/README.md). Detection/IR: [Defensive-Ops](../Defensive-Ops/README.md).
 

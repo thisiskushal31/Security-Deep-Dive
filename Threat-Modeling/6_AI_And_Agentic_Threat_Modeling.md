@@ -4,7 +4,7 @@
 
 > **Progression:** concept → advanced → apply.
 
-How to threat-model systems that include **LLMs, RAG, tools, memory, and agents** — without abandoning the four questions or DFD/STRIDE. Threat *literacy* (what AI-era threats are): [Threats/8](../Threats/8_AI_Era_Threats.md). Build/operate depth remains planned in [AI-Security](../AI-Security/README.md). Classical method: [1](./1_Workshop_Process.md)–[5](./5_Tooling_And_Closing_The_Loop.md).
+How to threat-model systems that include **LLMs, RAG, tools, memory, and agents** — without abandoning the four questions or DFD/STRIDE. Threat *literacy* (what AI-era threats are): [Threats/8](../Threats/8_AI_Era_Threats.md). Build/operate depth: [AI-Security](../AI-Security/README.md). Classical method: [1](./1_Workshop_Process.md)–[5](./5_Tooling_And_Closing_The_Loop.md).
 
 No jailbreak recipes, red-team payloads, or misuse enablement — definitions, elicitation checklists, and program framing only ([Foundations/3](../Foundations/3_Ethics_Authorization_And_Lab_Rules.md)).
 

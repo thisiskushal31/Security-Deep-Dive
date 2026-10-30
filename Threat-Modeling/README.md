@@ -25,8 +25,6 @@ Each note follows **concept → advanced → apply**. Inside a note: explain in 
 | 5 | [Tooling and closing the loop](./5_Tooling_And_Closing_The_Loop.md) |
 | 6 | [AI and agentic threat modeling](./6_AI_And_Agentic_Threat_Modeling.md) |
 
-Program depth for this folder is **complete** for handbook purposes (including modern AI/agent stacks). Refresh when major methods, OWASP LLM/ASI lists, MAESTRO, ATLAS, or official SDL/ASVS guidance change.
-
 ## Learning path
 
 `1 → 2 → 3 → 4 → 5 → 6`
