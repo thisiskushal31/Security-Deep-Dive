@@ -26,7 +26,7 @@ Train / fine-tune data ──▶ Model artifact ──▶ Registry / store ─�
 | **Model extraction / theft** | Recreate a functional equivalent via API querying, or steal weights from a registry | IP loss; shadow models; bypass of paid APIs |
 | **Property inference** | Learn global properties of the training distribution | Competitive / privacy signal |
 
-These sit under NIST AML privacy / GenAI misuse families. They are **not** fixed by prompt filters.
+These sit under NIST AML (adversarial machine learning) privacy / GenAI misuse families. They are **not** fixed by prompt filters.
 
 ### Integrity attacks (classical PredAI)
 
@@ -43,7 +43,7 @@ These sit under NIST AML privacy / GenAI misuse families. They are **not** fixed
 3. They train a **shadow model** that approximates yours — or probe until membership/inversion succeeds on sensitive classes.  
 4. Separately: misconfigured object storage / MLflow / registry grants direct download of weights (classic theft, not query extraction).
 
-Break the chain with authn/authZ, rate limits, anomaly detection on scrape-like patterns, registry IAM, and encryption at rest.
+Break the chain with authn/authZ, rate limits, anomaly detection on scrape-like patterns, registry IAM (Identity and Access Management), and encryption at rest.
 
 ## Advanced
 
@@ -51,7 +51,7 @@ Break the chain with authn/authZ, rate limits, anomaly detection on scrape-like 
 
 | Control | Practice |
 |---------|----------|
-| Central model registry | One inventory; RBAC; no “model.zip on a public bucket” |
+| Central model registry | One inventory; RBAC (Role-Based Access Control); no “model.zip on a public bucket” |
 | Sign + pin artifacts | Same posture as [5](./5_Model_And_Data_Supply_Chain.md) |
 | Encrypt weights and datasets at rest | Treat as source-document class when trained on sensitive data |
 | Restrict training logs / intermediates | Logs often contain samples or PII |
@@ -108,7 +108,7 @@ Shared GPUs and accelerators can leak across tenants (memory residue, side chann
 | Sudden token/$ spikes | Budget trip; kill switch |
 | Model abuse or poisoning suspicion | Rollback to last signed good artifact |
 
-Define escalation and rollback in the IR plan. SIEM depth and playbooks live in [Defensive-Ops](../Defensive-Ops/README.md) — wire AI-specific signals into that home; do not reinvent a second SOC here.
+Define escalation and rollback in the IR (incident response) plan. SIEM (Security Information and Event Management) depth and playbooks live in [Defensive-Ops](../Defensive-Ops/README.md) — wire AI-specific signals into that home; do not reinvent a second SOC (Security Operations Center) here.
 
 ### Common Model Ops failure modes (checklist)
 
@@ -144,7 +144,7 @@ Define escalation and rollback in the IR plan. SIEM depth and playbooks live in 
 - [NIST AI 100-2e2025 — Adversarial Machine Learning](https://csrc.nist.gov/pubs/ai/100/2/e2025/final)
 - [OWASP — Secure AI Model Ops Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Secure_AI_Model_Ops_Cheat_Sheet.html)
 - [OWASP — AI Security Verification Standard (AISVS)](https://genai.owasp.org/resource/owasp-ai-security-verification-standard/)
-- [NIST SP 800-218A — SSDF for GenAI](https://csrc.nist.gov/pubs/sp/800/218/a/final)
+- [NIST SP 800-218A — SSDF (Secure Software Development Framework) for GenAI](https://csrc.nist.gov/pubs/sp/800/218/a/final)
 - [MITRE ATLAS](https://atlas.mitre.org/)
 - [Defensive-Ops](../Defensive-Ops/README.md)
 - [Model and data supply chain](./5_Model_And_Data_Supply_Chain.md)

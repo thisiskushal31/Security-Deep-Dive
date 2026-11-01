@@ -2,13 +2,13 @@
 
 [← README](../README.md)
 
-General security concepts before AppSec, cloud, SOC, CTI practice, threat-modeling workshops, or lab offense.
+General security concepts before AppSec (application security), cloud, SOC (Security Operations Center), CTI (Cyber Threat Intelligence) practice, threat-modeling workshops, or lab offense.
 
 **How this path is ordered:** each note and the sequence itself move **concept → advanced → apply**. *Apply* at Foundations means literacy and builder habits — not specialty implementation (that lives in AppSec, Offensive, Defensive-Ops, Networks, Tooling, and the practice folders below).
 
 Practice deep dives beyond literacy: [Vulnerability-Management](../Vulnerability-Management/README.md) · [Threat-Modeling](../Threat-Modeling/README.md) · [Threat-Intelligence](../Threat-Intelligence/README.md).
 
-Threat actors and vectors continue in [Threats](../Threats/README.md). Framework nesting: [GRC](../GRC/README.md). Authorized offense: [Offensive](../Offensive/README.md). Detection/IR: [Defensive-Ops](../Defensive-Ops/README.md).
+Threat actors and vectors continue in [Threats](../Threats/README.md). Framework nesting: [GRC](../GRC/README.md). Authorized offense: [Offensive](../Offensive/README.md). Detection/IR (incident response): [Defensive-Ops](../Defensive-Ops/README.md).
 
 ## Learning path (basic → advanced → apply)
 
@@ -25,7 +25,7 @@ Part F  Adversary & ops  18 → 21  → Threats
 
 | # | Topic |
 |---|--------|
-| 1 | [CIA and risk](./1_CIA_And_Risk.md) |
+| 1 | [CIA (Confidentiality, Integrity, Availability) and risk](./1_CIA_And_Risk.md) |
 | 2 | [Controls, physical, deception](./2_Controls_And_Physical.md) |
 | 3 | [Ethics, authorization, and lab rules](./3_Ethics_Authorization_And_Lab_Rules.md) |
 
@@ -34,7 +34,7 @@ Part F  Adversary & ops  18 → 21  → Threats
 | # | Topic |
 |---|--------|
 | 4 | [Security policy, governance, and roles](./4_Security_Policy_Governance_And_Roles.md) |
-| 5 | [Risk management process and RMF](./5_Risk_Management_Process_And_RMF.md) |
+| 5 | [Risk management process and RMF (Risk Management Framework)](./5_Risk_Management_Process_And_RMF.md) |
 | 6 | [Assets, data states, and assurance](./6_Assets_Data_States_And_Assurance.md) |
 
 ### Part C — Core technical literacy
@@ -67,7 +67,7 @@ Part F  Adversary & ops  18 → 21  → Threats
 
 | # | Topic |
 |---|--------|
-| 18 | [Adversary models, Kill Chain, and ATT&CK](./18_Adversary_Models_Kill_Chain_And_ATTCK.md) |
+| 18 | [Adversary models, Kill Chain, and ATT&CK (Adversarial Tactics, Techniques, and Common Knowledge)](./18_Adversary_Models_Kill_Chain_And_ATTCK.md) |
 | 19 | [Threat intelligence literacy](./19_Threat_Intelligence_Literacy.md) |
 | 20 | [Vulnerability management literacy](./20_Vulnerability_Management_Literacy.md) |
 | 21 | [Resilience, continuity, and recovery literacy](./21_Resilience_Continuity_And_Recovery_Literacy.md) |
@@ -84,19 +84,19 @@ Part F  Adversary & ops  18 → 21  → Threats
 | CTI practice | Notes 18–19 · [Threat-Intelligence](../Threat-Intelligence/README.md) · [Defensive-Ops](../Defensive-Ops/README.md) |
 | Penetration testing (lab) | Note 3 · [Offensive](../Offensive/README.md) · [Tooling Security](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security) |
 | Vuln program | Note 20 · [Vulnerability-Management](../Vulnerability-Management/README.md) |
-| Wire / TLS depth | Note 14 · [Networks-Deep-Dive](https://github.com/thisiskushal31/Networks-Deep-Dive) |
+| Wire / TLS (Transport Layer Security) depth | Note 14 · [Networks-Deep-Dive](https://github.com/thisiskushal31/Networks-Deep-Dive) |
 
 ## Topic map
 
 | Topic area | Home note |
 |------------|-----------|
 | CIA, McCumber, gap analysis, adversarial thinking | 1 |
-| Control categories/types + NIST CSF functions | 2 |
-| Authorization, RoE, lab ethics, PTES shape | 3 |
+| Control categories/types + NIST CSF (Cybersecurity Framework) functions | 2 |
+| Authorization, RoE, lab ethics, PTES (Penetration Testing Execution Standard) shape | 3 |
 | Policy, roles, law/policy literacy | 4 |
-| RMF / BIA / SCRM | 5 |
+| RMF / BIA (Business Impact Analysis) / SCRM (Supply Chain Risk Management) | 5 |
 | Assets, data states, PII handling | 6 |
-| AAA, SSO, credential hygiene, access matrix | 7 |
+| AAA, SSO (single sign-on), credential hygiene, access matrix | 7 |
 | Cryptographic solutions literacy | 8 |
 | Change management | 9 |
 | Secure design principles | 10 |
@@ -108,7 +108,7 @@ Part F  Adversary & ops  18 → 21  → Threats
 | Human security / social engineering literacy | 16 |
 | Privacy literacy | 17 |
 | Kill Chain, Diamond, ATT&CK, Pyramid of Pain | 18 |
-| CTI lifecycle, levels, STIX/TAXII, TLP | 19 |
+| CTI lifecycle, levels, STIX (Structured Threat Information Expression)/TAXII (Trusted Automated Exchange of Intelligence Information), TLP (Traffic Light Protocol) | 19 |
 | Vulnerability management literacy | 20 |
 | Resilience / BC / DR / RTO-RPO | 21 |
 

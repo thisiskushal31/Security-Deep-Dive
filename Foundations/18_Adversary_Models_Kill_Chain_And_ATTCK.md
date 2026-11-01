@@ -1,10 +1,10 @@
-# Adversary models: Kill Chain, Diamond, ATT&CK, Pyramid of Pain
+# Adversary models: Kill Chain, Diamond, ATT&CK (Adversarial Tactics, Techniques, and Common Knowledge), Pyramid of Pain
 
 [← Foundations](./README.md)
 
 > **Progression:** concept → advanced → apply. *Apply* here means foundation literacy and builder habits — not a specialty lab.
 
-Offense, defense, and intelligence courses all assume you can talk about **how intrusions unfold** and **how to describe adversary behavior**. This note is that shared literacy. Actor catalogs and vectors: [Threats](../Threats/README.md). Framework nesting: [GRC](../GRC/README.md). Pentest phases: [Offensive](../Offensive/README.md). SOC use: [Defensive-Ops](../Defensive-Ops/README.md).
+Offense, defense, and intelligence courses all assume you can talk about **how intrusions unfold** and **how to describe adversary behavior**. This note is that shared literacy. Actor catalogs and vectors: [Threats](../Threats/README.md). Framework nesting: [GRC](../GRC/README.md). Pentest phases: [Offensive](../Offensive/README.md). SOC (Security Operations Center) use: [Defensive-Ops](../Defensive-Ops/README.md).
 
 ## Concept
 
@@ -49,9 +49,9 @@ Linear models help teaching and reporting. Real campaigns can skip, repeat, or p
 |-------|-------------------------------|
 | Delivery | Block known-bad attachments; user reporting |
 | Exploitation | Patch; exploit mitigation |
-| Installation | Application allow lists; EDR on persistence |
+| Installation | Application allow lists; EDR (endpoint detection and response) on persistence |
 | C2 | Egress control; DNS / proxy monitoring |
-| Actions on objectives | Least privilege; DLP; immutable backups |
+| Actions on objectives | Least privilege; DLP (data loss prevention); immutable backups |
 
 ## Advanced
 
@@ -76,7 +76,7 @@ Capability ---- Infrastructure
 
 Edges support **pivoting**: from a domain (infrastructure) you may find more victims or related capabilities. Events link into activity threads over time.
 
-## MITRE ATT&CK (behavior literacy)
+## MITRE ATT&CK
 
 ATT&CK is a knowledge base of adversary **tactics** (goals) and **techniques** (how). Use it to:
 

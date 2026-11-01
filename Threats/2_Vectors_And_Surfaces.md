@@ -30,14 +30,14 @@ Actors get in by **vulnerability exploitation**, **social engineering**, and/or 
 
 | Vector | Definition | First controls |
 |--------|------------|----------------|
-| **Email** | Messages used to deliver lures, malware, or credential theft | Gateway filters; external-mail flags; attachment type controls; DMARC/SPF/DKIM; disable internet macros; report button; phishing-resistant MFA |
+| **Email** | Messages used to deliver lures, malware, or credential theft | Gateway filters; external-mail flags; attachment type controls; DMARC/SPF/DKIM; disable internet macros; report button; phishing-resistant MFA (multi-factor authentication) |
 | **SMS (smishing)** | Social engineering or malware links over text | Out-of-band verify; phishing-resistant MFA; user training |
 | **Instant messaging** | Chat/apps used like email for lures and credential theft | App allow lists; verify high-risk requests |
 | **Image-based** | Malicious or lure content via images (including stego-class hiding) | Patch viewers; treat untrusted media carefully |
-| **File-based** | Hostile payloads in documents, archives, installers | Attachment filters; sandbox; EDR; block risky macros |
+| **File-based** | Hostile payloads in documents, archives, installers | Attachment filters; sandbox; EDR (endpoint detection and response); block risky macros |
 | **Voice call (vishing)** | Social engineering by phone — including **AI voice cloning** of trusted people | Identity-proofing; callback to known numbers; never trust voice alone for money/access ([8](./8_AI_Era_Threats.md)) |
 | **Synthetic media / deepfake** | AI-generated audio, image, or video used as a lure or influence vector | Out-of-band verify; dual control; treat unexpected media as untrusted ([8](./8_AI_Era_Threats.md)) |
-| **Model / agent / RAG APIs** | Attack surface when you *deploy* AI (prompts, tools, retrieval stores, fine-tune pipelines, MCP) | Least privilege; output validation; inventory models/data ([8](./8_AI_Era_Threats.md)) |
+| **Model / agent / RAG (retrieval-augmented generation) APIs** | Attack surface when you *deploy* AI (prompts, tools, retrieval stores, fine-tune pipelines, MCP (Model Context Protocol)) | Least privilege; output validation; inventory models/data ([8](./8_AI_Era_Threats.md)) |
 | **Fake AI product / installer** | Malware delivered via sites or packages impersonating popular GenAI tools (AI-as-lure) | Download only from verified vendors; allow lists ([8](./8_AI_Era_Threats.md) · [4](./4_Malware.md)) |
 | **Coding-assistant configs / “rules”** | Hostile instructions planted where IDE/AI assistants will load them | Review assistant config; pin/sign tooling; treat assistant context as untrusted ([8](./8_AI_Era_Threats.md)) |
 
@@ -49,12 +49,12 @@ Password-protected archives and novel attachment formats are used to evade naive
 |--------|------------|----------------|
 | **Vulnerable software** | Weaknesses in apps/clients/agents/appliances | Patch SLA; remove unused software |
 | **Client-based vs agentless** | Local installed software vs browser/remote sessions without a persistent agent | Patch and configure both sides of the session |
-| **Unsupported / EOL systems** | Products that no longer receive security fixes | Isolate, compensate, or replace |
+| **Unsupported / EOL (end-of-life) systems** | Products that no longer receive security fixes | Isolate, compensate, or replace |
 | **Open service ports** | Network listeners reachable by attackers | Inventory; close; authenticate remaining |
 | **Default credentials** | Factory or “welcome” passwords left unchanged | Change on deploy; scan for defaults; force change on first login |
 | **Valid / stolen accounts** | Abuse of real credentials (local, domain, cloud, default) | MFA; detect anomalies; rapid revoke |
 | **External remote services** | VPN, VDI, RDP, and similar remote entry | MFA; least exposure; logging; lockouts |
-| **Misconfiguration** | Unsafe settings (open storage, debug, overly broad rules) | Baselines; CSPM/IaC policy |
+| **Misconfiguration** | Unsafe settings (open storage, debug, overly broad rules) | Baselines; CSPM (Cloud Security Posture Management)/IaC (Infrastructure as Code) policy |
 
 ### Network and physical vectors
 
@@ -71,8 +71,8 @@ Password-protected archives and novel attachment formats are used to evade naive
 | Vector | Definition | First controls |
 |--------|------------|----------------|
 | **MSP** | Managed service provider with elevated client access | Least privilege; monitoring; contracts |
-| **Vendors / suppliers** | Third parties in software, hardware, or services | Same as MSP; SBOM/signing for software |
-| **Software supply chain** | Tamper with dependencies, builds, or update channels | Pin; verify; SCA; signed artifacts |
+| **Vendors / suppliers** | Third parties in software, hardware, or services | Same as MSP; SBOM (Software Bill of Materials)/signing for software |
+| **Software supply chain** | Tamper with dependencies, builds, or update channels | Pin; verify; SCA (Software Composition Analysis); signed artifacts |
 | **Hardware supply chain** | Tamper with devices/firmware before delivery | Trusted purchasing; firmware discipline |
 | **Trusted relationship** | Abuse a partner connection that gets less scrutiny than a direct attack | Treat partner access as high risk |
 
@@ -141,7 +141,7 @@ AI-amplified social engineering and AI-system entry points: [8](./8_AI_Era_Threa
 ## Further reading
 
 - [NIST CSRC glossary — attack surface](https://csrc.nist.gov/glossary/term/attack_surface)
-- [MITRE ATT&CK — Initial Access (TA0001)](https://attack.mitre.org/tactics/TA0001/)
+- [MITRE ATT&CK (Adversarial Tactics, Techniques, and Common Knowledge) — Initial Access (TA0001)](https://attack.mitre.org/tactics/TA0001/)
 - [Canadian Centre for Cyber Security — Introduction to the cyber threat environment](https://www.cyber.gc.ca/en/guidance/introduction-cyber-threat-environment)
 - [CISA — #StopRansomware Guide](https://www.cisa.gov/stopransomware/ransomware-guide)
 - [CISA — Phishing Guidance](https://www.cisa.gov/sites/default/files/2023-10/Phishing%20Guidance%20-%20Stopping%20the%20Attack%20Cycle%20at%20Phase%20One_508c.pdf)

@@ -1,12 +1,12 @@
-# NIST RMF lifecycle
+# NIST RMF (Risk Management Framework) lifecycle
 
-[← GRC](./README.md)
+[← GRC (Governance, Risk, and Compliance)](./README.md)
 
 > **Progression:** concept → advanced → apply.
 
-How a **system** (or common-control set) is prepared, categorized, controlled, assessed, authorized, and monitored. This note is **program depth** on the Risk Management Framework (RMF). The Foundations intro stays in [Foundations/5](../Foundations/5_Risk_Management_Process_And_RMF.md) — do not treat this as a second CIA/risk course.
+How a **system** (or common-control set) is prepared, categorized, controlled, assessed, authorized, and monitored. This note is **program depth** on the Risk Management Framework (RMF). The Foundations intro stays in [Foundations/5](../Foundations/5_Risk_Management_Process_And_RMF.md) — do not treat this as a second CIA (Confidentiality, Integrity, Availability)/risk course.
 
-Outcomes language (CSF): [2](./2_NIST_CSF_2_Outcomes.md). Control catalogs: [4](./4_Control_Catalogs_800-53_And_CIS.md). Assurance evidence: [6](./6_SOC2_And_Evidence.md).
+Outcomes language (CSF (Cybersecurity Framework)): [2](./2_NIST_CSF_2_Outcomes.md). Control catalogs: [4](./4_Control_Catalogs_800-53_And_CIS.md). Assurance evidence: [6](./6_SOC2_And_Evidence.md).
 
 ## Concept
 
@@ -36,7 +36,7 @@ Prepare
                               (events may force revisiting earlier steps)
 ```
 
-**CSF vs RMF:** CSF is **outcomes language** for the enterprise cybersecurity program. RMF is the **system life-cycle path** to select/implement/assess/authorize/monitor controls. Many orgs use both: CSF for board-facing posture; RMF (or a commercial cousin) for system authorization packages.
+**CSF vs RMF:** CSF is **outcomes language** for the enterprise cybersecurity program. RMF is the **system life-cycle path** to select/implement/assess/authorize/monitor controls. Many orgs use both: CSF for board-facing posture; RMF for system authorization packages.
 
 ## Advanced
 
@@ -63,7 +63,7 @@ Impact of loss for **confidentiality, integrity, and availability** of the infor
 | Moderate | At least one is moderate; none is high |
 | High | At least one is high |
 
-That impact level drives which **SP 800-53B** security baseline you start from ([4](./4_Control_Catalogs_800-53_And_CIS.md)). Higher impact → stronger baseline expectations. Privacy considerations are handled alongside security in modern RMF (including a separate privacy baseline concept in 800-53B).
+That impact level drives which **SP 800-53B** security baseline you start from ([4](./4_Control_Catalogs_800-53_And_CIS.md)). Higher impact → stronger baseline expectations. Privacy considerations are handled alongside security in modern RMF.
 
 Write a clear **system description**: boundary, data types, users, connections, environment of operation. Bad boundaries produce useless authorization packages.
 
@@ -108,7 +108,7 @@ Commercial programs that never say “RMF” still need the same loop: change �
 
 | Pattern | Meaning for builders |
 |---------|----------------------|
-| Common control | Provided once (for example org IdP, logging platform) and inherited by many systems |
+| Common control | Provided once (for example org IdP (identity provider), logging platform) and inherited by many systems |
 | System-specific | Implemented inside the system boundary |
 | Hybrid | Shared responsibility (cloud shared-responsibility is the everyday cousin) |
 

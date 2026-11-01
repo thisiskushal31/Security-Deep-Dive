@@ -1,10 +1,10 @@
 # Access control and authentication
 
-[← AppSec](./README.md)
+[← AppSec (application security)](./README.md)
 
 > **Progression:** concept → advanced → apply.
 
-How **authorization** and **authentication** fail in web apps and APIs — and how to build them so Top 10 **A01** / **A07** (and SSRF under A01) do not become incidents. Catalog context: [2](./2_OWASP_Top_10_2025_In_Practice.md). Federation depth: [Identity](../Identity/README.md). API object-/function-/property-level patterns continue in [5](./5_API_Security_Top_10_2023.md).
+How **authorization** and **authentication** fail in web apps and APIs — and how to build them so Top 10 **A01** / **A07** (and SSRF (Server-Side Request Forgery) under A01) do not become incidents. Catalog context: [2](./2_OWASP_Top_10_2025_In_Practice.md). Federation depth: [Identity](../Identity/README.md). API object-/function-/property-level patterns continue in [5](./5_API_Security_Top_10_2023.md).
 
 Authentication answers *who is this?* Authorization answers *may they do this to that resource?* Conflating the two is how “logged in” becomes “allowed everything.”
 
@@ -19,9 +19,9 @@ Request
 
 ### Why A01 stays #1
 
-In Top 10:2025, **broken access control** keeps #1: roughly **100%** of applications tested showed some form of it. The category maps **~40 CWEs** (including exposure of sensitive data, **CSRF**, **SSRF**, path traversal, missing/incorrect authorization). Highest occurrence count in the contributed data; second-highest related CVE pile. Treat authZ tests as mandatory, not polish.
+In Top 10:2025, **broken access control** keeps #1: roughly **100%** of applications tested showed some form of it. The category maps **~40 CWEs** (including exposure of sensitive data, **CSRF (Cross-Site Request Forgery)**, **SSRF**, path traversal, missing/incorrect authorization). Highest occurrence count in the contributed data; second-highest related CVE (Common Vulnerabilities and Exposures) pile. Treat authZ tests as mandatory, not polish.
 
-**A07 Authentication Failures** stays #7 (~36 CWEs): stuffing, hard-coded credentials, session fixation, weak recovery, missing MFA, broken audience/scope checks — despite better frameworks.
+**A07 Authentication Failures** stays #7 (~36 CWEs): stuffing, hard-coded credentials, session fixation, weak recovery, missing MFA (multi-factor authentication), broken audience/scope checks — despite better frameworks.
 
 ### Least privilege and deny by default
 
@@ -30,7 +30,7 @@ Grant only the minimum privileges needed — **horizontally** (accountant ≠ sa
 | Design step | Outcome |
 |-------------|---------|
 | Enumerate user types, resources, operations | Explicit permission matrix |
-| For ABAC, include environment attributes | Time, network, device, training status |
+| For ABAC (Attribute-Based Access Control), include environment attributes | Time, network, device, training status |
 | Justify every grant | Assume deny; prove allow |
 | Tests for the matrix | CI catches missing checks |
 | Periodic privilege review | Detect privilege creep after deploy |
@@ -54,7 +54,7 @@ One missed check is enough. AJAX, mobile clients, and `curl` bypass the UI. Enfo
 |---------|------|
 | Passwords, MFA, sessions, token issuance | Authentication (A07) |
 | Object ownership, roles/attributes, admin functions | Authorization (A01) |
-| Who the IdP is, OIDC/SAML wiring | [Identity](../Identity/README.md) |
+| Who the IdP (identity provider) is, OIDC (OpenID Connect)/SAML (Security Assertion Markup Language) wiring | [Identity](../Identity/README.md) |
 
 A valid session is necessary but not sufficient for privileged actions. Prefer not logging frontend users into the same IdP/AD used for internal backend/admin planes.
 
@@ -62,7 +62,7 @@ A valid session is necessary but not sufficient for privileged actions. Prefer n
 
 | Class | Meaning | Typical bug |
 |-------|---------|-------------|
-| **Horizontal** | Same privilege tier; another user’s object | IDOR / BOLA — swap `orderId` |
+| **Horizontal** | Same privilege tier; another user’s object | IDOR (Insecure Direct Object Reference) / BOLA (Broken Object Level Authorization) — swap `orderId` |
 | **Vertical** | Gain higher privilege (user → admin) | Force-browse admin API; tamper role claim |
 
 Both are access-control failures. Logging without attribution makes both harder to detect after the fact.
@@ -93,7 +93,7 @@ Official Top 10 scenario shape: even a *parameterized* SQL call is unsafe if the
 | Function-level checks | Admin APIs require admin capability, not just “any logged-in user” |
 | Never “session userId == path userId” only | Sufficient only for a tiny subset of object graphs |
 
-BOLA (API1) is the same class when the client is an API — deepen in note 5. Comparing JWT `sub` to a path user id does **not** fix every BOLA case.
+BOLA is the same class when the client is an API — deepen in note 5. Comparing JWT (JSON Web Token) `sub` to a path user id does **not** fix every BOLA case.
 
 ### Force browsing, verb gaps, path traversal
 
@@ -106,7 +106,7 @@ BOLA (API1) is the same class when the client is an API — deepen in note 5. Co
 
 Treat every route and method as public until authZ proves otherwise. Disable directory listing; keep metadata and backups out of web roots.
 
-### RBAC vs ABAC vs ReBAC (pick early)
+### RBAC (Role-Based Access Control) vs ABAC vs ReBAC (pick early)
 
 | Model | Decision basis | Fit |
 |-------|----------------|-----|
@@ -140,7 +140,7 @@ Clock-sync and parseable log formats matter when you later join authZ denials in
 
 ### SSRF (under A01) — how it happens
 
-The app fetches a URL the attacker influences. The **server** becomes a proxy into metadata services, internal HTTP APIs, or non-HTTP schemes (`file://`, `gopher://`, …) — resources never meant for the internet. First hop is often HTTP; the second request may use another protocol. XXE can also become SSRF.
+The app fetches a URL the attacker influences. The **server** becomes a proxy into metadata services, internal HTTP APIs, or non-HTTP schemes (`file://`, `gopher://`, …) — resources never meant for the internet. First hop is often HTTP; the second request may use another protocol. XXE (XML External Entity) can also become SSRF.
 
 ```text
 Attacker-controlled URL field / webhook / import / avatar fetch
@@ -155,9 +155,9 @@ Attacker-controlled URL field / webhook / import / avatar fetch
 | Prefer host/IP input, not full attacker URL | App builds scheme/port/path itself |
 | Validate format with battle-tested libraries | Then **strict allowlist** compare (case-sensitive) |
 | Resolve DNS → check IP | Against permitted networks; **connect only to validated address** |
-| Preserve Host / SNI / cert verify | Client must use validated IP without dropping TLS identity checks |
+| Preserve Host / SNI / cert verify | Client must use validated IP without dropping TLS (Transport Layer Security) identity checks |
 | Redirects | Disable, or re-validate every hop (scheme + DNS + IP) |
-| DNS rebinding | Re-check at connect time; avoid TOCTOU second lookup |
+| DNS rebinding | Re-check at connect time; avoid TOCTOU (Time-of-Check to Time-of-Use) second lookup |
 
 **Case 2 — any external URL required (webhooks):** allowlists may be impossible — then block private/link-local/metadata ranges, restrict schemes to `http`/`https`, short timeouts, no open redirect chains. Deny-lists alone are bypass-prone (encoding tricks, DNS pinning, redirects).
 
@@ -174,7 +174,7 @@ Attacker-controlled URL field / webhook / import / avatar fetch
 | Plain / weak password storage | Offline crack after DB leak ([Cryptography](../Cryptography/README.md)) |
 | Missing MFA / weak MFA fallback | Stolen password = full account |
 | Session id in URL / reused after login | Fixation, leakage via Referer |
-| Logout incomplete (esp. SSO without SLO) | Next user of shared browser inherits session |
+| Logout incomplete (esp. SSO (single sign-on) without SLO) | Next user of shared browser inherits session |
 | Wrong `aud` / `iss` / scope | Token accepted outside intended audience |
 
 **Prevention spine (builder):**

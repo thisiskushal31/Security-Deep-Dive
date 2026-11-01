@@ -4,9 +4,9 @@
 
 > **Progression:** concept → advanced → apply. *Apply* here means foundation literacy and builder habits — not a specialty lab.
 
-Availability is a CIA objective ([1](./1_CIA_And_Risk.md)). Resilience is how you keep (or restore) critical functions when something fails — attack, outage, or operator error. BIA/RTO/RPO first appeared in [5](./5_Risk_Management_Process_And_RMF.md); this note expands the foundation set Security+ architecture/operations expect.
+Availability is a CIA (Confidentiality, Integrity, Availability) objective ([1](./1_CIA_And_Risk.md)). Resilience is how you keep (or restore) critical functions when something fails — attack, outage, or operator error. BIA (Business Impact Analysis)/RTO/RPO first appeared in [5](./5_Risk_Management_Process_And_RMF.md); this note expands the foundation set Security+ architecture/operations expect.
 
-Design patterns: System-Design DR notes. IR process: [Defensive-Ops/2](../Defensive-Ops/2_Incident_Response.md).
+Design patterns: System-Design DR notes. IR (incident response) process: [Defensive-Ops/2](../Defensive-Ops/2_Incident_Response.md).
 
 ## Concept
 
@@ -49,7 +49,7 @@ BIA → set RTO/RPO → design HA/DR/backups → test → improve
 | Bad deploy | Change rollback ([9](./9_Change_Management_And_Security.md)) |
 | Facility issue | Physical + BC plans ([2](./2_Controls_And_Physical.md)) |
 
-Availability controls without tested recovery are incomplete Protect/Recover coverage ([2](./2_Controls_And_Physical.md) CSF map).
+Availability controls without tested recovery are incomplete Protect/Recover coverage ([2](./2_Controls_And_Physical.md) CSF (Cybersecurity Framework) map).
 
 ## Apply
 1. Name critical services and their RTO/RPO.  

@@ -4,7 +4,7 @@
 
 > **Progression:** concept → advanced → apply.
 
-Purpose of each enterprise mitigation technique in Security+ Domain 2.5 — what it does and when to reach for it. After you can name the threat path, this note answers **what reduces likelihood or impact**. Control types: [Foundations/2](../Foundations/2_Controls_And_Physical.md). Product depth lives in AppSec, Identity, Cloud-Security, Defensive-Ops, Networks, and Handbook gates.
+Purpose of each enterprise mitigation technique in Security+ Domain 2.5 — what it does and when to reach for it. After you can name the threat path, this note answers **what reduces likelihood or impact**. Control types: [Foundations/2](../Foundations/2_Controls_And_Physical.md). Product depth lives in AppSec (application security), Identity, Cloud-Security, Defensive-Ops, Networks, and Handbook gates.
 
 ## Concept
 
@@ -36,7 +36,7 @@ Scenario (actor + vector + vuln + asset)
 | Technique | Purpose |
 |-----------|---------|
 | **Encryption** (host/disk) | Protect data if device is lost or stolen |
-| **Endpoint protection / EDR** | Detect/contain host malice; escalate to responders |
+| **Endpoint protection / EDR (endpoint detection and response)** | Detect/contain host malice; escalate to responders |
 | **Host-based firewall** | Restrict local listeners and lateral paths |
 | **HIPS** | Host intrusion prevention — block known-bad host behaviors where deployed |
 | **Disable ports/protocols** | Remove unused network attack surface (including unused RDP/FTP/SMB exposure) |
@@ -49,19 +49,19 @@ Prefer **allowlisting** over endless blocklists when the environment supports it
 
 | Path | Mitigations that matter |
 |------|-------------------------|
-| **Phishing / email** | User reporting; external-mail flags; gateway filters; attachment controls; DMARC/SPF/DKIM; disable internet macros; phishing-resistant MFA |
+| **Phishing / email** | User reporting; external-mail flags; gateway filters; attachment controls; DMARC/SPF/DKIM; disable internet macros; phishing-resistant MFA (multi-factor authentication) |
 | **Password spray / brute force** | Lockout/CAPTCHA; MFA; ban defaults; force password change on first login; monitor failure patterns ([5](./5_Attack_Classes.md)) |
 | **Exposed remote services** | Close unused ports; MFA; account lockouts; logging; put essential remote access behind securely configured VPN/firewall |
 | **Valid account abuse** | MFA; least privilege; rapid revoke; session anomaly detection ([6](./6_Indicators_And_Analysis.md)) |
 | **Precursor → ransomware** | EDR/allow list; patch; segment; offline/segmented known-good backups; monitor unusual scripting and account changes |
-| **Supply chain / MSP** | Least privilege for vendors; monitoring; contracts; signed artifacts / SCA |
-| **Injection / XSS / traversal** | Secure coding; parameterized queries; input validation; WAF as defense-in-depth ([AppSec](../AppSec/README.md)) |
+| **Supply chain / MSP** | Least privilege for vendors; monitoring; contracts; signed artifacts / SCA (Software Composition Analysis) |
+| **Injection / XSS (Cross-Site Scripting) / traversal** | Secure coding; parameterized queries; input validation; WAF (web application firewall) as defense-in-depth ([AppSec](../AppSec/README.md)) |
 | **DDoS / availability** | Capacity, filtering, CDN/scrubbing where appropriate; rate limits ([Networks](https://github.com/thisiskushal31/Networks-Deep-Dive)) |
 | **Deepfake / voice-clone fraud** | Out-of-band callback; dual control for money/access; synthetic-media awareness ([8](./8_AI_Era_Threats.md)) |
-| **LLM app / agent** | Least-privilege tools; human approval + kill switch; treat retrieved/tool content as untrusted; validate model output; rate/cost limits; AIBOM ([8](./8_AI_Era_Threats.md) · [AI-Security](../AI-Security/README.md)) |
+| **LLM (large language model) app / agent** | Least-privilege tools; human approval + kill switch; treat retrieved/tool content as untrusted; validate model output; rate/cost limits; AIBOM ([8](./8_AI_Era_Threats.md) · [AI-Security](../AI-Security/README.md)) |
 | **Shadow AI / public GenAI** | Acceptable-use policy; allow/deny lists; no secrets in prompts; private/approved instances ([8](./8_AI_Era_Threats.md)) |
 
-### Backups and IR as mitigations
+### Backups and IR (incident response) as mitigations
 
 Maintain regular **known-good** backups stored **offline** or otherwise segmented from production. Many ransomware variants try to encrypt or delete online backups. **Test restores.** Victims with intact backups often recover without paying.
 
@@ -73,7 +73,7 @@ Exercise a basic cyber incident response plan and communications plan — the ab
 |------|---------------------|
 | [1](./1_Actors_And_Motivations.md) Actors | Match controls to motivation (money vs espionage vs disruption) |
 | [2](./2_Vectors_And_Surfaces.md) Vectors | Shrink surface; harden each entry path |
-| [3](./3_Vulnerabilities.md) Vulns | Patch, config enforcement, KEV priority |
+| [3](./3_Vulnerabilities.md) Vulns | Patch, config enforcement, KEV (Known Exploited Vulnerabilities) priority |
 | [4](./4_Malware.md) Malware | EDR, allow list, backups, IR |
 | [5](./5_Attack_Classes.md) Attacks | Technique-specific controls in table above |
 | [6](./6_Indicators_And_Analysis.md) Indicators | Monitoring + correlation + response criteria |
@@ -128,7 +128,7 @@ These cases are why the same controls keep showing up in guidance:
 ## Further reading
 
 - [CISA — #StopRansomware Guide](https://www.cisa.gov/stopransomware/ransomware-guide)
-- [CISA/FBI — DarkSide CI advisory (AA21-131a)](https://www.cisa.gov/news-events/cybersecurity-advisories/aa21-131a)
+- [CISA/FBI — DarkSide CI advisory](https://www.cisa.gov/news-events/cybersecurity-advisories/aa21-131a)
 - [CISA — Cross-Sector Cybersecurity Performance Goals](https://www.cisa.gov/cross-sector-cybersecurity-performance-goals)
 - [NIST SP 800-53 Rev. 5](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)
 - [CIS Critical Security Controls](https://www.cisecurity.org/controls)

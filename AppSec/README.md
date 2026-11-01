@@ -2,7 +2,7 @@
 
 [← README](../README.md)
 
-Build and verify secure web applications and APIs: secure SDLC, OWASP Top 10:2025, access control, injection/XSS, API Top 10:2023, ASVS verification, and proactive controls. Pipeline gate *enforcement* lives in [DevOps-Handbook Security](https://github.com/thisiskushal31/DevOps-Handbook/tree/main/Security). Network/wire depth lives in [Networks-Deep-Dive](https://github.com/thisiskushal31/Networks-Deep-Dive).
+Build and verify secure web applications and APIs: secure SDLC (Software Development Life Cycle), OWASP Top 10:2025, access control, injection/XSS (Cross-Site Scripting), API Top 10:2023, ASVS (Application Security Verification Standard) verification, and proactive controls. Pipeline gate *enforcement* lives in [DevOps-Handbook Security](https://github.com/thisiskushal31/DevOps-Handbook/tree/main/Security). Network/wire depth lives in [Networks-Deep-Dive](https://github.com/thisiskushal31/Networks-Deep-Dive).
 
 Each note follows **concept → advanced → apply**. Official Further reading only. Lab/adversarial work stays **authorized and isolated** — [Foundations/3](../Foundations/3_Ethics_Authorization_And_Lab_Rules.md).
 
@@ -35,23 +35,23 @@ Learning path **1 → 7** complete for this folder.
 
 | Area | Home |
 |------|------|
-| SSDF / SAMM / Secure by Design; risk path; gates ownership | 1 |
+| SSDF (Secure Software Development Framework) / SAMM (Software Assurance Maturity Model) / Secure by Design; risk path; gates ownership | 1 |
 | Top 10:2025 catalog, 2021→2025 shifts, how failures happen, control owners | 2 |
-| Broken access control, authn, sessions, CSRF/SSRF as access-class | 3 |
-| Injection, XSS, XXE, uploads, deserialize, headers/CSP, open redirects | 4 |
-| BOLA / BFLA / BOPLA, business-flow abuse, API inventory | 5 |
+| Broken access control, authn, sessions, CSRF (Cross-Site Request Forgery)/SSRF (Server-Side Request Forgery) as access-class | 3 |
+| Injection, XSS, XXE (XML External Entity), uploads, deserialize, headers/CSP, open redirects | 4 |
+| BOLA (Broken Object Level Authorization) / BFLA (Broken Function Level Authorization) / BOPLA (Broken Object Property Level Authorization), business-flow abuse, API inventory | 5 |
 | ASVS 5.0 levels and chapter map; cite `v5.0.0-x.y.z` | 6 |
-| Proactive Controls C1–C10; headers/paved roads; WSTG literacy; CI handoff | 7 |
+| Proactive Controls C1–C10; headers/paved roads; WSTG (Web Security Testing Guide) literacy; CI handoff | 7 |
 
 ## Related homes (do not duplicate)
 
 | Topic | Home |
 |-------|------|
 | Threat modeling workshops | [Threat-Modeling](../Threat-Modeling/README.md) |
-| Identity / OAuth / ZT | [Identity](../Identity/README.md) |
+| Identity / OAuth / ZT (zero trust) | [Identity](../Identity/README.md) |
 | Crypto pitfalls | [Cryptography](../Cryptography/README.md) |
-| Cloud resources, posture, runtimes, supply chain, cloud IR | [Cloud-Security](../Cloud-Security/README.md) |
+| Cloud resources, posture, runtimes, supply chain, cloud IR (incident response), AI-in-cloud | [Cloud-Security](../Cloud-Security/README.md) |
 | Vuln prioritization | [Vulnerability-Management](../Vulnerability-Management/README.md) |
 | AI output → classic sinks | [AI-Security](../AI-Security/README.md) (LLM10) |
-| CI gate chain / AST tools | [DevOps-Handbook Security](https://github.com/thisiskushal31/DevOps-Handbook/tree/main/Security) |
-| PTES / lab exploitation | [Offensive](../Offensive/README.md) |
+| CI gate chain / AST (Application Security Testing) tools | [DevOps-Handbook Security](https://github.com/thisiskushal31/DevOps-Handbook/tree/main/Security) |
+| PTES (Penetration Testing Execution Standard) / lab exploitation | [Offensive](../Offensive/README.md) |

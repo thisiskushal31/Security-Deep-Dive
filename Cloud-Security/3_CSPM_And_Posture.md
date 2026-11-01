@@ -1,10 +1,10 @@
-# CSPM and continuous posture
+# CSPM (Cloud Security Posture Management) and continuous posture
 
 [← Cloud-Security](./README.md)
 
 > **Progression:** concept → advanced → apply.
 
-Models and shared responsibility: [1](./1_Cloud_Models_And_Shared_Responsibility.md). Identity/network/data controls: [2](./2_Identity_Network_And_Data_Controls.md). This note is how you **continuously prove** the live estate matches policy — in public clouds, private clouds, hybrid, and multi-cloud — after humans, pipelines, and break-glass changes move things.
+Models and shared responsibility: [1](./1_Cloud_Models_And_Shared_Responsibility.md). Identity/network/data controls: [2](./2_Identity_Network_And_Data_Controls.md). This note is how you **continuously prove** the live estate matches policy — **CSPM (Cloud Security Posture Management)** and related posture disciplines — in public clouds, private clouds, hybrid, and multi-cloud — after humans, pipelines, and break-glass changes move things.
 
 App-layer misconfiguration: [AppSec A02](../AppSec/2_OWASP_Top_10_2025_In_Practice.md). Vuln prioritization of findings: [Vulnerability-Management](../Vulnerability-Management/README.md).
 
@@ -23,7 +23,7 @@ Highly configurable platforms fail open when defaults and reviews are weak. That
 | Public object storage / world-open shares | Data disclosure without an exploit |
 | `0.0.0.0/0` on admin ports (SSH/RDP/DB/API) | Opportunistic takeover |
 | Missing org-wide / platform audit logging | Blind incident response |
-| Over-broad IAM (`*:*`, unused wildcards, forever keys) | Blast radius after any foothold |
+| Over-broad IAM — Identity and Access Management (`*:*`, unused wildcards, forever keys) | Blast radius after any foothold |
 | Root / owner credentials in daily use | No accountability |
 | Debug endpoints, sample apps, default passwords | Trivial initial access |
 | Security rules grown by exception only | Shadow exposure |
@@ -33,11 +33,11 @@ Highly configurable platforms fail open when defaults and reviews are weak. That
 
 | Check | Sees | When | Catches |
 |-------|------|------|---------|
-| **IaC policy** | Planned change in Git | PR | Bad *intent* before merge |
+| **IaC (Infrastructure as Code) policy** | Planned change in Git | PR | Bad *intent* before merge |
 | **Admission** | Object at apply | Deploy | Manifests that bypassed Git |
-| **CSPM** | Account / org / cloud *as-is* | Continuous | Drift, console clicks, forgotten resources |
-| **KSPM** | Cluster API state | Continuous | Privileged pods, weak RBAC, open API *live* |
-| **DSPM** (data posture) | Where sensitive data lives and who can reach it | Continuous | Over-shared datasets, cleartext stores |
+| **CSPM (Cloud Security Posture Management)** | Account / org / cloud *as-is* | Continuous | Drift, console clicks, forgotten resources |
+| **KSPM (Kubernetes Security Posture Management)** | Cluster API state | Continuous | Privileged pods, weak RBAC (Role-Based Access Control), open API *live* |
+| **DSPM (Data Security Posture Management)** | Where sensitive data lives and who can reach it | Continuous | Over-shared datasets, cleartext stores |
 
 ```text
   Git PR ──▶ IaC policy ──▶ merge
@@ -64,13 +64,13 @@ CSPM is not “the AWS product.” It is the **discipline** of comparing live co
 | **Compute** | Public SSH/RDP, unencrypted disks, fat instance roles, sprawl |
 | **Storage** | Public buckets/blobs, open snapshots, missing versioning |
 | **Data services** | Public DB endpoints, weak auth, backup exposure |
-| **Platform** | Open LBs, world-writable queues, takeover-prone DNS IAM |
+| **Platform** | Open load balancers, world-writable queues, takeover-prone DNS IAM (Identity and Access Management) |
 | **Exposure** | Anything internet-reachable that should not be |
 | **Logging** | Trails on, immutable retention, who can disable logging |
 | **Network** | Peering, VPN, egress, flat trusts |
-| **Drift** | Outside-IaC resources; tag / ownership gaps |
+| **Drift** | Outside-IaC (Infrastructure as Code) resources; tag / ownership gaps |
 | **Tenancy** | Org hierarchy, guardrails, orphaned accounts/projects |
-| **Orchestrators** | KSPM when you run clusters — a *slice*, not the whole program ([5](./5_Containers_Serverless_And_Managed_Runtimes.md)) |
+| **Orchestrators** | KSPM (Kubernetes Security Posture Management) when you run clusters — a *slice*, not the whole program ([5](./5_Containers_Serverless_And_Managed_Runtimes.md)) |
 
 ## Advanced
 
@@ -78,17 +78,42 @@ CSPM is not “the AWS product.” It is the **discipline** of comparing live co
 
 | Source | Use |
 |--------|-----|
-| **CIS Benchmarks** | Concrete secure configuration checks (AWS/Azure/GCP foundations, Kubernetes, and many private-stack products) |
-| **CSA Cloud Controls Matrix (CCM)** | Cross-provider control catalog for mapping assurance and contracts |
+| **CIS (Center for Internet Security) Benchmarks** | Concrete secure configuration checks (AWS/Azure/GCP foundations, Kubernetes, and many private-stack products) |
+| **CSA (Cloud Security Alliance) Cloud Controls Matrix (CCM)** | Cross-provider control catalog for mapping assurance and contracts |
 | **Provider Well-Architected / security baselines** | Cloud-native phrasing of the same themes |
 
 Map themes to **owners** (identity, network, logging, data). Do not paste hundreds of control IDs into a wiki and call it done. Prioritize internet-facing exposure, identity, and logging before niche CIS noise.
+
+### CNAPP (Cloud-Native Application Protection Platform) and related capabilities
+
+Vendors package overlapping capabilities. Learn the **jobs**, not the logo:
+
+| Capability | Full form | Job |
+|------------|-----------|-----|
+| **CSPM** | Cloud Security Posture Management | Configuration and exposure of cloud services / accounts |
+| **CWPP** | Cloud Workload Protection Platform | Workload runtime protection (VM, container, function) |
+| **CIEM** | Cloud Infrastructure Entitlement Management | Entitlement and identity risk (human and machine) |
+| **KSPM** | Kubernetes Security Posture Management | Cluster configuration and permission posture |
+| **DSPM** | Data Security Posture Management | Where sensitive data lives and who can reach it |
+| **CDR** | Cloud Detection and Response | Detection and response on control- and data-plane signals |
+| **CNAPP** | Cloud-Native Application Protection Platform | Correlated view across several of the above (code → cloud → runtime) |
+| **AI-SPM** | AI Security Posture Management | Posture around AI services, model endpoints, and AI-adjacent data paths ([8](./8_AI_Workloads_And_Cloud_AI_Security.md)) |
+
+```text
+Exposure + misconfig (CSPM)
+        ×  identity reach (CIEM)
+        ×  vuln / runtime (CWPP)
+        ─────────────────────────
+     attack-path / "toxic combination" priority
+```
+
+Prioritize **toxic combinations** (for example: public exposure + critical vulnerability + over-broad role) over raw finding counts. Agentless API inventory scales visibility; agents still matter where you need deep runtime telemetry. Ownership and change history decide whether remediation actually happens.
 
 ### Public vs private vs hybrid posture
 
 | Estate | Typical blind spot |
 |--------|--------------------|
-| **Public** | Console drift; marketplace images; overly trusted SaaS connectors |
+| **Public** | Console drift; marketplace images; overly trusted SaaS (Software as a Service) connectors |
 | **Private on-site** | Assumed “inside = safe”; weak API auth on management planes; sparse logging |
 | **Outsourced private** | Provider admin access paths; unclear shared responsibility in the contract |
 | **Hybrid** | Inconsistent policy across interconnect; dual break-glass; split logging |
@@ -127,7 +152,7 @@ Separate **foundations** (org structure, baseline logging, network hubs, identit
 
 1. **Public bucket by ACL drift** — IaC said private; console share made it public; CSPM sees what PR gates missed.  
 2. **Private-cloud flat management VLAN** — “internal only” API without authZ → ransomware pivots.  
-3. **Child account logging off** — IR cannot reconstruct who deleted a database.  
+3. **Child account logging off** — incident response (IR) cannot reconstruct who deleted a database.  
 4. **Multi-cloud gap** — AWS CSPM clean while Azure subscription left public storage unscanned.
 
 ```text
@@ -140,12 +165,14 @@ API/console change ──▶ live state
 
 ### Self-check
 
-- [ ] Separate IaC, admission, CSPM, KSPM, DSPM by what each sees  
+- [ ] Separate IaC (Infrastructure as Code), admission, CSPM, KSPM, and DSPM by what each sees  
 - [ ] List P0 posture finding classes  
 - [ ] Explain why private cloud still needs continuous posture  
-- [ ] Name CIS vs CCM roles in a program  
+- [ ] Name CIS vs CCM (Cloud Controls Matrix) roles in a program  
 - [ ] Describe landing-zone vs workload split  
 - [ ] State why multi-cloud needs one triage model  
+- [ ] Expand CSPM, CIEM, CWPP, and CNAPP and say what CNAPP correlates  
+- [ ] Explain toxic-combination prioritization with one example  
 
 ## Next
 

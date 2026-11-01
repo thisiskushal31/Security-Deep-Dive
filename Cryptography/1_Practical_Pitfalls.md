@@ -8,10 +8,10 @@ Engineers break crypto more often by **misuse** than by breaking AES. Use platfo
 
 | Do | Don't |
 |----|-------|
-| Use TLS 1.2+ with modern ciphers (platform defaults) | Roll your own TLS or disable verification “temporarily” |
+| Use TLS (Transport Layer Security) 1.2+ with modern ciphers (platform defaults) | Roll your own TLS or disable verification “temporarily” |
 | Use vetted libs (libsodium, language crypto APIs) | Copy Stack Overflow cipher modes without AEAD |
 | Prefer AEAD (AES-GCM, ChaCha20-Poly1305) | ECB; raw CBC without HMAC design |
-| Managed KMS / HSM for keys | Hard-code keys; commit PEM private keys |
+| Managed KMS (Key Management Service) / HSM (Hardware Security Module) for keys | Hard-code keys; commit PEM private keys |
 | Random from CSPRNG | `Math.random` / time-based seeds for secrets |
 | Password hashing: Argon2id / bcrypt / scrypt | Fast hashes (SHA-256 alone) for passwords |
 

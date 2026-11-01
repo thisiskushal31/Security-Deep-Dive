@@ -4,7 +4,7 @@
 
 > **Progression:** concept → advanced → apply. *Apply* here means foundation literacy and builder habits — not a specialty lab.
 
-Cryptography supports confidentiality, integrity, authenticity, and non-repudiation when used correctly. This note names the building blocks. Misuse patterns: [Cryptography/1](../Cryptography/1_Practical_Pitfalls.md). TLS on the wire: [Networks Security](https://github.com/thisiskushal31/Networks-Deep-Dive). Design trade-offs: [System-Design Security-Tradeoffs/3](https://github.com/thisiskushal31/System-Design-Concepts/blob/main/Security-Tradeoffs/3_Encryption_Performance_and_Key_Rotation.md).
+Cryptography supports confidentiality, integrity, authenticity, and non-repudiation when used correctly. This note names the building blocks. Misuse patterns: [Cryptography/1](../Cryptography/1_Practical_Pitfalls.md). TLS (Transport Layer Security) on the wire: [Networks Security](https://github.com/thisiskushal31/Networks-Deep-Dive). Design trade-offs: [System-Design Security-Tradeoffs/3](https://github.com/thisiskushal31/System-Design-Concepts/blob/main/Security-Tradeoffs/3_Encryption_Performance_and_Key_Rotation.md).
 
 ## Concept
 
@@ -99,7 +99,7 @@ change one bit of data  →  different digest
 | Tool | Role |
 |------|------|
 | TPM | Platform-bound keys and related measurements |
-| HSM | Hardened cryptographic module for high-assurance key use |
+| HSM (Hardware Security Module) | Hardened cryptographic module for high-assurance key use |
 | Key management system / service | Organizational key lifecycle (create, rotate, retire) |
 | Secure enclave | Isolated environment for sensitive operations |
 
@@ -115,7 +115,7 @@ Encoding (for example Base64) is not confidentiality.
 
 ## Ledgers and blockchain (awareness)
 
-Append-oriented public or consortium ledgers can support integrity and transparency use cases for specific records. They do not automatically provide confidentiality, replace key management, or fix application authorization. Treat them as specialized tools, not a default AppSec control.
+Append-oriented public or consortium ledgers can support integrity and transparency use cases for specific records. They do not automatically provide confidentiality, replace key management, or fix application authorization. Treat them as specialized tools, not a default AppSec (application security) control.
 
 ## Apply
 1. Prefer platform TLS and maintained libraries; do not invent protocols.  

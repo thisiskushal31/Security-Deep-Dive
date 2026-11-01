@@ -1,10 +1,10 @@
-# SOC 2 and evidence
+# SOC 2 (System and Organization Controls 2) and evidence
 
-[← GRC](./README.md)
+[← GRC (Governance, Risk, and Compliance)](./README.md)
 
 > **Progression:** concept → advanced → apply.
 
-How **SOC 2** assurance works at literacy level, and what engineers must produce as **evidence**. Nesting: [1](./1_NIST_ISO_And_ATTCK.md). ISMS cousin: [5](./5_ISO_27001_ISMS_Literacy.md). Not legal advice and not CPA firm training.
+How **SOC 2** assurance works at literacy level, and what engineers must produce as **evidence**. Nesting: [1](./1_NIST_ISO_And_ATTCK.md). ISMS (Information Security Management System) cousin: [5](./5_ISO_27001_ISMS_Literacy.md). Not legal advice and not CPA firm training.
 
 ## Concept
 
@@ -29,7 +29,7 @@ Authoritative criteria name in current AICPA materials: **2017 Trust Services Cr
 | **Type I** | Fairness of management’s system description and **suitability of design** of controls as of a **point in time** |
 | **Type II** | Type I topics **plus operating effectiveness** of controls over a **period of time** (often ~6–12 months) |
 
-Customers buying SaaS usually want **Type II**. Type I can be a milestone; it is not a substitute for sustained operation.
+Customers buying SaaS (Software as a Service) usually want **Type II**. Type I can be a milestone; it is not a substitute for sustained operation.
 
 ### SOC 1 vs SOC 2 vs SOC 3 (do not mix them)
 
@@ -59,7 +59,7 @@ Auditors sample whether controls **operated**. Slides do not operate. Useful evi
 
 | Control theme | Evidence examples |
 |---------------|-------------------|
-| Access | Joiner/mover/leaver tickets; access reviews; IdP logs; MFA enforcement configs |
+| Access | Joiner/mover/leaver tickets; access reviews; IdP (identity provider) logs; MFA (multi-factor authentication) enforcement configs |
 | Change | PRs, approvals, deploy records, change tickets linked to releases |
 | Vulnerability | Scan results, ticket SLAs, exception records |
 | Logging / monitoring | Retention configs, alert runbooks, on-call pages with resolution |
@@ -93,7 +93,7 @@ Many companies pursue both. Map once; generate two narratives ([1](./1_NIST_ISO_
 - Screenshot week before the auditor arrives  
 - “Security is in scope” with Availability promised in the SLA but no restore tests  
 - Policy dated last year; tickets show exceptions with no risk acceptance  
-- Treating ATT&CK coverage charts as SOC evidence ([1](./1_NIST_ISO_And_ATTCK.md))  
+- Treating ATT&CK (Adversarial Tactics, Techniques, and Common Knowledge) coverage charts as SOC evidence ([1](./1_NIST_ISO_And_ATTCK.md))  
 
 ## Apply
 
@@ -115,7 +115,7 @@ Implementation habits that make Type II evidence boring and real:
 
 ## Next
 
-- [NICE workforce literacy](./7_NICE_Workforce_Literacy.md)
+- [NICE (National Initiative for Cybersecurity Education) workforce literacy](./7_NICE_Workforce_Literacy.md)
 
 ## Further reading
 

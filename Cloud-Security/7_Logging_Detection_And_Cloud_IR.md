@@ -4,7 +4,7 @@
 
 > **Progression:** concept → advanced → apply.
 
-Cloud incidents fail when **telemetry was never on**, **logs were mutable**, or **nobody knew how to work with the provider**. This note covers monitoring and IR literacy for public, private, hybrid, and multi-cloud estates. SIEM product depth and classical IR process live in [Defensive-Ops](../Defensive-Ops/README.md); this folder owns the **cloud-shaped** differences.
+Cloud incidents fail when **telemetry was never on**, **logs were mutable**, or **nobody knew how to work with the provider**. This note covers monitoring and **IR (incident response)** literacy for public, private, hybrid, and multi-cloud estates. **SIEM (Security Information and Event Management)** product depth and classical IR process live in [Defensive-Ops](../Defensive-Ops/README.md); this folder owns the **cloud-shaped** differences.
 
 ## Concept
 
@@ -13,11 +13,11 @@ Cloud incidents fail when **telemetry was never on**, **logs were mutable**, or 
 | Telemetry | Why it matters |
 |-----------|----------------|
 | **Management / control-plane audit** | Who called which API (create user, open bucket, disable trail) |
-| **Identity events** | Login, MFA failures, federation errors, privilege elevation |
+| **Identity events** | Login, MFA (multi-factor authentication) failures, federation errors, privilege elevation |
 | **Network flow / DNS** (where available) | Lateral movement and exfil clues |
 | **Data-plane access** (high-value stores) | Who read sensitive objects/rows |
 | **Workload / app security logs** | AuthZ failures, secret access spikes (VM agents, apps, functions) |
-| **Posture change events** | CSPM finding opened/closed; guardrail exceptions |
+| **Posture change events** | CSPM (Cloud Security Posture Management) finding opened/closed; guardrail exceptions |
 
 If audit logging is off in a child account or private-cloud tenant, IR starts blind. Turning logging on is a **preparation** control, not a “during incident” task.
 
@@ -40,7 +40,7 @@ Cloud APIs / IdP / network / workloads
 | Persistence | New federation trust, backdoor users, modified break-glass |
 | Exposure change | Bucket/ACL public, security group `/0`, public snapshot |
 | Defense evasion | CloudTrail/logging stopped, event selectors narrowed |
-| Credential use from compute | IMDS-style role use from unexpected instance/pod |
+| Credential use from compute | IMDS (Instance Metadata Service)-style role use from unexpected instance/pod |
 | Data movement | Unusual decrypt volume, large outbound to new destinations |
 
 CSPM findings ([3](./3_CSPM_And_Posture.md)) are **configuration detections**; pair them with **behavioral** detections on audit logs.
@@ -93,6 +93,20 @@ Preserve audit logs and relevant object versions **before** aggressive cleanup. 
 
 IR without backups and rebuild paths becomes ransom negotiation. Test restore; keep rebuild identities separate from day-to-day deploy identities; prefer promote-of-known digest over “hotfix in prod SSH.”
 
+### Analytics and AI-assisted monitoring
+
+Cloud telemetry volume pushes teams toward correlation, baselining, and assisted triage. Treat assistance as an **aid to analysts**, not an owner of containment:
+
+| Practice | Why |
+|----------|-----|
+| Keep high-fidelity raw logs | Models and summaries are not the system of record |
+| Constrain what telemetry enters prompts or third-party AI tools | Cloud trails often contain secrets, PII, and internal topology |
+| Require human approval for destructive actions | Disable-key / isolate-subnet must stay dual-controlled |
+| Evaluate false-positive and false-negative cost | Novel attack shapes still need detections you designed |
+| Log the assistant’s suggestions and who acted | Auditability for IR and compliance |
+
+AI workload *deployments* (endpoints, GPUs, model stores) are covered in [8](./8_AI_Workloads_And_Cloud_AI_Security.md). Application-layer LLM/agent defenses live in [AI-Security](../AI-Security/README.md).
+
 ## Apply
 
 ### Preparation checklist
@@ -103,7 +117,7 @@ IR without backups and rebuild paths becomes ransom negotiation. Test restore; k
 4. Document CSP / private-cloud support contacts and evidence request paths.  
 5. Tabletop: stolen access key; public bucket with PII; ransomware on hybrid file share.  
 6. Break-glass accounts: MFA, monitored, rarely used.  
-7. Wire SOC playbooks to cloud API containment steps ([Defensive-Ops](../Defensive-Ops/README.md)).  
+7. Wire SOC (Security Operations Center) playbooks to cloud API containment steps ([Defensive-Ops](../Defensive-Ops/README.md)).  
 8. After incidents: add the missing guardrail to CSPM/org policy ([3](./3_CSPM_And_Posture.md)).
 
 ### Scenario anatomies (authorized education)
@@ -120,6 +134,11 @@ IR without backups and rebuild paths becomes ransom negotiation. Test restore; k
 - [ ] Explain CSP vs customer IR capabilities  
 - [ ] Describe why SaaS incidents may leave VPC telemetry empty  
 - [ ] Place logging enablement in Prepare, not Detect  
+- [ ] State two controls when using AI-assisted triage on cloud logs  
+
+## Next
+
+- [AI workloads and cloud AI security](./8_AI_Workloads_And_Cloud_AI_Security.md)
 
 ## Related
 

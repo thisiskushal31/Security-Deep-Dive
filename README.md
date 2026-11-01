@@ -1,6 +1,6 @@
 # Security Deep Dive
 
-Cybersecurity as a **program**: AppSec, identity, cloud, SOC, GRC, and PTES phases. You can open this repo knowing nothing. You do not have to finish Networks or DevOps first — those homes still own their *slice* (packets, CI gates, HLD).
+Cybersecurity as a **program**: AppSec (application security), identity, cloud, SOC (Security Operations Center), GRC (Governance, Risk, and Compliance), and PTES (Penetration Testing Execution Standard) phases. You can open this repo knowing nothing. You do not have to finish Networks or DevOps first — those homes still own their *slice* (packets, CI gates, HLD).
 
 Named lab software (Nmap, Burp, Wireshark) lives in [Tooling Security](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security). Practice only in an isolated lab — never scan the public internet.
 
@@ -14,7 +14,7 @@ New here? Start at [Foundations](./Foundations/README.md) (21 notes, ordered con
 | [AppSec/](./AppSec/README.md) | Secure SDLC, Top 10:2025, access control, injection, API Top 10, ASVS, proactive/WSTG |
 | [AI-Security/](./AI-Security/README.md) | LLM/agent practice: defenses, RAG, agents, AIBOM/MCP, eval, shadow AI, attack mechanisms, model confidentiality / classical AML |
 | [Cryptography/](./Cryptography/README.md) | Practical pitfalls |
-| [Cloud-Security/](./Cloud-Security/README.md) | What cloud is; how to secure it (IAM, firewalls, every resource/workload, any provider); posture; IR |
+| [Cloud-Security/](./Cloud-Security/README.md) | Cloud models; IAM/firewalls/resources; posture (CSPM/CNAPP literacy); supply chain; IR; AI workloads in cloud |
 | [Defensive-Ops/](./Defensive-Ops/README.md) | SIEM, IR, forensics |
 | [Offensive/](./Offensive/README.md) | PTES phases (OSINT → report), lab only |
 | [Threat-Modeling/](./Threat-Modeling/README.md) | Workshop process, DFD/STRIDE, PASTA, trees/LINDDUN, tooling, AI/agentic TM |

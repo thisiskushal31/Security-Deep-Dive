@@ -1,8 +1,8 @@
-# OAuth, OIDC, SAML
+# OAuth, OIDC (OpenID Connect), SAML (Security Assertion Markup Language)
 
 [← Identity](./README.md)
 
-Program view of **federation**: let a trusted IdP assert identity so apps do not store passwords. Protocol knobs and library how-to live in Tooling and System-Design.
+Program view of **federation**: let a trusted IdP (identity provider) assert identity so apps do not store passwords. Protocol knobs and library how-to live in Tooling and System-Design.
 
 ## Roles (shared vocabulary)
 
@@ -21,7 +21,7 @@ Program view of **federation**: let a trusted IdP assert identity so apps do not
 | **OIDC** | OAuth profile for *authentication* (ID token, userinfo) |
 | **SAML 2.0** | Enterprise SSO (XML assertions); common in older IdPs |
 
-Modern consumer/SaaS apps usually start with **OIDC**. Enterprise workforce SSO may still be SAML at the IdP edge with OIDC to apps.
+Modern consumer/SaaS (Software as a Service) apps usually start with **OIDC**. Enterprise workforce SSO may still be SAML at the IdP edge with OIDC to apps.
 
 ## Program risks (not a full RFCs dump)
 

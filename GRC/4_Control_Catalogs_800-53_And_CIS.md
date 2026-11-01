@@ -1,10 +1,10 @@
 # Control catalogs (800-53 and CIS)
 
-[← GRC](./README.md)
+[← GRC (Governance, Risk, and Compliance)](./README.md)
 
 > **Progression:** concept → advanced → apply.
 
-Where **control text** comes from when CSF tells you the outcome and RMF tells you the process. Nesting: [1](./1_NIST_ISO_And_ATTCK.md). RMF Select step: [3](./3_NIST_RMF_Lifecycle.md). This is a **family / role map**, not an encyclopedia of every control statement.
+Where **control text** comes from when CSF (Cybersecurity Framework) tells you the outcome and RMF (Risk Management Framework) tells you the process. Nesting: [1](./1_NIST_ISO_And_ATTCK.md). RMF Select step: [3](./3_NIST_RMF_Lifecycle.md). This is a **family / role map**, not an encyclopedia of every control statement.
 
 ## Concept
 
@@ -41,7 +41,7 @@ Controls are grouped into families with two-letter IDs. Base controls can have *
 | CM | Configuration Management | PT | PII Processing and Transparency |
 | CP | Contingency Planning | RA | Risk Assessment |
 | IA | Identification and Authentication | SA | System and Services Acquisition |
-| IR | Incident Response | SC | System and Communications Protection |
+| IR (incident response) | Incident Response | SC | System and Communications Protection |
 | MA | Maintenance | SI | System and Information Integrity |
 | MP | Media Protection | SR | Supply Chain Risk Management |
 
@@ -113,7 +113,7 @@ Implementation habits for the catalog you actually run:
 
 1. Choose a **primary** day-to-day catalog (CIS IG level or cloud baseline) for your team.  
 2. Map five live engineering practices to either a CIS Control number or an 800-53 family.  
-3. Mark which of those are **inherited** (platform/IdP/logging) vs owned by the app team.  
+3. Mark which of those are **inherited** (platform/IdP (identity provider)/logging) vs owned by the app team.  
 4. For one gap (for example Audit Log Management / AU), write the evidence location (system + retention).  
 5. Open [6](./6_SOC2_And_Evidence.md) when the next question is “will this satisfy Type II?”
 
@@ -127,7 +127,7 @@ Implementation habits for the catalog you actually run:
 
 ## Next
 
-- [ISO 27001 ISMS literacy](./5_ISO_27001_ISMS_Literacy.md)
+- [ISO 27001 ISMS (Information Security Management System) literacy](./5_ISO_27001_ISMS_Literacy.md)
 
 ## Further reading
 

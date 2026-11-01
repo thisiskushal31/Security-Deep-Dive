@@ -1,4 +1,4 @@
-# OSINT
+# OSINT (Open-Source Intelligence)
 
 [← Offensive](./README.md)
 

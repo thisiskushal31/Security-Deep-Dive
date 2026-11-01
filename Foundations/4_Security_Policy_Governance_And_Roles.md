@@ -81,7 +81,7 @@ Common controls (shared across systems) need a clear provider so system owners d
 |-------|----------------------------|
 | Contract / AUP | What users and vendors are allowed to do |
 | Sector rules | Extra duties for health, finance, government, kids’ data where they apply |
-| Breach / incident duties | Who must be notified and on what clock — coordinate with counsel and IR |
+| Breach / incident duties | Who must be notified and on what clock — coordinate with counsel and IR (incident response) |
 | Evidence / monitoring limits | Logging and investigation must stay within policy and law |
 
 Catalog frameworks and attestations: [GRC](../GRC/README.md). Human-factor abuse (phishing, pretexting): [16](./16_Human_Security_Literacy.md).

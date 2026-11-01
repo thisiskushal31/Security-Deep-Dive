@@ -46,7 +46,7 @@ Adversary-driven events are described with **tactics, techniques, and procedures
 | Hacktivist | Ideology / publicity | Often lower sophistication than states or top crime groups; widely available tools. Effects may be reputational; sometimes financial or physical damage. |
 | Unskilled / thrill-seeker | Curiosity, status, satisfaction | Public tools; opportunistic targeting of weak systems. |
 | Insider | Discontent, revenge, profit, or negligence | Especially dangerous because of access inside security perimeters. May be malicious or accidental; may also aid external actors. |
-| Shadow IT | Convenience (not always malice) | Unapproved systems/SaaS that expand surface and bypass governance — treat as an actor *class* for risk even when intent is not hostile. |
+| Shadow IT | Convenience (not always malice) | Unapproved systems/SaaS (Software as a Service) that expand surface and bypass governance — treat as an actor *class* for risk even when intent is not hostile. |
 | Terrorist groups (awareness) | Ideological violence | Often rely on widely available tools; still relevant in national threat pictures. |
 
 **Advanced persistent threat (APT)** refers to top-tier sophistication and skill: advanced techniques and complex, protracted campaigns. Usually reserved for nation-states or very proficient organized crime.
@@ -97,7 +97,7 @@ Sophisticated actors sometimes use *simple* tools deliberately — they still wo
 
 **False-flag** activity mimics another actor’s known patterns so defenders mis-attribute. Nation-states and capable criminals are generally more adept at obfuscation than low-skill actors.
 
-Do not invent org-specific actor names when ATT&CK groups and shared CTI already provide a technique language.
+Do not invent org-specific actor names when ATT&CK groups and shared CTI (Cyber Threat Intelligence) already provide a technique language.
 
 ### Real cases (these already happened)
 
@@ -114,7 +114,7 @@ Short examples from official public reports so you know this is not theory. Link
 1. Name the **asset** and data class ([Foundations/1](../Foundations/1_CIA_And_Risk.md)).  
 2. List plausible **adversarial and non-adversarial** sources (short list).  
 3. For adversarial sources, note **capability / intent / targeting**.  
-4. State **motivation** and pick matching controls (money → backups/MFA/fraud; espionage → classification/egress; disruption → availability).  
+4. State **motivation** and pick matching controls (money → backups/MFA (multi-factor authentication)/fraud; espionage → classification/egress; disruption → availability).  
 5. Move from “who” to “how” with ATT&CK when needed ([GRC](../GRC/1_NIST_ISO_And_ATTCK.md)).
 
 ### Self-check

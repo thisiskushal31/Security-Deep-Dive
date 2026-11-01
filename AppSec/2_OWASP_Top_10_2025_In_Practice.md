@@ -1,6 +1,6 @@
 # OWASP Top 10:2025 in practice
 
-[← AppSec](./README.md)
+[← AppSec (application security)](./README.md)
 
 > **Progression:** concept → advanced → apply.
 
@@ -14,13 +14,13 @@ The Top 10 is an **awareness and prioritization** document — categories of rel
 
 | ID | Category | Builder first response |
 |----|----------|------------------------|
-| **A01** | Broken Access Control | Deny by default; object- and function-level authZ on the **server**; test IDOR |
+| **A01** | Broken Access Control | Deny by default; object- and function-level authZ on the **server**; test IDOR (Insecure Direct Object Reference) |
 | **A02** | Security Misconfiguration | Hardened defaults; no debug in prod; config as code + review |
-| **A03** | Software Supply Chain Failures | Pin/sign deps; protect build; SBOM; dual-control promote |
-| **A04** | Cryptographic Failures | Managed crypto; TLS; no homemade ciphers ([Cryptography](../Cryptography/README.md)) |
+| **A03** | Software Supply Chain Failures | Pin/sign deps; protect build; SBOM (Software Bill of Materials); dual-control promote |
+| **A04** | Cryptographic Failures | Managed crypto; TLS (Transport Layer Security); no homemade ciphers ([Cryptography](../Cryptography/README.md)) |
 | **A05** | Injection | Keep data out of interpreters; parameterize; contextual encode |
 | **A06** | Insecure Design | Threat model; abuse cases; secure design before code |
-| **A07** | Authentication Failures | MFA; secure session; prefer battle-tested IdP stacks ([Identity](../Identity/README.md)) |
+| **A07** | Authentication Failures | MFA (multi-factor authentication); secure session; prefer battle-tested IdP (identity provider) stacks ([Identity](../Identity/README.md)) |
 | **A08** | Software or Data Integrity Failures | Verify artifacts; protect CI; signed updates; safe deserialize |
 | **A09** | Security Logging and Alerting Failures | Log security events **and** alert; name an owner |
 | **A10** | Mishandling of Exceptional Conditions | Fail closed; safe errors; handle abnormal states at the source |
@@ -35,10 +35,10 @@ Read the map left→right before you update training decks still stuck on 2021 I
 
 | Change | Meaning for your program |
 |--------|---------------------------|
-| **A01 stays #1**; **SSRF folded into A01** | Access control dominates; SSRF is reachability/confused-deputy, not a lonely tenth item |
+| **A01 stays #1**; **SSRF (Server-Side Request Forgery) folded into A01** | Access control dominates; SSRF is reachability/confused-deputy, not a lonely tenth item |
 | **Misconfiguration → #2** | Config-driven apps fail open more; treat config like code |
 | **A03 Supply Chain Failures** | Expanded beyond “outdated libs”: deps, build, distribution; **50%** of survey respondents ranked it #1 |
-| **Injection → #5** | Still 100% tested in contrib data; XSS high frequency, SQLi high impact |
+| **Injection → #5** | Still 100% tested in contrib data; XSS (Cross-Site Scripting) high frequency, SQLi (SQL injection) high impact |
 | **A07 renamed** Authentication Failures | Frameworks helped rates; auth is not “solved” |
 | **A09 stresses alerting** | Logs without alerts rarely stop incidents |
 | **A10 Exceptional Conditions (new)** | Fail-open, bad error handling, logic under abnormal states |
@@ -55,7 +55,7 @@ Read the map left→right before you update training decks still stuck on 2021 I
 |--------|-------------|
 | **A01**: ~100% of apps tested showed some broken access control | AuthZ tests are mandatory, not optional polish |
 | **A03**: few related CVEs, high incidence when tested; highest avg exploit/impact character | Scanners alone under-represent supply chain — program + SBOM + CI hardening |
-| **A05**: largest CVE pile (XSS tens of thousands; SQLi still severe) | Do not underfund injection defenses because the *rank* dropped |
+| **A05**: largest CVE (Common Vulnerabilities and Exposures) pile (XSS tens of thousands; SQLi still severe) | Do not underfund injection defenses because the *rank* dropped |
 | Root-cause categories preferred over pure symptoms | Fix “missing authZ” / “misconfig,” not only “data exposure” labels |
 
 ## Advanced
@@ -73,7 +73,7 @@ Access control must run in **trusted server-side (or serverless) code** the atta
 | IDOR | Swap `acct` / `orderId` / UUID belonging to someone else |
 | Missing verb authZ | `GET` checked; `PUT`/`DELETE` open |
 | Privilege elevation | Act unauthenticated, or become admin via token/cookie/hidden-field tamper |
-| JWT / metadata abuse | Replay, algorithm confusion, or broken invalidation |
+| JWT (JSON Web Token) / metadata abuse | Replay, algorithm confusion, or broken invalidation |
 | CORS misconfig | Browser calls from untrusted origins succeed |
 | Front-end-only authZ | UI hides admin; `curl` still works |
 
@@ -106,7 +106,7 @@ Client sends object id / admin URL
 Never: “UI hid the button” ⇒ allowed
 ```
 
-Deepen patterns and API BOLA/BFLA in notes 3 and 5.
+Deepen patterns and API BOLA (Broken Object Level Authorization)/BFLA (Broken Function Level Authorization) in notes 3 and 5.
 
 ### A02 — Security Misconfiguration
 
@@ -124,14 +124,14 @@ Breakdowns in **building, distributing, or updating** software — malicious or 
 |------|----------|
 | Inventory | Central SBOM; client + server + transitive |
 | Reduce surface | Remove unused deps/features |
-| Monitor | CVE / NVD / OSV + SCA automation; subscribe to alerts |
+| Monitor | CVE / NVD / OSV + SCA (Software Composition Analysis) automation; subscribe to alerts |
 | Trust | Official sources over TLS; prefer **signed** packages |
 | Version policy | Pin deliberately; upgrade when needed, not blindly `latest` |
 | Unmaintained libs | Replace, or virtual patch if stuck |
 | Tooling | Patch CI/IDE/registries too |
 | Rollout | Staged / canary — limit blast if a vendor is compromised |
-| Change tracking | CI settings, repos, sandboxes, IDEs, SBOMs, logs, SaaS integrations, artifact/container registries |
-| Harden | MFA + IAM on repos, workstations, CI, artifacts, IaC |
+| Change tracking | CI settings, repos, sandboxes, IDEs, SBOMs, logs, SaaS (Software as a Service) integrations, artifact/container registries |
+| Harden | MFA + IAM (Identity and Access Management) on repos, workstations, CI, artifacts, IaC (Infrastructure as Code) |
 
 **Scenario classes:** compromised vendor update (historic SolarWinds-class); conditional malicious vendor behavior; self-propagating package worms that harvest tokens from developer machines; high-impact component RCE (e.g. historical Struts / Log4Shell-class) running at app privilege.
 
@@ -141,7 +141,7 @@ Infra depth: [Cloud-Security/6](../Cloud-Security/6_Supply_Chain_And_Delivery_In
 
 Weak algorithms, poor key management, missing TLS, secrets in source, rolling your own crypto → sensitive data exposure or compromise.
 
-**Break it:** platform TLS; vetted libraries; KMS/HSM; never invent ciphers. Detail: [Cryptography](../Cryptography/README.md).
+**Break it:** platform TLS; vetted libraries; KMS (Key Management Service)/HSM (Hardware Security Module); never invent ciphers. Detail: [Cryptography](../Cryptography/README.md).
 
 ### A05 — Injection (how it happens)
 
@@ -153,7 +153,7 @@ Untrusted input reaches an **interpreter** (SQL, OS shell, LDAP, template/EL, br
 2. Positive server-side validation (incomplete alone when special characters are required).  
 3. Context-specific escaping for residual dynamic queries (fragile — last resort).  
 
-**Note:** Even “parameterized” stored procedures can inject if they concatenate inside PL/SQL/`EXECUTE IMMEDIATE`. Table/column names cannot be escaped — never take structure names from users. LLM prompt injection is a related class owned by [AI-Security](../AI-Security/README.md).
+**Note:** Even “parameterized” stored procedures can inject if they concatenate inside PL/SQL/`EXECUTE IMMEDIATE`. Table/column names cannot be escaped — never take structure names from users. LLM (large language model) prompt injection is a related class owned by [AI-Security](../AI-Security/README.md).
 
 **Scenario anatomies:**
 
@@ -199,7 +199,7 @@ Missing abuse cases, no threat model, happy-path-only features. Not one missing 
 
 Credential stuffing / password spray, weak or fixable sessions, hard-coded credentials, broken certificate host checks, missing MFA where risk demands it, recoverable flows that skip checks.
 
-**Break it:** MFA for sensitive apps; secure session cookies; rate-limit auth; prefer maintained IdP/OIDC; never hard-code passwords. Deepen: note 3 + [Identity](../Identity/README.md).
+**Break it:** MFA for sensitive apps; secure session cookies; rate-limit auth; prefer maintained IdP/OIDC (OpenID Connect); never hard-code passwords. Deepen: note 3 + [Identity](../Identity/README.md).
 
 ### A08 — Software or Data Integrity Failures
 
@@ -211,7 +211,7 @@ Unsigned updates, weak CI, unsafe deserialization, trusting client-side state. L
 
 Missing security event logs, no retention, **no alerting**, or alerts with no owner. Great logging with no alert is near-zero incident value.
 
-**Break it:** log authn failures, authZ denials, admin actions; alert on patterns; page someone; test detections. SIEM: [Defensive-Ops](../Defensive-Ops/README.md).
+**Break it:** log authn failures, authZ denials, admin actions; alert on patterns; page someone; test detections. SIEM (Security Information and Event Management): [Defensive-Ops](../Defensive-Ops/README.md).
 
 ### A10 — Mishandling of Exceptional Conditions (how it happens)
 
@@ -247,11 +247,11 @@ Exception / abnormal state
 | A02 | Platform + AppSec | Baseline scans; config PR review |
 | A03 | SecEng + DevOps | SCA gate; SBOM; signed artifact + dual-control |
 | A04 | AppSec + platform | TLS scan; secret scan |
-| A05 | AppSec + developers | SAST; parameterized-query review; XSS encode tests |
+| A05 | AppSec + developers | SAST (Static Application Security Testing); parameterized-query review; XSS encode tests |
 | A06 | Architecture + AppSec | Threat-model record |
 | A07 | Identity + AppSec | Authn test plan; MFA; stuffing resistance |
 | A08 | DevOps + AppSec | Pipeline hardening; deserialize ban-list |
-| A09 | AppSec + SOC | Alert unit tests / detections |
+| A09 | AppSec + SOC (Security Operations Center) | Alert unit tests / detections |
 | A10 | Developers + AppSec | Fault-injection; rollback tests |
 
 ### How to use the Top 10 without cargo-culting
@@ -261,7 +261,7 @@ Exception / abnormal state
 | Map each category to tickets and tests | Memorize only A0x labels for interviews |
 | Update training when the year edition changes | Teach 2017/2021 IDs as current truth |
 | Prefer root-cause fixes (authZ library, parameterized API) | Assume scanners cover A03/A09/A10 fully |
-| Pair with ASVS for “how much is enough” | Treat Top 10 as a complete requirements spec |
+| Pair with ASVS (Application Security Verification Standard) for “how much is enough” | Treat Top 10 as a complete requirements spec |
 | Put SSRF tests under access control | Keep a zombie “A10 = SSRF” checklist |
 
 ## Apply

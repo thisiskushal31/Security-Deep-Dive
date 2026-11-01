@@ -10,7 +10,7 @@ Work only in environments you own or are authorized to test ([Foundations/3](../
 
 ## Concept
 
-An LLM does not maintain a hard wall between “instructions” and “data.” Both arrive as tokens on one stream. Anything that can influence those tokens — a chat box, a PDF in RAG, an email the agent summarizes, an image encoder, a tool return value, a poisoned MCP descriptor, long-term memory — can steer behavior. Damage appears when that steered behavior reaches **tools, data, or humans who trust fluent output**.
+An LLM (large language model) does not maintain a hard wall between “instructions” and “data.” Both arrive as tokens on one stream. Anything that can influence those tokens — a chat box, a PDF in RAG (retrieval-augmented generation), an email the agent summarizes, an image encoder, a tool return value, a poisoned MCP (Model Context Protocol) descriptor, long-term memory — can steer behavior. Damage appears when that steered behavior reaches **tools, data, or humans who trust fluent output**.
 
 Three deployment properties make this worse:
 
@@ -48,7 +48,7 @@ Core impact (exfil, fraud, integrity loss, host compromise, cost burn)
 
 | Label | ATLAS / catalog | What the adversary is doing | Where you fix it first |
 |-------|-----------------|----------------------------|-------------------------|
-| **Prompt injection** | `AML.T0051` (+ `.000` Direct / `.001` Indirect / `.002` Triggered); LLM01 | Steer *this application’s* behavior via attacker-shaped content | App orchestration, connectors, tool policy |
+| **Prompt injection** | `AML (adversarial machine learning).T0051` (+ `.000` Direct / `.001` Indirect / `.002` Triggered); LLM01 | Steer *this application’s* behavior via attacker-shaped content | App orchestration, connectors, tool policy |
 | **Jailbreak** | `AML.T0054` | Push the **model** past safety/alignment refusals | Still contain tools; never assume refusal is your only control |
 | **Agent goal hijack** | ASI01 | Redirect multi-step objectives and plans | Planner constraints, human gates, memory integrity |
 
@@ -127,7 +127,7 @@ User/agent later retrieves ─────────┘
                          Tool call / exfil / change
 ```
 
-**Controls that cut the chain:** strip or quarantine HTML; delimit retrieved content as data; authorize retrieval by ACL; split tool identities (read-mail ≠ send-mail); human gate on send/delete; never run developer agents with production `service_role`; pin/sign MCP ([5](./5_Model_And_Data_Supply_Chain.md)).
+**Controls that cut the chain:** strip or quarantine HTML; delimit retrieved content as data; authorize retrieval by ACL; split tool identities (read-mail ≠ send-mail); human gate on send/delete; never run developer agents with production `service_role`; pin/sign MCP.
 
 ### C. Encoding, splitting, and invisible channels
 

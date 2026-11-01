@@ -1,10 +1,10 @@
 # API Security Top 10:2023
 
-[← AppSec](./README.md)
+[← AppSec (application security)](./README.md)
 
 > **Progression:** concept → advanced → apply.
 
-How the **OWASP API Security Top 10:2023** differs from the web Top 10 — and how to design, test, and inventory APIs so BOLA/BFLA/BOPLA and business-flow abuse do not become the default failure mode. Web access control: [3](./3_Access_Control_And_Authentication.md). Injection/XSS: [4](./4_Injection_And_Output_Encoding.md). Requirements checklist: [6](./6_ASVS_Verification_Practice.md) (esp. V4).
+How the **OWASP API Security Top 10:2023** differs from the web Top 10 — and how to design, test, and inventory APIs so BOLA (Broken Object Level Authorization)/BFLA (Broken Function Level Authorization)/BOPLA (Broken Object Property Level Authorization) and business-flow abuse do not become the default failure mode. Web access control: [3](./3_Access_Control_And_Authentication.md). Injection/XSS (Cross-Site Scripting): [4](./4_Injection_And_Output_Encoding.md). Requirements checklist: [6](./6_ASVS_Verification_Practice.md) (esp. V4).
 
 APIs are first-class attack surfaces: clients send object IDs, property bags, and batch operations; servers often stay mostly stateless. The API Top 10 is an **awareness** document for people who build and run APIs — complementary to (not a replacement for) the web Top 10.
 
@@ -22,7 +22,7 @@ Client (mobile / SPA / partner / script)
 | ID | Risk | Builder first response |
 |----|------|------------------------|
 | **API1** | Broken Object Level Authorization (BOLA) | AuthZ check on **every** client-supplied object id |
-| **API2** | Broken Authentication | Protect all authn + recovery flows; validate tokens; MFA |
+| **API2** | Broken Authentication | Protect all authn + recovery flows; validate tokens; MFA (multi-factor authentication) |
 | **API3** | Broken Object Property Level Authorization (BOPLA) | Cherry-pick read/write fields; no mass assign / over-expose |
 | **API4** | Unrestricted Resource Consumption | Rate limits, payload/size caps, spend limits on paid APIs |
 | **API5** | Broken Function Level Authorization (BFLA) | Deny-by-default function authZ; admin ≠ “guessed URL” |
@@ -49,19 +49,19 @@ Client (mobile / SPA / partner / script)
 2023 API10 Unsafe Consumption ◀── new
 ```
 
-### BOLA vs BFLA vs BOPLA (do not conflate)
+### BOLA vs BFLA vs BOPLA
 
 | Risk | Question the check answers | Typical miss |
 |------|----------------------------|--------------|
-| **BOLA (API1)** | May *this* user act on *this object*? | Swap `shopName` / VIN / document id |
-| **BFLA (API5)** | May *this* user call *this function* at all? | `POST /api/invites/new` as a normal user |
-| **BOPLA (API3)** | May they *read/write these fields*? | Response leaks `recentLocation`; body sets `role=admin` |
+| **BOLA** | May *this* user act on *this object*? | Swap `shopName` / VIN / document id |
+| **BFLA** | May *this* user call *this function* at all? | `POST /api/invites/new` as a normal user |
+| **BOPLA** | May they *read/write these fields*? | Response leaks `recentLocation`; body sets `role=admin` |
 
-In BOLA the endpoint is **supposed** to be reachable; the bug is the object. In BFLA the endpoint/function should have been denied. Comparing JWT `sub` to a path user id fixes only a **small subset** of BOLA cases.
+In BOLA the endpoint is **supposed** to be reachable; the bug is the object. In BFLA the endpoint/function should have been denied. Comparing JWT (JSON Web Token) `sub` to a path user id fixes only a **small subset** of BOLA cases.
 
 ## Advanced
 
-### API1 — BOLA (how it happens)
+### API1 — BOLA
 
 Servers lean on client-sent IDs (path, query, header, body — sequential ints, UUIDs, strings). Response status/body usually reveals success. Impact: disclosure, tampering, destruction; sometimes account takeover.
 
@@ -85,7 +85,7 @@ Authn and **forgot/reset password** are equally sensitive. Vulnerable shapes: st
 
 **Break it:** inventory every auth path (web, mobile, deep links); do not reinvent tokens/password storage; treat recovery like login for anti-automation; re-auth for email/2FA/password changes; MFA where possible; API keys authenticate **clients**, not end users. Detail: [3](./3_Access_Control_And_Authentication.md) + [Identity](../Identity/README.md).
 
-### API3 — BOPLA (excessive exposure + mass assignment)
+### API3 — BOPLA
 
 Vulnerable if the API **returns** sensitive properties the user should not read, or **accepts** changes to properties they should not write.
 
@@ -126,9 +126,9 @@ Identify harm-if-automated flows (business)
   → Machine-consumed B2B APIs need stricter gates
 ```
 
-### API7 — SSRF in APIs
+### API7 — SSRF (Server-Side Request Forgery) in APIs
 
-APIs fetch remote resources without validating the client-supplied URI → requests to unexpected destinations (even behind firewall/VPN). Basic SSRF (response returned) is easier than blind SSRF. Modern features make this common: webhooks, URL file fetch, custom SSO, URL previews. Cloud/K8s/Docker control planes over HTTP on well-known paths make it more dangerous.
+APIs fetch remote resources without validating the client-supplied URI → requests to unexpected destinations (even behind firewall/VPN). Basic SSRF (response returned) is easier than blind SSRF. Modern features make this common: webhooks, URL file fetch, custom SSO (single sign-on), URL previews. Cloud/K8s/Docker control planes over HTTP on well-known paths make it more dangerous.
 
 | Scenario | Idea |
 |----------|------|
@@ -139,7 +139,7 @@ APIs fetch remote resources without validating the client-supplied URI → reque
 
 ### API8 — Security misconfiguration
 
-Vulnerable across the stack when: hardening missing; cloud perms wrong; unpatched systems; unnecessary features/verbs/logging; inconsistent HTTP parsing across proxies (desync); no TLS; missing cache/security headers; bad CORS; errors with stack traces.
+Vulnerable across the stack when: hardening missing; cloud perms wrong; unpatched systems; unnecessary features/verbs/logging; inconsistent HTTP parsing across proxies (desync); no TLS (Transport Layer Security); missing cache/security headers; bad CORS; errors with stack traces.
 
 | Scenario | Idea |
 |----------|------|
@@ -163,7 +163,7 @@ Developers trust famous third parties more than end users → weaker validation.
 
 | Scenario class | Idea |
 |----------------|------|
-| Enrichment SQLi | Partner stores payload; your API pulls it into SQL |
+| Enrichment SQLi (SQL injection) | Partner stores payload; your API pulls it into SQL |
 | Redirect exfil | Compromised partner returns `308` → you replay PHI to attacker |
 | “Safe” name injection | Repo/name from integration concatenated into queries |
 
@@ -182,7 +182,7 @@ Developers trust famous third parties more than end users → weaker validation.
 
 | API | Closest Top 10:2025 | Build / verify |
 |-----|---------------------|----------------|
-| API1 / API5 | A01 | C1; ASVS V8/V4; WSTG 4.5 |
+| API1 / API5 | A01 | C1; ASVS V8/V4; WSTG (Web Security Testing Guide) 4.5 |
 | API2 | A07 | C7; ASVS V6/V7/V9; WSTG 4.4–4.6 |
 | API3 | A01 (+ mass assign) | C1/C3; schema allowlists |
 | API4 / API6 | A10 / A06 themes | C3/C4 anti-automation; WSTG 4.10 |

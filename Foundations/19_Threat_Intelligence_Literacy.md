@@ -4,7 +4,7 @@
 
 > **Progression:** concept → advanced → apply. *Apply* here means foundation literacy and builder habits — not a specialty lab.
 
-Cyber threat intelligence (CTI) turns raw data about adversaries into **decisions** — what to block, hunt, patch, or brief. This is foundation vocabulary for SOC, IR, and CTI courses. Adversary models: [18](./18_Adversary_Models_Kill_Chain_And_ATTCK.md). Detection/response operations: [Defensive-Ops](../Defensive-Ops/README.md). Analytic depth beyond literacy: [Threat-Intelligence](../Threat-Intelligence/README.md).
+Cyber threat intelligence (CTI) turns raw data about adversaries into **decisions** — what to block, hunt, patch, or brief. This is foundation vocabulary for SOC (Security Operations Center), IR (incident response), and CTI courses. Adversary models: [18](./18_Adversary_Models_Kill_Chain_And_ATTCK.md). Detection/response operations: [Defensive-Ops](../Defensive-Ops/README.md). Analytic depth beyond literacy: [Threat-Intelligence](../Threat-Intelligence/README.md).
 
 ## Concept
 
@@ -52,7 +52,7 @@ If nobody can state the **requirement**, everything downstream is expensive nois
 |-------|--------------------|-----------------|
 | Strategic | Leadership; months–years | Which industries and motives matter to us |
 | Operational | Campaigns and intent; weeks–months | How this intrusion set usually operates |
-| Tactical | TTPs; days–weeks | How they phish and persist — map to ATT&CK |
+| Tactical | TTPs; days–weeks | How they phish and persist — map to ATT&CK (Adversarial Tactics, Techniques, and Common Knowledge) |
 | Technical | IOCs; hours–days | Domains, hashes, IPs for block/hunt |
 
 Technical intel expires fast (Pyramid of Pain). Tactical and operational intel ages slower.
@@ -68,9 +68,9 @@ An IOC without TTP context is often a one-shot block. A TTP without any observab
 
 | Piece | Role |
 |-------|------|
-| **TLP** (Traffic Light Protocol) | Handling rules for who may see a product |
-| **STIX** | Structured data model for CTI objects (indicators, malware, relationships, …) |
-| **TAXII** | HTTPS API to publish and fetch STIX collections |
+| **TLP (Traffic Light Protocol)** | Handling rules for who may see a product |
+| **STIX (Structured Threat Information Expression)** | Structured data model for CTI objects (indicators, malware, relationships, …) |
+| **TAXII (Trusted Automated Exchange of Intelligence Information)** | HTTPS API to publish and fetch STIX collections |
 
 Do not mix them up: STIX is the content shape; TAXII is transport; TLP is the sharing policy.
 

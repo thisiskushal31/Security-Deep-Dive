@@ -29,21 +29,21 @@ Answer those for each object in scope before trusting a dashboard green check.
 
 | Surface | Includes (illustrative — any provider) | Secure by |
 |---------|----------------------------------------|-----------|
-| **Management / control plane** | Console, APIs, org/account hierarchy, IaC runners that hold cloud creds | MFA, least privilege, org guardrails, audit logs ([2](./2_Identity_Network_And_Data_Controls.md), [7](./7_Logging_Detection_And_Cloud_IR.md)) |
+| **Management / control plane** | Console, APIs, org/account hierarchy, IaC (Infrastructure as Code) runners that hold cloud creds | MFA (multi-factor authentication), least privilege, org guardrails, audit logs ([2](./2_Identity_Network_And_Data_Controls.md), [7](./7_Logging_Detection_And_Cloud_IR.md)) |
 | **Network fabric** | VPC/VNet, subnets, route tables, peering, VPN/Interconnect, DNS, DHCP options | Zoning, private by default ([2](./2_Identity_Network_And_Data_Controls.md)) |
-| **Firewall & edge protections** | Security groups/NSGs, NACLs, host FW, NGFW appliances, WAF, DDoS | Layered allow-lists ([2](./2_Identity_Network_And_Data_Controls.md)) |
+| **Firewall & edge protections** | Security groups / NSGs (network security groups), NACLs (network access control lists), host FW, NGFW (next-generation firewall) appliances, WAF (web application firewall), DDoS protections | Layered allow-lists ([2](./2_Identity_Network_And_Data_Controls.md)) |
 | **Compute (unmanaged guest)** | VMs, bare metal, autoscaling groups, batch nodes you patch | Image baseline, patch, host FW, instance identity, no public admin |
-| **Compute (managed / abstracted)** | FaaS, managed containers, platform app services | Execution identity, triggers, private networking ([5](./5_Containers_Serverless_And_Managed_Runtimes.md)) |
-| **Orchestrated compute** | Kubernetes and cousins | Policy + RBAC + workload identity — still compute ([5](./5_Containers_Serverless_And_Managed_Runtimes.md)) |
+| **Compute (managed / abstracted)** | FaaS (Function as a Service), managed containers, platform app services | Execution identity, triggers, private networking ([5](./5_Containers_Serverless_And_Managed_Runtimes.md)) |
+| **Orchestrated compute** | Kubernetes and cousins | Policy + RBAC (Role-Based Access Control) + workload identity — still compute ([5](./5_Containers_Serverless_And_Managed_Runtimes.md)) |
 | **Block / file storage** | Disks, volumes, NFS/SMB | Encryption, snapshot policy, attach rights |
-| **Object storage** | Buckets / blobs | Block public access, IAM, versioning, access logs |
+| **Object storage** | Buckets / blobs | Block public access, IAM (Identity and Access Management), versioning, access logs |
 | **Data platforms** | SQL/NoSQL, warehouses, search, caches — managed *or* self-hosted on VMs | Exposure, auth, encryption, backups |
 | **Messaging & integration** | Queues, topics, buses, streams, workflow engines | Auth publish/subscribe, encrypt payloads |
-| **Delivery & edge** | Load balancers, API gateways, CDN, DNS zones | TLS policy, origin private, DNS IAM |
+| **Delivery & edge** | Load balancers, API gateways, CDN (content delivery network), DNS zones | TLS (Transport Layer Security) policy, origin private, DNS IAM |
 | **Certificates & secrets** | ACME/private CA, secret managers, parameter stores | Short life, least read, no Git/userdata |
 | **Identity services** | Cloud IAM, directories, federation trusts | Treat as crown jewels |
-| **AI / analytics / other PaaS** | Managed notebooks, model endpoints, ETL | Same: identity, data, network, supply chain |
-| **SaaS admin planes** | M365, Salesforce-class, ITSM, Git hosts as SaaS | SSO, sharing, OAuth apps, admin roles |
+| **AI / ML platforms** | Notebooks, model registries, GPU pools, inference endpoints, vector stores | [8](./8_AI_Workloads_And_Cloud_AI_Security.md) — plus identity, data, network, supply chain |
+| **SaaS (Software as a Service) admin planes** | M365, Salesforce-class, ITSM, Git hosts as SaaS | SSO (single sign-on), sharing, OAuth apps, admin roles |
 | **CI/CD & registries** | Build systems, artifact/container registries | Dual control, sign/verify ([6](./6_Supply_Chain_And_Delivery_Integrity.md)) |
 
 ```text
@@ -63,7 +63,7 @@ Answer those for each object in scope before trusting a dashboard green check.
 | Host firewall | **You** | N/A on guest — use SG + private endpoint |
 | Network exposure | SG + subnet + host FW | Public vs private endpoint toggle — **you** |
 | Identity to data | DB users + VM role | IAM DB auth / roles — **you** |
-| Encryption / keys | Configure + own keys | Configure + often choose CMK — **you** |
+| Encryption / keys | Configure + own keys | Configure + often choose CMK (customer-managed key) — **you** |
 | Backups | Design and test | Enable, retain, restrict who restores — **you** |
 | Logging | Agents + DB audit | Turn on service logs + ship them — **you** |
 
@@ -87,7 +87,7 @@ Answer those for each object in scope before trusting a dashboard green check.
 |----------|-----|
 | Golden images + rebuild cadence | Drift and CVE debt |
 | Patch with evidence | Manual SSH does not scale |
-| Bastion / ZTNA / SSM-class admin | Not SSH from the internet |
+| Bastion / ZTNA (Zero Trust Network Access) / SSM-class admin | Not SSH from the internet |
 | Least-privilege instance identity | Stolen guest ≠ whole tenant |
 | Disk encryption + private snapshots | Stolen volume / public snapshot |
 
@@ -134,7 +134,7 @@ Data can leave without touching your security groups. Review tenant admins, exte
 6. World-writable queue → poison trusted consumers.  
 7. SaaS OAuth persistence → mailbox exfil with empty VPC logs.
 
-CSPM ([3](./3_CSPM_And_Posture.md)) should score **all** surfaces above — not only one runtime.
+CSPM (Cloud Security Posture Management) ([3](./3_CSPM_And_Posture.md)) should score **all** surfaces above — not only one runtime.
 
 ### Private server, public server, any cloud
 

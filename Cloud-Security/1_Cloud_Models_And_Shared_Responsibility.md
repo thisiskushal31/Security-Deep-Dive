@@ -24,11 +24,11 @@ NIST defines cloud computing as on-demand network access to a shared pool of con
 
 Three **service models** (who runs which layer of the stack):
 
-| Model | Consumer typically controls | Provider typically controls |
-|-------|----------------------------|-----------------------------|
-| **IaaS** | OS, runtime, apps, data, much of network config | Physical, hypervisor, facility |
-| **PaaS** | Apps, data, identity, service configuration | OS/runtime/platform under the service |
-| **SaaS** | Data, identity, sharing/admin settings | Application + platform + infra |
+| Model | Full form | Consumer typically controls | Provider typically controls |
+|-------|-----------|----------------------------|-----------------------------|
+| **IaaS** | Infrastructure as a Service | OS, runtime, apps, data, much of network config | Physical, hypervisor, facility |
+| **PaaS** | Platform as a Service | Apps, data, identity, service configuration | OS/runtime/platform under the service |
+| **SaaS** | Software as a Service | Data, identity, sharing/admin settings | Application + platform + infra |
 
 Four **deployment models** (who the consumers are and where capacity lives):
 

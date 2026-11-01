@@ -1,6 +1,6 @@
-# Framework nesting (NIST, ISO, ATT&CK)
+# Framework nesting (NIST, ISO, ATT&CK (Adversarial Tactics, Techniques, and Common Knowledge))
 
-[← GRC](./README.md)
+[← GRC (Governance, Risk, and Compliance)](./README.md)
 
 > **Progression:** concept → advanced → apply.
 
@@ -15,13 +15,13 @@ Organizations drown when they run five frameworks as five separate programs. Nes
 | Layer | Job | Examples |
 |-------|-----|----------|
 | **Law / contract** | What you must do externally | Privacy regs, customer DPAs, sector rules |
-| **Management system** | How the org *runs* security as a system | ISO/IEC 27001 ISMS |
+| **Management system** | How the org *runs* security as a system | ISO/IEC 27001 ISMS (Information Security Management System) |
 | **Control frameworks** | Catalogs of controls to implement | NIST SP 800-53, CIS Controls |
-| **Cybersecurity outcomes** | Shared language for “what good looks like” | [NIST CSF 2.0](https://www.nist.gov/cyberframework) (Govern→Recover) |
+| **Cybersecurity outcomes** | Shared language for “what good looks like” | [NIST CSF (Cybersecurity Framework) 2.0](https://www.nist.gov/cyberframework) (Govern→Recover) |
 | **System authorization path** | How a system is categorized, controlled, assessed, authorized, monitored | NIST RMF ([3](./3_NIST_RMF_Lifecycle.md)) |
-| **Workforce** | Roles and skills | [NICE Framework](https://www.nist.gov/itl/applied-cybersecurity/nice/nice-framework-resource-center) |
+| **Workforce** | Roles and skills | [NICE (National Initiative for Cybersecurity Education) Framework](https://www.nist.gov/itl/applied-cybersecurity/nice/nice-framework-resource-center) |
 | **Threat techniques** | How adversaries behave | [MITRE ATT&CK](https://attack.mitre.org/) · AI: [MITRE ATLAS](https://atlas.mitre.org/) |
-| **Assurance reports** | Evidence for customers / board | SOC 2 Type I/II (Trust Services Criteria) |
+| **Assurance reports** | Evidence for customers / board | SOC 2 (System and Organization Controls 2) Type I/II (Trust Services Criteria) |
 
 ATT&CK sits **beside** controls: it describes adversary behavior those controls should blunt. It is not a substitute for ISO or SOC 2.
 
@@ -44,12 +44,12 @@ Law / contract
 | Question | Reach for |
 |----------|-----------|
 | “Are we allowed / required to…?” | Law / contract |
-| “Do we have a managed security system?” | ISO 27001-style ISMS ([5](./5_ISO_27001_ISMS_Literacy.md)) |
+| “Do we have a managed security system?” | ISO 27001-style ISMS |
 | “What outcomes should we track?” | CSF 2.0 ([2](./2_NIST_CSF_2_Outcomes.md)) |
 | “Which control text do we implement?” | SP 800-53 / CIS ([4](./4_Control_Catalogs_800-53_And_CIS.md)) |
-| “Is *this system* authorized to operate?” | RMF ([3](./3_NIST_RMF_Lifecycle.md)) |
+| “Is *this system* authorized to operate?” | RMF |
 | “What evidence will an auditor or customer accept?” | SOC 2 / ISMS audit artifacts ([6](./6_SOC2_And_Evidence.md)) |
-| “Who needs which skills?” | NICE ([7](./7_NICE_Workforce_Literacy.md)) |
+| “Who needs which skills?” | NICE |
 | “What did the adversary do?” | ATT&CK / ATLAS |
 
 ### ATT&CK in the program
@@ -58,7 +58,7 @@ Law / contract
 |-----|----------|
 | Detection engineering | Map alerts to techniques; find coverage gaps |
 | Purple / red exercises | Agree on technique IDs in scope |
-| IR retrospectives | Tag what happened in ATT&CK language |
+| IR (incident response) retrospectives | Tag what happened in ATT&CK language |
 
 ATT&CK is **not** a compliance framework. It does not replace ISO/NIST controls; it describes adversary behavior those controls should address.
 
@@ -91,7 +91,7 @@ Depth: [6](./6_SOC2_And_Evidence.md) · delivery gates: [DevOps-Handbook Securit
 
 | Slice | Home |
 |-------|------|
-| Wire / TLS | Networks-Deep-Dive `Security/` |
+| Wire / TLS (Transport Layer Security) | Networks-Deep-Dive `Security/` |
 | Pipeline gates | DevOps-Handbook `Security/` |
 | Design trade-offs | System-Design `Security-Tradeoffs/` |
 | Risk process intro | [Foundations/5](../Foundations/5_Risk_Management_Process_And_RMF.md) |
@@ -111,7 +111,7 @@ Implementation habits for a program that already ships software:
 - [ ] Recite the nesting layers from law → assurance  
 - [ ] Explain why ATT&CK is not a compliance framework  
 - [ ] State when to open CSF vs 800-53 vs SOC 2  
-- [ ] Name one AI governance pointer (AI RMF) without listing AML attacks  
+- [ ] Name one AI governance pointer (AI RMF) without listing AML (adversarial machine learning) attacks  
 
 ## Next
 
@@ -124,6 +124,6 @@ Implementation habits for a program that already ships software:
 - [MITRE ATLAS](https://atlas.mitre.org/)
 - [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
 - [NIST Privacy Framework](https://www.nist.gov/privacy-framework)
-- [ISO/IEC 27001 overview (ISO)](https://www.iso.org/standard/27001)
+- [ISO/IEC 27001 overview](https://www.iso.org/standard/27001)
 - [FedRAMP](https://www.fedramp.gov/)
 - [CISA — Cross-Sector Cybersecurity Performance Goals](https://www.cisa.gov/cross-sector-cybersecurity-performance-goals)

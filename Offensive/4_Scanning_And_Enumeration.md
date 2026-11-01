@@ -11,7 +11,7 @@ Discover what is listening and what software answers — **only on in-scope lab 
 | Host discovery | Which IPs respond |
 | Port / service | What is open; version hints |
 | Web surface | Paths, APIs, vhosts |
-| Auth surfaces | Login panels, SSO |
+| Auth surfaces | Login panels, SSO (single sign-on) |
 
 ## Tool mapping
 

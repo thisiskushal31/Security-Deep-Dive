@@ -14,7 +14,7 @@ Three complementary models. Use them together — none replaces the others.
 |-------|-----------|----------|
 | **Intrusion Kill Chain** (Hutchins, Cloppert, Amin — Lockheed Martin) | Seven phases an intrusion must complete | Mapping CoAs; forcing reuse of adversary infrastructure to cost them |
 | **Diamond Model** (Caltagirone, Pendergast, Betz — DoD monograph) | Adversary · Capability · Infrastructure · Victim + meta-features | Pivoting, clustering, campaign reconstruction |
-| **MITRE ATT&CK** | Tactics → techniques → procedures (enterprise / mobile / ICS / …) | Detection coverage, Navigator heat maps, purple-team scope |
+| **MITRE ATT&CK (Adversarial Tactics, Techniques, and Common Knowledge)** | Tactics → techniques → procedures (enterprise / mobile / ICS / …) | Detection coverage, Navigator heat maps, purple-team scope |
 
 ### Kill Chain — seven phases (definitions)
 
@@ -100,7 +100,7 @@ Illustrative CoA cells (from the paper’s Table 1 — examples, not a complete 
 
 **Meta-feature uses:** time windows for correlation; phase tags to align with Kill Chain CoAs; result (success/fail) so failed attempts still enrich the KB.
 
-### Infrastructure pivoting (daily CTI skill)
+### Infrastructure pivoting (daily CTI (Cyber Threat Intelligence) skill)
 
 Real CTI investigation is largely **legal, passive enrichment** from one observable to related infrastructure — then testing whether the link is diagnostic. Common pivot types (tool names change; the *questions* do not):
 
@@ -108,7 +108,7 @@ Real CTI investigation is largely **legal, passive enrichment** from one observa
 |------|-----------|---------------------|
 | Domain / FQDN | Passive DNS history, related hostnames | Same actor infra vs shared CDN/parking |
 | IP | Co-hosted domains, ASN/netblock, historical resolutions | Dedicated C2 vs noisy shared hosting |
-| TLS certificate | Same cert / same subject / same public key on other hosts | Related infrastructure cluster |
+| TLS (Transport Layer Security) certificate | Same cert / same subject / same public key on other hosts | Related infrastructure cluster |
 | File hash | Malware DB / sandbox → C2 domains, mutexes, similar samples | Family/tooling cluster |
 | Email | Headers, sending infra, kit URL, attachment hash | Campaign vs commodity spray |
 | URL / URI path | Unique path or UA string across victims | Same toolkit / same operator |
@@ -130,7 +130,7 @@ Observable → enrich (pDNS / WHOIS / cert / sandbox)
 | Navigator | Heat-map *observed* vs *covered by detection* vs *accepted risk* |
 | Detection engineering | Prefer technique-level analytics over brittle single IOCs ([5](./5_Detection_Oriented_Handoff.md)) |
 | Purple / adversary emulation | Scope authorized tests to techniques relevant to *your* PIRs |
-| Threat modeling | Feed STRIDE/DFD workshops with ATT&CK-relevant abuse paths ([Threat-Modeling/6](../Threat-Modeling/6_AI_And_Agentic_Threat_Modeling.md) for AI systems) |
+| Threat modeling | Feed STRIDE/DFD (Data Flow Diagram) workshops with ATT&CK-relevant abuse paths ([Threat-Modeling/6](../Threat-Modeling/6_AI_And_Agentic_Threat_Modeling.md) for AI systems) |
 
 **TI → ATT&CK mapping habit:**
 

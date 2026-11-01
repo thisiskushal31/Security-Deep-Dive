@@ -1,10 +1,10 @@
-# NIST CSF 2.0 outcomes
+# NIST CSF (Cybersecurity Framework) 2.0 outcomes
 
-[← GRC](./README.md)
+[← GRC (Governance, Risk, and Compliance)](./README.md)
 
 > **Progression:** concept → advanced → apply.
 
-Shared **outcomes language** for cybersecurity risk — so executives, managers, and engineers can talk about the same program without a single control catalog. Nesting map: [1](./1_NIST_ISO_And_ATTCK.md). Controls you implement: [4](./4_Control_Catalogs_800-53_And_CIS.md). Detection/IR homes: [Defensive-Ops](../Defensive-Ops/README.md).
+Shared **outcomes language** for cybersecurity risk — so executives, managers, and engineers can talk about the same program without a single control catalog. Nesting map: [1](./1_NIST_ISO_And_ATTCK.md). Controls you implement: [4](./4_Control_Catalogs_800-53_And_CIS.md). Detection/IR (incident response) homes: [Defensive-Ops](../Defensive-Ops/README.md).
 
 Not a checklist of products. The CSF does **not** prescribe *how* to achieve outcomes; it names *what* good cybersecurity risk management looks like at a high level.
 
@@ -98,7 +98,7 @@ A published mapping is a **navigation aid**. Implementing the mapped 800-53 cont
 |----|-------|
 | Tag major controls and epics to a Function/Category | Treat Subcategories as a mandatory ticket for every PR |
 | Use Current vs Target language in roadmap talks | Duplicate the entire Core into a spreadsheet nobody reads |
-| Point Detect/Respond gaps to SIEM/IR work | Claim “we’re CSF compliant” without a Profile or evidence story |
+| Point Detect/Respond gaps to SIEM (Security Information and Event Management)/IR work | Claim “we’re CSF compliant” without a Profile or evidence story |
 | Let Govern drive priorities (including suppliers) | Buy tools Function-by-Function with no overlap plan |
 
 [CISA Cross-Sector Cybersecurity Performance Goals (CPGs) 2.0](https://www.cisa.gov/cross-sector-cybersecurity-performance-goals) are a related **prioritized subset** for critical infrastructure (aligned to CSF 2.0 Functions, including Govern). Use CPGs to sequence first wins; use CSF Profiles for the fuller outcomes conversation. Mapping a CPG to a CSF Category is **not** the same as satisfying that Category end-to-end. Sector-Specific Goals (SSGs) exist for some sectors on the same CISA page.
@@ -110,8 +110,8 @@ Implementation habits (not a second Profile template):
 1. For your product or team, write one Current outcome and one Target outcome under **Govern** and under **Protect**.  
 2. Name which Category each sits in (use the table above).  
 3. List the engineering evidence that would show the Target (config, test, ticket, metric).  
-4. If Detect is weak, open [Defensive-Ops](../Defensive-Ops/README.md) before buying another “AI SOC” box.  
-5. Move to RMF when you need system authorization / control selection depth ([3](./3_NIST_RMF_Lifecycle.md)).
+4. If Detect is weak, open [Defensive-Ops](../Defensive-Ops/README.md) before buying another “AI SOC (Security Operations Center)” box.  
+5. Move to RMF (Risk Management Framework) when you need system authorization / control selection depth ([3](./3_NIST_RMF_Lifecycle.md)).
 
 ### Self-check
 

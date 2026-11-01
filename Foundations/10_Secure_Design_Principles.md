@@ -4,7 +4,7 @@
 
 > **Progression:** concept → advanced → apply. *Apply* here means foundation literacy and builder habits — not a specialty lab.
 
-These principles show up in almost every secure system. They complement control types ([2](./2_Controls_And_Physical.md)), access models ([7](./7_AAA_And_Access_Fundamentals.md)), and classic security models ([11](./11_Security_Models_And_Architecture_Literacy.md)). Product inception and SDLC application continue in [AppSec](../AppSec/README.md).
+These principles show up in almost every secure system. They complement control types ([2](./2_Controls_And_Physical.md)), access models ([7](./7_AAA_And_Access_Fundamentals.md)), and classic security models ([11](./11_Security_Models_And_Architecture_Literacy.md)). Product inception and SDLC (Software Development Life Cycle) application continue in [AppSec](../AppSec/README.md).
 
 ## Concept
 
@@ -44,7 +44,7 @@ These principles compose; the next section turns them into a builder habit.
 ## Apply
 1. Write data class and trust boundaries before features freeze ([12](./12_STRIDE_And_Threat_Modeling.md)).  
 2. Ship closed defaults; document every exception with owner and expiry ([9](./9_Change_Management_And_Security.md)).  
-3. Prefer boring, reviewed libraries and platform TLS over custom crypto ([8](./8_Cryptographic_Solutions_Literacy.md)).  
+3. Prefer boring, reviewed libraries and platform TLS (Transport Layer Security) over custom crypto ([8](./8_Cryptographic_Solutions_Literacy.md)).  
 4. Make authorization checks local to the resource owner (complete mediation).  
 5. Assume one layer fails; plan detect and recover ([2](./2_Controls_And_Physical.md)).
 

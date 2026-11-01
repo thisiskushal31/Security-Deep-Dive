@@ -1,4 +1,4 @@
-# Secure SDLC and AppSec program
+# Secure SDLC (Software Development Life Cycle) and AppSec (application security) program
 
 [← AppSec](./README.md)
 
@@ -33,10 +33,10 @@ Security activities belong **inside** the same lifecycle the team already uses �
 | **Requirements** | AuthZ rules, data class, abuse cases; keep a living security-requirements set | Features ship without deny-by-default rules |
 | **Design** | Threat model new trust boundaries; secure-by-default choices | “We’ll harden later” becomes never |
 | **Implementation** | Proactive controls in code (access control, validation, crypto, logging) | Every sprint reintroduces Top 10 themes |
-| **Verification** | Review + SAST/DAST/SCA + **authZ** tests; fix before promote | Scanners without triage theater |
+| **Verification** | Review + SAST (Static Application Security Testing)/DAST (Dynamic Application Security Testing)/SCA (Software Composition Analysis) + **authZ** tests; fix before promote | Scanners without triage theater |
 | **Operations** | Patch, config hygiene, logging→**alerting**, incident → regression | Same bug class returns next quarter |
 
-### How programs actually fail (before the CVE)
+### How programs actually fail (before the CVE (Common Vulnerabilities and Exposures))
 
 | Anti-pattern | What happens |
 |--------------|--------------|
@@ -94,11 +94,11 @@ Use the model as a **dashboard**, then deepen technical controls in notes 2–7 
 
 ### Positive build patterns (proactive controls)
 
-Risk lists say what goes wrong. Proactive controls say what to **build first**. Headline map below; implementation depth + WSTG testing literacy: [7](./7_Proactive_Controls_And_Testing_Literacy.md).
+Risk lists say what goes wrong. Proactive controls say what to **build first**. Headline map below; implementation depth + WSTG (Web Security Testing Guide) testing literacy: [7](./7_Proactive_Controls_And_Testing_Literacy.md).
 
 | # | Control | Stops (examples) |
 |---|---------|------------------|
-| **C1** | Implement access control | IDOR, missing authZ, force browsing |
+| **C1** | Implement access control | IDOR (Insecure Direct Object Reference), missing authZ, force browsing |
 | **C2** | Use cryptography to protect data | Cleartext secrets, weak crypto |
 | **C3** | Validate all input and handle exceptions | Injection inputs; A10-style fail-open |
 | **C4** | Address security from the start | Bolted-on controls after launch |
@@ -127,10 +127,10 @@ Wire the ordered gate chain in the pipeline repo ([DevOps-Handbook Security](htt
 | Concern | Owner in this handbook set |
 |---------|----------------------------|
 | Why AppSec exists; risk catalog; coding patterns | **This folder** |
-| Ordered PR→prod AST gates, tool wiring | DevOps-Handbook `Security/` |
-| Who the caller is (OAuth/OIDC/SAML) | [Identity](../Identity/README.md) |
+| Ordered PR→prod AST (Application Security Testing) gates, tool wiring | DevOps-Handbook `Security/` |
+| Who the caller is (OAuth/OIDC (OpenID Connect)/SAML (Security Assertion Markup Language)) | [Identity](../Identity/README.md) |
 | Crypto misuse details | [Cryptography](../Cryptography/README.md) |
-| KEV/EPSS prioritization after findings | [Vulnerability-Management](../Vulnerability-Management/README.md) |
+| KEV (Known Exploited Vulnerabilities)/EPSS (Exploit Prediction Scoring System) prioritization after findings | [Vulnerability-Management](../Vulnerability-Management/README.md) |
 | Packets, firewalls, VPC fabric | [Networks-Deep-Dive](https://github.com/thisiskushal31/Networks-Deep-Dive) |
 
 ```text
@@ -150,17 +150,17 @@ Design (threat model / PW.1)
 | Threat-model record for material changes | Trust boundaries before build |
 | Dual-control promote rule | No solo path from commit to production |
 | Test plan covering Top 10 themes | Especially A01 and A05 |
-| SBOM + dependency policy | A03 / C6 |
+| SBOM (Software Bill of Materials) + dependency policy | A03 / C6 |
 | Logging → alerting runbook | A09 — logs without alerts ≈ zero |
 | Incident → regression path | Every serious bug becomes a test |
 
 ### Separation of duties (supply-chain hygiene in the program)
 
-No single person should be able to write code **and** promote it all the way to production without oversight. Harden repos, developer workstations, CI/CD, artifact stores, and IaC the same way you harden the app — MFA, least privilege, branch protection, signed immutable builds, staged rollouts. Detail when we reach A03 in [2](./2_OWASP_Top_10_2025_In_Practice.md) and Cloud-Security supply chain.
+No single person should be able to write code **and** promote it all the way to production without oversight. Harden repos, developer workstations, CI/CD (continuous integration / continuous delivery), artifact stores, and IaC (Infrastructure as Code) the same way you harden the app — MFA (multi-factor authentication), least privilege, branch protection, signed immutable builds, staged rollouts. Detail when we reach A03 in [2](./2_OWASP_Top_10_2025_In_Practice.md) and Cloud-Security supply chain.
 
 ### Top 10 ≠ coding / testing standard
 
-Official Top 10:2025 guidance: the list is an **awareness** document — a starting place, not a complete program or verifiable coding standard. Several risks (notably **A06 Insecure Design**, and “logging + alerting actually works in prod”) are not fully tool-testable. Prefer **ASVS** ([6](./6_ASVS_Verification_Practice.md)) when you need requirements you can implement and evidence.
+Official Top 10:2025 guidance: the list is an **awareness** document — a starting place, not a complete program or verifiable coding standard. Several risks (notably **A06 Insecure Design**, and “logging + alerting actually works in prod”) are not fully tool-testable. Prefer **ASVS (Application Security Verification Standard)** ([6](./6_ASVS_Verification_Practice.md)) when you need requirements you can implement and evidence.
 
 | Use case | Top 10:2025 | ASVS |
 |----------|-------------|------|
@@ -186,7 +186,7 @@ Official Top 10:2025 guidance: the list is an **awareness** document — a start
 | Operate | Inventory, patch SLAs, logging→alerting, supply-chain hardening, periodic hardening + PT by assurance need |
 | Retire | Archive needed data; wipe the rest; delete unused roles; mark CMDB retired |
 
-Mature programs can self-assess with **SAMM** or **DSOMM** — use them as option menus, not unaffordable perfection checklists.
+Mature programs can self-assess with **SAMM (Software Assurance Maturity Model)** or **DSOMM** — use them as option menus, not unaffordable perfection checklists.
 
 ## Apply
 

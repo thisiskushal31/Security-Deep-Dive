@@ -12,14 +12,14 @@
 | Least privilege | Narrow roles; just-in-time elevation; short sessions |
 | Assume breach | Segment; encrypt; monitor; limit lateral movement |
 
-Zero Trust is a **strategy**, not a single product. Buying a ZTNA box without identity hygiene is theater.
+Zero Trust is a **strategy**, not a single product. Buying a ZTNA (Zero Trust Network Access) box without identity hygiene is theater.
 
 ## Mapping to this series
 
 | Slice | Home |
 |-------|------|
 | User/app federation | [OAuth/OIDC/SAML](./1_OAuth_OIDC_SAML.md) |
-| Design trade-offs (tokens, mTLS, gatekeeper) | [System-Design Auth vs ZT](https://github.com/thisiskushal31/System-Design-Concepts/blob/main/Security-Tradeoffs/2_Auth_Design_vs_Zero_Trust.md) |
+| Design trade-offs (tokens, mTLS (mutual Transport Layer Security), gatekeeper) | [System-Design Auth vs ZT (zero trust)](https://github.com/thisiskushal31/System-Design-Concepts/blob/main/Security-Tradeoffs/2_Auth_Design_vs_Zero_Trust.md) |
 | Wire / mesh | Networks Service-Mesh / Security |
 | Cloud posture | [Cloud-Security](../Cloud-Security/README.md) |
 

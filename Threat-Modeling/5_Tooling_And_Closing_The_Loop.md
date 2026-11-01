@@ -21,7 +21,7 @@ Tools accelerate drawing, STRIDE prompts, reporting, and sharing. They do not re
 
 Microsoft’s SDL tool pitch in one line: help non-security experts communicate design, analyze with a proven methodology, and manage mitigations — ideally plugged into the same issue tracker the team already uses.
 
-### ASVS architecture expectations (verification target)
+### ASVS (Application Security Verification Standard) architecture expectations (verification target)
 
 OWASP **ASVS** (v4 Architecture / Design / Threat Modeling family) treats threat modeling as something you can *verify*, not only admire:
 
@@ -33,7 +33,7 @@ OWASP **ASVS** (v4 Architecture / Design / Threat Modeling family) treats threat
 | Analyze high-level architecture and connected remote services | Partners and IdPs are in scope |
 | Centralize vetted reusable security controls | Economy of design — fewer bespoke crypto paths |
 
-Map mitigations to ASVS (or MASVS for mobile) when you need testable requirements. **Cornucopia** cards are built to accelerate that mapping into Agile stories ([1](./1_Workshop_Process.md)).
+Map mitigations to ASVS when you need testable requirements. **Cornucopia** cards are built to accelerate that mapping into Agile stories ([1](./1_Workshop_Process.md)).
 
 ## Advanced
 
@@ -42,7 +42,7 @@ Map mitigations to ASVS (or MASVS for mobile) when you need testable requirement
 | Approach | Strengths | Watch-outs |
 |----------|-----------|------------|
 | **Whiteboard + design doc** | Fastest; best for early argument | Easy to lose; hard to diff |
-| **OWASP Threat Dragon** | Open; diagrams + threats together; STRIDE/LINDDUN/CIA; GitHub-friendly | Still needs process discipline |
+| **OWASP Threat Dragon** | Open; diagrams + threats together; STRIDE/LINDDUN/CIA (Confidentiality, Integrity, Availability); GitHub-friendly | Still needs process discipline |
 | **Microsoft Threat Modeling Tool (TMT)** | SDL templates; STRIDE analysis view; Azure stencil packs; report export | Desktop/process fit varies by org |
 | **pytm (OWASP)** | Model-as-Python; diagrams/reports as outputs; CI-native | Visual reviewers need generated DFD |
 | **Threagile** | YAML model + rule engine; CI-friendly risk report | Schema learning curve |
@@ -116,7 +116,7 @@ Lightweight design review is enough for routine low-risk changes. Formal TM (dia
 | Stakeholder review | Not only security signed off |
 | Change control | Model versioned with the design; empty-whiteboard start beats a huge Visio nobody but the author understands |
 
-NIST **SSDF PW.1.2** (SP 800-218): keep design-time risk decisions current as the software changes — same spirit as Manifesto continuous refinement.
+NIST **SSDF (Secure Software Development Framework) PW.1.2** (SP 800-218): keep design-time risk decisions current as the software changes — same spirit as Manifesto continuous refinement.
 
 ### Revisit triggers (operationalize)
 
@@ -124,8 +124,8 @@ NIST **SSDF PW.1.2** (SP 800-218): keep design-time risk decisions current as th
 |---------|----------------|
 | New trust boundary | Delta DFD + STRIDE on new crossings |
 | New personal / payment data | STRIDE + LINDDUN pass ([4](./4_Attack_Trees_And_LINDDUN.md)) |
-| New IdP / partner / admin plane | Spoofing, elevation, disclosure review |
-| Shared-responsibility / cloud topology change | Update edges; re-check IAM and stores |
+| New IdP (identity provider) / partner / admin plane | Spoofing, elevation, disclosure review |
+| Shared-responsibility / cloud topology change | Update edges; re-check IAM (Identity and Access Management) and stores |
 | Incident / near-miss on modeled path | Patch model + controls; add test |
 | Major dependency or authz model change | Re-open Q2–Q3 |
 
@@ -179,7 +179,7 @@ Vanity: number of models filed with no tickets.
 ## Next
 
 - [AI and agentic threat modeling](./6_AI_And_Agentic_Threat_Modeling.md)
-- Back to [Threat-Modeling README](./README.md) · secure SDLC in [AppSec](../AppSec/README.md) · first-principles network path in [Networks-Deep-Dive](https://github.com/thisiskushal31/Networks-Deep-Dive).
+- Back to [Threat-Modeling README](./README.md) · secure SDLC (Software Development Life Cycle) in [AppSec](../AppSec/README.md) · first-principles network path in [Networks-Deep-Dive](https://github.com/thisiskushal31/Networks-Deep-Dive).
 
 ## Further reading
 

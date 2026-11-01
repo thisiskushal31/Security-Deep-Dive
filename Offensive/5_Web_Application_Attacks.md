@@ -9,12 +9,12 @@ How testers **think about** web risk. Practice on intentionally vulnerable labs 
 | Class | What goes wrong | Defender grain |
 |-------|-----------------|----------------|
 | Injection | Untrusted input becomes code/query | Parameterize; encode |
-| Broken auth / session | Weak login, fixation, logout fails | OIDC/MFA; secure cookies |
-| Broken access control | IDOR, privilege climb | Object-level authZ |
-| XSS | Script in victim browser | Encode; CSP |
-| CSRF | State change without intent | Tokens; SameSite |
-| SSRF | Server fetches attacker URL | Egress allowlists |
-| Misconfig | Default creds, directory listing | Harden; CSPM |
+| Broken auth / session | Weak login, fixation, logout fails | OIDC (OpenID Connect)/MFA (multi-factor authentication); secure cookies |
+| Broken access control | IDOR (Insecure Direct Object Reference), privilege climb | Object-level authZ |
+| XSS (Cross-Site Scripting) | Script in victim browser | Encode; CSP |
+| CSRF (Cross-Site Request Forgery) | State change without intent | Tokens; SameSite |
+| SSRF (Server-Side Request Forgery) | Server fetches attacker URL | Egress allowlists |
+| Misconfig | Default creds, directory listing | Harden; CSPM (Cloud Security Posture Management) |
 
 ## Proxy workflow
 

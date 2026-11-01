@@ -1,6 +1,6 @@
-# ISO 27001 ISMS literacy
+# ISO 27001 ISMS (Information Security Management System) literacy
 
-[← GRC](./README.md)
+[← GRC (Governance, Risk, and Compliance)](./README.md)
 
 > **Progression:** concept → advanced → apply.
 
@@ -54,9 +54,9 @@ ISO/IEC 27001:2022 revised Annex A (grouped in public explainers as organization
 | **ISO/IEC 27000** | Overview / concepts for the ISMS family |
 | **ISO/IEC 27005** (and related) | Risk management guidance often used alongside 27001 planning |
 
-Paid standard text stays off this wiki; purpose and certification facts are enough for literacy. CSF↔ISO/IEC 27001 informative references are linked from [2](./2_NIST_CSF_2_Outcomes.md) when you need a crosswalk.
+Paid standard text stays off this wiki; purpose and certification facts are enough for literacy. CSF (Cybersecurity Framework)↔ISO/IEC 27001 informative references are linked from [2](./2_NIST_CSF_2_Outcomes.md) when you need a crosswalk.
 
-**Surveillance / recertification:** certificates are not forever. Expect ongoing internal audit, management review, and external surveillance — the same “continuous” muscle SOC 2 Type II needs ([6](./6_SOC2_And_Evidence.md)).
+**Surveillance / recertification:** certificates are not forever. Expect ongoing internal audit, management review, and external surveillance — the same “continuous” muscle SOC 2 (System and Organization Controls 2) Type II needs ([6](./6_SOC2_And_Evidence.md)).
 
 ### Certification vs “we have controls”
 
@@ -74,7 +74,7 @@ A pile of CIS Safeguards without scope, SoA, internal audit, and management revi
 |-----------|-------------------------|
 | CSF | Outcomes language for leadership conversations |
 | 800-53 / CIS | Detailed control catalogs mapped into the SoA / risk treatment |
-| SOC 2 | Customer assurance report (US-heavy SaaS); can coexist with ISO certification |
+| SOC 2 | Customer assurance report (US-heavy SaaS (Software as a Service)); can coexist with ISO certification |
 
 Pick one **management system** story. Map catalogs into it. Do not run “ISO program” and “SOC program” as unrelated empires ([1](./1_NIST_ISO_And_ATTCK.md)).
 
@@ -103,4 +103,4 @@ Implementation habits before you talk to a certification body:
 
 - [ISO/IEC 27001 — Information security management systems](https://www.iso.org/standard/27001)
 - [ISO — Management system standards (certification note)](https://www.iso.org/management-system-standards.html)
-- [ISO/IEC 27000 overview (family concepts)](https://www.iso.org/standard/27000)
+- [ISO/IEC 27000 overview](https://www.iso.org/standard/27000)

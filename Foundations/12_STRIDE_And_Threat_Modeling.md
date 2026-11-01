@@ -6,7 +6,7 @@
 
 Threat modeling is a structured way to find what can go wrong in a design before you ship a new trust boundary. The goal is prioritized mitigations with owners — not a diagram for its own sake.
 
-Architecture worked examples: [System-Design Security-Tradeoffs/1](https://github.com/thisiskushal31/System-Design-Concepts/blob/main/Security-Tradeoffs/1_Threat_Modeling_At_Design_Time.md). SDLC placement: [AppSec/1](../AppSec/1_OWASP_And_Secure_SDLC.md). Attacker-centric models: [18](./18_Adversary_Models_Kill_Chain_And_ATTCK.md). Workshop / method depth beyond literacy: [Threat-Modeling](../Threat-Modeling/README.md) (including [AI/agentic TM](../Threat-Modeling/6_AI_And_Agentic_Threat_Modeling.md)).
+Architecture worked examples: [System-Design Security-Tradeoffs/1](https://github.com/thisiskushal31/System-Design-Concepts/blob/main/Security-Tradeoffs/1_Threat_Modeling_At_Design_Time.md). SDLC placement: [AppSec/1](../AppSec/1_Secure_SDLC_And_AppSec_Program.md). Attacker-centric models: [18](./18_Adversary_Models_Kill_Chain_And_ATTCK.md). Workshop / method depth beyond literacy: [Threat-Modeling](../Threat-Modeling/README.md) (including [AI/agentic TM](../Threat-Modeling/6_AI_And_Agentic_Threat_Modeling.md)).
 
 ## Concept
 
@@ -14,7 +14,7 @@ Architecture worked examples: [System-Design Security-Tradeoffs/1](https://githu
 
 | Question | Typical activity |
 |----------|------------------|
-| What are we working on? | Diagram / DFD; assets; actors |
+| What are we working on? | Diagram / DFD (Data Flow Diagram); assets; actors |
 | What can go wrong? | STRIDE, attack trees, abuse cases, ATT&CK-informed prompts |
 | What are we going to do about it? | Mitigate, eliminate, transfer, or accept — with owners |
 | Did we do a good enough job? | Review, tests, revisit when boundaries change |
@@ -90,9 +90,9 @@ STRIDE groups threats so teams ask pointed questions about the design:
 |------|------|
 | Likelihood × impact (from [1](./1_CIA_And_Risk.md)) | Default prioritization for design threats |
 | **DREAD** (Damage, Reproducibility, Exploitability, Affected users, Discoverability) | Older mnemonic some courses still teach for ranking; treat as optional awareness, not a required process |
-| **CVSS** | Severity score for **vulnerabilities** (scanner/NVD language). Companion to triage, not a threat-modeling method by itself |
+| **CVSS (Common Vulnerability Scoring System)** | Severity score for **vulnerabilities** (scanner/NVD language). Companion to triage, not a threat-modeling method by itself |
 
-Use CVSS when comparing known CVEs or verified vulns. Use likelihood × impact (or a documented local scale) when ranking design threats that do not yet have a CVE.
+Use CVSS when comparing known CVEs or verified vulns. Use likelihood × impact (or a documented local scale) when ranking design threats that do not yet have a CVE (Common Vulnerabilities and Exposures).
 
 ## Advanced
 
@@ -101,7 +101,7 @@ Use CVSS when comparing known CVEs or verified vulns. Use likelihood × impact (
 | Method | Role |
 |--------|------|
 | Attack trees | Decompose how an attacker reaches a goal |
-| PASTA | Heavier, risk-centric staged process tying tech threats to business impact |
+| PASTA (Process for Attack Simulation and Threat Analysis) | Heavier, risk-centric staged process tying tech threats to business impact |
 | LINDDUN | Privacy-oriented threat categories |
 | Abuse / misuse cases | Misuse stories next to user stories |
 | VAST | Agile-scale habit: separate application and operational models across many teams |

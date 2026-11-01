@@ -4,7 +4,7 @@
 
 > **Progression:** concept → advanced → apply.
 
-How to threat-model systems that include **LLMs, RAG, tools, memory, and agents** — without abandoning the four questions or DFD/STRIDE. Threat *literacy* (what AI-era threats are): [Threats/8](../Threats/8_AI_Era_Threats.md). Build/operate depth: [AI-Security](../AI-Security/README.md). Classical method: [1](./1_Workshop_Process.md)–[5](./5_Tooling_And_Closing_The_Loop.md).
+How to threat-model systems that include **LLMs, RAG (retrieval-augmented generation), tools, memory, and agents** — without abandoning the four questions or DFD (Data Flow Diagram)/STRIDE. Threat *literacy* (what AI-era threats are): [Threats/8](../Threats/8_AI_Era_Threats.md). Build/operate depth: [AI-Security](../AI-Security/README.md). Classical method: [1](./1_Workshop_Process.md)–[5](./5_Tooling_And_Closing_The_Loop.md).
 
 No jailbreak recipes, red-team payloads, or misuse enablement — definitions, elicitation checklists, and program framing only ([Foundations/3](../Foundations/3_Ethics_Authorization_And_Lab_Rules.md)).
 
@@ -25,10 +25,10 @@ Four questions + DFD + STRIDE (notes 1–2)
 |---------|------------|
 | **DHS / CISA three categories** | Scope the *picture*: attacks **using** AI · attacks **targeting** AI · **failures** in AI design/implementation — [Threats/8](../Threats/8_AI_Era_Threats.md) |
 | **STRIDE-per-element** | Classical trust-boundary issues still present (spoofed callers, tampered tool args, disclosure of context, DoS on inference, elevation via tools) |
-| **OWASP LLM Top 10** | LLM *applications* — prompt/RAG/output/supply-chain risks |
+| **OWASP LLM (large language model) Top 10** | LLM *applications* — prompt/RAG/output/supply-chain risks |
 | **OWASP ASI Top 10** | *Agentic* apps — goals, tools, identity, memory, multi-agent, cascades |
 | **CSA MAESTRO** | Layered decomposition of agent stacks + cross-layer cascades |
-| **MITRE ATLAS** | Living TTP knowledge base for AI (like ATT&CK for AI-shaped campaigns) |
+| **MITRE ATLAS** | Living TTP knowledge base for AI (like ATT&CK (Adversarial Tactics, Techniques, and Common Knowledge) for AI-shaped campaigns) |
 
 ### Component vs actor (pick the right checklist)
 
@@ -62,7 +62,7 @@ Add elements (or label existing ones) so threats have somewhere to land:
 | **Model / inference API** | Process or external store — who can call it; what context it sees |
 | **System / developer prompts** | Sensitive *instructions* — treat as privileged config, not “just text” |
 | **RAG / vector store / embeddings** | Store + flows: ingest → embed → retrieve → inject into context |
-| **Tools / plugins / MCP servers** | Processes with real side effects (mail, code, cloud APIs) |
+| **Tools / plugins / MCP (Model Context Protocol) servers** | Processes with real side effects (mail, code, cloud APIs) |
 | **Agent memory / session store** | Persistence across turns — poisoning lasts longer than one prompt |
 | **Orchestrator / planner** | Process that chooses tools and next steps |
 | **Other agents (A2A)** | Interactors or processes with their own trust boundaries |
@@ -140,7 +140,7 @@ Useful distinctions from OWASP (keep them straight in the threat list):
 | **7 Agent Ecosystem** | Marketplace / apps / users | Compromised or impersonated agents, goal manipulation, tool misuse, registry poisoning |
 | **6 Security & Compliance** (vertical) | Controls across layers | Poisoned/evaded security agents, non-compliance, extraction of security models |
 | **5 Evaluation & Observability** | Eval, metrics, monitoring | Metric manipulation, blind spots, leakage via logs/dashboards |
-| **4 Deployment & Infrastructure** | Cloud/K8s/IaC | Compromised images, orchestration abuse, resource hijack, lateral movement |
+| **4 Deployment & Infrastructure** | Cloud/K8s/IaC (Infrastructure as Code) | Compromised images, orchestration abuse, resource hijack, lateral movement |
 | **3 Agent Frameworks** | SDKs, toolkits, orchestration libs | Compromised framework components, supply chain, weak input handling |
 | **2 Data Operations** | DB, vector stores, RAG pipelines | Poisoning, exfil, tampering, compromised retrieval pipelines |
 | **1 Foundation Models** | Base LLM / PredAI | Adversarial examples, model theft, backdoors, membership inference, train-time poison, DoS/sponge |
@@ -170,7 +170,7 @@ Useful distinctions from OWASP (keep them straight in the threat list):
 
 Tactics you will see on the official matrix (order as published): Reconnaissance · Resource Development · **AI Attack Adaptation** · Initial Access · **AI Model Access** · Execution · Persistence · Privilege Escalation · Defense Evasion · Credential Access · Discovery · Lateral Movement · Collection · Command and Control · Exfiltration · Impact. AI-specific flavors that often appear in agent models include prompt injection, RAG poisoning, agent tool invocation/poisoning, agent context poisoning, and exfiltration via tools or inference APIs — name them from ATLAS, do not invent private taxonomies.
 
-### F. How PASTA and attack trees still help
+### F. How PASTA (Process for Attack Simulation and Threat Analysis) and attack trees still help
 
 | Method | AI-era use |
 |--------|------------|
@@ -188,12 +188,12 @@ Write mitigations as **requirements and design choices**, then ticket them:
 | **Agency** | Least-privilege tools; deny-by-default tool allowlists; human approval for high-impact actions; kill switch / disable agent |
 | **Identity** | Distinct non-human identities per agent/tool; no shared god-credentials; short-lived tokens |
 | **Memory / RAG** | Access control on corpora; integrity of ingest; tenant isolation; purge/rotate poisoned memory |
-| **Supply chain** | Pin/sign models and MCP packages; review tool descriptors; AIBOM/SBOM for AI deps |
+| **Supply chain** | Pin/sign models and MCP packages; review tool descriptors; AIBOM (AI Bill of Materials)/SBOM (Software Bill of Materials) for AI deps |
 | **Output handling** | Never execute or render model output as trusted code/HTML/SQL without validation appropriate to the sink |
 | **Consumption** | Quotas, rate limits, max tool loops, cost alerts |
 | **Observability** | Log tool calls, goal state, retrieval IDs; alert on anomalous fan-out (ASI08) |
 | **Human factors** | Out-of-band verify money/access; train operators against automation bias (ASI09) |
-| **Classic baseline** | Patch hosts, lock down CI/CD, segment networks — compromising the box often beats attacking the model |
+| **Classic baseline** | Patch hosts, lock down CI/CD (continuous integration / continuous delivery), segment networks — compromising the box often beats attacking the model |
 
 ## Apply
 
@@ -201,7 +201,7 @@ Write mitigations as **requirements and design choices**, then ticket them:
 2. Run STRIDE-per-element for 20 minutes. List three threats STRIDE named cleanly and three it only hinted at.  
 3. Walk **LLM01–LLM10** against that diagram; file concrete threats with element IDs.  
 4. If any tool can change state in another system, also walk **ASI01–ASI10**; mark which ASI entries are N/A with a one-line reason.  
-5. Map the system onto **MAESTRO** layers 1–7 (even if some layers are “N/A — managed SaaS”). Identify one **cross-layer** cascade.  
+5. Map the system onto **MAESTRO** layers 1–7 (even if some layers are “N/A — managed SaaS (Software as a Service)”). Identify one **cross-layer** cascade.  
 6. Pick the top three threats; for each write mitigate vs accept, owner, and a validation idea (test, gate, or monitoring).  
 7. Open [ATLAS](https://atlas.mitre.org/), filter **Agentic AI** or **Generative AI**, and attach one realized/demonstrated technique to each of those top three.
 
@@ -230,4 +230,4 @@ Back to [Threat-Modeling README](./README.md) · threat literacy in [Threats/8](
 - [NIST AI 600-1 — Generative AI Profile](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence)
 - [CISA / NCSC et al. — Guidelines for secure AI system development](https://www.cisa.gov/resources-tools/resources/guidelines-secure-ai-system-development)
 - [CCCS — Top 10 artificial intelligence security actions](https://www.cyber.gc.ca/en/guidance/top-10-artificial-intelligence-security-actions-primer-itsap10049)
-- [Threats/8 — AI-era threats (literacy)](../Threats/8_AI_Era_Threats.md)
+- [Threats/8 — AI-era threats](../Threats/8_AI_Era_Threats.md)

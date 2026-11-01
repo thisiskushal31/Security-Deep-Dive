@@ -1,10 +1,10 @@
 # Proactive controls and testing literacy
 
-[← AppSec](./README.md)
+[← AppSec (application security)](./README.md)
 
 > **Progression:** concept → advanced → apply.
 
-How to **build** the right controls early (**OWASP Top 10 Proactive Controls 2024**) and **verify** running apps with literate use of the **Web Security Testing Guide (WSTG v4.2)** — without turning either into an exploit cookbook. Program spine: [1](./1_Secure_SDLC_And_AppSec_Program.md). Risks: [2](./2_OWASP_Top_10_2025_In_Practice.md). Requirements yardstick: [6](./6_ASVS_Verification_Practice.md). Deep PTES / lab exploitation: [Offensive](../Offensive/README.md). CI gate wiring: [DevOps-Handbook Security](https://github.com/thisiskushal31/DevOps-Handbook/tree/main/Security).
+How to **build** the right controls early (**OWASP Top 10 Proactive Controls 2024**) and **verify** running apps with literate use of the **Web Security Testing Guide (WSTG v4.2)** — without turning either into an exploit cookbook. Program spine: [1](./1_Secure_SDLC_And_AppSec_Program.md). Risks: [2](./2_OWASP_Top_10_2025_In_Practice.md). Requirements yardstick: [6](./6_ASVS_Verification_Practice.md). Deep PTES (Penetration Testing Execution Standard) / lab exploitation: [Offensive](../Offensive/README.md). CI gate wiring: [DevOps-Handbook Security](https://github.com/thisiskushal31/DevOps-Handbook/tree/main/Security).
 
 Top 10 says what goes wrong. Proactive controls say what to implement first. ASVS says what “verified” means. WSTG says how to test the running system. Use all four; do not collapse them into one list.
 
@@ -33,13 +33,13 @@ Each control page uses the same shape: Description → Threat(s) → Implementat
 | # | Control | Builder habit | Deepen |
 |---|---------|---------------|--------|
 | **C1** | Implement Access Control | Design authZ up front; PEP on every request; deny by default; least privilege / JIT-JEA; prefer permission checks over hard-coded role soup | [3](./3_Access_Control_And_Authentication.md), [5](./5_API_Security_Top_10_2023.md) |
-| **C2** | Use Cryptography to Protect Data | Managed crypto; TLS; no homemade ciphers | [Cryptography](../Cryptography/README.md) |
+| **C2** | Use Cryptography to Protect Data | Managed crypto; TLS (Transport Layer Security); no homemade ciphers | [Cryptography](../Cryptography/README.md) |
 | **C3** | Validate all Input & Handle Exceptions | Syntactic then semantic validation; allowlist > denylist; server-side always; parametrize / encode; fail closed | [4](./4_Injection_And_Output_Encoding.md), A10 in [2](./2_OWASP_Top_10_2025_In_Practice.md) |
 | **C4** | Address Security from the Start | KISS; secure defaults; minimize attack surface; defense-in-depth; threat model; secure architecture patterns | [1](./1_Secure_SDLC_And_AppSec_Program.md), [Threat-Modeling](../Threat-Modeling/README.md) |
 | **C5** | Secure By Default Configurations | Locked-down baselines; explicit opt-in to risk | A02 in [2](./2_OWASP_Top_10_2025_In_Practice.md), API8 in [5](./5_API_Security_Top_10_2023.md) |
-| **C6** | Keep your Components Secure | Inventory, patch, pin, SBOM; do not fight the framework | A03 in [2](./2_OWASP_Top_10_2025_In_Practice.md), [Cloud-Security](../Cloud-Security/README.md) |
-| **C7** | Secure Digital Identities | MFA, sessions, federation done right | [3](./3_Access_Control_And_Authentication.md), [Identity](../Identity/README.md) |
-| **C8** | Leverage Browser Security Features | Cookie flags, CSP, security headers — defense in depth, not sole XSS fix | [4](./4_Injection_And_Output_Encoding.md) |
+| **C6** | Keep your Components Secure | Inventory, patch, pin, SBOM (Software Bill of Materials); do not fight the framework | A03 in [2](./2_OWASP_Top_10_2025_In_Practice.md), [Cloud-Security](../Cloud-Security/README.md) |
+| **C7** | Secure Digital Identities | MFA (multi-factor authentication), sessions, federation done right | [3](./3_Access_Control_And_Authentication.md), [Identity](../Identity/README.md) |
+| **C8** | Leverage Browser Security Features | Cookie flags, CSP, security headers — defense in depth, not sole XSS (Cross-Site Scripting) fix | [4](./4_Injection_And_Output_Encoding.md) |
 | **C9** | Implement Security Logging and Monitoring | Security events + **alerts** + response; no secrets in logs | A09 in [2](./2_OWASP_Top_10_2025_In_Practice.md) |
 | **C10** | Stop Server Side Request Forgery | Allowlist / isolate fetchers; secure XML parsers | [3](./3_Access_Control_And_Authentication.md), API7 in [5](./5_API_Security_Top_10_2023.md) |
 
@@ -49,10 +49,10 @@ Each control page uses the same shape: Description → Threat(s) → Implementat
 
 | Is | Is not |
 |----|--------|
-| Consensus testing **techniques** for web apps/services | Exhaustive CVE checklist |
+| Consensus testing **techniques** for web apps/services | Exhaustive CVE (Common Vulnerabilities and Exposures) checklist |
 | Role guide for developers, QA, security, PMs | Substitute for ASVS requirements |
 | Place to start; tailor and re-prioritize | Blind “complete every test” mandate |
-| Complements SAST/DAST/SCA | Proof you are secure if scanners are green |
+| Complements SAST (Static Application Security Testing)/DAST (Dynamic Application Security Testing)/SCA (Software Composition Analysis) | Proof you are secure if scanners are green |
 
 Stable citation release today: **v4.2** ([wstg.owasp.org](https://wstg.owasp.org/)). “Latest” tracks work toward 5.0 — cite **versioned** links for contracts and tickets.
 
@@ -74,7 +74,7 @@ Prefer versioned URLs — `stable` / `latest` move under you.
 | **4.2** | Configuration & Deployment | Hardening, default creds, cloud buckets |
 | **4.3** | Identity Management | Registration, account provisioning |
 | **4.4** | Authentication | Login, MFA, recovery ([3](./3_Access_Control_And_Authentication.md)) |
-| **4.5** | Authorization | IDOR, vertical/horizontal, BFLA |
+| **4.5** | Authorization | IDOR (Insecure Direct Object Reference), vertical/horizontal, BFLA (Broken Function Level Authorization) |
 | **4.6** | Session Management | Fixation, timeout, cookies |
 | **4.7** | Input Validation | Injection / XSS families ([4](./4_Injection_And_Output_Encoding.md)) |
 | **4.8** | Error Handling | Info leaks, fail-open |
@@ -88,7 +88,7 @@ API-heavy products still use these chapters plus API Top 10 scenarios in [5](./5
 
 ### C1 — access control (implementation spine)
 
-From the official control: design thoroughly up front (RBAC vs ABAC); force every request through a Policy Enforcement Point; **one** consolidated check library; deny by default (including exceptions during authZ); least privilege / JIT-JEA; avoid fragile `hasRole("ADMIN")` forests — prefer permission/attribute checks that survive multi-tenancy.
+From the official control: design thoroughly up front (RBAC (Role-Based Access Control) vs ABAC (Attribute-Based Access Control)); force every request through a Policy Enforcement Point; **one** consolidated check library; deny by default (including exceptions during authZ); least privilege / JIT-JEA; avoid fragile `hasRole("ADMIN")` forests — prefer permission/attribute checks that survive multi-tenancy.
 
 Align **all** paths (UI, API, jobs, admin tools) to the same checks — weakest path wins for the attacker.
 
@@ -100,8 +100,8 @@ Align **all** paths (UI, API, jobs, admin tools) to the same checks — weakest 
 | Allowlist | Prefer known-good; denylist only as detection aid |
 | Where | Server-side for security; client-side for UX |
 | Regex | Useful; watch ReDoS; sometimes plain code is clearer |
-| Mass assignment | DTOs or allowlisted bind fields ([5](./5_API_Security_Top_10_2023.md) BOPLA) |
-| Limits | Valid email can still be SQLi — validation ≠ primary injection defense |
+| Mass assignment | DTOs or allowlisted bind fields ([5](./5_API_Security_Top_10_2023.md) BOPLA (Broken Object Property Level Authorization)) |
+| Limits | Valid email can still be SQLi (SQL injection) — validation ≠ primary injection defense |
 | Separate data/commands | Prepared statements, safe APIs, no SSTI of user input |
 | HTML | Sanitize with a real library when markup is required |
 | Deserialize | Prefer JSON; never trust hostile serialization blindly |
@@ -125,8 +125,8 @@ Log malicious-looking activity (out-of-range data, tampered limited fields, auth
 |---------|------------------------|
 | **C5** | Secure baselines for frameworks, containers, cloud; disable unused verbs/features; no default admin passwords; config review in CI |
 | **C6** | Pin versions; SCA in PR; remove unused deps; prefer maintained frameworks with secure defaults; subscribe to advisories |
-| **C7** | MFA on sensitive apps; secure session lifecycle; prefer hardened IdP; re-auth for account changes ([3](./3_Access_Control_And_Authentication.md), [Identity](../Identity/README.md)) |
-| **C8** | Cookie flags + response headers below — still encode for XSS ([4](./4_Injection_And_Output_Encoding.md)) |
+| **C7** | MFA on sensitive apps; secure session lifecycle; prefer hardened IdP (identity provider); re-auth for account changes ([3](./3_Access_Control_And_Authentication.md), [Identity](../Identity/README.md)) |
+| **C8** | Cookie flags + response headers below — still encode for XSS |
 
 ### C8 — header / cookie checklist (builder)
 
@@ -143,13 +143,13 @@ Log malicious-looking activity (out-of-range data, tampered limited fields, auth
 
 Full table and upload-serving headers: [4](./4_Injection_And_Output_Encoding.md).
 
-### C8 / C10 — browser features & SSRF
+### C8 / C10 — browser features & SSRF (Server-Side Request Forgery)
 
 CSP, `HttpOnly`, security headers shrink blast radius — never the only XSS control. SSRF: allowlist targets, isolate fetchers, harden XML against XXE-as-SSRF ([3](./3_Access_Control_And_Authentication.md)).
 
 ### Paved roads (program → code)
 
-Official modern AppSec program guidance: give developers SAST + SCA + **secret** + **IaC** scanners **and** teach them; ship **guardrails** and **paved roads** (secure authZ, CSRF, validation libraries as the default path); secret manager + docs; security IDE plugins. Champions programs and abuse-case tests belong beside WSTG literacy ([1](./1_Secure_SDLC_And_AppSec_Program.md)).
+Official modern AppSec program guidance: give developers SAST + SCA + **secret** + **IaC (Infrastructure as Code)** scanners **and** teach them; ship **guardrails** and **paved roads** (secure authZ, CSRF (Cross-Site Request Forgery), validation libraries as the default path); secret manager + docs; security IDE plugins. Champions programs and abuse-case tests belong beside WSTG literacy ([1](./1_Secure_SDLC_And_AppSec_Program.md)).
 
 ### WSTG authorization literacy (example shape)
 

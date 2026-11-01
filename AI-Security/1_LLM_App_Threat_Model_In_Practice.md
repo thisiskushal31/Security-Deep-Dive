@@ -1,4 +1,4 @@
-# LLM application threat model in practice
+# LLM (large language model) application threat model in practice
 
 [← AI-Security](./README.md)
 
@@ -14,7 +14,7 @@ No jailbreak recipes. Authorized testing process: [6](./6_Authorized_AI_Evaluati
 
 | TM/6 (workshop) | This note (operate) |
 |-----------------|---------------------|
-| Elicit threats with LLM/ASI/MAESTRO | Own a living threat register tied to **DFD + tickets** |
+| Elicit threats with LLM/ASI/MAESTRO | Own a living threat register tied to **DFD (Data Flow Diagram) + tickets** |
 | Pick component vs actor checklists | Gate **releases** and tool grants on checklist outcomes |
 | Map ATLAS for realism | Feed **detection / eval** ([6](./6_Authorized_AI_Evaluation.md)) and CTI ([Threat-Intelligence](../Threat-Intelligence/README.md)) |
 
@@ -22,7 +22,7 @@ No jailbreak recipes. Authorized testing process: [6](./6_Authorized_AI_Evaluati
 
 | Framing | System shape | Primary catalogs |
 |---------|--------------|------------------|
-| **Model as component** | Chat, summarize, classify, RAG Q&A with limited/no tools | OWASP **LLM Top 10 (2026)** + STRIDE |
+| **Model as component** | Chat, summarize, classify, RAG (retrieval-augmented generation) Q&A with limited/no tools | OWASP **LLM Top 10 (2026)** + STRIDE |
 | **Model as actor (agentic)** | Plans, tools, memory, multi-agent, side effects | LLM Top 10 **plus** OWASP **ASI Top 10 (2026)** + MAESTRO layers |
 
 Program floor for agents: prefer **low-risk, non-sensitive** agentic tasks; never grant broad unrestricted access; human gates for high-impact actions; AI controls **add to** patching, identity, logging — they do not replace them.
@@ -32,10 +32,10 @@ Program floor for agents: prefer **low-risk, non-sensitive** agentic tasks; neve
 Teams that “did a workshop once” still ship the lethal trifecta because ownership never landed on a living register. Practice depth means:
 
 1. **Draw** the DFD with every untrusted content path and every tool principal.  
-2. **Walk** LLM (and ASI if agentic) catalogs against that diagram — not against a slide template.  
+2. **Walk** LLM catalogs against that diagram — not against a slide template.  
 3. **Record** each gap as a register row with ticket + eval coverage.  
 4. **Gate** releases and tool grants on open critical rows.  
-5. **Re-walk** when you add MCP, a new retrieve source, or a new autonomy tier.
+5. **Re-walk** when you add MCP (Model Context Protocol), a new retrieve source, or a new autonomy tier.
 
 If step 4 is missing, Map never becomes Manage.
 
@@ -70,7 +70,7 @@ Untrusted content (user, RAG, tools, memory)
 
 Program risk work sits in four continuous functions — govern the culture, map context and risks, measure them, manage treatments:
 
-![NIST AI RMF Core — GOVERN, MAP, MEASURE, MANAGE](../Assets/AI-Security/NIST_AI_RMF_Fig5_Core_Functions.png)
+![NIST AI RMF (Risk Management Framework) Core — GOVERN, MAP, MEASURE, MANAGE](../Assets/AI-Security/NIST_AI_RMF_Fig5_Core_Functions.png)
 
 *Credit: NIST AI RMF 1.0 (AI 100-1), Figure 5.*
 
@@ -89,16 +89,16 @@ Use as a **release checklist** against your diagram:
 
 | ID | Risk | Primary control owners | Deepen in |
 |----|------|------------------------|-----------|
-| **LLM01** | Prompt Injection | AppSec + platform — assume bypass; constrain blast radius | [2](./2_Prompt_Injection_Defenses.md) |
+| **LLM01** | Prompt Injection | AppSec (application security) + platform — assume bypass; constrain blast radius | [2](./2_Prompt_Injection_Defenses.md) |
 | **LLM02** | Sensitive Information Disclosure | Privacy + AppSec — minimize context; redaction; no secrets in prompts | [3](./3_RAG_And_Memory_Hardening.md) |
-| **LLM03** | Excessive Agency | Platform + IAM — least privilege tools; human gates | [4](./4_Agentic_Controls.md) |
+| **LLM03** | Excessive Agency | Platform + IAM (Identity and Access Management) — least privilege tools; human gates | [4](./4_Agentic_Controls.md) |
 | **LLM04** | Supply Chain | SecEng + procurement — pin/sign/attest models & tools | [5](./5_Model_And_Data_Supply_Chain.md) |
 | **LLM05** | Data and Model Poisoning | Data + MLOps — ingest integrity; fine-tune controls | [3](./3_RAG_And_Memory_Hardening.md), [5](./5_Model_And_Data_Supply_Chain.md) |
 | **LLM06** | Unbounded Consumption | SRE + FinOps — quotas, rate limits, cost caps | [4](./4_Agentic_Controls.md) |
 | **LLM07** | Misinformation | Product + risk — grounding, citations, human decision rules | [3](./3_RAG_And_Memory_Hardening.md), [6](./6_Authorized_AI_Evaluation.md) |
 | **LLM08** | Hidden Context Exposure | AppSec — protect system prompts, tool schemas, private retrieval | [2](./2_Prompt_Injection_Defenses.md) |
 | **LLM09** | Vector and Embedding Weaknesses | Data platform — ACL’d chunks, tenant isolation | [3](./3_RAG_And_Memory_Hardening.md) |
-| **LLM10** | Improper Output Handling | AppSec — treat model output as untrusted (XSS/SQLi/shell) | [2](./2_Prompt_Injection_Defenses.md) |
+| **LLM10** | Improper Output Handling | AppSec — treat model output as untrusted (XSS (Cross-Site Scripting)/SQLi (SQL injection)/shell) | [2](./2_Prompt_Injection_Defenses.md) |
 
 2026 ranking signal: **Excessive Agency** rose (damage lands in tools); **Unbounded Consumption** rose (cost/availability). Do not stop at “we filtered prompts.”
 
@@ -111,7 +111,7 @@ When the system plans, calls tools, keeps memory, or talks to other agents, walk
 | **ASI01** | Agent Goal Hijack | Multi-step plan review; untrusted content cannot rewrite goals silently |
 | **ASI02** | Tool Misuse | Per-tool authZ; dry-run / human confirm for destructive actions |
 | **ASI03** | Identity & Privilege Abuse | Non-human identities; no inherited god-tokens |
-| **ASI04** | Agentic Supply Chain | MCP/tool registry allowlists; AIBOM | 
+| **ASI04** | Agentic Supply Chain | MCP/tool registry allowlists; AIBOM (AI Bill of Materials) | 
 | **ASI05** | Unexpected Code Execution | No arbitrary code from model text; sandboxed runners |
 | **ASI06** | Memory & Context Poisoning | Memory write ACL; purge/rollback |
 | **ASI07** | Insecure Inter-Agent Comms | Authn/integrity on A2A |

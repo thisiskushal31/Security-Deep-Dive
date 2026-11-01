@@ -1,10 +1,10 @@
-# PASTA staged walkthrough
+# PASTA (Process for Attack Simulation and Threat Analysis) staged walkthrough
 
 [← Threat-Modeling](./README.md)
 
 > **Progression:** concept → advanced → apply.
 
-Risk-centric threat modeling when a STRIDE whiteboard is not enough — seven stages, inputs/outputs, and how each stage consumes earlier handbook skills. DFD/STRIDE: [2](./2_DFD_And_STRIDE_In_Practice.md). Attack trees: [4](./4_Attack_Trees_And_LINDDUN.md).
+Risk-centric threat modeling when a STRIDE whiteboard is not enough — seven stages, inputs/outputs, and how each stage consumes earlier handbook skills. DFD (Data Flow Diagram)/STRIDE: [2](./2_DFD_And_STRIDE_In_Practice.md). Attack trees: [4](./4_Attack_Trees_And_LINDDUN.md).
 
 ## Concept
 
@@ -43,7 +43,7 @@ This is broader than “draw boxes.” If Stage I is vague, later stages produce
 |----------|--------|
 | Capture technical environment boundaries | What’s in / out of the model |
 | Inventory infrastructure, application, software dependencies | Attack surface edges and trust you inherit |
-| Note components that *provide* security controls | Authn, encryption, WAF — and who owns them |
+| Note components that *provide* security controls | Authn, encryption, WAF (web application firewall) — and who owns them |
 
 #### Stage III — Application decomposition & analysis
 
@@ -70,8 +70,8 @@ PASTA leans on **demonstrated** threats. Advantage: realism. Limitation: unique 
 | Activity | Output |
 |----------|--------|
 | Map threats to existing vulns / design flaws | Threat↔weakness matrix |
-| Use CWE/CVE, issue trackers, abuse cases | Evidence beyond opinion |
-| Optional scoring companions (CVSS/CWSS) | Severity language for known defects |
+| Use CWE (Common Weakness Enumeration)/CVE (Common Vulnerabilities and Exposures), issue trackers, abuse cases | Evidence beyond opinion |
+| Optional scoring companions (CVSS (Common Vulnerability Scoring System)/CWSS) | Severity language for known defects |
 
 This stage bridges design TM and [Vulnerability-Management](../Vulnerability-Management/README.md). Design flaws without CVEs still count.
 
@@ -137,13 +137,13 @@ I Objectives → II Scope → III Decompose (DFD)
 | Stage IV threat theater without Stage III DFD | Fix decomposition first |
 | Skipping Stage VII acceptance paperwork | Owned residual risk or it did not happen |
 | Treating PASTA book length as required reading to start | Use this stage map; deepen with SEI/course PDFs as needed |
-| Using PASTA to rediscover baseline ASVS controls | Map Stage V/VII to ASVS; spend PASTA energy on business-logic and novel paths ([5](./5_Tooling_And_Closing_The_Loop.md)) |
+| Using PASTA to rediscover baseline ASVS (Application Security Verification Standard) controls | Map Stage V/VII to ASVS; spend PASTA energy on business-logic and novel paths ([5](./5_Tooling_And_Closing_The_Loop.md)) |
 | Stage IV scenarios with no assumptions about attacker capability | Write “secure against X given Y” before ranking |
 
 ## Apply
 
 1. Choose one high-stakes system. Write Stage I in ≤1 page.  
-2. Produce Stage II in/out + Stage III DFD (reuse [2](./2_DFD_And_STRIDE_In_Practice.md) hygiene).  
+2. Produce Stage II in/out + Stage III DFD.  
 3. List five Stage IV scenarios; mark evidence source (intel, past incident, fraud pattern, STRIDE finding).  
 4. For the top scenario: Stage V weakness map + Stage VI mini attack tree.  
 5. Stage VII: three decisions with owners; any acceptances get expiry.  

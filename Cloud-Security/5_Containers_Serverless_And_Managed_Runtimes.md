@@ -4,7 +4,7 @@
 
 > **Progression:** concept → advanced → apply.
 
-Containers, serverless/FaaS, and managed application platforms as runtime shapes on the broader cloud surface in [4](./4_Securing_Cloud_Resources_And_Workloads.md). Cluster product depth: [Containerization-Deep-Dive](https://github.com/thisiskushal31/Containerization-Deep-Dive).
+Containers, serverless / **FaaS (Function as a Service)**, and managed application platforms as runtime shapes on the broader cloud surface in [4](./4_Securing_Cloud_Resources_And_Workloads.md). Cluster product depth: [Containerization-Deep-Dive](https://github.com/thisiskushal31/Containerization-Deep-Dive).
 
 ## Concept
 
@@ -30,7 +30,7 @@ Use a shared risk catalog when you *do* run clusters:
 | ID | Risk | First response |
 |----|------|----------------|
 | **K01** | Insecure workload configs | Non-root; drop caps; no privileged; read-only root FS |
-| **K02** | Overly permissive authorization | Least-privilege RBAC; avoid `cluster-admin` / chart wildcards |
+| **K02** | Overly permissive authorization | Least-privilege RBAC (Role-Based Access Control); avoid `cluster-admin` / chart wildcards |
 | **K03** | Secrets management failures | No secrets in images/Git; external store; short-lived tokens |
 | **K04** | No cluster policy enforcement | PSS / admission as gates |
 | **K05** | Missing network segmentation | NetworkPolicy where trust needs it |
@@ -38,7 +38,7 @@ Use a shared risk catalog when you *do* run clusters:
 | **K08** | Cluster → cloud lateral movement | Per-workload cloud IAM; block node metadata abuse |
 | **K09–K10** | Broken authn / weak logging | Strong API authn; audit + alert |
 
-**Pod Security Standards:** Privileged (unrestricted) → Baseline (block known escalations) → Restricted (hardening defaults). Enforce; do not wiki.
+**PSS (Pod Security Standards):** Privileged (unrestricted) → Baseline (block known escalations) → Restricted (hardening defaults). Enforce; do not wiki.
 
 ```yaml
 # Illustrative workload hardening — not a full cluster guide

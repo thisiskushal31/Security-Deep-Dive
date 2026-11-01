@@ -1,10 +1,10 @@
 # Injection and output encoding
 
-[← AppSec](./README.md)
+[← AppSec (application security)](./README.md)
 
 > **Progression:** concept → advanced → apply.
 
-How **injection** works across interpreters (SQL, OS, LDAP, templates, XSS) and how to keep **data from becoming code**. Catalog: Top 10 **A05**. Access control: [3](./3_Access_Control_And_Authentication.md). LLM prompt injection is a related class in [AI-Security](../AI-Security/README.md) — classic sinks here still apply when models emit HTML/SQL/shell.
+How **injection** works across interpreters (SQL, OS, LDAP, templates, XSS (Cross-Site Scripting)) and how to keep **data from becoming code**. Catalog: Top 10 **A05**. Access control: [3](./3_Access_Control_And_Authentication.md). LLM (large language model) prompt injection is a related class in [AI-Security](../AI-Security/README.md) — classic sinks here still apply when models emit HTML/SQL/shell.
 
 An injection flaw exists when untrusted input reaches an interpreter and parts of that input execute as commands or markup. Perfect resistance means every variable is validated and then escaped/sanitized for its **context** — or never reaches an interpreter at all.
 
@@ -19,7 +19,7 @@ Untrusted input
 
 ### Why A05 still matters at #5
 
-Injection dropped two spots (2021 #3 → 2025 #5) but remains **100% tested** in contrib data, with the **largest CVE pile** of any category (~37 CWEs; tens of thousands of CVEs). XSS (CWE-79) is high frequency / lower average impact; SQL injection is lower frequency / high impact. Rank drop ≠ underfund defenses.
+Injection dropped two spots (2021 #3 → 2025 #5) but remains **100% tested** in contrib data, with the **largest CVE (Common Vulnerabilities and Exposures) pile** of any category (~37 CWEs; tens of thousands of CVEs). XSS is high frequency / lower average impact; SQL injection is lower frequency / high impact. Rank drop ≠ underfund defenses.
 
 A related class in LLMs is **prompt injection** ([OWASP LLM Top 10](https://owasp.org/www-project-top-10-for-large-language-model-applications/) / [AI-Security](../AI-Security/README.md)) — treat model output as untrusted for these same sinks.
 
@@ -32,7 +32,7 @@ A related class in LLMs is **prompt injection** ([OWASP LLM Top 10](https://owas
 | ORM/HQL built by string concat | “Framework” still injectable |
 | Hostile data concatenated into commands / stored procedures | Same class inside the DB engine |
 
-Common families: SQL / NoSQL, OS command, ORM, LDAP, Expression Language / OGNL, template injection (SSTI), and **XSS** (browser as interpreter). Detection needs source review **plus** testing of parameters, headers, cookies, JSON, XML — SAST/DAST/IAST in CI help but do not replace design.
+Common families: SQL / NoSQL, OS command, ORM, LDAP, Expression Language / OGNL, template injection (SSTI), and **XSS** (browser as interpreter). Detection needs source review **plus** testing of parameters, headers, cookies, JSON, XML — SAST (Static Application Security Testing)/DAST (Dynamic Application Security Testing)/IAST in CI help but do not replace design.
 
 ### Preference order (prevention)
 
@@ -92,7 +92,7 @@ Request id
 | Allow-list for rare dynamic identifiers | Only if product forces dynamic ORDER BY / table — never free-form |
 | Escaping all inputs | Strongly discouraged as primary defense |
 
-Parameterized queries stop **injection**; they do **not** stop **IDOR** — still authorize the object ([3](./3_Access_Control_And_Authentication.md)).
+Parameterized queries stop **injection**; they do **not** stop **IDOR (Insecure Direct Object Reference)** — still authorize the object ([3](./3_Access_Control_And_Authentication.md)).
 
 ### OS command, LDAP, NoSQL, SSTI
 
@@ -196,12 +196,12 @@ Upload is not “just storage” — parsers, webroots, and public retrieval exp
 | Size limits | Upload **and** post-decompress limits |
 | Authn + authZ | Only permitted users; CSRF-protect the upload POST |
 | Store off webroot / other host | Map `id → file` for public access; disable per-dir config overrides (`.htaccess` / `web.config` drops) |
-| Scan / CDR | AV/sandbox; disarm Office/PDF when available |
+| Scan / CDR (Cloud Detection and Response) | AV/sandbox; disarm Office/PDF when available |
 | Serve safely | `Content-Disposition: attachment`, correct type, `X-Content-Type-Options: nosniff` |
 
 ### Unsafe deserialization (A08-adjacent, RCE-class)
 
-Native object graphs (`pickle`, Java `ObjectInputStream`, .NET `BinaryFormatter`, permissive YAML/JSON “type” fields) can instantiate gadgets → RCE, DoS, or authZ bypass. Prefer **pure data** (JSON without type gadgets). If you must deserialize: allowlist expected classes + resource limits; isolate; never unpickle untrusted bytes; prefer signed payloads you created. After-deserialize type checks are often **too late**.
+Native object graphs (`pickle`, Java `ObjectInputStream`, .NET `BinaryFormatter`, permissive YAML/JSON “type” fields) can instantiate gadgets → RCE (remote code execution), DoS, or authZ bypass. Prefer **pure data** (JSON without type gadgets). If you must deserialize: allowlist expected classes + resource limits; isolate; never unpickle untrusted bytes; prefer signed payloads you created. After-deserialize type checks are often **too late**.
 
 ### Open redirects
 
@@ -261,13 +261,13 @@ Turn **off** legacy `X-XSS-Protection` (can introduce bugs). Do not use HPKP / E
 - [ ] Distinguish encoding vs HTML sanitization  
 - [ ] Explain why CSP alone is insufficient  
 - [ ] Know why A05 rank drop does not justify cutting injection budget  
-- [ ] List file-upload controls (allowlist, rename, off-webroot, CSRF)  
+- [ ] List file-upload controls (allowlist, rename, off-webroot, CSRF (Cross-Site Request Forgery))  
 - [ ] State prefer-JSON over native deserialize for untrusted data  
 - [ ] Name core security headers and when CORS must not be `*`  
 
 ## Next
 
-- [API Security Top 10:2023](./5_API_Security_Top_10_2023.md) · [ASVS verification practice](./6_ASVS_Verification_Practice.md)
+- [API Security Top 10:2023](./5_API_Security_Top_10_2023.md) · [ASVS (Application Security Verification Standard) verification practice](./6_ASVS_Verification_Practice.md)
 
 ## Further reading
 
@@ -282,5 +282,5 @@ Turn **off** legacy `X-XSS-Protection` (can introduce bugs). Do not use HPKP / E
 - [HTTP Headers Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html)
 - [XML External Entity Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html)
 - [Unvalidated Redirects and Forwards Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.html)
-- [WSTG — Input validation testing](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/README)
+- [WSTG (Web Security Testing Guide) — Input validation testing](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/README)
 - [AI-Security — Prompt injection / LLM10](../AI-Security/README.md)

@@ -48,7 +48,7 @@ Security requirements (often latent in the business ask)
 | Day-to-day vuln / bug triage | Informal four questions in your head or a 15–30 min whiteboard — not a 10-page STRIDE doc |
 | No new trust boundary; no new sensitive data class; small internal change | Short checklist on the design note / PR |
 | New public API, personal data, payments, partner, or major architecture change | Facilitated workshop (60–120 min) + written mitigations |
-| High business impact, fraud, multi-team, compliance narrative required | Multi-stage method (e.g. PASTA) — [3](./3_PASTA_Staged_Walkthrough.md) |
+| High business impact, fraud, multi-team, compliance narrative required | Multi-stage method (e.g. PASTA (Process for Attack Simulation and Threat Analysis)) — [3](./3_PASTA_Staged_Walkthrough.md) |
 
 **Security is never a binary “secure.”** A useful model says: *under these assumptions, against this class of attacker, these controls hold.* Write assumptions and attacker capability explicitly (what they can and cannot do).
 
@@ -80,7 +80,7 @@ During **elicitation (Q2), do not jump into solutions.** Capture the threat firs
 
 | Tool | Job |
 |------|-----|
-| **ASVS / Top 10 / secure coding checklists** | Baseline “table stakes” controls every app of this class should have |
+| **ASVS (Application Security Verification Standard) / Top 10 / secure coding checklists** | Baseline “table stakes” controls every app of this class should have |
 | **Threat modeling** | Discover *this* design’s abuse paths, business-logic holes, and non-standard risks checklists miss |
 
 Mature habit: apply baseline requirements *and* threat-model custom/high-risk design. Do not pretend a checklist replaces Q2 on novel workflows — and do not invent threats that are already covered by a required ASVS control without mapping to it ([5](./5_Tooling_And_Closing_The_Loop.md)).
@@ -205,7 +205,7 @@ Every in-scope threat gets a primary response. “Needs investigation” is a **
 2. Schedule the right depth (checklist vs 90 min vs two-meeting).  
 3. Run Q1–Q4; leave with tickets that have owners and verification notes.  
 4. Store the diagram where the service’s design already lives.  
-5. Add revisit triggers: new trust boundary, new data class, new partner/IdP, incident on a modeled path.  
+5. Add revisit triggers: new trust boundary, new data class, new partner/IdP (identity provider), incident on a modeled path.  
 6. Book a 30-minute Q4 review with someone who was *not* in the first drawing session.
 
 ### Self-check

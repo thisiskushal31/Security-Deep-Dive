@@ -6,7 +6,7 @@
 
 How generative AI and machine learning change the threat picture: **attacks that use AI**, **attacks that target AI systems**, and **failures in AI design/implementation**. Classical Domain 2 ([1](./1_Actors_And_Motivations.md)–[7](./7_Mitigations.md)) still applies — phishing, malware, supply chain, DoS — but AI **amplifies scale/quality** and adds **model-specific** and **agent-specific** attack classes. Read this after the classical path so you can see what is *new* versus what is the *same threat, louder*.
 
-Technique catalogs: [MITRE ATLAS](https://atlas.mitre.org/) (AI) · [ATT&CK](https://attack.mitre.org/) (host/network) via [Foundations/18](../Foundations/18_Adversary_Models_Kill_Chain_And_ATTCK.md) · [GRC](../GRC/1_NIST_ISO_And_ATTCK.md). Threat-*modeling* practice for LLM/agents: [Threat-Modeling/6](../Threat-Modeling/6_AI_And_Agentic_Threat_Modeling.md). App/agent build depth: [AI-Security](../AI-Security/README.md) · [AppSec](../AppSec/README.md).
+Technique catalogs: [MITRE ATLAS](https://atlas.mitre.org/) (AI) · [ATT&CK](https://attack.mitre.org/) (host/network) via [Foundations/18](../Foundations/18_Adversary_Models_Kill_Chain_And_ATTCK.md) · [GRC](../GRC/1_NIST_ISO_And_ATTCK.md). Threat-*modeling* practice for LLM (large language model)/agents: [Threat-Modeling/6](../Threat-Modeling/6_AI_And_Agentic_Threat_Modeling.md). App/agent build depth: [AI-Security](../AI-Security/README.md) · [AppSec](../AppSec/README.md).
 
 No jailbreak recipes, red-team payloads, or misuse enablement steps here — definitions and program framing only.
 
@@ -51,14 +51,14 @@ DHS / CISA cross-sector analysis groups system-level AI risk into three categori
 | **Agentic AI** | Model with tools, memory, planning, and ability to take consequential actions — model as **actor**; attack surface expands (CCCS / Five Eyes: adopt cautiously; low-risk tasks; no broad unrestricted access) |
 | **Frontier AI** | Most capable / newest models; CCCS notes dual-use pressure (faster recon and attack orchestration *and* defensive analytics) — still needs ownership, logging, and human gates for high-impact decisions |
 | **Shadow AI** | Unsanctioned use of public GenAI tools with corporate or personal data — expands surface and leaks prompts ([CCCS](https://www.cyber.gc.ca/en/guidance/top-10-artificial-intelligence-security-actions-primer-itsap10049)) |
-| **ATLAS** | MITRE’s living knowledge base of adversary tactics/techniques involving AI — use like ATT&CK for AI-shaped campaigns |
+| **ATLAS** | MITRE’s living knowledge base of adversary tactics/techniques involving AI — use like ATT&CK (Adversarial Tactics, Techniques, and Common Knowledge) for AI-shaped campaigns |
 | **Confabulation** | NIST term for confidently stated but erroneous content (often called “hallucination”) |
 
 ## Advanced
 
 ### A. Attacks using AI (amplification of Domain 2)
 
-These sit on top of notes [1](./1_Actors_And_Motivations.md)–[5](./5_Attack_Classes.md). AI lowers cost and raises persuasiveness; **mitigation families** often stay familiar (MFA, verify out-of-band, EDR, segmentation, backups).
+These sit on top of notes [1](./1_Actors_And_Motivations.md)–[5](./5_Attack_Classes.md). AI lowers cost and raises persuasiveness; **mitigation families** often stay familiar (MFA (multi-factor authentication), verify out-of-band, EDR (endpoint detection and response), segmentation, backups).
 
 | Pattern | Definition / effect | Ties to |
 |---------|---------------------|---------|
@@ -97,7 +97,7 @@ Use this as the **program risk register lens** for generative AI (alongside the 
 
 NIST’s own grouping hint: **technical/model** risks · **misuse by humans** · **ecosystem/societal** risks — many items cross-cut.
 
-### C. Attacks targeting AI systems (NIST AML + DHS)
+### C. Attacks targeting AI systems (NIST AML (adversarial machine learning) + DHS)
 
 NIST AI 100-2e2025 separates **Predictive AI** and **Generative AI** by attacker goals: availability, integrity, privacy, (GenAI) misuse enablement, and supply chain.
 
@@ -135,7 +135,7 @@ Poisoned hosted ML models / deps         Unbounded consumption / DoS-like
 | Class | Definition (NIST / OWASP-aligned) |
 |-------|-----------------------------------|
 | **Prompt injection (direct)** | User-path input overrides intended instructions / system prompt behavior |
-| **Indirect prompt injection** | Hostile instructions ride in retrieved/tool content (docs, web, email, RAG, images, tool output) |
+| **Indirect prompt injection** | Hostile instructions ride in retrieved/tool content (docs, web, email, RAG (retrieval-augmented generation), images, tool output) |
 | **Jailbreak / misuse enablement** | Circumvent safety restrictions so the model produces disallowed outputs |
 | **Prompt extraction** | Steal system prompts or hidden instructions |
 | **Data / model poisoning (GenAI)** | Poison pre-training, fine-tuning, or published model artifacts |
@@ -171,7 +171,7 @@ When the system plans, calls tools, keeps memory, or multi-agent coordinates, pa
 | ASI01 | **Agent goal hijack** | Manipulated inputs redirect goals, planning, or multi-step behavior |
 | ASI02 | **Tool misuse and exploitation** | Legitimate tools used unsafely (wrong action, chaining, over-invocation) |
 | ASI03 | **Identity and privilege abuse** | Delegation, inherited credentials, confused-deputy / non-human identity gaps |
-| ASI04 | **Agentic supply chain** | Malicious/compromised models, tools, MCP/A2A descriptors, registries, datasets |
+| ASI04 | **Agentic supply chain** | Malicious/compromised models, tools, MCP (Model Context Protocol)/A2A descriptors, registries, datasets |
 | ASI05 | **Unexpected code execution** | Generated or tool-driven code runs unintended on host/container |
 | ASI06 | **Memory and context poisoning** | Persistent memory/RAG/shared context corrupted across sessions |
 | ASI07 | **Insecure inter-agent communication** | Spoofed, tampered, or unauthenticated agent-to-agent messages |
@@ -190,7 +190,7 @@ CCCS / Five Eyes caution: prefer **low-risk, non-sensitive** agentic tasks; neve
 | **Rules / config file backdoor** | Malicious instructions planted in coding-assistant configuration that the assistant will follow |
 | **MCP / tool-descriptor poisoning** | Hostile metadata or look-alike tools in agent tool ecosystems |
 | **Slopsquatting** | Attackers register packages whose names match **hallucinated** dependency names suggested by coding assistants (ENISA-noted term) |
-| **AIBOM / SBOM gaps** | Missing inventory of models, datasets, prompts, tools, and deps |
+| **AIBOM (AI Bill of Materials) / SBOM (Software Bill of Materials) gaps** | Missing inventory of models, datasets, prompts, tools, and deps |
 
 #### DHS “attacks on AI” subcategories (cross-check)
 
@@ -252,7 +252,7 @@ Implementation homes: [7](./7_Mitigations.md) · [AI-Security](../AI-Security/RE
 |-----------------|--------------|
 | Actors / motivations | Same actors; AI raises **capability** and **obfuscation**; criminal “AI services”; AI-themed lures |
 | Vectors | Higher-quality content on old channels; model APIs; RAG; agents; MCP/tools; coding-assistant configs; fake AI download sites |
-| Vulnerabilities | Classic CVE/config on AI hosts (ENISA: AI software and supporting infra still have CVEs) + AML/LLM/ASI classes |
+| Vulnerabilities | Classic CVE (Common Vulnerabilities and Exposures)/config on AI hosts (ENISA: AI software and supporting infra still have CVEs) + AML/LLM/ASI classes |
 | Malware | AI-assisted authoring; malware disguised as AI tools |
 | Attack classes | AML / LLM / ASI; deepfake-assisted fraud |
 | Indicators | Synthetic media; anomalous model/agent behavior; poisoned retrieval; odd tool chains — still need correlation ([6](./6_Indicators_And_Analysis.md)) |
@@ -307,9 +307,9 @@ Short examples from official public reports so you know this is not theory. Link
 - [CISA / UK NCSC — Guidelines for Secure AI System Development](https://www.ncsc.gov.uk/files/Guidelines-for-secure-AI-system-development.pdf)
 - [CISA — JCDC AI Cybersecurity Collaboration Playbook](https://www.cisa.gov/sites/default/files/2025-01/JCDC%20AI%20Playbook.pdf)
 - [NIST AI 100-2e2025 — Adversarial Machine Learning](https://csrc.nist.gov/pubs/ai/100/2/e2025/final)
-- [NIST AI 600-1 — Generative AI Profile (AI RMF)](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence)
-- [NIST AI RMF (AI 100-1)](https://www.nist.gov/itl/ai-risk-management-framework)
-- [NIST SP 800-218A — SSDF Community Profile for Generative AI](https://csrc.nist.gov/pubs/sp/800/218/a/final)
+- [NIST AI 600-1 — Generative AI Profile (AI RMF (Risk Management Framework))](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence)
+- [NIST AI RMF](https://www.nist.gov/itl/ai-risk-management-framework)
+- [NIST SP 800-218A — SSDF (Secure Software Development Framework) Community Profile for Generative AI](https://csrc.nist.gov/pubs/sp/800/218/a/final)
 - [OWASP Top 10 for LLM Applications 2026](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/)
 - [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/)
 - [OWASP GenAI LLM Top 10 (GitHub)](https://github.com/GenAI-Security-Project/GenAI-LLM-Top10)

@@ -2,7 +2,7 @@
 
 [← Defensive-Ops](./README.md)
 
-Incidents are when detection becomes **action**. Have a written process before the page fires. On-call culture and ChatOps live in DevOps Methodologies — this page is the security IR loop.
+Incidents are when detection becomes **action**. Have a written process before the page fires. On-call culture and ChatOps live in DevOps Methodologies — this page is the security IR (incident response) loop.
 
 ## Lifecycle (NIST-shaped)
 
@@ -31,5 +31,5 @@ Preserve logs and disk **before** “cleaning” when forensics or legal may car
 
 ## Related
 
-- Detection → [1 SIEM](./1_SIEM_And_Detection.md)
+- Detection → [1 SIEM (Security Information and Event Management)](./1_SIEM_And_Detection.md)
 - Posture after admit → [Handbook Security/2](https://github.com/thisiskushal31/DevOps-Handbook/blob/main/Security/2_Compliance_And_Threat_Mitigation.md)

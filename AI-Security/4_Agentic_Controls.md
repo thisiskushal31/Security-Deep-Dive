@@ -4,7 +4,7 @@
 
 > **Progression:** concept → advanced → apply.
 
-Controls for systems that **plan and act** — tools, non-human identity, human oversight, budgets, and emergency stop. Catalog: LLM03 / ASI02–03 / ASI05 / ASI08–10. Injection: [2](./2_Prompt_Injection_Defenses.md). Supply chain / MCP: [5](./5_Model_And_Data_Supply_Chain.md). How agency turns text into an incident: [8](./8_Attack_Mechanisms_For_Defenders.md).
+Controls for systems that **plan and act** — tools, non-human identity, human oversight, budgets, and emergency stop. Catalog: LLM03 / ASI02–03 / ASI05 / ASI08–10. Injection: [2](./2_Prompt_Injection_Defenses.md). Supply chain / MCP (Model Context Protocol): [5](./5_Model_And_Data_Supply_Chain.md). How agency turns text into an incident: [8](./8_Attack_Mechanisms_For_Defenders.md).
 
 ## Concept
 
@@ -36,7 +36,7 @@ Start agentic automation on **low-risk** tasks. Keep humans on high-impact decis
 
 Most severe public patterns are **injection + agency**, not “the model said something rude”:
 
-1. Content is planted where a privileged agent will read it (mail, ticket, web, RAG).
+1. Content is planted where a privileged agent will read it (mail, ticket, web, RAG (retrieval-augmented generation)).
 2. The agent’s plan includes a tool call the plant requested (forward mail, query DB, run shell, call webhook).
 3. If there is no policy engine, the runtime treats model JSON as authorization.
 4. If there is a rubber-stamp “Approve” button showing only fluent prose, a human becomes the gadget (ASI09).
@@ -70,7 +70,7 @@ Steered model
 
 | Do | Don’t |
 |----|-------|
-| Agent service accounts with narrow IAM roles | Embed long-lived admin keys in the prompt or agent env |
+| Agent service accounts with narrow IAM (Identity and Access Management) roles | Embed long-lived admin keys in the prompt or agent env |
 | Short-lived tokens; audience-bound | Pass-through user OAuth to every tool by default |
 | Separate “read corp wiki” from “send email” principals | One bot identity for all side effects |
 | Separate “read mailbox” from “send mailbox” | Summarize-mail tool that can also send |
@@ -93,7 +93,7 @@ Steered model
 
 | Ban / gate | Why |
 |------------|-----|
-| `eval` / shell from model text | Text → RCE |
+| `eval` / shell from model text | Text → RCE (remote code execution) |
 | Unsafe deserialization from tool I/O | Classic exploit path |
 | Unsandboxed code interpreters | Escape → host compromise |
 
@@ -133,7 +133,7 @@ Full power → (trip) → Degraded (tools limited / read-only) → Kill (all sto
 
 ### Logging for agents
 
-Log: plan summary, tool name, args (redact secrets), policy decision, approver, budgets remaining, model/version, MCP server id. Feed SOC — Defensive-Ops owns SIEM depth. Eval pass/fail depends on these fields ([6](./6_Authorized_AI_Evaluation.md)).
+Log: plan summary, tool name, args (redact secrets), policy decision, approver, budgets remaining, model/version, MCP server id. Feed SOC (Security Operations Center) — Defensive-Ops owns SIEM (Security Information and Event Management) depth. Eval pass/fail depends on these fields ([6](./6_Authorized_AI_Evaluation.md)).
 
 ## Apply
 

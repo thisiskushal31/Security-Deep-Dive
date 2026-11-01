@@ -61,12 +61,12 @@ All of them share: **authorize → discover → validate → report**.
 |-------|-----|
 | Minimize data collected in tests | Least privilege for evidence |
 | Report responsibly through agreed channels | Reduce harm |
-| Do not dox or harass | OSINT has boundaries |
+| Do not dox or harass | OSINT (Open-Source Intelligence) has boundaries |
 | Separate work and personal tooling accounts | Reduce accidental cross-contamination |
 
 ## Event handling honesty
 
-Security events can affect people and customers. Coordinate with policy and counsel when disclosure or legal holds apply — [GRC](../GRC/README.md) and [Defensive-Ops IR](../Defensive-Ops/2_Incident_Response.md).
+Security events can affect people and customers. Coordinate with policy and counsel when disclosure or legal holds apply — [GRC](../GRC/README.md) and [Defensive-Ops IR (incident response)](../Defensive-Ops/2_Incident_Response.md).
 
 ## Apply
 
@@ -84,6 +84,6 @@ Use the self-check below as the apply gate for this note.
 
 ## Further reading
 
-- [PTES — The Penetration Testing Execution Standard](http://www.pentest-standard.org/)
+- [PTES (Penetration Testing Execution Standard) — The Penetration Testing Execution Standard](http://www.pentest-standard.org/)
 - [OWASP Testing Guide](https://owasp.org/www-project-web-security-testing-guide/)
 - [Security-Deep-Dive Offensive methodology](https://github.com/thisiskushal31/Security-Deep-Dive/tree/main/Offensive)

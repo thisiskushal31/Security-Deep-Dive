@@ -9,8 +9,8 @@ Curated **practice paths** — not walkthrough dumps of paid content. Date your 
 | Skill focus | Suggested path shape | Tools to install first |
 |-------------|----------------------|------------------------|
 | Linux + networking basics | Intro rooms on TryHackMe / HTB Academy free tracks | Nmap, Wireshark |
-| Web AppSec | OWASP Juice Shop locally; PortSwigger Web Security Academy; THM web paths | Burp, ffuf, ZAP |
-| Blue team | THM SOC / DFIR starter paths | Wireshark, tcpdump; later Volatility |
+| Web AppSec (application security) | OWASP Juice Shop locally; PortSwigger Web Security Academy; THM web paths | Burp, ffuf, ZAP |
+| Blue team | THM SOC (Security Operations Center) / DFIR starter paths | Wireshark, tcpdump; later Volatility |
 | AD / Windows (later) | Dedicated AD lab platforms | BloodHound, Impacket (wave B tools) |
 
 Always stay inside the platform’s rules and your own lab VMs.

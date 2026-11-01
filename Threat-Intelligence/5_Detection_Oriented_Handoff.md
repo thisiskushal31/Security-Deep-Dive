@@ -4,15 +4,15 @@
 
 > **Progression:** concept → advanced → apply.
 
-How CTI becomes hunts, detections, and blocks without drowning the SOC. Models: [2](./2_Intrusion_Analysis_Models.md). Products & TLP: [3](./3_Finished_Intelligence_Products.md). STIX packaging: [4](./4_STIX_And_TAXII_Practice.md). VM overlap: [Vulnerability-Management](../Vulnerability-Management/README.md).
+How CTI (Cyber Threat Intelligence) becomes hunts, detections, and blocks without drowning the SOC (Security Operations Center). Models: [2](./2_Intrusion_Analysis_Models.md). Products & TLP (Traffic Light Protocol): [3](./3_Finished_Intelligence_Products.md). STIX (Structured Threat Information Expression) packaging: [4](./4_STIX_And_TAXII_Practice.md). VM overlap: [Vulnerability-Management](../Vulnerability-Management/README.md).
 
 ## Concept
 
-Finished intel that never changes detection, hunting, or response is a newsletter. The handoff is a **contract** between CTI and detection/IR engineering.
+Finished intel that never changes detection, hunting, or response is a newsletter. The handoff is a **contract** between CTI and detection/IR (incident response) engineering.
 
 | CTI delivers | Detection / IR needs |
 |--------------|----------------------|
-| Context (PIR, campaign, ATT&CK, confidence) | Priority and expected FP profile |
+| Context (PIR (Priority Intelligence Requirement), campaign, ATT&CK (Adversarial Tactics, Techniques, and Common Knowledge), confidence) | Priority and expected FP profile |
 | Indicators with **expiry** and TLP | What to block vs watch vs ignore |
 | TTPs / procedures | Analytics that survive IOC churn |
 | Suggested CoAs by Kill Chain phase | Owners and telemetry coverage |
@@ -62,15 +62,15 @@ Diamond capability + Victim telemetry
       → Prototype query / rule
         → Test (TP sample + FP canaries)
           → Deploy with severity / expiry / owner
-            → Sightings back into STIX ([4](./4_STIX_And_TAXII_Practice.md))
+            → Sightings back into STIX
 ```
 
 | Prefer | Avoid |
 |--------|-------|
 | Technique-scoped behavioral analytics | Single hash → critical severity forever |
-| Layered CoAs (mail + EDR + DNS) | One brittle IDS sig as the only control |
+| Layered CoAs (mail + EDR (endpoint detection and response) + DNS) | One brittle IDS sig as the only control |
 | Hunt → detect → (maybe) block progression | Immediate org-wide block on untrusted feed |
-| Sighting feedback to CTI | One-way firehose into SIEM |
+| Sighting feedback to CTI | One-way firehose into SIEM (Security Information and Event Management) |
 
 ### Malware / phishing triage as CTI collection
 
@@ -93,7 +93,7 @@ Suspect file/URL (policy-approved sandbox / detonation)
 
 ### TIP enrichment (where CTI work lives day to day)
 
-A **Threat Intelligence Platform (TIP)** aggregates feeds, STIX/TAXII, and analyst objects so people can pivot and push to SIEM/SOAR. Real-world habit: **PIR-filter → enrich → stage → promote** ([4](./4_STIX_And_TAXII_Practice.md)). The TIP is not intelligence by itself — analysts still rate sources and write judgments.
+A **Threat Intelligence Platform (TIP)** aggregates feeds, STIX/TAXII, and analyst objects so people can pivot and push to SIEM/SOAR (Security Orchestration, Automation and Response). Real-world habit: **PIR-filter → enrich → stage → promote** ([4](./4_STIX_And_TAXII_Practice.md)). The TIP is not intelligence by itself — analysts still rate sources and write judgments.
 
 ### IR fusion awareness (F3EAD)
 

@@ -1,4 +1,4 @@
-# RAG, vector store, and memory hardening
+# RAG (retrieval-augmented generation), vector store, and memory hardening
 
 [← AI-Security](./README.md)
 

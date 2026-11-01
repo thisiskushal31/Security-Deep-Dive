@@ -4,7 +4,7 @@
 
 > **Progression:** concept → advanced → apply. *Apply* here means foundation literacy and builder habits — not a specialty lab.
 
-Before AppSec and System-Design patterns, know the classic **security models** and architecture ideas that policies and products still echo. Deep HLD patterns: [System-Design Security](https://github.com/thisiskushal31/System-Design-Concepts/tree/main/Security). Wire architecture: Networks-Deep-Dive.
+Before AppSec (application security) and System-Design patterns, know the classic **security models** and architecture ideas that policies and products still echo. Deep HLD patterns: [System-Design Security](https://github.com/thisiskushal31/System-Design-Concepts/tree/main/Security). Wire architecture: Networks-Deep-Dive.
 
 ## Concept
 
@@ -45,7 +45,7 @@ You rarely implement these models by name in a product company. You *do* impleme
 | ACL | Per-object list of who can do what |
 | Capability | Unforgeable token of rights a subject holds |
 
-RBAC/ABAC ([7](./7_AAA_And_Access_Fundamentals.md)) are practical ways to manage the matrix at scale.
+RBAC (Role-Based Access Control)/ABAC ([7](./7_AAA_And_Access_Fundamentals.md)) are practical ways to manage the matrix at scale.
 
 ## Advanced
 

@@ -2,7 +2,7 @@
 
 [← README](../README.md)
 
-**CTI** (Cyber Threat Intelligence) turns adversary-related data into decisions — what to block, hunt, patch, or brief. This folder is practice depth: analytic tradecraft, intrusion models, finished products, STIX/TAXII sharing, detection handoff, and malware reverse engineering for CTI — beyond foundation literacy.
+**CTI (Cyber Threat Intelligence)** turns adversary-related data into decisions — what to block, hunt, patch, or brief. This folder is practice depth: analytic tradecraft, intrusion models, finished products, STIX (Structured Threat Information Expression)/TAXII (Trusted Automated Exchange of Intelligence Information) sharing, detection handoff, and malware reverse engineering for CTI — beyond foundation literacy.
 
 Literacy: [Foundations/18](../Foundations/18_Adversary_Models_Kill_Chain_And_ATTCK.md) · [Foundations/19](../Foundations/19_Threat_Intelligence_Literacy.md). Related ops: [Defensive-Ops](../Defensive-Ops/README.md) · [GRC ATT&CK](../GRC/1_NIST_ISO_And_ATTCK.md) · [Threat-Modeling](../Threat-Modeling/README.md) · [Vulnerability-Management](../Vulnerability-Management/README.md).
 
@@ -35,7 +35,7 @@ Each note follows **concept → advanced → apply**. Official Further reading o
 |------|------|
 | CTI def, PIRs/RFIs, intel cycle, collection sources, Tor literacy, ICD 203, SATs, ACH | 1 |
 | Kill Chain + CoA, Diamond threads/groups, infra pivoting (pDNS/WHOIS/cert/hash), ATT&CK | 2 |
-| Product levels, TLP 2.0, confidence vs likelihood, stakeholder/ISAC consumers | 3 |
+| Product levels, TLP (Traffic Light Protocol) 2.0, confidence vs likelihood, stakeholder/ISAC consumers | 3 |
 | STIX SDO/SCO/SRO/Bundle, TAXII, AIS/MISP/TIP awareness, retract/update hygiene | 4 |
 | Pyramid of Pain, malware triage, TIP enrich, handoff tickets, YARA, F3EAD awareness, purple loop | 5 |
 | RE ladder, isolated lab, PE/strings/imports, Ghidra, behavioral/debug/sandbox, packing, net, productize | 6 |
@@ -44,7 +44,7 @@ Each note follows **concept → advanced → apply**. Official Further reading o
 
 - Adversary / ATT&CK literacy → [Foundations/18](../Foundations/18_Adversary_Models_Kill_Chain_And_ATTCK.md)
 - CTI vocabulary → [Foundations/19](../Foundations/19_Threat_Intelligence_Literacy.md)
-- SIEM / IR consumers → [Defensive-Ops](../Defensive-Ops/README.md)
+- SIEM (Security Information and Event Management) / IR (incident response) consumers → [Defensive-Ops](../Defensive-Ops/README.md)
 - Framework nesting → [GRC/1](../GRC/1_NIST_ISO_And_ATTCK.md)
 - Design-time abuse → [Threat-Modeling](../Threat-Modeling/README.md)
 - Vuln program consumers → [Vulnerability-Management](../Vulnerability-Management/README.md)

@@ -1,4 +1,4 @@
-# DFD and STRIDE in practice
+# DFD (Data Flow Diagram) and STRIDE in practice
 
 [← Threat-Modeling](./README.md)
 
@@ -87,13 +87,13 @@ From Microsoft’s worked guidance plus drawing practice that keeps models hones
 | **Absence of a flow is a design claim** | If A cannot talk to B, what mechanism enforces that? Complex access control may deserve its own process node |
 | **Most edges are bi-directional in practice** | One-way arrows often understate return channels (errors, tokens, metadata) |
 | **Stay at context / layer-0–1 until stuck** | Implementation minutiae stalls workshops; expand a subgraph only when a boundary or attack/defense is ambiguous |
-| **Put CI/CD, deploy, and update paths on the diagram** | Build agents, runners, deploy keys, and “who can hotfix prod” are attack surface — not an afterthought box off-page |
+| **Put CI/CD (continuous integration / continuous delivery), deploy, and update paths on the diagram** | Build agents, runners, deploy keys, and “who can hotfix prod” are attack surface — not an afterthought box off-page |
 
 **Hardcore theory vs practice on internal flows:** a flow entirely inside a trust boundary is lower priority than an internet crossing — but “anything can fail,” remote DBs get mis-drawn as local, and defense in depth may still pay. Rank by exposure; do not pretend internal = zero risk.
 
 ### When the system includes AI / agents
 
-STRIDE still covers classical trust-boundary issues (spoofed callers, tampered prompts/tools, disclosure of context, DoS on inference, elevation via tool abuse). It is **weak** alone on adversarial ML, data poisoning, goal hijack, and multi-agent collusion. Practice: finish STRIDE/DFD first, then deepen in [6 — AI and agentic threat modeling](./6_AI_And_Agentic_Threat_Modeling.md) (MAESTRO, OWASP LLM/ASI, ATLAS). Threat *literacy*: [Threats/8](../Threats/8_AI_Era_Threats.md). Build depth: [AI-Security](../AI-Security/README.md). Do not pretend STRIDE letters invent those threats.
+STRIDE still covers classical trust-boundary issues (spoofed callers, tampered prompts/tools, disclosure of context, DoS on inference, elevation via tool abuse). It is **weak** alone on adversarial ML, data poisoning, goal hijack, and multi-agent collusion. Practice: finish STRIDE/DFD first, then deepen in [6 — AI and agentic threat modeling](./6_AI_And_Agentic_Threat_Modeling.md) (MAESTRO, OWASP LLM (large language model)/ASI, ATLAS). Threat *literacy*: [Threats/8](../Threats/8_AI_Era_Threats.md). Build depth: [AI-Security](../AI-Security/README.md). Do not pretend STRIDE letters invent those threats.
 
 ### Assets on the diagram
 
@@ -116,7 +116,7 @@ Mark what an adversary **ultimately wants** (customer PII, funds movement, trade
 
 | Target | STRIDE | Threat sketch | Mitigation direction |
 |--------|--------|---------------|----------------------|
-| Flow: sales → collection | T, I, D | Modify or sniff files in transit; flood collection on quarter-end | TLS + authn; rate limits; integrity |
+| Flow: sales → collection | T, I, D | Modify or sniff files in transit; flood collection on quarter-end | TLS (Transport Layer Security) + authn; rate limits; integrity |
 | Store: analysis DB | T, I, D | Insider alters bonuses; competitor reads; fill disk | AuthZ, encryption, monitoring, capacity |
 | Process: collection | S, E, R | Fake collection endpoint; escalate via memory corruption; overwrite sales without audit | Mutual auth, hardening, append-only audit |
 | Interactor: salesperson | S, R | Competitor poses as salesperson; deny submitting false data | Strong identity; non-repudiation logs |
@@ -127,9 +127,9 @@ When authentication for sales is undefined, record a **spoofing** threat even if
 
 | Approach | Use |
 |----------|-----|
-| Likelihood × impact (local ordinal scale) | Default for design threats without a CVE |
+| Likelihood × impact (local ordinal scale) | Default for design threats without a CVE (Common Vulnerabilities and Exposures) |
 | Include fix effort (optional) | When capacity is the bottleneck |
-| CVSS | Known vulnerabilities — severity companion, not a TM method ([Vulnerability-Management/3](../Vulnerability-Management/3_Risk_Based_Prioritization_KEV_EPSS_SSVC.md)) |
+| CVSS (Common Vulnerability Scoring System) | Known vulnerabilities — severity companion, not a TM method ([Vulnerability-Management/3](../Vulnerability-Management/3_Risk_Based_Prioritization_KEV_EPSS_SSVC.md)) |
 | DREAD | Optional historical mnemonic — not required |
 
 Expect moderately low false positives and moderately high false negatives with STRIDE alone (SEI citing Microsoft studies) — another reason for tester review and revisit, not one heroic pass.
@@ -150,7 +150,7 @@ When the thing you care about is **data**, add a data-centric pass (draft NIST g
 | Cloud reality | Diagram / STRIDE habit |
 |---------------|------------------------|
 | Shared responsibility | Draw provider-managed vs customer-configured edges |
-| IAM roles, VNets, buckets, managed DBs | First-class stores and interactors |
+| IAM (Identity and Access Management) roles, VNets, buckets, managed DBs | First-class stores and interactors |
 | Ephemeral containers / serverless | Processes come and go — trust who deploys them |
 | Multi-tenant / federation | Spoofing and elevation across tenants |
 | Data residency | Disclosure and compliance on egress flows |
@@ -185,7 +185,7 @@ When the thing you care about is **data**, add a data-centric pass (draft NIST g
 
 ## Next
 
-- [PASTA staged walkthrough](./3_PASTA_Staged_Walkthrough.md)
+- [PASTA (Process for Attack Simulation and Threat Analysis) staged walkthrough](./3_PASTA_Staged_Walkthrough.md)
 - AI / agents on the diagram → [6](./6_AI_And_Agentic_Threat_Modeling.md)
 
 ## Further reading

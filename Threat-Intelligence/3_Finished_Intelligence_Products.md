@@ -4,7 +4,7 @@
 
 > **Progression:** concept → advanced → apply.
 
-Audience-shaped CTI writing, TLP handling, and producer/consumer hygiene. Analytic method: [1](./1_Analytic_Tradecraft.md). Models: [2](./2_Intrusion_Analysis_Models.md). Machine packaging: [4](./4_STIX_And_TAXII_Practice.md).
+Audience-shaped CTI (Cyber Threat Intelligence) writing, TLP (Traffic Light Protocol) handling, and producer/consumer hygiene. Analytic method: [1](./1_Analytic_Tradecraft.md). Models: [2](./2_Intrusion_Analysis_Models.md). Machine packaging: [4](./4_STIX_And_TAXII_Practice.md).
 
 ## Concept
 
@@ -13,7 +13,7 @@ Audience-shaped CTI writing, TLP handling, and producer/consumer hygiene. Analyt
 | Level | Audience | Typical product | Decision horizon |
 |-------|----------|-----------------|------------------|
 | **Strategic** | Exec / board / risk | Outlook, adversary intent & capability vs your sector | Quarters–years |
-| **Operational** | SOC lead / IR / detection eng | Campaign / intrusion set brief, TTP focus | Days–weeks |
+| **Operational** | SOC (Security Operations Center) lead / IR (incident response) / detection eng | Campaign / intrusion set brief, TTP focus | Days–weeks |
 | **Tactical / technical** | Analysts / tooling | Indicator cards, YARA/Snort pointers, STIX bundles | Hours–days |
 
 Same facts, different **so what**. Strategic never leads with hashes; tactical never opens with geopolitics.
@@ -23,13 +23,13 @@ Same facts, different **so what**. Strategic never leads with hashes; tactical n
 | Element | Role |
 |---------|------|
 | **TLP / handling** | Who may see and reshare ([TLP 2.0](#tlp-20-first) below) |
-| **Scope / PIR link** | Which requirement this answers |
+| **Scope / PIR (Priority Intelligence Requirement) link** | Which requirement this answers |
 | **BLUF / key judgments** | Bottom line up front — ICD 203: clear argumentation |
 | **What happened** | Observations separated from judgments ([1](./1_Analytic_Tradecraft.md)) |
 | **So what / implications** | Customer relevance (ICD 203) |
 | **Confidence & alternatives** | Uncertainties; analysis of alternatives |
 | **Recommendations** | Detect / deny / disrupt / hunt — tied to Kill Chain CoAs ([2](./2_Intrusion_Analysis_Models.md)) |
-| **IOCs / ATT&CK** | Machine-usable appendix or STIX ([4](./4_STIX_And_TAXII_Practice.md)) |
+| **IOCs / ATT&CK (Adversarial Tactics, Techniques, and Common Knowledge)** | Machine-usable appendix or STIX ([4](./4_STIX_And_TAXII_Practice.md)) |
 | **Sources / provenance** | Quality of sources (ICD 203); update/retract path |
 | **Feedback ask** | Did this help the decision? |
 
@@ -99,10 +99,10 @@ ICD 203 requires products to **express and explain uncertainties** on major judg
 
 | Consumer | What they need from CTI |
 |----------|-------------------------|
-| SOC / detection | Actionable TTPs/IOCs with expiry, FP notes, ATT&CK ([5](./5_Detection_Oriented_Handoff.md)) |
+| SOC / detection | Actionable TTPs/IOCs with expiry, FP notes, ATT&CK |
 | IR | Campaign scope, related infra, what “done” looks like |
-| VM / patch owners | In-the-wild exploitation context for CVE priority |
-| GRC / risk / board | Strategic so-what, not hash lists |
+| VM / patch owners | In-the-wild exploitation context for CVE (Common Vulnerabilities and Exposures) priority |
+| GRC (Governance, Risk, and Compliance) / risk / board | Strategic so-what, not hash lists |
 | ISACs / peers | Marked shares that meet community rules; strip irrelevant PII |
 | Leadership | BLUF + decision options + uncertainty |
 

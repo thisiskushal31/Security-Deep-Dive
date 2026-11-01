@@ -25,4 +25,4 @@
 
 ## Next
 
-- [OSINT](./3_OSINT.md) only after scope is clear — even in a lab, decide what “the target org” means.
+- [OSINT (Open-Source Intelligence)](./3_OSINT.md) only after scope is clear — even in a lab, decide what “the target org” means.

@@ -20,7 +20,7 @@ Software does not jump from a laptop to production in one hop. Each stage can be
 
 *Credit: OWASP Top 10:2025 — A03 Software Supply Chain Failures icon.*
 
-A03 elevated supply chain beyond “outdated libraries”: build systems, distribution, developer tooling, and change control. A08 covers **integrity** failures — unsigned updates, unverified artifacts, unsafe deserialize, CI that can be rewritten silently.
+A03 elevated supply chain beyond “outdated libraries”: build systems, distribution, developer tooling, and change control. A08 covers **integrity** failures — unsigned updates, unverified artifacts, unsafe deserialize, CI (continuous integration) that can be rewritten silently.
 
 ![OWASP Top 10:2025 A08 Software or Data Integrity Failures](../Assets/Cloud-Security/OWASP_A08_Integrity.png)
 
@@ -31,11 +31,11 @@ A03 elevated supply chain beyond “outdated libraries”: build systems, distri
 | Control | Job |
 |---------|-----|
 | **Lockfiles / pins / digests** | Reproducible inputs; no floating `latest` |
-| **SCA** | Known vulnerabilities in packages you already chose |
-| **SBOM** | Inventory of what is inside the artifact |
-| **VEX** | Whether a CVE in a component is actually exploitable *in your product* |
+| **SCA (Software Composition Analysis)** | Known vulnerabilities in packages you already chose |
+| **SBOM (Software Bill of Materials)** | Inventory of what is inside the artifact |
+| **VEX (Vulnerability Exploitability eXchange)** | Whether a CVE in a component is actually exploitable *in your product* |
 | **Sign / attest** | Cryptographic proof of who produced what |
-| **SLSA-oriented builders** | Hardened, hosted builds with trustworthy provenance |
+| **SLSA (Supply-chain Levels for Software Artifacts)-oriented builders** | Hardened, hosted builds with trustworthy provenance |
 | **Trusted promotion** | Promote the same artifact; do not rebuild per environment |
 | **Admission verify** | Cluster/runtime rejects unsigned or unexpected provenance |
 | **Dual-control promote** | No single person writes code and ships prod alone |
@@ -86,7 +86,7 @@ An SBOM is a **nested inventory** of components. It enables SCA, license review,
 
 NTIA/CISA minimum-element guidance defines the baseline fields programs expect; treat “we have a JSON file somewhere” as incomplete if it is not tied to the shipped digest.
 
-### SLSA Build track (intent)
+### SLSA (Supply-chain Levels for Software Artifacts) Build track (intent)
 
 | Level | Intent |
 |-------|--------|

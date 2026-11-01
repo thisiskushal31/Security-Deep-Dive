@@ -17,7 +17,7 @@ Delivery mechanics (pipelines, branching, approvals) live in DevOps-Handbook `Ci
 | Temporary open network rule that never expires | Permanent exposure |
 | Undocumented production config edit | No safe rollback; weak investigation |
 | Unreviewed dependency bump | Known vulnerable code enters the build |
-| Control disabled to “make it work” | Silent loss of MFA, filtering, or logging |
+| Control disabled to “make it work” | Silent loss of MFA (multi-factor authentication), filtering, or logging |
 
 ## Process elements that matter
 
@@ -42,7 +42,7 @@ Delivery mechanics (pipelines, branching, approvals) live in DevOps-Handbook `Ci
 | Restricted activities | Is this change forbidden in production without break-glass? |
 | Downtime | Availability impact and communications? |
 | Service or application restart | Session loss; fail-open vs fail-closed behavior? |
-| Legacy systems | Does this bypass SSO, logging, or policy enforcement? |
+| Legacy systems | Does this bypass SSO (single sign-on), logging, or policy enforcement? |
 | Dependencies | Downstream break; certificate or protocol mismatch? |
 
 ## Documentation and version control
@@ -62,7 +62,7 @@ Do not duplicate the gate chain here. Use:
 
 - [Security gate chain](https://github.com/thisiskushal31/DevOps-Handbook/blob/main/Security/4_Security_Gate_Chain.md)
 - Threat model on a **new trust boundary** ([12](./12_STRIDE_And_Threat_Modeling.md))
-- Secret scanning, SAST, SCA, IaC policy, signing, and DAST as the change warrants
+- Secret scanning, SAST (Static Application Security Testing), SCA (Software Composition Analysis), IaC (Infrastructure as Code) policy, signing, and DAST (Dynamic Application Security Testing) as the change warrants
 
 ```text
 Propose change → impact + approval → test/gates → deploy → verify → update docs

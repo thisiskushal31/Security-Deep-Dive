@@ -29,7 +29,7 @@ Identify  →  Authenticate  →  Authorize  →  Account (audit)
 | RADIUS | Centralized authentication/authorization/accounting for network access (VPN, Wi-Fi, NAS) |
 | TACACS+ | Device administration AAA (often separate authZ for network device commands) |
 | Kerberos | Ticket-based authentication inside many enterprise domains |
-| Modern app federation | OAuth 2 / OIDC / SAML for applications — [Identity/1](../Identity/1_OAuth_OIDC_SAML.md) |
+| Modern app federation | OAuth 2 / OIDC (OpenID Connect) / SAML (Security Assertion Markup Language) for applications — [Identity/1](../Identity/1_OAuth_OIDC_SAML.md) |
 
 Protocol packet detail stays in Networks. Application federation how-to stays in Identity and Tooling.
 
@@ -50,10 +50,10 @@ Multi-factor authentication uses at least two different classes. Phishing-resist
 |--------|-------|
 | Longer passphrases or manager-generated secrets | Short, reused, or dictionary passwords |
 | Unique secret per service | Same password across work and personal |
-| Password manager + MFA | Secrets in chat, tickets, or screenshots |
+| Password manager + MFA (multi-factor authentication) | Secrets in chat, tickets, or screenshots |
 | Length over clever complexity theater | Writing secrets on sticky notes next to the laptop |
 
-### SSO and federation (literacy)
+### SSO (single sign-on) and federation (literacy)
 
 **Single sign-on (SSO)** authenticates once into an identity provider, then grants access to many apps via federation. Strength comes from the IdP (MFA, logging, lifecycle). Weakness is concentration: IdP compromise or mis-federation affects many apps. Protocol how-to: [Identity/1](../Identity/1_OAuth_OIDC_SAML.md).
 
@@ -62,7 +62,7 @@ Multi-factor authentication uses at least two different classes. Phishing-resist
 | Pattern | Practice |
 |---------|----------|
 | Static API keys | Short-lived where possible; rotate; never commit to git |
-| Mutual TLS | Strong peer authentication; certificate lifecycle cost |
+| Mutual TLS (Transport Layer Security) | Strong peer authentication; certificate lifecycle cost |
 | Workload identity / federation to cloud | Prefer over long-lived keys on CI runners and nodes |
 
 Secrets practice in delivery: [DevOps-Handbook Security/1](https://github.com/thisiskushal31/DevOps-Handbook/blob/main/Security/1_Security_Practices_And_Secrets.md). CI cloud identity: [Security/5](https://github.com/thisiskushal31/DevOps-Handbook/blob/main/Security/5_OIDC_CI_And_Least_Privilege.md).
@@ -75,11 +75,11 @@ Secrets practice in delivery: [DevOps-Handbook Security/1](https://github.com/th
 |-------|------|-------------|
 | Discretionary (DAC) | Owner-controlled access lists | Classic filesystems |
 | Mandatory (MAC) | System-enforced labels / clearances | High-assurance environments |
-| Role-based (RBAC) | Roles map to permissions | Most business applications |
-| Attribute-based (ABAC) | Policy over user, resource, and context attributes | Fine-grained and Zero Trust-style policy engines |
+| Role-based (RBAC (Role-Based Access Control)) | Roles map to permissions | Most business applications |
+| Attribute-based (ABAC (Attribute-Based Access Control)) | Policy over user, resource, and context attributes | Fine-grained and Zero Trust-style policy engines |
 | Relationship-based | Permissions from relationships in a graph | “Shared with me” style access |
 
-**Object-level authorization** checks the specific resource, not only the caller’s role. Role `user` plus `GET /orders/123` still requires that this user may see order `123`. API detail: [AppSec/2](../AppSec/2_API_Security.md).
+**Object-level authorization** checks the specific resource, not only the caller’s role. Role `user` plus `GET /orders/123` still requires that this user may see order `123`. API detail: [AppSec/5](../AppSec/5_API_Security_Top_10_2023.md).
 
 ### Access control matrix (literacy)
 

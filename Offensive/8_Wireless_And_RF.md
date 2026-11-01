@@ -10,7 +10,7 @@ Wireless testing is its **own** legal minefield. Practice only on **your** AP / 
 |-------|-------|
 | Wi-Fi auth families | Open / PSK / enterprise (802.1X) — know which you are allowed to test |
 | Evil twin / rogue AP | Social + RF; detect with wireless IDS where relevant |
-| Bluetooth / IoT RF | Separate kit and laws; often out of web AppSec scope |
+| Bluetooth / IoT RF | Separate kit and laws; often out of web AppSec (application security) scope |
 | Tools | Aircrack-ng, Bettercap — [Tooling Offensive](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Offensive) |
 
 ## Program note

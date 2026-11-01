@@ -4,7 +4,7 @@
 
 > **Progression:** concept → advanced → apply.
 
-How to **design systems that survive** prompt injection. How attacks unfold end-to-end (plant → read → steer → act → persist): [8](./8_Attack_Mechanisms_For_Defenders.md). Catalog ownership: LLM01 in [1](./1_LLM_App_Threat_Model_In_Practice.md). RAG surfaces: [3](./3_RAG_And_Memory_Hardening.md). Tools and gates: [4](./4_Agentic_Controls.md).
+How to **design systems that survive** prompt injection. How attacks unfold end-to-end (plant → read → steer → act → persist): [8](./8_Attack_Mechanisms_For_Defenders.md). Catalog ownership: LLM01 in [1](./1_LLM_App_Threat_Model_In_Practice.md). RAG (retrieval-augmented generation) surfaces: [3](./3_RAG_And_Memory_Hardening.md). Tools and gates: [4](./4_Agentic_Controls.md).
 
 LLMs do **not** cleanly separate instructions from data. Tokens are tokens. **No reliable prevention** exists today: filters, “ignore previous instructions” prose, and “safe model” marketing all degrade against adaptive attackers. Defense is **architectural** — assume the instruction boundary will be bypassed; constrain what the model can *do* and what outputs can *reach*.
 
@@ -73,7 +73,7 @@ Apply as layers. Prefer **containment** over “perfect filter.” After each la
 | 7 | **Human approval for high-impact actions** | Act | Show the **exact** rendered action (not a summary) before delete/pay/publish/mail-all; timeout **fail-closed**. Invisible Unicode can desync display vs execute |
 | 8 | **Rule of Two / capability budgets** | Amplify | `[A,B,C]` = untrusted input + sensitive data + state-change/external → per-action human approval. Also max tool calls, tokens, spend, recursion — [4](./4_Agentic_Controls.md) |
 | 9 | **Privileged memory writes** | Persist | Log causing prompt; classify instruction/role-modification writes; require approval before cross-session persist — [3](./3_RAG_And_Memory_Hardening.md) |
-| 10 | **Pin/sign MCP & tools; audit full tool defs** | Plant (supply chain) | Descriptions, schemas, annotations — hash complete definitions; monitor rug pulls — [5](./5_Model_And_Data_Supply_Chain.md) |
+| 10 | **Pin/sign MCP (Model Context Protocol) & tools; audit full tool defs** | Plant (supply chain) | Descriptions, schemas, annotations — hash complete definitions; monitor rug pulls — [5](./5_Model_And_Data_Supply_Chain.md) |
 | 11 | **Adaptive adversarial evaluation** | Measure | Disclose the defense to testers; reject static-only “near zero ASR” claims — [6](./6_Authorized_AI_Evaluation.md) |
 
 ```text

@@ -1,4 +1,4 @@
-# CIA and risk
+# CIA (Confidentiality, Integrity, Availability) and risk
 
 [← Foundations](./README.md)
 
@@ -103,7 +103,7 @@ Residual risk remains after controls
 
 | Treatment | Meaning | Example |
 |-----------|---------|---------|
-| Mitigate | Reduce likelihood or impact with controls | Patch; MFA; segmentation |
+| Mitigate | Reduce likelihood or impact with controls | Patch; MFA (multi-factor authentication); segmentation |
 | Avoid | Stop the activity that creates the risk | Do not store that data; remove the feature |
 | Transfer / share | Shift some impact (does not remove the need for controls) | Contractual controls; insurance |
 | Accept | Live with residual risk on purpose | Named owner, written reason, review or expiry date |
@@ -158,7 +158,7 @@ Use layered controls so one failure is not total loss: identity, network/edge, h
 
 ## Related homes
 
-- Wire / TLS → [Networks-Deep-Dive](https://github.com/thisiskushal31/Networks-Deep-Dive)
+- Wire / TLS (Transport Layer Security) → [Networks-Deep-Dive](https://github.com/thisiskushal31/Networks-Deep-Dive)
 - Pipeline gates and secrets → [DevOps-Handbook Security](https://github.com/thisiskushal31/DevOps-Handbook/tree/main/Security)
 - Design-time trade-offs → [System-Design Security-Tradeoffs](https://github.com/thisiskushal31/System-Design-Concepts/tree/main/Security-Tradeoffs)
 - Crypto pitfalls → [Cryptography](../Cryptography/README.md); literacy → [8](./8_Cryptographic_Solutions_Literacy.md)

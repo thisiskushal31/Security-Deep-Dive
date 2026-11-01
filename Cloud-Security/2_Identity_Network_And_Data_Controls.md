@@ -12,21 +12,21 @@ Product click-paths: Handbook. Federation / ZT theory: [Identity](../Identity/RE
 
 ### Identity — the real perimeter of the management plane
 
-Cloud authorization is usually **policy on every API call**. Console, CLI, Terraform, and attackers all hit the same plane.
+Cloud **IAM (Identity and Access Management)** is usually **policy on every API call**. Console, CLI, Terraform, and attackers all hit the same plane.
 
 | Practice | Why |
 |----------|-----|
 | **Least privilege** | Only the actions and resources required |
 | **Short-lived credentials** | Roles/federation over forever access keys |
-| **MFA for humans** | Console, break-glass, privileged roles |
-| **Human ≠ workload identity** | Pipelines and VMs must not share laptop SSO |
-| **JIT elevation** | Standing admin is standing risk |
+| **MFA (multi-factor authentication) for humans** | Console, break-glass, privileged roles |
+| **Human ≠ workload identity** | Pipelines and VMs must not share laptop SSO (single sign-on) |
+| **JIT (just-in-time) elevation** | Standing admin is standing risk |
 | **Org guardrails** (SCPs / Azure Policy / org policies / private-cloud equivalents) | Project owners cannot silently open the world |
 | **Access review** | Unused roles and keys are unpaid surface |
 
 ```text
 Human ──SSO/MFA──▶ IdP ──federation──▶ Cloud IAM / directory
-Workload ──instance / OIDC identity──▶ role / service account
+Workload ──instance / OIDC (OpenID Connect) identity──▶ role / service account
                                          │
                                          ▼
                             API authorize (policy + conditions)
@@ -39,13 +39,13 @@ Workload ──instance / OIDC identity──▶ role / service account
 | Layer | What it is | Typical job |
 |-------|------------|-------------|
 | **Edge / internet gateway path** | How a VPC/VNet reaches the internet or users | Control what is even routable publicly |
-| **Network ACL / subnet filter** | Stateless allow/deny at subnet edge | Coarse zone boundary |
-| **Security group / NSG / stateful filter** | Attached to NICs / instances / ENIs | Allow-list east-west and north-south for workloads |
+| **NACL (network access control list) / subnet filter** | Stateless allow/deny at subnet edge | Coarse zone boundary |
+| **Security group / NSG (network security group) / stateful filter** | Attached to NICs / instances / ENIs | Allow-list east-west and north-south for workloads |
 | **Host firewall** (iptables/nftables/Windows FW) | Inside the guest OS you manage | Defense-in-depth when you run the OS |
-| **Network virtual appliance / NGFW** | Third-party or marketplace firewall VM/appliance | Deep inspection, IPS, centralized policy |
-| **WAF / API gateway protections** | HTTP(S) application filter | SQLi/XSS/bot abuse in front of apps |
-| **DDoS / volumetric protections** | Provider edge or dedicated service | Absorb or scrub floods |
-| **Private endpoints / service endpoints** | Private path to managed PaaS | Avoid public service URLs for data planes |
+| **Network virtual appliance / NGFW (next-generation firewall)** | Third-party or marketplace firewall VM/appliance | Deep inspection, IPS (intrusion prevention), centralized policy |
+| **WAF (web application firewall) / API gateway protections** | HTTP(S) application filter | SQLi/XSS/bot abuse in front of apps |
+| **DDoS (distributed denial of service) / volumetric protections** | Provider edge or dedicated service | Absorb or scrub floods |
+| **Private endpoints / service endpoints** | Private path to managed PaaS (Platform as a Service) | Avoid public service URLs for data planes |
 | **Egress controls / proxies** | Outbound allow lists | Limit exfil and malware callbacks |
 
 ```text
@@ -69,10 +69,10 @@ Internet / partner
 | Concern | Practice |
 |---------|----------|
 | Classification | Know sensitivity before you pick a store |
-| Encryption in transit | TLS for clients and service-to-service |
+| Encryption in transit | TLS (Transport Layer Security) for clients and service-to-service |
 | Encryption at rest | Disks, objects, databases, backups |
-| Key management | KMS/HSM; separate **users** of keys from **admins** of keys |
-| Customer-managed keys | When policy requires you hold the trust root |
+| Key management | KMS (Key Management Service) / HSM (Hardware Security Module); separate **users** of keys from **admins** of keys |
+| Customer-managed keys (CMK) | When policy requires you hold the trust root |
 | Access path | Prefer app-tier access over broad human read of prod data |
 
 ## Advanced
@@ -114,9 +114,9 @@ Shared responsibility ([1](./1_Cloud_Models_And_Shared_Responsibility.md)) never
 | Pattern | Public cloud | Private cloud | Hybrid |
 |---------|--------------|---------------|--------|
 | East-west limit | SG/NSG + zones | SDN + firewalls | Both ends of interconnect |
-| Admin access | Bastion / SSM-class / ZTNA — never SSH `/0` | Jump hosts + MFA | Same policy language |
+| Admin access | Bastion / SSM-class / ZTNA (Zero Trust Network Access) — never SSH `/0` | Jump hosts + MFA | Same policy language |
 | PaaS data plane | Private endpoint | Internal-only URL | Consistent DNS/routing |
-| Metadata / IMDS | Restrict hop/path | Hypervisor equivalents | Do not bridge trusts |
+| Metadata / IMDS (Instance Metadata Service) | Restrict hop/path | Hypervisor equivalents | Do not bridge trusts |
 
 ## Apply
 

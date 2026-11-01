@@ -21,8 +21,8 @@ Reduce unnecessary attack surface and enforce least privilege on a system so com
 | Patch | Close known vulns on a cadence ([20](./20_Vulnerability_Management_Literacy.md)) |
 | Remove / disable | Unused services, accounts, protocols |
 | Restrict | Local firewall; app allow lists; USB policy |
-| Protect identity | Local admin reduction; LAPS-class secrets; MFA to admin paths |
-| Detect | EDR / logging agents forwarding to SIEM |
+| Protect identity | Local admin reduction; LAPS-class secrets; MFA (multi-factor authentication) to admin paths |
+| Detect | EDR (endpoint detection and response) / logging agents forwarding to SIEM (Security Information and Event Management) |
 
 ## OS as a control plane
 
@@ -32,7 +32,7 @@ Reduce unnecessary attack surface and enforce least privilege on a system so com
 | Permissions on files and processes | Integrity and confidentiality of data on disk |
 | Services and listeners | Every open port is surface |
 | Update / package management | Patch pipeline health |
-| Logging / audit | Feeds detection and IR |
+| Logging / audit | Feeds detection and IR (incident response) |
 
 Windows, Linux, and macOS differ in tools; the jobs are the same.
 

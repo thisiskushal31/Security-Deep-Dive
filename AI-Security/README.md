@@ -2,7 +2,7 @@
 
 [← README](../README.md)
 
-Build/operate depth for securing LLM apps and agents: threat-model operations, prompt-injection architecture, RAG/memory hardening, agentic controls, AIBOM/MCP supply chain, authorized evaluation, shadow-AI governance, attack mechanisms for defenders, and **model confidentiality / classical AML / Model Ops**.
+Build/operate depth for securing LLM (large language model) apps and agents: threat-model operations, prompt-injection architecture, RAG (retrieval-augmented generation)/memory hardening, agentic controls, AIBOM (AI Bill of Materials)/MCP (Model Context Protocol) supply chain, authorized evaluation, shadow-AI governance, attack mechanisms for defenders, and **model confidentiality / classical AML (adversarial machine learning) / Model Ops**.
 
 Literacy: [Threats/8](../Threats/8_AI_Era_Threats.md). Workshop method: [Threat-Modeling/6](../Threat-Modeling/6_AI_And_Agentic_Threat_Modeling.md).
 
@@ -38,15 +38,15 @@ Each note follows **concept → advanced → apply**. Official Further reading o
 
 | Area | Home |
 |------|------|
-| Component vs agent, lethal trifecta, LLM/ASI ownership, RMF Map, living register, release gates | 1 |
+| Component vs agent, lethal trifecta, LLM/ASI ownership, RMF (Risk Management Framework) Map, living register, release gates | 1 |
 | Assume injection; plant→act chain; containment stack; schema/output; Unicode/modality | 2 |
 | RAG poison path; ACL-before-retrieve; provenance; delimiters; embeddings; memory | 3 |
 | Model proposes / code disposes; tools; identity; human gates; budgets; kill switch | 4 |
-| AIBOM/ML-BOM; MCP host/client/server; pin/sign/allowlist; unsafe model files | 5 |
+| AIBOM/ML-BOM (Machine Learning Bill of Materials); MCP host/client/server; pin/sign/allowlist; unsafe model files | 5 |
 | Authorized adversarial eval; tooling literacy; metrics; log-based pass/fail; ATLAS tags | 6 |
-| Shadow AI incident paths; data tiers; approved alternatives; DLP; private deploy | 7 |
+| Shadow AI incident paths; data tiers; approved alternatives; DLP (data loss prevention); private deploy | 7 |
 | Jailbreak vs injection vs ASI01; OWASP #1–#9 anatomies; Unicode; MCP poison/rug-pull; fixtures | 8 |
-| Membership inference, inversion, extraction/theft; adversarial examples; inference API; GPU isolation; AI IR handoff | 9 |
+| Membership inference, inversion, extraction/theft; adversarial examples; inference API; GPU isolation; AI IR (incident response) handoff | 9 |
 
 ## Related homes (do not duplicate)
 
@@ -54,11 +54,12 @@ Each note follows **concept → advanced → apply**. Official Further reading o
 |-------|------|
 | AI-era threat literacy | [Threats/8](../Threats/8_AI_Era_Threats.md) |
 | AI / agentic threat modeling (workshops) | [Threat-Modeling/6](../Threat-Modeling/6_AI_And_Agentic_Threat_Modeling.md) |
-| Classic AppSec / OWASP web | [AppSec](../AppSec/README.md) |
+| Classic AppSec (application security) / OWASP web | [AppSec](../AppSec/README.md) |
 | Non-human identity / federation | [Identity](../Identity/README.md) |
 | Supply chain (general) | [Cloud-Security/6](../Cloud-Security/6_Supply_Chain_And_Delivery_Integrity.md) |
-| SIEM / IR / forensics | [Defensive-Ops](../Defensive-Ops/README.md) |
+| AI deployments in cloud / AI-SPM (AI Security Posture Management) / GPU serving security | [Cloud-Security/8](../Cloud-Security/8_AI_Workloads_And_Cloud_AI_Security.md) |
+| SIEM (Security Information and Event Management) / IR / forensics | [Defensive-Ops](../Defensive-Ops/README.md) |
 | Human / social engineering | [Foundations/16](../Foundations/16_Human_Security_Literacy.md) |
-| ATT&CK / ATLAS nesting | [GRC/1](../GRC/1_NIST_ISO_And_ATTCK.md) · [atlas.mitre.org](https://atlas.mitre.org/) |
-| CTI handoff | [Threat-Intelligence](../Threat-Intelligence/README.md) |
+| ATT&CK (Adversarial Tactics, Techniques, and Common Knowledge) / ATLAS nesting | [GRC/1](../GRC/1_NIST_ISO_And_ATTCK.md) · [atlas.mitre.org](https://atlas.mitre.org/) |
+| CTI (Cyber Threat Intelligence) handoff | [Threat-Intelligence](../Threat-Intelligence/README.md) |
 | AI infra serving (vLLM, KV, K8s scale — not security) | [DS-AI Inference-And-Serving](https://github.com/thisiskushal31/Data-Science-AI-Deep-Dive/tree/main/Inference-And-Serving) |

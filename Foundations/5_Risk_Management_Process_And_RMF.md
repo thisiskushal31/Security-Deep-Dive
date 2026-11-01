@@ -1,4 +1,4 @@
-# Risk management process and RMF
+# Risk management process and RMF (Risk Management Framework)
 
 [← Foundations](./README.md)
 

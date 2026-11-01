@@ -17,7 +17,7 @@ Zero Trust and PEPs: [13](./13_Zero_Trust_And_Deception_Basics.md). Scanning eth
 | Shrink blast radius | Segmentation and least connectivity |
 | Enforce policy at chokepoints | Firewalls, gateways, proxies |
 | See abuse | Logging, IDS/IPS, flow telemetry |
-| Protect data in motion | TLS / VPN / authenticated channels ([8](./8_Cryptographic_Solutions_Literacy.md)) |
+| Protect data in motion | TLS (Transport Layer Security) / VPN / authenticated channels ([8](./8_Cryptographic_Solutions_Literacy.md)) |
 
 ```text
 Internet / partners
@@ -37,10 +37,10 @@ Internet / partners
 |-------|------|
 | Segment / VLAN / VPC subnet | Group systems that share trust and policy |
 | Firewall | Allow/deny by policy at a boundary |
-| WAF | Application-layer protections for HTTP apps |
+| WAF (web application firewall) | Application-layer protections for HTTP apps |
 | Proxy / egress filter | Control and inspect outbound connections |
 | IDS / IPS | Detect (and optionally block) suspicious traffic patterns |
-| VPN / ZTNA | Remote access without flat “inside = trusted” |
+| VPN / ZTNA (Zero Trust Network Access) | Remote access without flat “inside = trusted” |
 | Load balancer / API gateway | Often the first trust boundary for apps |
 | DNS security | Reduce abuse of resolution and known-bad domains |
 

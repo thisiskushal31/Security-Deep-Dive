@@ -6,7 +6,7 @@ Detect, respond, learn. On-call culture stays in DevOps Methodologies. Named cap
 
 ## Purple team (no separate folder)
 
-**Purple** work is offense informing defense: agree on ATT&CK techniques, run lab exercises, and improve detections. Use [Offensive/](../Offensive/README.md) for PTES-shaped phases and this folder for SIEM/IR/forensics outcomes. Share technique IDs from [GRC ATT&CK](../GRC/1_NIST_ISO_And_ATTCK.md).
+**Purple** work is offense informing defense: agree on ATT&CK (Adversarial Tactics, Techniques, and Common Knowledge) techniques, run lab exercises, and improve detections. Use [Offensive/](../Offensive/README.md) for PTES (Penetration Testing Execution Standard)-shaped phases and this folder for SIEM (Security Information and Event Management)/IR (incident response)/forensics outcomes. Share technique IDs from [GRC ATT&CK](../GRC/1_NIST_ISO_And_ATTCK.md).
 
 ## Topic files
 

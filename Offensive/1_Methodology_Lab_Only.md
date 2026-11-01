@@ -6,12 +6,12 @@ Practice offensive security only on **systems you own or have written permission
 
 ## PTES-shaped phases
 
-This folder follows a [PTES](http://www.pentest-standard.org/)-like flow (planning → report). Other methodologies (OWASP testing guide, NIST SP 800-115) map to the same idea: **authorize → discover → validate → report**.
+This folder follows a [PTES (Penetration Testing Execution Standard)](http://www.pentest-standard.org/)-like flow (planning → report). Other methodologies (OWASP testing guide, NIST SP 800-115) map to the same idea: **authorize → discover → validate → report**.
 
 | Phase | This repo |
 |-------|-----------|
 | Pre-engagement | [2 Planning and scope](./2_Planning_And_Scope.md) |
-| Intelligence | [3 OSINT](./3_OSINT.md) |
+| Intelligence | [3 OSINT (Open-Source Intelligence)](./3_OSINT.md) |
 | Threat modeling / discovery | [4 Scanning](./4_Scanning_And_Enumeration.md) |
 | Vulnerability analysis / exploitation | [5](./5_Web_Application_Attacks.md)–[6](./6_Exploitation_Lab_Only.md) |
 | Post-exploitation | [7](./7_Post_Exploitation.md) |

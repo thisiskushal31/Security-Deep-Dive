@@ -1,4 +1,4 @@
-# Model and data supply chain (AIBOM, signing, MCP)
+# Model and data supply chain (AIBOM (AI Bill of Materials), signing, MCP (Model Context Protocol))
 
 [← AI-Security](./README.md)
 
@@ -16,14 +16,14 @@ Your agent’s behavior is the composition of every artifact that shaped it. Com
 |----------|-------------------|--------------------|
 | Base / fine-tuned **model** weights | Backdoors, unexpected behavior, license/compliance | Hub pull, merge, LoRA from unknown source |
 | **Datasets** / fine-tune corpora | Poisoning (LLM05) | Contaminated open data; insider insert |
-| Inference **images** / runtimes | Container CVE + GPU stack | Untagged `latest`, public base images |
+| Inference **images** / runtimes | Container CVE (Common Vulnerabilities and Exposures) + GPU stack | Untagged `latest`, public base images |
 | Orchestrator libraries | Typosquats, malicious plugins | Package registry |
 | **MCP servers** / tool packages | Tool poisoning; hidden instructions in descriptors (ASI04) | “Helpful” community server |
 | Prompts / agents-as-code | Unreviewed “prompt malware” | Shared prompt repo without review |
 
 Treat generative-AI development with software-security rigor: integrity of training and fine-tune data, secure build and release, signed promote paths.
 
-### SBOM vs AIBOM / ML-BOM
+### SBOM (Software Bill of Materials) vs AIBOM / ML-BOM (Machine Learning Bill of Materials)
 
 | Artifact | Covers |
 |----------|--------|
@@ -113,7 +113,7 @@ Security principles that matter in production:
 | Never grant production `service_role` to chat agents by default | Ticket / issue text must not equal DB root (published MCP failure pattern) |
 | Structured tool responses + schema reject | Free-text tool returns are another injection channel |
 
-### Data integrity for training / fine-tune / RAG ingest
+### Data integrity for training / fine-tune / RAG (retrieval-augmented generation) ingest
 
 Confirm integrity of training, testing, fine-tuning, and alignment data before use. Pair with [3](./3_RAG_And_Memory_Hardening.md) for retrieval corpora — the same poison can hit training *or* RAG.
 
@@ -127,7 +127,7 @@ Confirm integrity of training, testing, fine-tuning, and alignment data before u
 
 ### Unsafe model files (deserialize = code)
 
-Some model formats execute code on load. Treat untrusted `.pkl` / unrestricted checkpoint loads as **RCE candidates**: scan, sandbox evaluate, prefer safe/weights-only loaders, never open random hub files on hosts with secrets. Full confidentiality + Model Ops treatment: [9](./9_Model_Confidentiality_And_Classical_AML.md).
+Some model formats execute code on load. Treat untrusted `.pkl` / unrestricted checkpoint loads as **RCE (remote code execution) candidates**: scan, sandbox evaluate, prefer safe/weights-only loaders, never open random hub files on hosts with secrets. Full confidentiality + Model Ops treatment: [9](./9_Model_Confidentiality_And_Classical_AML.md).
 
 ### Classic cloud supply chain still applies
 
@@ -158,11 +158,11 @@ Dependency scanning, base images, secrets — AI stacks inherit all of it. Link 
 
 ## Further reading
 
-- [NIST SP 800-218A — SSDF Community Profile for GenAI](https://csrc.nist.gov/pubs/sp/800/218/a/final)
+- [NIST SP 800-218A — SSDF (Secure Software Development Framework) Community Profile for GenAI](https://csrc.nist.gov/pubs/sp/800/218/a/final)
 - [CISA / NCSC — Guidelines for secure AI system development](https://www.cisa.gov/resources-tools/resources/guidelines-secure-ai-system-development)
 - [Model Context Protocol — Specification](https://modelcontextprotocol.io/specification/2025-11-25)
 - [Model Context Protocol — Security best practices](https://modelcontextprotocol.io/docs/2025-06-18/tutorials/security/security_best_practices)
 - [OWASP — MCP Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/MCP_Security_Cheat_Sheet.html)
 - [CycloneDX — ML-BOM](https://cyclonedx.org/capabilities/mlbom/)
-- [OWASP LLM04 / ASI04 (Top 10 2026 hubs)](https://genai.owasp.org/llm-top-10/)
+- [OWASP LLM04 / ASI04](https://genai.owasp.org/llm-top-10/)
 - [Cloud-Security/6 — Supply chain](../Cloud-Security/6_Supply_Chain_And_Delivery_Integrity.md)

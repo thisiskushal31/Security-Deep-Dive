@@ -4,7 +4,7 @@
 
 > **Progression:** concept → advanced → apply.
 
-How **CTI** teams decide *what to answer*, how they reason under uncertainty, and how they keep observation separate from judgment. Lifecycle vocabulary: [Foundations/19](../Foundations/19_Threat_Intelligence_Literacy.md). Intrusion models: [2](./2_Intrusion_Analysis_Models.md). Products: [3](./3_Finished_Intelligence_Products.md).
+How **CTI (Cyber Threat Intelligence)** teams decide *what to answer*, how they reason under uncertainty, and how they keep observation separate from judgment. Lifecycle vocabulary: [Foundations/19](../Foundations/19_Threat_Intelligence_Literacy.md). Intrusion models: [2](./2_Intrusion_Analysis_Models.md). Products: [3](./3_Finished_Intelligence_Products.md).
 
 ## Concept
 
@@ -23,13 +23,13 @@ In one line: CTI turns adversary-related data into **answers people can act on**
 | This is data / information | This is closer to intelligence |
 |----------------------------|--------------------------------|
 | A feed of 50,000 hashes | “These three loaders showed up in invoice phishing aimed at finance; hunt and mail rules for this week” |
-| A vendor blog pasted into Slack | A short product with judgments, confidence, ATT&CK, and recommended next steps ([3](./3_Finished_Intelligence_Products.md)) |
+| A vendor blog pasted into Slack | A short product with judgments, confidence, ATT&CK (Adversarial Tactics, Techniques, and Common Knowledge), and recommended next steps ([3](./3_Finished_Intelligence_Products.md)) |
 
-**Who uses CTI?** Detection engineers, IR/SOC, vulnerability and GRC owners, leadership — anyone who needs “who/what/so what/what next” about adversaries. This folder is the **practice depth** (tradecraft, models, products, sharing, handoff). The vocabulary first pass is [Foundations/19](../Foundations/19_Threat_Intelligence_Literacy.md).
+**Who uses CTI?** Detection engineers, IR (incident response)/SOC (Security Operations Center), vulnerability and GRC (Governance, Risk, and Compliance) owners, leadership — anyone who needs “who/what/so what/what next” about adversaries. This folder is the **practice depth** (tradecraft, models, products, sharing, handoff). The vocabulary first pass is [Foundations/19](../Foundations/19_Threat_Intelligence_Literacy.md).
 
 CTI without requirements is a feed subscription. **Priority intelligence requirements (PIRs)** are the short list of questions leadership and operators need answered so collection and analysis have a purpose.
 
-| Question type | Example PIR | Decision it supports |
+| Question type | Example PIR (Priority Intelligence Requirement) | Decision it supports |
 |---------------|-------------|----------------------|
 | Who | Which intrusion sets regularly target our sector? | Where to spend detection / IR readiness |
 | What | Which malware families or tools show up in our telemetry? | Signature / YARA / block priorities ([5](./5_Detection_Oriented_Handoff.md)) |
@@ -172,7 +172,7 @@ Direction (PIRs / RFIs / stakeholders)
 | **Collection** | Mix sources below; write a short **collection plan** (what, where, by when, legal/policy limits) |
 | **Processing** | Dedupe feeds, extract claims/dates, enrich (WHOIS/pDNS/sandbox), preserve provenance |
 | **Analysis** | Fuse sources; ACH/SATs; ATT&CK + Kill Chain/Diamond ([2](./2_Intrusion_Analysis_Models.md)) |
-| **Dissemination** | Strategic brief ≠ STIX dump ([3](./3_Finished_Intelligence_Products.md), [4](./4_STIX_And_TAXII_Practice.md)) |
+| **Dissemination** | Strategic brief ≠ STIX (Structured Threat Information Expression) dump ([3](./3_Finished_Intelligence_Products.md), [4](./4_STIX_And_TAXII_Practice.md)) |
 | **Feedback** | Did hunts/detections/decisions change? Retire or promote intel ([5](./5_Detection_Oriented_Handoff.md)) |
 
 ### Collection sources CTI teams actually use
@@ -181,12 +181,12 @@ Industry practice (e.g. CREST CTI guidance) fuses **multiple** source classes �
 
 | Source class | Examples | Typical use |
 |--------------|----------|-------------|
-| **Internal** | EDR/SIEM summaries, phishing queue, IR tickets, sandbox detonations, vuln scan context | Ground truth for *your* environment |
-| **OSINT / open reporting** | Vendor blogs, researcher write-ups, government advisories, court docs, news | Campaign context; always re-verify |
+| **Internal** | EDR (endpoint detection and response)/SIEM (Security Information and Event Management) summaries, phishing queue, IR tickets, sandbox detonations, vuln scan context | Ground truth for *your* environment |
+| **OSINT (Open-Source Intelligence) / open reporting** | Vendor blogs, researcher write-ups, government advisories, court docs, news | Campaign context; always re-verify |
 | **Community sharing** | ISACs/ISAOs, trusted peer lists, MISP communities, AIS-class feeds | Sector-relevant indicators + narratives |
 | **Commercial CTI** | TIP subscriptions, finished reports, specialized underground-monitoring *services* (policy-bound) | Scale collection you cannot staff alone |
 | **Malware / phishing as collection** | Samples → triage/sandbox → IOCs + behaviors | Infrastructure and TTP extraction ([5](./5_Detection_Oriented_Handoff.md)) |
-| **Vuln / exploit context** | CVE + in-the-wild exploitation signals | Prioritize with [VM](../Vulnerability-Management/README.md) |
+| **Vuln / exploit context** | CVE (Common Vulnerabilities and Exposures) + in-the-wild exploitation signals | Prioritize with [VM](../Vulnerability-Management/README.md) |
 | **Geopolitical / business context** | Sector targeting trends, crisis-driven disruption risk | Strategic PIRs — not a substitute for technical evidence |
 
 **Source evaluation (every claim):** Who said it? Do they have access? Motive to spin? Freshness? Corroborated by independent source? ICD 203 demands describing **quality and credibility** of sources — treat “vendor said APT-X” as a *claim*, not a fact, until you score it.
@@ -219,7 +219,7 @@ ODNI **ICD 203** sets Intelligence Community Analytic Standards that commercial 
 
 ### Structured Analytic Techniques (SATs)
 
-CIA *A Tradecraft Primer* (2009) groups techniques that challenge mind-sets. CTI teams do not need all of them every week — pick by problem type:
+CIA (Confidentiality, Integrity, Availability) *A Tradecraft Primer* (2009) groups techniques that challenge mind-sets. CTI teams do not need all of them every week — pick by problem type:
 
 | Family | Techniques | When |
 |--------|------------|------|
@@ -274,7 +274,7 @@ Naming an actor is a high-impact judgment. Prefer:
 | “Infrastructure previously used in …” | Equating shared tooling with shared operators |
 | Cluster / activity group with confidence | Celebrity APT branding for every incident |
 
-Describe *what happened* with Diamond/ATT&CK ([2](./2_Intrusion_Analysis_Models.md)) before arguing *who*.
+Describe *what happened* with Diamond/ATT&CK before arguing *who*.
 
 ### Requirements and sharing hygiene (NIST SP 800-150)
 

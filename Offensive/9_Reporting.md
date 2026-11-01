@@ -12,13 +12,13 @@ If it is not written clearly, the engagement did not help the defender. Reports 
 | Executive summary | Business risk in plain language |
 | Findings | Title, severity, affected assets, evidence |
 | Reproduction | Steps a defender can follow in the lab/staging |
-| Impact | CIA / business consequence |
+| Impact | CIA (Confidentiality, Integrity, Availability) / business consequence |
 | Remediation | Concrete fix; verify steps |
 | Appendix | Tools versions, raw logs as needed |
 
 ## Severity
 
-Align with the org’s scale (CVSS + exposure, or their matrix). “Critical” without reachability is noise.
+Align with the org’s scale (CVSS (Common Vulnerability Scoring System) + exposure, or their matrix). “Critical” without reachability is noise.
 
 ## Purple / engineering handoff
 

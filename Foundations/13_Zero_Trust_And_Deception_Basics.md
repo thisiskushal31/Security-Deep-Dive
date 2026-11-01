@@ -54,7 +54,7 @@ Core logical components:
 | **Policy administrator (PA)** | Executes the decision — establishes or tears down the session path via the enforcement point |
 | **Policy enforcement point (PEP)** | Gateway, agent, or proxy that enables, monitors, and terminates connections between subject and resource |
 
-Supporting inputs commonly include identity management, enterprise PKI, device/posture (CDM-class) data, threat intelligence, activity logs / SIEM, and compliance constraints.
+Supporting inputs commonly include identity management, enterprise PKI (Public Key Infrastructure), device/posture (CDM-class) data, threat intelligence, activity logs / SIEM (Security Information and Event Management), and compliance constraints.
 
 | Idea | Meaning |
 |------|---------|
@@ -82,8 +82,8 @@ Use pillars as a coverage checklist across the program — not a mandate to buy 
 | Strong identity for people and workloads | Flat shared credentials |
 | Short-lived credentials and a working revoke path | “Inside the VPN” as the only control |
 | Segment by sensitivity and identity | One flat security group for every workload |
-| Authorize at the system that owns the data | Assume edge TLS is authorization |
-| Log denials and anomalies | Skip MFA hygiene after buying a gateway |
+| Authorize at the system that owns the data | Assume edge TLS (Transport Layer Security) is authorization |
+| Log denials and anomalies | Skip MFA (multi-factor authentication) hygiene after buying a gateway |
 
 ### Deception technology
 
@@ -100,7 +100,7 @@ Rules: only on systems you own; clear labels for responders; alert routing into 
 | Topic | Home |
 |-------|------|
 | Federation and Zero Trust program notes | [Identity](../Identity/README.md) |
-| Tokens, mTLS, gatekeeper trade-offs | System-Design Security-Tradeoffs |
+| Tokens, mTLS (mutual Transport Layer Security), gatekeeper trade-offs | System-Design Security-Tradeoffs |
 | Service mesh / wire | Networks-Deep-Dive |
 | Alert handling | Defensive-Ops |
 

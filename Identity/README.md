@@ -8,5 +8,5 @@ Federation and Zero Trust as program concepts. Protocol install/how-to stays in 
 
 | # | Topic |
 |---|--------|
-| 1 | [OAuth, OIDC, SAML](./1_OAuth_OIDC_SAML.md) |
+| 1 | [OAuth, OIDC (OpenID Connect), SAML (Security Assertion Markup Language)](./1_OAuth_OIDC_SAML.md) |
 | 2 | [Zero Trust](./2_Zero_Trust.md) |

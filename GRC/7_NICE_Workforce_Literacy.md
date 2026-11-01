@@ -1,10 +1,10 @@
-# NICE workforce literacy
+# NICE (National Initiative for Cybersecurity Education) workforce literacy
 
-[← GRC](./README.md)
+[← GRC (Governance, Risk, and Compliance)](./README.md)
 
 > **Progression:** concept → advanced → apply.
 
-Shared language for **cybersecurity work** — categories, work roles, and building blocks for skills — so hiring, training, and team design are not inventing titles from scratch. Nesting map: [1](./1_NIST_ISO_And_ATTCK.md). CSF outcomes those people deliver: [2](./2_NIST_CSF_2_Outcomes.md).
+Shared language for **cybersecurity work** — categories, work roles, and building blocks for skills — so hiring, training, and team design are not inventing titles from scratch. Nesting map: [1](./1_NIST_ISO_And_ATTCK.md). CSF (Cybersecurity Framework) outcomes those people deliver: [2](./2_NIST_CSF_2_Outcomes.md).
 
 ## Concept
 
@@ -35,13 +35,13 @@ Category names evolve; confirm on NICCS when staffing. Literacy snapshot aligned
 
 | Category | ID | Focus |
 |----------|-----|--------|
-| **Oversight and Governance** | OG | Leadership, management, direction, advocacy so the org manages cyber risk and can conduct cyber work (policy, authorization, SCRM, workforce mgmt, assessment…) |
+| **Oversight and Governance** | OG | Leadership, management, direction, advocacy so the org manages cyber risk and can conduct cyber work (policy, authorization, SCRM (Supply Chain Risk Management), workforce mgmt, assessment…) |
 | **Design and Development** | DD | Research, conceptualize, design, develop, and test secure technology systems |
 | **Implementation and Operation** | IO | Implement, administer, configure, operate, and maintain systems securely and efficiently |
-| **Protection and Defense** | PD | Protect against, identify, and analyze risks; investigate cyber events/crimes related to systems and networks (includes defensive ops, IR, vuln analysis, forensics…) |
+| **Protection and Defense** | PD | Protect against, identify, and analyze risks; investigate cyber events/crimes related to systems and networks (includes defensive ops, IR (incident response), vuln analysis, forensics…) |
 | **Investigation** | IN | Investigation-focused roles (for example cybercrime investigation, digital evidence analysis) as listed on NICCS |
 
-**Note:** Some specialized categories historically associated with NICE (for example Cyberspace Effects / Cyberspace Intelligence) are directed to the **DoD Cyber Workforce Framework (DCWF)** in current NICCS guidance. Prefer NICCS/NIST current pages over memorized older seven-category charts from training decks.
+**Note:** Some specialized categories historically associated with NICE are directed to the **DoD Cyber Workforce Framework (DCWF)** in current NICCS guidance. Prefer NICCS/NIST current pages over memorized older seven-category charts from training decks.
 
 ### Example roles engineers meet often
 
@@ -61,7 +61,7 @@ Exact role lists change with Framework Component versions — treat the table as
 |----|-------|
 | Tag open roles with 1–3 NICE work roles | Rename every engineer “Cyber Ninja” with no TKS |
 | Build learning paths from Competency Areas / TKS gaps | Assume one NICE role = one headcount forever |
-| Align OG roles with CSF Govern / RMF Authorize owners | Duplicate the entire Framework into an internal wiki |
+| Align OG roles with CSF Govern / RMF (Risk Management Framework) Authorize owners | Duplicate the entire Framework into an internal wiki |
 | Use PD/IO language when scoping on-call and IR staffing | Treat NICE as a compliance control catalog |
 
 ### Tie-back to this deep dive

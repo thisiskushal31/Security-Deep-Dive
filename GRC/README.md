@@ -1,8 +1,8 @@
-# GRC
+# GRC (Governance, Risk, and Compliance)
 
 [← README](../README.md)
 
-Governance, risk, compliance — **framework nesting and assurance literacy**, not legal advice. Use this to speak the same language as auditors, framework docs, and security program owners.
+Governance, risk, compliance — **framework nesting and assurance literacy**, not legal advice. Use this to speak the same language as auditors, framework docs, and security program owners. Core labels here: CSF (Cybersecurity Framework), RMF (Risk Management Framework), ISMS (Information Security Management System), SOC 2 (System and Organization Controls 2), NICE (National Initiative for Cybersecurity Education), and ATT&CK (Adversarial Tactics, Techniques, and Common Knowledge).
 
 Risk *process* intro stays in [Foundations/5](../Foundations/5_Risk_Management_Process_And_RMF.md). Policy/roles intro: [Foundations/4](../Foundations/4_Security_Policy_Governance_And_Roles.md). Adversary TTPs: [Foundations/18](../Foundations/18_Adversary_Models_Kill_Chain_And_ATTCK.md) · AI threats: [Threats/8](../Threats/8_AI_Era_Threats.md).
 

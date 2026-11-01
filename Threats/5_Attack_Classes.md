@@ -66,7 +66,7 @@ Path traversal is also called directory climbing / “dot-dot-slash”. Access i
 
 | Attack | Definition |
 |--------|------------|
-| **Downgrade** | Force a weaker protocol/algorithm than the parties intended (for example TLS → obsolete SSL) |
+| **Downgrade** | Force a weaker protocol/algorithm than the parties intended (for example TLS (Transport Layer Security) → obsolete SSL) |
 | **Collision** | Find two different inputs with the same hash — breaks integrity assumptions for that hash |
 | **Birthday attack** | Collision-finding approach based on birthday-paradox probability — fewer trials than naive brute force to find some colliding pair |
 
@@ -87,7 +87,7 @@ Mitigations for spraying: lockout/CAPTCHA on failures, force change of defaults,
 
 ### AI / ML attack classes (pointer)
 
-Domain 2.4’s five buckets do not list AML/LLM techniques. Those live in [8](./8_AI_Era_Threats.md): poisoning, evasion, prompt injection, model extraction, excessive agency, and related GenAI risks. Keep this note for classical physical/network/app/crypto/password attacks.
+Domain 2.4’s five buckets do not list AML (adversarial machine learning)/LLM (large language model) techniques. Those live in [8](./8_AI_Era_Threats.md): poisoning, evasion, prompt injection, model extraction, excessive agency, and related GenAI risks. Keep this note for classical physical/network/app/crypto/password attacks.
 
 ### Real cases (these already happened)
 
@@ -112,7 +112,7 @@ Password spraying and stuffing remain everyday login-facing patterns; treat them
 2. Name the **vulnerability or human weakness** it abuses.  
 3. List **indicators** you would expect ([6](./6_Indicators_And_Analysis.md)).  
 4. Pick **mitigations** ([7](./7_Mitigations.md)).  
-5. For path traversal / injection / XSS, push the fix into AppSec secure coding — not only a WAF.
+5. For path traversal / injection / XSS (Cross-Site Scripting), push the fix into AppSec secure coding — not only a WAF (web application firewall).
 
 ### Self-check
 

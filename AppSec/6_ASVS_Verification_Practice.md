@@ -1,6 +1,6 @@
-# ASVS verification practice
+# ASVS (Application Security Verification Standard) verification practice
 
-[← AppSec](./README.md)
+[← AppSec (application security)](./README.md)
 
 > **Progression:** concept → advanced → apply.
 
@@ -60,7 +60,7 @@ Bare `1.2.5` without a version should be read as “latest” — that becomes w
 
 | Ch | Name | ~Reqs | Use when |
 |----|------|------:|----------|
-| **V1** | Encoding and Sanitization | 30 | Any app with interpreters / XSS/SQLi surfaces ([4](./4_Injection_And_Output_Encoding.md)) |
+| **V1** | Encoding and Sanitization | 30 | Any app with interpreters / XSS (Cross-Site Scripting)/SQLi (SQL injection) surfaces ([4](./4_Injection_And_Output_Encoding.md)) |
 | **V2** | Validation and Business Logic | 13 | Input rules, transactions, anti-automation |
 | **V3** | Web Frontend Security | 31 | Browser apps — skip for pure M2M APIs |
 | **V4** | API and Web Service | 16 | REST/GraphQL/SOAP/WebSocket APIs ([5](./5_API_Security_Top_10_2023.md)) |
@@ -69,9 +69,9 @@ Bare `1.2.5` without a version should be read as “latest” — that becomes w
 | **V7** | Session Management | 19 | Cookies, timeouts, fixation |
 | **V8** | Authorization | 13 | Object/function authZ |
 | **V9** | Self-contained Tokens | 7 | JWT-style tokens |
-| **V10** | OAuth and OIDC | 36 | Federation — else skip; deepen in [Identity](../Identity/README.md) |
+| **V10** | OAuth and OIDC (OpenID Connect) | 36 | Federation — else skip; deepen in [Identity](../Identity/README.md) |
 | **V11** | Cryptography | 24 | Algorithms, keys ([Cryptography](../Cryptography/README.md)) |
-| **V12** | Secure Communication | 12 | TLS |
+| **V12** | Secure Communication | 12 | TLS (Transport Layer Security) |
 | **V13** | Configuration | 21 | Hardening, headers, secrets |
 | **V14** | Data Protection | 13 | Privacy/sensitivity handling |
 | **V15** | Secure Coding and Architecture | 21 | Design/architecture controls |
@@ -93,7 +93,7 @@ Fork or tailor from **L1** as baseline; drop irrelevant chapters (no OAuth → i
 | Procurement | “Must meet ASVS 5.0.0 Level 2 for in-scope chapters” |
 | Audit | Gap list: requirement → evidence → owner → due date |
 
-Pair with SSDF/SAMM program practices in [1](./1_Secure_SDLC_And_AppSec_Program.md). Do not treat a green SCA scan as “ASVS complete.”
+Pair with SSDF (Secure Software Development Framework)/SAMM (Software Assurance Maturity Model) program practices in [1](./1_Secure_SDLC_And_AppSec_Program.md). Do not treat a green SCA (Software Composition Analysis) scan as “ASVS complete.”
 
 ### Worked citations (concrete, not folklore)
 
@@ -103,11 +103,11 @@ Pair with SSDF/SAMM program practices in [1](./1_Secure_SDLC_And_AppSec_Program.
 | `v5.0.0-1.2.4` | L1 | Parameterized DB/ORM/NoSQL/Cypher queries | [4](./4_Injection_And_Output_Encoding.md) SQLi |
 | `v5.0.0-1.2.5` | L1 | OS command injection protections | [4](./4_Injection_And_Output_Encoding.md) |
 | `v5.0.0-1.3.1` | L1 | Sanitize untrusted HTML via known library | Rich text |
-| `v5.0.0-1.5.1` | L1 | Restrictive XML parsers; no external entities | XXE → SSRF class |
+| `v5.0.0-1.5.1` | L1 | Restrictive XML parsers; no external entities | XXE (XML External Entity) → SSRF (Server-Side Request Forgery) class |
 | `v5.0.0-2.4.1` | L2 | Anti-automation on functions that enable abuse | API4/API6 |
 | `v5.0.0-8.*` | mix | Authorization chapter | [3](./3_Access_Control_And_Authentication.md), API1/5 |
 | `v5.0.0-4.*` | mix | API and Web Service chapter | [5](./5_API_Security_Top_10_2023.md) |
-| `v5.0.0-10.2.1` | L2 | OAuth code flow CSRF protections (PKCE / `state`) | [Identity](../Identity/README.md) |
+| `v5.0.0-10.2.1` | L2 | OAuth code flow CSRF (Cross-Site Request Forgery) protections (PKCE / `state`) | [Identity](../Identity/README.md) |
 
 Always verify wording against the official PDF/CSV for the version you claim — paraphrases here are for navigation.
 
@@ -119,7 +119,7 @@ Always verify wording against the official PDF/CSV for the version you claim —
 | A05 / injection / XSS | V1 Encoding and Sanitization |
 | A07 / API2 | V6 Authentication, V7 Sessions, V9 Tokens |
 | A02 / API8 | V13 Configuration, V12 Communication |
-| API3 BOPLA | V4 + V8 + output minimization in V1/V14 |
+| API3 BOPLA (Broken Object Property Level Authorization) | V4 + V8 + output minimization in V1/V14 |
 | API4 / API6 | V2 (anti-automation, business logic) |
 | API7 SSRF | V1/V2/V4 + network controls |
 | A09 logging | V16 |
@@ -162,7 +162,7 @@ Use this as a first sprint — then expand with CSV filters:
 |-------|---------------------------|
 | Encoding / injection | `v5.0.0-1.2.1`, `1.2.4`, `1.2.5`, `1.3.1`, `1.5.1` |
 | Authn / session | Open V6 + V7 L1 rows in the CSV for your stack |
-| Authorization | Open V8 L1 rows; pair with BOLA/BFLA tests from [5](./5_API_Security_Top_10_2023.md) |
+| Authorization | Open V8 L1 rows; pair with BOLA (Broken Object Level Authorization)/BFLA (Broken Function Level Authorization) tests from [5](./5_API_Security_Top_10_2023.md) |
 | API surface | Open V4 L1/L2 rows for REST/GraphQL |
 | Config / TLS | V12 + V13 L1 rows |
 
@@ -191,7 +191,7 @@ Then: expand toward L2 for in-scope chapters
 
 Always pin the version in contracts: “ASVS **5.0.0** Level 2 for chapters V1, V4, V6–V8, V12–V13, V16.”
 
-### ASVS ↔ Proactive Controls ↔ WSTG
+### ASVS ↔ Proactive Controls ↔ WSTG (Web Security Testing Guide)
 
 | Use | Artifact |
 |-----|----------|
@@ -219,7 +219,7 @@ Example ticket line: `Meet v5.0.0-1.2.4; evidence WSTG-v42 input-validation SQLi
 - [ ] Cite one requirement in `v5.0.0-x.y.z` form and name its chapter  
 - [ ] Explain why 5.0 shrank L1 vs 4.x  
 - [ ] Filter chapters for a pure API vs a browser app  
-- [ ] Distinguish ASVS (requirements) from Top 10 (awareness)  
+- [ ] Distinguish ASVS from Top 10 (awareness)  
 - [ ] List evidence types that make a requirement “verified”  
 
 ## Next

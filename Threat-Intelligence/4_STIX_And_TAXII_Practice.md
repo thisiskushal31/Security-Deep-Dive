@@ -1,10 +1,10 @@
-# STIX and TAXII practice
+# STIX (Structured Threat Information Expression) and TAXII (Trusted Automated Exchange of Intelligence Information) practice
 
 [← Threat-Intelligence](./README.md)
 
 > **Progression:** concept → advanced → apply.
 
-Machine-readable CTI packaging and transport so humans and tools share the same objects. Products: [3](./3_Finished_Intelligence_Products.md). Detection handoff: [5](./5_Detection_Oriented_Handoff.md). Literacy: [Foundations/19](../Foundations/19_Threat_Intelligence_Literacy.md).
+Machine-readable CTI (Cyber Threat Intelligence) packaging and transport so humans and tools share the same objects. Products: [3](./3_Finished_Intelligence_Products.md). Detection handoff: [5](./5_Detection_Oriented_Handoff.md). Literacy: [Foundations/19](../Foundations/19_Threat_Intelligence_Literacy.md).
 
 ## Concept
 
@@ -13,7 +13,7 @@ Machine-readable CTI packaging and transport so humans and tools share the same 
 | **STIX 2.1** | Language — JSON objects for threat intel (who/what/when/how, relationships, observables) |
 | **TAXII 2.1** | Transport — HTTPS API to **publish** and **collect** STIX over Collections in an API Root |
 
-Without STIX, every vendor invents a CSV. Without TAXII (or equivalent), every partner invents a portal scrape. Neither replaces analytic quality ([1](./1_Analytic_Tradecraft.md)) — they package it.
+Without STIX, every vendor invents a CSV. Without TAXII, every partner invents a portal scrape. Neither replaces analytic quality ([1](./1_Analytic_Tradecraft.md)) — they package it.
 
 ```text
 Analyst judgment + evidence
@@ -31,7 +31,7 @@ Analyst judgment + evidence
 | **SCO** (Cyber Observables) | `ipv4-addr`, `domain-name`, `url`, `file`, `email-message`, `process`, `windows-registry-key`, … | Technical observables (often embedded or linked via observed-data) |
 | **SRO** (Relationship Objects) | `relationship`, `sighting` | Connect SDOs (“malware **indicates** indicator”; “identity **sighting-of** indicator”) |
 | **Bundle** | `bundle` | Ship a set of objects together (not a persistent “database”) |
-| **Meta / marking** | `marking-definition` (incl. TLP), extension objects | Handling and custom extensions |
+| **Meta / marking** | `marking-definition` (incl. TLP (Traffic Light Protocol)), extension objects | Handling and custom extensions |
 
 **IDs:** STIX IDs look like `indicator--<UUIDv4>`. Stable IDs enable updates and cross-references; minting a new ID for the “same” indicator without a relationship creates duplicates in every TIP.
 
@@ -78,7 +78,7 @@ Patterns use STIX patterning (`[file:hashes.'SHA-256' = '…']`, etc.). Consumer
 | **API Root** | Logical grouping of Collections + discovery |
 | **Collection** | Named set of STIX objects you can **add to** (publish) or **get from** (collect) |
 | **Envelope** | TAXII wrapper for objects returned/submitted |
-| **Auth** | Per deployment (API keys, mTLS, OAuth, …) — plan before volume |
+| **Auth** | Per deployment (API keys, mTLS (mutual Transport Layer Security), OAuth, …) — plan before volume |
 
 Typical client flow: discover API roots → list collections → `GET` objects (with time filters) → optionally `POST` new objects if permitted.
 
@@ -89,7 +89,7 @@ Typical client flow: discover API roots → list collections → `GET` objects (
 | Habit | Why |
 |-------|-----|
 | Prefer relationships over stuffing everything into `description` | Machines can graph; analysts can pivot |
-| Link `attack-pattern` (ATT&CK) to malware/indicators | Ties [2](./2_Intrusion_Analysis_Models.md) to detections |
+| Link `attack-pattern` (ATT&CK (Adversarial Tactics, Techniques, and Common Knowledge)) to malware/indicators | Ties [2](./2_Intrusion_Analysis_Models.md) to detections |
 | Use `sighting` when *you* observed the indicator | Feedback improves producer confidence |
 | Set `valid_from` / `valid_until` | Aligns with indicator expiry ([5](./5_Detection_Oriented_Handoff.md)) |
 | Carry TLP via `marking-definition` | Enforce [3](./3_Finished_Intelligence_Products.md) in the machine layer |
@@ -117,7 +117,7 @@ Typical client flow: discover API roots → list collections → `GET` objects (
 | **CISA AIS 2.0** | U.S. Automated Indicator Sharing — STIX/TAXII-oriented government↔industry indicator exchange; requires enrollment and adherence to AIS terms/markings |
 | **ISACs / ISAOs** | Sector collections often expose TAXII or portal + STIX download |
 | **MISP** | Open threat-sharing platform — events/attributes; interop paths to STIX exist; useful when partners are MISP-native |
-| **Vendor TIP** | Commercial platforms ingest STIX/TAXII; still apply PIR filters so automation does not flood SIEM |
+| **Vendor TIP** | Commercial platforms ingest STIX/TAXII; still apply PIR (Priority Intelligence Requirement) filters so automation does not flood SIEM (Security Information and Event Management) |
 
 Automation without **PIR filters**, **TLP enforcement**, and **expiry** creates alert debt. Scope TAXII subscriptions like you scope log sources.
 

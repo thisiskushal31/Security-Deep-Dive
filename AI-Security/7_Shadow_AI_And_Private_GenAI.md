@@ -15,7 +15,7 @@ How to govern **unsanctioned GenAI use** and when to offer **private / approved*
 | Why it appears | Why security cares |
 |----------------|--------------------|
 | Speed / convenience | Prompt/data leakage to third parties |
-| Missing approved tools | Unmanaged plugins/MCP on laptops |
+| Missing approved tools | Unmanaged plugins/MCP (Model Context Protocol) on laptops |
 | Unclear policy | Regulated data in consumer chatbots |
 | “It’s just a draft” | Still training/retention risk per vendor terms |
 | Agents on personal devices | Unreviewed MCP servers with corp tokens |
@@ -26,10 +26,10 @@ Blocking without an **approved path** usually drives more shadow use. Governance
 
 Walk these paths when you brief leadership — they are how “someone pasted a doc” turns into a register item:
 
-1. **Exfil via prompt** — Engineer pastes source, customer export, or keys into a consumer chatbot. Vendor retention/training terms may keep residual copies outside your DLP reach.
+1. **Exfil via prompt** — Engineer pastes source, customer export, or keys into a consumer chatbot. Vendor retention/training terms may keep residual copies outside your DLP (data loss prevention) reach.
 2. **Unmanaged agent** — Laptop installs a community MCP or IDE plugin that holds a corp OAuth token; ticket text or web content steers tool calls ([8](./8_Attack_Mechanisms_For_Defenders.md)).
 3. **Decision fraud** — Staff trust fluent AI output for payments, access, or identity verification without a verify-before-act process (synthetic media / social engineering).
-4. **Shadow RAG** — Personal tools index shared drives without ACL-before-retrieve ([3](./3_RAG_And_Memory_Hardening.md)).
+4. **Shadow RAG (retrieval-augmented generation)** — Personal tools index shared drives without ACL-before-retrieve ([3](./3_RAG_And_Memory_Hardening.md)).
 
 ```text
 No approved tool
@@ -44,7 +44,7 @@ No approved tool
 |---------|---------|
 | Inventory | Which AI tools/models are in use (official + discovered) |
 | Classification rules | What data may go to which tier of AI service |
-| Approved catalog | Private/enterprise GenAI, vetted SaaS, banned classes |
+| Approved catalog | Private/enterprise GenAI, vetted SaaS (Software as a Service), banned classes |
 | Contracts / DPAs | Retention, training-on-your-data opt-out, subprocessors |
 | Monitoring | DLP / proxy / CASB signals for GenAI destinations |
 | Exception process | Time-bounded waivers with owner and compensating controls |
@@ -66,12 +66,12 @@ Tune to your classification scheme ([GRC](../GRC/README.md) / org policy). Publi
 
 | Pattern | When | Still required |
 |---------|------|----------------|
-| **Vendor enterprise tenant** | SSO, admin controls, no-train clauses, regional residency | Logging, DLP, acceptable use |
-| **Private VPC / on-prem model serving** | Higher isolation; you own patching/GPU/ops ([5](./5_Model_And_Data_Supply_Chain.md)) | Injection, agency, AIBOM, eval |
+| **Vendor enterprise tenant** | SSO (single sign-on), admin controls, no-train clauses, regional residency | Logging, DLP, acceptable use |
+| **Private VPC / on-prem model serving** | Higher isolation; you own patching/GPU/ops ([5](./5_Model_And_Data_Supply_Chain.md)) | Injection, agency, AIBOM (AI Bill of Materials), eval |
 | **Grounded RAG on internal corpus** | Prefer over pasting secrets into chat | ACL-before-retrieve ([3](./3_RAG_And_Memory_Hardening.md)) |
 | **Agentic only on low-risk tasks** | Careful adoption | Human gates, budgets, kill switch ([4](./4_Agentic_Controls.md)) |
 
-**Private ≠ automatically safe.** Moving inference inside the perimeter removes some vendor retention risk and creates the full AppSec + AI-security surface this folder covers.
+**Private ≠ automatically safe.** Moving inference inside the perimeter removes some vendor retention risk and creates the full AppSec (application security) + AI-security surface this folder covers.
 
 ### Program checklist themes
 
@@ -94,7 +94,7 @@ Tune to your classification scheme ([GRC](../GRC/README.md) / org policy). Publi
 | Pasted secrets in tickets/chat | DLP rules + rotation |
 | SaaS OAuth grants to AI apps | Identity review; revoke unused |
 
-Coordinate with Defensive-Ops for SIEM; Identity for SSO to approved apps only.
+Coordinate with Defensive-Ops for SIEM (Security Information and Event Management); Identity for SSO to approved apps only.
 
 ### Rollout sequence that works
 
@@ -121,7 +121,7 @@ Shadow AI governance is **Govern**. Systems you then approve still need Map → 
 4. Write three DLP/proxy rules (destinations + secret patterns).  
 5. Define exception form fields (owner, data types, expiry, compensating controls).  
 6. Brief leadership: shadow AI risk paths + private GenAI investment in five bullets.  
-7. Link this program to AI RMF **Govern** and your threat register for built systems.  
+7. Link this program to AI RMF (Risk Management Framework) **Govern** and your threat register for built systems.  
 8. Add endpoint/MCP allowlist review to onboarding for engineering roles.
 
 ### Self-check

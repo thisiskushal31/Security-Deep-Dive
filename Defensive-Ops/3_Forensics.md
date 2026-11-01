@@ -2,7 +2,7 @@
 
 [← Defensive-Ops](./README.md)
 
-**Digital forensics** answers what happened on a system using preserved evidence. This is literacy for engineers and IR — not a law-enforcement curriculum (NICE Investigation depth is deeper than this folder).
+**Digital forensics** answers what happened on a system using preserved evidence. This is literacy for engineers and IR (incident response) — not a law-enforcement curriculum (NICE (National Initiative for Cybersecurity Education) Investigation depth is deeper than this folder).
 
 ## Goals
 
@@ -20,8 +20,8 @@
 | Disk image | Files, persistence, deleted artifacts |
 | Memory | Running malware, keys, processes ([Volatility](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Defensive/Volatility)) |
 | Packet capture | C2, exfil ([Wireshark](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Defensive/Wireshark)) |
-| Cloud audit / IdP logs | Who did what from where |
-| Endpoint telemetry | EDR timelines |
+| Cloud audit / IdP (identity provider) logs | Who did what from where |
+| Endpoint telemetry | EDR (endpoint detection and response) timelines |
 
 ## Engineer rules of thumb
 

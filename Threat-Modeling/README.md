@@ -2,9 +2,9 @@
 
 [← README](../README.md)
 
-Workshop and method **depth** beyond foundation literacy — enough in these notes to run sessions, walk STRIDE-per-element, stage PASTA, build attack trees, apply LINDDUN, close tickets/tests, and threat-model **LLM/agentic** systems. Further reading is optional enrichment, not required to learn the craft.
+Workshop and method **depth** beyond foundation literacy — enough in these notes to run sessions, walk STRIDE-per-element on a DFD (Data Flow Diagram), stage PASTA (Process for Attack Simulation and Threat Analysis), build attack trees, apply LINDDUN, close tickets/tests, and threat-model **LLM (large language model)/agentic** systems. Further reading is optional enrichment, not required to learn the craft.
 
-Literacy intro: [Foundations/12](../Foundations/12_STRIDE_And_Threat_Modeling.md). Adversary models: [Foundations/18](../Foundations/18_Adversary_Models_Kill_Chain_And_ATTCK.md). Secure SDLC: [AppSec](../AppSec/README.md). Design examples: [System-Design Security-Tradeoffs](https://github.com/thisiskushal31/System-Design-Concepts/tree/main/Security-Tradeoffs).
+Literacy intro: [Foundations/12](../Foundations/12_STRIDE_And_Threat_Modeling.md). Adversary models: [Foundations/18](../Foundations/18_Adversary_Models_Kill_Chain_And_ATTCK.md). Secure SDLC (Software Development Life Cycle): [AppSec](../AppSec/README.md). Design examples: [System-Design Security-Tradeoffs](https://github.com/thisiskushal31/System-Design-Concepts/tree/main/Security-Tradeoffs).
 
 Each note follows **concept → advanced → apply**. Inside a note: explain in text, then an official image when one fits, then a short diagram only if it still helps.
 
@@ -36,10 +36,10 @@ Skip to **6** after **2** if you already run classical workshops and only need t
 | Area | Home |
 |------|------|
 | Four questions, attacker model, EoP/Cornucopia, mature-team traps | 1 |
-| DFD hygiene (data labels, CI/CD, zoom level), STRIDE-per-element | 2 |
+| DFD hygiene (data labels, CI/CD (continuous integration / continuous delivery), zoom level), STRIDE-per-element | 2 |
 | PASTA seven stages with DoD, escalate-from-STRIDE | 3 |
 | Attack trees (AND/OR); full LINDDUN type depth | 4 |
-| Dragon/TMT/pytm/Threagile; ASVS; detection+prevention; Q4 | 5 |
+| Dragon/TMT/pytm/Threagile; ASVS (Application Security Verification Standard); detection+prevention; Q4 | 5 |
 | LLM/ASI checklists, MAESTRO layers, ATLAS nesting, AI DFD extensions | 6 |
 
 ## Related

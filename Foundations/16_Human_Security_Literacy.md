@@ -16,7 +16,7 @@ Vectors catalog: [Threats/2](../Threats/2_Vectors_And_Surfaces.md). Ethics bound
 |---------|-------------|
 | People hold credentials, approve access, and move money | Identity and process are attack surfaces |
 | Urgency and authority bias work | Attacks abuse emotion and hierarchy |
-| Training alone is weak | Pair awareness with technical controls (MFA, reporting, least privilege) |
+| Training alone is weak | Pair awareness with technical controls (MFA (multi-factor authentication), reporting, least privilege) |
 
 ## Common techniques (literacy)
 

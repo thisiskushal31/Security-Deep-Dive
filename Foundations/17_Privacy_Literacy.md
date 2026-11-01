@@ -14,7 +14,7 @@ Policy boundary: [4](./4_Security_Policy_Governance_And_Roles.md). Data states: 
 
 | | Security | Privacy |
 |--|----------|---------|
-| Core question | Protect CIA of assets | Fair, lawful, proportionate use of personal data |
+| Core question | Protect CIA (Confidentiality, Integrity, Availability) of assets | Fair, lawful, proportionate use of personal data |
 | Typical tools | Access control, encryption, logging | Minimization, purpose limitation, retention, rights handling |
 | Failure example | Breach of encrypted DB with keys exposed | Lawful access used for an undeclared purpose |
 
@@ -44,7 +44,7 @@ This note is literacy, not legal advice. Map requirements with counsel and [GRC]
 | Encryption | Protect confidentiality of personal data at rest/in transit |
 | Tokenization / masking | Reduce exposure in lower environments and support tools |
 | Anonymization / aggregation | Enable analytics without unnecessary identity |
-| DLP / egress control | Reduce accidental disclosure |
+| DLP (data loss prevention) / egress control | Reduce accidental disclosure |
 
 ## Apply
 1. Name the personal data fields before shipping a feature.  
@@ -61,7 +61,7 @@ This note is literacy, not legal advice. Map requirements with counsel and [GRC]
 
 ## Next
 
-- [Adversary models, Kill Chain, and ATT&CK](./18_Adversary_Models_Kill_Chain_And_ATTCK.md)
+- [Adversary models, Kill Chain, and ATT&CK (Adversarial Tactics, Techniques, and Common Knowledge)](./18_Adversary_Models_Kill_Chain_And_ATTCK.md)
 
 ## Further reading
 

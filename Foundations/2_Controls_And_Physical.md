@@ -12,7 +12,7 @@ A **control** is a safeguard or countermeasure that reduces risk. Classify contr
 
 | Category | Meaning | Examples |
 |----------|---------|----------|
-| Technical | Enforced by hardware or software | MFA, encryption, EDR, WAF, secure configuration |
+| Technical | Enforced by hardware or software | MFA (multi-factor authentication), encryption, EDR (endpoint detection and response), WAF (web application firewall), secure configuration |
 | Managerial | Policy, standards, and governance | Access reviews, risk policy, secure development standards |
 | Operational | Day-to-day procedures people run | Patch cadence, restore drills, incident playbooks |
 | Physical | Site, building, and media | Badges, locks, cages, cameras, secure disposal |
@@ -24,7 +24,7 @@ Real programs usually need more than one category for the same risk (policy requ
 | Type | Job | Examples |
 |------|-----|----------|
 | Preventive | Stop the event | Least privilege; input validation; allow lists; segmentation |
-| Detective | Notice the event | Audit logs; SIEM alerts; integrity monitoring |
+| Detective | Notice the event | Audit logs; SIEM (Security Information and Event Management) alerts; integrity monitoring |
 | Corrective | Limit damage and restore | Incident response; key revocation; restore from backup |
 | Deterrent | Discourage attempts | Warning banners; visible cameras (weak alone) |
 | Compensating | Alternate when the preferred control is not yet possible | Extra monitoring while a legacy system cannot be patched |
@@ -76,14 +76,14 @@ Wire depth: Networks-Deep-Dive. Delivery gates: DevOps-Handbook Security. Detect
 
 ## Advanced
 
-## NIST CSF functions (map controls to outcomes)
+## NIST CSF (Cybersecurity Framework) functions (map controls to outcomes)
 
 A control catalog answers “what safeguard?” The [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework) answers “toward which outcome?”
 
 | Function | Outcome focus | Example controls |
 |----------|---------------|------------------|
 | **Govern** | Strategy, roles, policy, oversight | Program policy; risk appetite; roles ([4](./4_Security_Policy_Governance_And_Roles.md)) |
-| **Identify** | Know assets, risks, suppliers | Inventory; BIA; threat modeling ([6](./6_Assets_Data_States_And_Assurance.md), [12](./12_STRIDE_And_Threat_Modeling.md)) |
+| **Identify** | Know assets, risks, suppliers | Inventory; BIA (Business Impact Analysis); threat modeling ([6](./6_Assets_Data_States_And_Assurance.md), [12](./12_STRIDE_And_Threat_Modeling.md)) |
 | **Protect** | Limit likelihood and impact | MFA; encryption; hardening; segmentation |
 | **Detect** | Find anomalies and events | Logging; SIEM; decoys |
 | **Respond** | Contain and eradicate | Incident process ([Defensive-Ops/2](../Defensive-Ops/2_Incident_Response.md)) |
@@ -125,7 +125,7 @@ Alert when a decoy is touched; route into [Defensive-Ops](../Defensive-Ops/READM
 1. Start from risk and data class, not from a product brochure.  
 2. Prefer preventive controls when they are cheap and reliable.  
 3. Pair material residual risk with detective and corrective controls.  
-4. Prefer standard controls (MFA, TLS, least privilege) before exotic ones.  
+4. Prefer standard controls (MFA, TLS (Transport Layer Security), least privilege) before exotic ones.  
 5. Measure coverage, false positives, time to detect, and time to recover.  
 6. Give compensating controls an expiry and a plan to remove them.
 

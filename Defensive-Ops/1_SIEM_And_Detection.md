@@ -1,4 +1,4 @@
-# SIEM and detection
+# SIEM (Security Information and Event Management) and detection
 
 [← Defensive-Ops](./README.md)
 
@@ -10,9 +10,9 @@ A **SIEM** (Security Information and Event Management) aggregates logs and alert
 |-----|----------|
 | Collect | Auth, endpoint, cloud audit, network, app, email |
 | Normalize / parse | Same fields for “user”, “src_ip”, “action” |
-| Detect | Rules, UEBA, threat intel matches |
+| Detect | Rules, UEBA (User and Entity Behavior Analytics), threat intel matches |
 | Investigate | Pivot timelines; enrich with asset ownership |
-| Report | Metrics: MTTD, coverage vs ATT&CK |
+| Report | Metrics: MTTD, coverage vs ATT&CK (Adversarial Tactics, Techniques, and Common Knowledge) |
 
 Packet capture literacy: [Tooling Wireshark/tcpdump](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Defensive). Network blue-team notes: [Networks Security](https://github.com/thisiskushal31/Networks-Deep-Dive).
 

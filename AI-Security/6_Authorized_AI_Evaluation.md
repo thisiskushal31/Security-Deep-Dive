@@ -45,10 +45,10 @@ Architecture assumes the model will be steered ([2](./2_Prompt_Injection_Defense
 | Out-of-scope | Third-party tenants, personal accounts, unrelated cloud |
 | Data rules | No real customer PII in prompts/fixtures unless approved |
 | Stop conditions | When to halt; kill-switch available ([4](./4_Agentic_Controls.md)) |
-| Evidence handling | Logs, tickets, TLP if shared externally |
+| Evidence handling | Logs, tickets, TLP (Traffic Light Protocol) if shared externally |
 | No misuse cookbook as deliverable | Report control gaps; fixtures stay in your lab |
 
-All security testing requires **written scope**, environment, and rules of engagement — same as classic AppSec.
+All security testing requires **written scope**, environment, and rules of engagement — same as classic AppSec (application security).
 
 ## Advanced
 
@@ -56,14 +56,14 @@ All security testing requires **written scope**, environment, and rules of engag
 
 | Register item | Eval type | Pass criteria (examples) |
 |---------------|-----------|--------------------------|
-| LLM01 indirect injection via RAG | Adversarial scenario class ([8](./8_Attack_Mechanisms_For_Defenders.md) T-RAG-1) | Tool **not** invoked; or human gate blocks |
+| LLM01 indirect injection via RAG (retrieval-augmented generation) | Adversarial scenario class ([8](./8_Attack_Mechanisms_For_Defenders.md) T-RAG-1) | Tool **not** invoked; or human gate blocks |
 | LLM01 / jailbreak → tool | Mechanism + agency | Model text may comply; **tools** still cold |
 | LLM03 excessive agency | Tool policy tests | Over-scope args denied by policy engine |
 | LLM09 cross-tenant retrieve | Access tests | Zero foreign chunks in context logs |
 | ASI02 destructive tool | Approval tests | No exec without approval; timeout fail-closed |
 | LLM06 cost bomb | Load / abuse (T-BUD-1) | Quotas trip; no unbounded $ |
 | LLM07 harmful advice acted on | Process | UI shows uncertainty; no auto-side-effect |
-| ASI04 malicious MCP descriptor | Supply-chain lab | Server not allowlisted; or descriptor review blocks promote |
+| ASI04 malicious MCP (Model Context Protocol) descriptor | Supply-chain lab | Server not allowlisted; or descriptor review blocks promote |
 
 Map techniques to [MITRE ATLAS](https://atlas.mitre.org/) (prompt injection vs jailbreak IDs). Pass/fail = **control telemetry**, not vibes.
 
@@ -75,7 +75,7 @@ Map techniques to [MITRE ATLAS](https://atlas.mitre.org/) (prompt injection vs j
 4. Assert on logs: `tool_invocations == 0`, `policy_decision == deny`, `approval_required == true`, `foreign_chunks == 0`, Unicode stripped, memory write blocked.  
 5. Open Manage tickets for every fail; re-test after fix.
 
-**Adaptive testing requirement:** disclose the deployed defense to red-teamers. Static attack packs that never see your filters produce misleading “near zero” success rates; adaptive attackers who know the marking scheme, strip list, and policy often succeed where static tests do not. Baseline public benches (e.g. AgentDojo, JailbreakBench) then layer your defense-aware scenarios. Map techniques to `AML.T0051` / `AML.T0054` (and ASI IDs for agents).
+**Adaptive testing requirement:** disclose the deployed defense to red-teamers. Static attack packs that never see your filters produce misleading “near zero” success rates; adaptive attackers who know the marking scheme, strip list, and policy often succeed where static tests do not. Baseline public benches (e.g. AgentDojo, JailbreakBench) then layer your defense-aware scenarios. Map techniques to `AML (adversarial machine learning).T0051` / `AML.T0054` (and ASI IDs for agents).
 
 ### Authorized tooling literacy (pick for your stack)
 
@@ -112,13 +112,13 @@ Tools do not replace authorization, scope, or log-based pass/fail. Classical AML
 
 ### Collaboration literacy
 
-When sharing AI security findings across orgs: use agreed channels, protect sensitive model/data details, align on roles during incidents involving AI systems. Internally: feed failed evals into **Manage** (tickets) and CTI/detection where relevant ([Threat-Intelligence](../Threat-Intelligence/README.md)).
+When sharing AI security findings across orgs: use agreed channels, protect sensitive model/data details, align on roles during incidents involving AI systems. Internally: feed failed evals into **Manage** (tickets) and CTI (Cyber Threat Intelligence)/detection where relevant ([Threat-Intelligence](../Threat-Intelligence/README.md)).
 
 ### What “good” reporting looks like
 
 | Include | Avoid |
 |---------|-------|
-| Scenario class + DFD element + catalog ID | Raw payload dumps as the deliverable |
+| Scenario class + DFD (Data Flow Diagram) element + catalog ID | Raw payload dumps as the deliverable |
 | Expected vs actual control behavior | “Model is unsafe” without a control gap |
 | Evidence (logs, policy decision) | Testing prod with customer data unauthorized |
 | Remediation ticket | Scoreboard without fixes |

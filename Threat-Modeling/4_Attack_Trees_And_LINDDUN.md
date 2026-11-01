@@ -4,7 +4,7 @@
 
 > **Progression:** concept → advanced → apply.
 
-Goal-centric attack decomposition and privacy threat elicitation in enough depth to run without leaving this note. STRIDE/DFD: [2](./2_DFD_And_STRIDE_In_Practice.md). PASTA Stage VI: [3](./3_PASTA_Staged_Walkthrough.md). Privacy literacy: [Foundations/17](../Foundations/17_Privacy_Literacy.md).
+Goal-centric attack decomposition and privacy threat elicitation in enough depth to run without leaving this note. STRIDE/DFD (Data Flow Diagram): [2](./2_DFD_And_STRIDE_In_Practice.md). PASTA (Process for Attack Simulation and Threat Analysis) Stage VI: [3](./3_PASTA_Staged_Walkthrough.md). Privacy literacy: [Foundations/17](../Foundations/17_Privacy_Literacy.md).
 
 ## Concept
 
@@ -64,7 +64,7 @@ Run LINDDUN **with or after** STRIDE when personal data, profiling, or regulated
 | Apply the actionable-threat test at each leaf | “Would we file a bug/design change?” — [1](./1_Workshop_Process.md) |
 | Keep crown-jewel assets at the root | Stealing creds is usually a child path, not the goal |
 
-**Hybrid use (SEI):** some programs build attack trees under STRIDE categories or score leaves with CVSS when leaves map to known vulns — keep design ranking and CVE severity distinct ([2](./2_DFD_And_STRIDE_In_Practice.md)).
+**Hybrid use (SEI):** some programs build attack trees under STRIDE categories or score leaves with CVSS (Common Vulnerability Scoring System) when leaves map to known vulns — keep design ranking and CVE (Common Vulnerabilities and Exposures) severity distinct ([2](./2_DFD_And_STRIDE_In_Practice.md)).
 
 **Authorized analysis only** for any simulation against real systems — [Foundations/3](../Foundations/3_Ethics_Authorization_And_Lab_Rules.md).
 
@@ -124,7 +124,7 @@ Labor-intensive like STRIDE: threat count grows with complexity — scope manage
 | Security threats on a technical design | STRIDE-per-element ([2](./2_DFD_And_STRIDE_In_Practice.md)) |
 | One attacker goal / multi-step path | **Attack tree** |
 | Privacy properties and harms | **LINDDUN** |
-| Business-impact staged program | PASTA ([3](./3_PASTA_Staged_Walkthrough.md)) |
+| Business-impact staged program | PASTA |
 | Org-wide critical assets | OCTAVE, then app STRIDE |
 | Many teams continuous light models | VAST-style app + ops models |
 

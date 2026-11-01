@@ -15,9 +15,9 @@ A **vulnerability** is a weakness in an information system, security procedures,
 | Exploit | Code or method that takes advantage of a vulnerability |
 | Exploit kit | Collection of exploits that probes a visitor’s software and deploys a matching exploit |
 | Payload | What runs after successful exploitation (access, control, destruction, further malware) |
-| CVE | Public identifier for a known vulnerability |
-| CVSS | Shared severity score — still needs exposure and asset context |
-| CWE | Weakness *class* (design/coding pattern) |
+| CVE (Common Vulnerabilities and Exposures) | Public identifier for a known vulnerability |
+| CVSS (Common Vulnerability Scoring System) | Shared severity score — still needs exposure and asset context |
+| CWE (Common Weakness Enumeration) | Weakness *class* (design/coding pattern) |
 | Zero-day vulnerability | Not yet known (or not yet patched) by the vendor |
 | Zero-day exploit | Attack aimed at a zero-day vulnerability; once patched, it is no longer “zero-day” |
 | Predisposing condition | Condition that increases likelihood of adverse impact if a threat event occurs |
@@ -43,7 +43,7 @@ Vulnerability (+ predisposing condition)
 | **Memory injection** | Hostile data or code introduced into a process’s memory space |
 | **Buffer overflow** | Program writes more data than a buffer can hold, or past the buffer — can corrupt data, crash, or enable malicious code execution |
 | **Race condition** | Behavior depends on uncontrolled timing of concurrent events; hard to detect; can leave inconsistent state |
-| **TOC / TOU (TOCTOU)** | Time-of-check / time-of-use: a check passes, then the state changes before the action — classic race subtype (also called TOCTOU) |
+| **TOC / TOU (TOCTOU (Time-of-Check to Time-of-Use))** | Time-of-check / time-of-use: a check passes, then the state changes before the action — classic race subtype (also called TOCTOU) |
 | **Malicious update** | Update mechanism or package delivers hostile content |
 
 ### Web-based vulnerabilities
@@ -73,7 +73,7 @@ Injection broadly: hostile data used so it subverts the application. Prefer para
 | **End-of-life / legacy** | Products without security fixes remaining |
 | **VM escape** | Break out of a virtual machine to affect the host or other VMs |
 | **Resource reuse** | Residual data or state from a previous tenant/VM/process becomes visible to the next — isolation failure |
-| **Cloud-specific** | Weaknesses unique to cloud shared-responsibility models (for example public storage, over-broad IAM, exposed management planes) |
+| **Cloud-specific** | Weaknesses unique to cloud shared-responsibility models (for example public storage, over-broad IAM (Identity and Access Management), exposed management planes) |
 | **Side loading** | Installing apps from outside the official store/channel — raises malware risk |
 | **Jailbreaking** (or rooting) | Removing platform restrictions — weakens built-in security controls |
 
@@ -119,7 +119,7 @@ Short examples from official public reports so you know this is not theory. Link
 
 | What happened | Why it matters here | Where to read more |
 |-----------------------|------------------------------|--------------------|
-| **Log4Shell (CVE-2021-44228)** | Ubiquitous library + remote code execution + **active mass exploitation** — why “dependency inventory” and KEV matter | [CISA — Apache Log4j guidance](https://www.cisa.gov/news-events/news/apache-log4j-vulnerability-guidance) · [AA21-356a](https://www.cisa.gov/news-events/cybersecurity-advisories/aa21-356a) |
+| **Log4Shell (CVE-2021-44228)** | Ubiquitous library + remote code execution + **active mass exploitation** — why “dependency inventory” and KEV (Known Exploited Vulnerabilities) matter | [CISA — Apache Log4j guidance](https://www.cisa.gov/news-events/news/apache-log4j-vulnerability-guidance) · [AA21-356a](https://www.cisa.gov/news-events/cybersecurity-advisories/aa21-356a) |
 | **Known Exploited Vulnerabilities (KEV)** | Not every CVE is equal: CISA maintains evidence of **exploitation in the wild** as a patch-priority input | [CISA KEV Catalog](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) |
 | **Unpatched SMB-class flaws → wormable malware** | Vulnerability + network exposure enabled 2017 global ransomware/wiper waves | [CISA WannaCry / NotPetya alerts](https://www.cisa.gov/stopransomware/official-alerts-statements-cisa) · note [4](./4_Malware.md) |
 | **Supply-chain code in a signed product** | “Malicious update” and vendor trust as vulnerability classes, not only missing patches | [CISA AA20-352a](https://www.cisa.gov/news-events/cybersecurity-advisories/aa20-352a) |

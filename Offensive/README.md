@@ -2,7 +2,7 @@
 
 [← README](../README.md) · [Named software](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/blob/main/Security/Offensive/README.md)
 
-Ethical / **lab-only** path (PTES-shaped). Tools have their own folders. This folder is the *phases*. Not exploit writeups for live third-party systems.
+Ethical / **lab-only** path (PTES (Penetration Testing Execution Standard)-shaped). Tools have their own folders. This folder is the *phases*. Not exploit writeups for live third-party systems.
 
 Purple: pair with [Defensive-Ops](../Defensive-Ops/README.md) — offense informs detection.
 
@@ -12,7 +12,7 @@ Purple: pair with [Defensive-Ops](../Defensive-Ops/README.md) — offense inform
 |---|--------|
 | 1 | [Methodology (lab only)](./1_Methodology_Lab_Only.md) |
 | 2 | [Planning and scope](./2_Planning_And_Scope.md) |
-| 3 | [OSINT](./3_OSINT.md) |
+| 3 | [OSINT (Open-Source Intelligence)](./3_OSINT.md) |
 | 4 | [Scanning and enumeration](./4_Scanning_And_Enumeration.md) |
 | 5 | [Web application attacks](./5_Web_Application_Attacks.md) |
 | 6 | [Exploitation (lab only)](./6_Exploitation_Lab_Only.md) |
