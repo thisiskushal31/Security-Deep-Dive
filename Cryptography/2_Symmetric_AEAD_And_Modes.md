@@ -1,4 +1,4 @@
-# Symmetric crypto, AEAD, and modes
+# Symmetric crypto, AEAD (Authenticated Encryption with Associated Data), and modes
 
 [← Cryptography](./README.md)
 
@@ -10,7 +10,7 @@ How bulk encryption works in products: a shared secret key, a block cipher (usua
 
 ### Symmetric encryption in one picture
 
-Symmetric cryptography uses the **same key** for related encrypt and decrypt operations. It is the workhorse for bulk data once a key is established (often via TLS or a KMS data key).
+Symmetric cryptography uses the **same key** for related encrypt and decrypt operations. It is the workhorse for bulk data once a key is established (often via TLS (Transport Layer Security) or a KMS (Key Management Service) data key).
 
 ```text
 shared key K
@@ -21,10 +21,10 @@ shared key K
 
 | Piece | Role |
 |-------|------|
-| **Algorithm** | AES (FIPS 197) is the default block cipher in federal and industry guidance |
+| **Algorithm** | AES (FIPS (Federal Information Processing Standard) 197) is the default block cipher in federal and industry guidance |
 | **Key length** | AES-128 or AES-256 in practice; follow current platform/policy tables ([9](./9_Algorithm_Transition_And_PQC.md)) |
 | **Mode** | How the block cipher is applied to messages longer than one block |
-| **IV / nonce** | Per-message input that must meet the mode’s uniqueness/randomness rules |
+| **IV (Initialization Vector) / nonce** | Per-message input that must meet the mode’s uniqueness/randomness rules |
 | **Tag** (AEAD) | Authentication tag; decrypt must verify before returning plaintext |
 
 ### Why “AES” alone is not a design
@@ -34,7 +34,7 @@ Saying “we use AES” is incomplete. AES is a **block cipher**: it encrypts fi
 | Mode family | Confidentiality | Integrity / authenticity | Typical product stance |
 |-------------|-----------------|--------------------------|------------------------|
 | **ECB (Electronic Codebook)** | Weak for structured data (patterns leak) | None | Avoid outside narrow, expert-reviewed cases |
-| **CBC (Cipher Block Chaining)** | Yes (with random IV) | None by itself | Legacy; if used, needs Encrypt-then-MAC and careful padding handling |
+| **CBC (Cipher Block Chaining)** | Yes (with random IV) | None by itself | Legacy; if used, needs Encrypt-then-MAC (Message Authentication Code) and careful padding handling |
 | **CTR (Counter)** | Yes (with unique counter/nonce) | None by itself | Prefer upgrading to AEAD rather than bolting MAC on |
 | **GCM (Galois/Counter Mode)** | Yes | Yes (AEAD) | Default authenticated mode with AES in many stacks |
 | **CCM** | Yes | Yes (AEAD) | Common in constrained / IoT stacks |
@@ -56,9 +56,9 @@ AEAD-Decrypt:
 
 | Input | Discipline |
 |-------|------------|
-| **Key** | From CSPRNG / KMS; never hard-coded; rotate per policy ([5](./5_Key_Management_And_Modules.md)) |
+| **Key** | From CSPRNG (Cryptographically Secure Pseudorandom Number Generator) / KMS; never hard-coded; rotate per policy ([5](./5_Key_Management_And_Modules.md)) |
 | **Nonce / IV** | Unique per key for GCM (and never reused); prefer library helpers that generate them |
-| **AAD** | Headers / identifiers that must be bound to the ciphertext but need not be secret |
+| **AAD (additional authenticated data)** | Headers / identifiers that must be bound to the ciphertext but need not be secret |
 | **Tag** | Store and transmit with ciphertext; verify on decrypt |
 
 GCM’s security collapses badly if the **same key and IV** are reused for two distinct encryptions. That is not a theoretical footnote — it is an operational requirement.
@@ -73,9 +73,11 @@ ECB encrypts each block independently. Identical plaintext blocks → identical 
 
 CBC needs a fresh, unpredictable IV per message and careful padding. Historical **padding oracle** classes taught an industry lesson: confidentiality-only modes plus attacker-visible error channels become decryption oracles. If you must touch CBC, treat integrity as mandatory and prefer migrating to AEAD.
 
-### GCM operational limits (builder literacy)
+**Fail securely:** decryption/auth failures should not return partial plaintext or distinct “bad padding” vs “bad MAC” errors to untrusted clients. Same client-facing error; detailed reason only in server logs ([10](./10_Hashing_MACs_And_Key_Derivation.md), [11](./11_Applied_Patterns_Tokens_And_Signing.md)).
 
-NIST SP 800-38D specifies GCM/GMAC behavior and stresses IV uniqueness. Practical habits:
+### GCM operational limits
+
+NIST (National Institute of Standards and Technology) SP 800-38D specifies GCM/GMAC behavior and stresses IV uniqueness. Practical habits:
 
 | Habit | Why |
 |-------|-----|
@@ -98,7 +100,7 @@ CTR and stream ciphers turn a block cipher into a keystream. **Never reuse** a k
 
 | Scenario | Lean toward |
 |----------|-------------|
-| New app field / envelope encryption | AES-GCM or ChaCha20-Poly1305 via high-level API |
+| New app field / envelope encryption | AES-GCM (Advanced Encryption Standard in Galois/Counter Mode) or ChaCha20-Poly1305 via high-level API |
 | Interop with existing CBC ciphertext | Decrypt legacy under controlled path; re-encrypt to AEAD on write |
 | Extremely constrained device with CCM already validated | AES-CCM via the platform crypto module |
 | “We need random access to huge encrypted blobs” | Design carefully (chunked AEAD with unique nonces per chunk); do not invent a new mode |
@@ -125,7 +127,7 @@ Treat this as a migration bridge. New designs should still aim for AEAD.
 | Risk | Mitigation |
 |------|------------|
 | Two services share one AES-GCM key and both pick random IVs | Track volume; rotate DEKs; consider per-host DEKs |
-| Log files print IV + ciphertext + key id | Fine; never print the DEK |
+| Log files print IV + ciphertext + key id | Fine; never print the DEK (Data Encryption Key) |
 | Partial writes / truncated ciphertext | AEAD tag fails — do not “best effort” decrypt |
 | Compression before encryption | Can leak via length; be careful with attacker-controlled plaintext |
 

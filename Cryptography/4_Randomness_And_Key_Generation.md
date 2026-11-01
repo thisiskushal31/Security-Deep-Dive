@@ -4,7 +4,7 @@
 
 > **Progression:** concept → advanced → apply.
 
-Cryptography collapses when “random” is guessable. This note is how builders get **keys, nonces, IVs, salts, and tokens** from a CSPRNG — and how NIST frames DRBG (Deterministic Random Bit Generator) and key generation. Modes that consume nonces: [2](./2_Symmetric_AEAD_And_Modes.md). After keys exist: [5](./5_Key_Management_And_Modules.md).
+Cryptography collapses when “random” is guessable. This note is how builders get **keys, nonces, IVs, salts, and tokens** from a CSPRNG (Cryptographically Secure Pseudorandom Number Generator) — and how NIST (National Institute of Standards and Technology) frames DRBG (Deterministic Random Bit Generator) and key generation. Modes that consume nonces: [2](./2_Symmetric_AEAD_And_Modes.md). After keys exist: [5](./5_Key_Management_And_Modules.md).
 
 ## Concept
 
@@ -13,12 +13,12 @@ Cryptography collapses when “random” is guessable. This note is how builders
 | Use | If randomness fails |
 |-----|---------------------|
 | Encryption keys | Attacker predicts or brute-forces the key space you accidentally shrunk |
-| GCM IV / AEAD nonce | IV reuse under one key → catastrophic integrity/confidentiality failures |
+| GCM IV (Initialization Vector) / AEAD (Authenticated Encryption with Associated Data) nonce | IV reuse under one key → catastrophic integrity/confidentiality failures |
 | Password salts | Parallel attacks and precomputation become easier |
 | Session tokens / API keys | Account takeover by prediction |
 | Key agreement ephemeral values | Long-term key compromise or impersonation (protocol-dependent) |
 
-Ordinary PRNGs designed for simulations (`Math.random`, libc `rand`, time-seeded generators) are **not** CSPRNGs. Do not seed cryptographic generators with timestamps, PIDs, or MAC addresses alone.
+Ordinary PRNGs designed for simulations (`Math.random`, libc `rand`, time-seeded generators) are **not** CSPRNGs. Do not seed cryptographic generators with timestamps, PIDs, or MAC (Message Authentication Code) addresses alone.
 
 ### CSPRNG vs DRBG (builder view)
 
@@ -48,9 +48,9 @@ NIST SP 800-133 frames cryptographic key generation: use approved methods so key
 
 | Do | Don’t |
 |----|-------|
-| Use library `generate_key` / KMS CreateKey | Derive keys from passwords without a password-based KDF designed for that job |
+| Use library `generate_key` / KMS (Key Management Service) CreateKey | Derive keys from passwords without a password-based KDF (Key Derivation Function) designed for that job |
 | Use full-entropy keys for AES (128/256-bit) | Truncate hashes of low-entropy strings and call them keys |
-| Let KMS/HSM generate and never export raw keys when possible | Copy raw key bytes into tickets and chat |
+| Let KMS/HSM (Hardware Security Module) generate and never export raw keys when possible | Copy raw key bytes into tickets and chat |
 | Generate a fresh nonce per message | Reuse a counter incorrectly across processes without coordination |
 
 Password-based keys for storage encryption are a special case — use an approved PBKDF (Password-Based Key Derivation Function) with a salt ([6](./6_Password_Verifiers_And_KDF.md)); prefer Argon2id-class memory-hard functions for *password verifiers*, and follow current guidance when deriving encryption keys from passphrases.
@@ -59,13 +59,13 @@ Password-based keys for storage encryption are a special case — use an approve
 
 ### Tokens are not keys (but still need CSPRNG)
 
-Session identifiers and API tokens must be unpredictable. Use CSPRNG bytes encoded as hex/base64url. Do not use sequential IDs, emails, or JWT payloads alone as bearer secrets.
+Session identifiers and API tokens must be unpredictable. Use CSPRNG bytes encoded as hex/base64url. Do not use sequential IDs, emails, or JWT (JSON Web Token) payloads alone as bearer secrets.
 
 ### Nonce construction patterns
 
 | Pattern | Notes |
 |---------|-------|
-| Random 96-bit IV for AES-GCM | Common; store IV with ciphertext; watch volume limits under one key |
+| Random 96-bit IV for AES-GCM (Advanced Encryption Standard in Galois/Counter Mode) | Common; store IV with ciphertext; watch volume limits under one key |
 | Counter / message-id nonce | Safe only if uniqueness is guaranteed across all writers sharing the key |
 | “Nonce = hash(message)” | Dangerous if messages can collide or be chosen; do not invent this |
 
@@ -89,11 +89,11 @@ Key length and algorithm family set a security-strength story (see transition ta
 
 ### After you have key material: derive, don’t hash-hack
 
-Once you have high-entropy IKM (Input Keying Material) from a KEM, Diffie–Hellman, or KMS:
+Once you have high-entropy IKM (Input Keying Material) from a KEM (key-encapsulation mechanism), Diffie–Hellman, or KMS:
 
 | Need | Use |
 |------|-----|
-| Many purpose-bound keys | **HKDF** / SP 800-108 helpers with distinct `info` labels — [10](./10_Hashing_MACs_And_Key_Derivation.md) |
+| Many purpose-bound keys | **HKDF (HMAC-based Key Derivation Function)** / SP 800-108 helpers with distinct `info` labels — [10](./10_Hashing_MACs_And_Key_Derivation.md) |
 | Password → key | Password KDF — [6](./6_Password_Verifiers_And_KDF.md) |
 | One-off AES key | CSPRNG `generate_key` / KMS GenerateDataKey |
 

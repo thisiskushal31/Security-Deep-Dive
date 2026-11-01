@@ -4,7 +4,7 @@
 
 > **Progression:** concept → advanced → apply.
 
-Integrity primitives builders actually call: **cryptographic hashes**, **HMAC (Hash-based Message Authentication Code)**, and **KDFs (Key Derivation Functions)** such as **HKDF (HMAC-based Key Derivation Function)** — and how they differ from password hashing. AEAD often wraps integrity for you ([2](./2_Symmetric_AEAD_And_Modes.md)). Password verifiers: [6](./6_Password_Verifiers_And_KDF.md). Signatures when you need public verification: [3](./3_Asymmetric_Signatures_And_Certificates.md).
+Integrity primitives builders actually call: **cryptographic hashes**, **HMAC (Hash-based Message Authentication Code)**, and **KDFs (Key Derivation Functions)** such as **HKDF (HMAC-based Key Derivation Function)** — and how they differ from password hashing. AEAD (Authenticated Encryption with Associated Data) often wraps integrity for you ([2](./2_Symmetric_AEAD_And_Modes.md)). Password verifiers: [6](./6_Password_Verifiers_And_KDF.md). Signatures when you need public verification: [3](./3_Asymmetric_Signatures_And_Certificates.md).
 
 ## Concept
 
@@ -13,9 +13,9 @@ Integrity primitives builders actually call: **cryptographic hashes**, **HMAC (H
 | Job | Right tool family | Wrong tool |
 |-----|-------------------|------------|
 | Fingerprint a file / detect accidental change | Cryptographic hash (SHA-256, SHA-3, …) | Encryption |
-| Prove a message came from someone who knows a **shared secret** | HMAC / keyed MAC | Bare hash of the message |
-| Turn key material into many purpose-bound keys | HKDF / SP 800-108 KDF | `SHA256(secret + "encrypt")` homemade |
-| Store a login password | Argon2id / bcrypt / scrypt / PBKDF2 | Fast hash or HKDF alone |
+| Prove a message came from someone who knows a **shared secret** | HMAC / keyed MAC (Message Authentication Code) | Bare hash of the message |
+| Turn key material into many purpose-bound keys | HKDF / SP 800-108 KDF (Key Derivation Function) | `SHA256(secret + "encrypt")` homemade |
+| Store a login password | Argon2id / bcrypt / scrypt / PBKDF2 (Password-Based Key Derivation Function 2) | Fast hash or HKDF alone |
 
 ```text
 hash(data)           → digest          (no key; anyone can recompute)
@@ -40,14 +40,14 @@ Hashes alone do **not** authenticate: an attacker who can change `data` can also
 
 ### HMAC
 
-HMAC combines a secret key with a hash function (FIPS 198-1 family) to produce a tag. Typical product uses:
+HMAC combines a secret key with a hash function (FIPS (Federal Information Processing Standard) 198-1 family) to produce a tag. Typical product uses:
 
 | Use | Notes |
 |-----|-------|
 | API request signing | Tag over method + path + body + timestamp |
 | Webhook verification | Provider sends HMAC of payload |
 | Integrity of ciphertext when not using AEAD | Prefer Encrypt-then-MAC with separate keys ([2](./2_Symmetric_AEAD_And_Modes.md)) |
-| Building block inside HKDF / TLS | Prefer library HKDF over hand-rolled HMAC chains |
+| Building block inside HKDF / TLS (Transport Layer Security) | Prefer library HKDF over hand-rolled HMAC chains |
 
 Compare tags with a **constant-time** compare (language `hmac.compare_digest` / equivalent). Early-exit `==` on bytes can leak timing.
 
@@ -55,7 +55,7 @@ Compare tags with a **constant-time** compare (language `hmac.compare_digest` / 
 
 | | **HKDF** (RFC 5869; also SP 800-108 family context) | **Password KDF** (Argon2id / scrypt / PBKDF2 / SP 800-132) |
 |--|------------------------------------------------------|--------------------------------------------------------------|
-| Input | High-entropy key material (shared secret, KEM output) | Low-entropy password / PIN |
+| Input | High-entropy key material (shared secret, KEM (key-encapsulation mechanism) output) | Low-entropy password / PIN |
 | Goal | Extract/expand into labeled keys | Slow guessing; produce verifier or key |
 | Memory-hard? | No (not the point) | Yes for modern password hashes |
 | Use in TLS 1.3 | Key schedule | Not for login password storage |
@@ -88,7 +88,7 @@ HKDF-Expand(PRK, info, L) → OKM  (info = purpose label / context)
 
 ### SP 800-108 KDFs
 
-NIST SP 800-108 specifies KDFs in **Counter / Feedback / Double-Pipeline** modes using PRFs such as HMAC. Libraries often expose HKDF or “KDF in counter mode” helpers. Prefer those APIs with explicit **label/context** strings so keys for “encrypt” and “MAC” never collide.
+NIST (National Institute of Standards and Technology) SP 800-108 specifies KDFs in **Counter / Feedback / Double-Pipeline** modes using PRFs such as HMAC. Libraries often expose HKDF or “KDF in counter mode” helpers. Prefer those APIs with explicit **label/context** strings so keys for “encrypt” and “MAC” never collide.
 
 ### Deriving multiple keys from one secret
 
@@ -116,7 +116,7 @@ Sometimes you only need tamper evidence (software update metadata, audit exports
 | Risk | Habit |
 |------|-------|
 | Timing on tag/password compare | Constant-time compare APIs |
-| Logging secrets / IKM | Redact; never log PRK/OKM |
+| Logging secrets / IKM (Input Keying Material) | Redact; never log PRK (Pseudorandom Key)/OKM |
 | Error oracles | Same error for “bad MAC” and “bad padding” where applicable |
 
 ## Apply

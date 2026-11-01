@@ -4,7 +4,7 @@
 
 > **Progression:** concept → advanced → apply.
 
-How cryptography shows up in **product patterns**: JWTs, encrypted tokens, API/webhook HMAC signatures, and crypto agility — without turning this into an OAuth deep dive (that lives with [Identity](../Identity/README.md) / AppSec). Primitives: [3](./3_Asymmetric_Signatures_And_Certificates.md) · [10](./10_Hashing_MACs_And_Key_Derivation.md). Key custody: [5](./5_Key_Management_And_Modules.md).
+How cryptography shows up in **product patterns**: JWTs, encrypted tokens, API/webhook HMAC (Hash-based Message Authentication Code) signatures, and crypto agility — without turning this into an OAuth deep dive (that lives with [Identity](../Identity/README.md) / AppSec). Primitives: [3](./3_Asymmetric_Signatures_And_Certificates.md) · [10](./10_Hashing_MACs_And_Key_Derivation.md). Key custody: [5](./5_Key_Management_And_Modules.md).
 
 ## Concept
 
@@ -27,11 +27,11 @@ Client                         Server
 
 Signed ≠ authorized. Crypto proves the token was minted by a holder of the key; **your** policy decides what that means.
 
-### JWT / JWS literacy (crypto slice)
+### JWT / JWS (crypto slice)
 
 | Header/claim | Role |
 |--------------|------|
-| `alg` | Signature/MAC algorithm — **allow-list** on verify |
+| `alg` | Signature/MAC (Message Authentication Code) algorithm — **allow-list** on verify |
 | `kid` | Key id for rotation |
 | `exp` / `nbf` | Time bound |
 | `iss` / `aud` | Issuer / audience binding |
@@ -44,11 +44,11 @@ Signed ≠ authorized. Crypto proves the token was minted by a holder of the key
 | Keep lifetimes short; refresh deliberately | Multi-day access tokens with sensitive scopes |
 | Store secrets/PII server-side when possible | Put passwords or raw PANs in JWT payloads |
 
-**`alg=none` and algorithm confusion** (for example treating an HMAC secret as an RSA key) are classic implementation bugs — use maintained JWT libraries and disable none.
+**`alg=none` and algorithm confusion** (for example treating an HMAC secret as an RSA (Rivest–Shamir–Adleman) key) are classic implementation bugs — use maintained JWT libraries and disable none.
 
 ### When you need JWE (encryption)
 
-JWS protects against tampering; contents are still readable to anyone who obtains the token. Use **JWE** or server-side sessions when claims are confidential (or avoid putting them in the token). Encryption without signature/AEAD semantics still needs a clear integrity story — prefer library AEAD/JWE modes.
+JWS protects against tampering; contents are still readable to anyone who obtains the token. Use **JWE** or server-side sessions when claims are confidential (or avoid putting them in the token). Encryption without signature/AEAD (Authenticated Encryption with Associated Data) semantics still needs a clear integrity story — prefer library AEAD/JWE modes.
 
 ## Advanced
 
@@ -75,7 +75,7 @@ Webhook endpoints must reject stale timestamps and unknown key ids. Log failures
 |--|-------------------|------------------|
 | Revocation | Delete server record | Need blocklist / short TTL / introspection |
 | Size | Small cookie | Larger; watch headers |
-| Crypto | CSPRNG id | Sign/verify path |
+| Crypto | CSPRNG (Cryptographically Secure Pseudorandom Number Generator) id | Sign/verify path |
 | Fits | Browser apps with session store | Service-to-service, mobile offline-ish claims |
 
 Many systems use **both**: short JWT/API tokens plus revocable refresh/session records.
@@ -89,7 +89,7 @@ Design so algorithms and keys can change:
 | `kid` / key version on every artifact | Ciphertexts, tokens, signatures |
 | Dual-verify window | Old + new keys accepted during rotate |
 | Algorithm allow-lists in config | Not hard-coded forever in clients |
-| Versioned `info` labels in HKDF | `v1/…` → `v2/…` ([10](./10_Hashing_MACs_And_Key_Derivation.md)) |
+| Versioned `info` labels in HKDF (HMAC-based Key Derivation Function) | `v1/…` → `v2/…` ([10](./10_Hashing_MACs_And_Key_Derivation.md)) |
 
 Agility without inventory is fiction — list every verifier in every service.
 
@@ -124,7 +124,7 @@ Return the same client error for “bad signature,” “expired,” and “unkn
 
 ## Next
 
-- Back to [Cryptography README](./README.md) · TLS pitfalls [8](./8_TLS_And_PKI_Builder_Pitfalls.md) · PQC [9](./9_Algorithm_Transition_And_PQC.md)
+- Back to [Cryptography README](./README.md) · TLS (Transport Layer Security) pitfalls [8](./8_TLS_And_PKI_Builder_Pitfalls.md) · PQC (post-quantum cryptography) [9](./9_Algorithm_Transition_And_PQC.md)
 
 ## Further reading
 

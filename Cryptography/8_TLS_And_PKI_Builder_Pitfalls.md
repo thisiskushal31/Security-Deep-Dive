@@ -1,4 +1,4 @@
-# TLS and PKI builder pitfalls
+# TLS and PKI (Public Key Infrastructure) builder pitfalls
 
 [← Cryptography](./README.md)
 
@@ -12,8 +12,8 @@ How products misuse **TLS (Transport Layer Security)** and certificates: wrong v
 
 | Property | How TLS helps |
 |----------|----------------|
-| Confidentiality on the path | Record protection (AEAD in modern suites) |
-| Integrity on the path | AEAD / MAC in the protocol |
+| Confidentiality on the path | Record protection (AEAD (Authenticated Encryption with Associated Data) in modern suites) |
+| Integrity on the path | AEAD / MAC (Message Authentication Code) in the protocol |
 | Server authentication | Certificate + chain validation + name check |
 | Optional client authentication | mTLS (mutual TLS) with client certs |
 
@@ -28,7 +28,7 @@ TLS does not secure data after it is decrypted on the server, and it does not au
 | **TLS 1.0 / 1.1** | Deprecated (RFC 8996); disable |
 | **SSL 2.0 / 3.0** | Disable always |
 
-NIST SP 800-52 Rev. 2 provides federal-oriented TLS configuration guidance; OWASP’s TLS Cheat Sheet aligns product guidance: prefer 1.3, allow 1.2 carefully, disable legacy.
+NIST (National Institute of Standards and Technology) SP 800-52 Rev. 2 provides federal-oriented TLS configuration guidance; OWASP (Open Worldwide Application Security Project)’s TLS Cheat Sheet aligns product guidance: prefer 1.3, allow 1.2 carefully, disable legacy.
 
 ```text
 Client                     Server
@@ -48,18 +48,32 @@ Client                     Server
 | Chain to a trust anchor | Accept attacker-issued certs |
 | Hostname / identity match | Connect to the wrong host with a valid-looking cert |
 | Validity period | Accept expired or not-yet-valid certs |
-| Key usage / EKU | Accept certs for the wrong purpose |
+| Key usage / EKU (Extended Key Usage) | Accept certs for the wrong purpose |
 | Revocation policy (as designed) | Accept known-compromised certs longer than necessary |
 
 **Never** ship `verify=False`, custom trust-all managers, or “temporary” validation bypasses in production clients.
+
+### Revocation (CRL / OCSP)
+
+| Mechanism | Role |
+|-----------|------|
+| **CRL (Certificate Revocation List)** | CA-published list of revoked cert serials |
+| **OCSP (Online Certificate Status Protocol)** | Online query for a cert’s status (often stapled by the server) |
+
+| Builder habit | Why |
+|---------------|-----|
+| Prefer **OCSP stapling** on public HTTPS | Clients get status without a privacy-leaky/extra round trip when stapling works |
+| Soft-fail vs hard-fail | Browsers historically soft-failed OCSP; enterprise agents may hard-fail — document your choice |
+| Private PKI | You own CRL/OCSP publishing; broken revocation is a standing compromise window |
+| Short-lived certs (hours/days) | Shrinks reliance on perfect revocation |
 
 ## Advanced
 
 ### Cipher suites and forward secrecy
 
-Prefer suites with **ECDHE** (ephemeral) key agreement so compromising a long-term server private key does not decrypt past recorded sessions (forward secrecy). TLS 1.3 architectures bake modern choices in more tightly than older TLS 1.2 configs — still review 1.2 allow-lists if you must support it.
+Prefer suites with **ECDHE (Ephemeral Elliptic Curve Diffie–Hellman)** (ephemeral) key agreement so compromising a long-term server private key does not decrypt past recorded sessions (forward secrecy). TLS 1.3 architectures bake modern choices in more tightly than older TLS 1.2 configs — still review 1.2 allow-lists if you must support it.
 
-Avoid legacy RSA key-transport cipher suites and weak signature/hash combinations required by transition policy ([9](./9_Algorithm_Transition_And_PQC.md)).
+Avoid legacy RSA (Rivest–Shamir–Adleman) key-transport cipher suites and weak signature/hash combinations required by transition policy ([9](./9_Algorithm_Transition_And_PQC.md)).
 
 ### HSTS and mixed content
 
@@ -104,13 +118,13 @@ Pinning and private CA distribution are operational programs — treat trust-anc
 
 | Control | Builder takeaway |
 |---------|------------------|
-| **Certificate Transparency (CT)** | Public TLS certs are logged; browsers enforce CT for many public certs — operators monitor for unexpected issuances of their domains |
-| **Pinning (SPKI / cert)** | Can harden mobile/high-assurance clients against rogue CAs; catastrophic if pins ship wrong or fail to rotate — prefer backup pins and short pin lifetimes |
-| **CAA DNS records** | Limit which public CAs may issue for your domain |
+| **Certificate Transparency (CT (Certificate Transparency))** | Public TLS certs are logged; browsers enforce CT for many public certs — operators monitor for unexpected issuances of their domains |
+| **Pinning (SPKI (Subject Public Key Info) / cert)** | Can harden mobile/high-assurance clients against rogue CAs; catastrophic if pins ship wrong or fail to rotate — prefer backup pins and short pin lifetimes |
+| **CAA (Certification Authority Authorization) DNS records** | Limit which public CAs may issue for your domain |
 
 Most browser apps should rely on the platform trust store + CT rather than custom pinning. Mobile and high-assurance agents may pin with a tested rotation story.
 
-### Automation (ACME) pitfalls
+### Automation (ACME (Automatic Certificate Management Environment)) pitfalls
 
 Automated issuance (ACME / Let’s Encrypt-class flows) removes expiry outages when healthy — and creates new failure modes:
 
@@ -126,7 +140,7 @@ Automated issuance (ACME / Let’s Encrypt-class flows) removes expiry outages w
 |--------------|-----|
 | Soft-fail TLS (fall back to cleartext on error) | Fail closed for security-sensitive channels |
 | Allowlisting ancient cipher suites “for one partner” | Time-box exceptions; terminate legacy at a proxy |
-| Disabling SNI or name checks for “internal IP certs” | Use proper internal names / private CA |
+| Disabling SNI (Server Name Indication) or name checks for “internal IP certs” | Use proper internal names / private CA |
 
 ## Apply
 

@@ -4,7 +4,7 @@
 
 > **Progression:** concept → advanced → apply.
 
-How to protect **data at rest** and how to handle **secrets** (API keys, private keys, DB passwords) so encryption and vaults actually reduce risk. AEAD: [2](./2_Symmetric_AEAD_And_Modes.md). Key hierarchy: [5](./5_Key_Management_And_Modules.md). Password verifiers: [6](./6_Password_Verifiers_And_KDF.md). Cloud-shaped secrets sprawl also: [Cloud-Security](../Cloud-Security/README.md).
+How to protect **data at rest** and how to handle **secrets** (API keys, private keys, DB passwords) so encryption and vaults actually reduce risk. AEAD (Authenticated Encryption with Associated Data): [2](./2_Symmetric_AEAD_And_Modes.md). Key hierarchy: [5](./5_Key_Management_And_Modules.md). Password verifiers: [6](./6_Password_Verifiers_And_KDF.md). Cloud-shaped secrets sprawl also: [Cloud-Security](../Cloud-Security/README.md).
 
 ## Concept
 
@@ -13,7 +13,7 @@ How to protect **data at rest** and how to handle **secrets** (API keys, private
 | Kind | Examples | Typical control |
 |------|----------|-----------------|
 | **Data at rest** | DB columns, files, backups, object storage | Disk/volume encryption + application-level AEAD for sensitive fields |
-| **Secrets** | Private keys, API tokens, KMS creds, webhook HMAC keys | Vault / KMS / sealed store; short lifetime; never git |
+| **Secrets** | Private keys, API tokens, KMS (Key Management Service) creds, webhook HMAC (Hash-based Message Authentication Code) keys | Vault / KMS / sealed store; short lifetime; never git |
 
 Full-disk encryption protects against lost disks. It does **not** protect data from a compromised OS user or SQL injection that reads decrypted rows. Field/envelope encryption and authZ still matter.
 
@@ -37,7 +37,7 @@ Missing the backup layer is a classic incident pattern: production encrypted, ba
 4. On read: KMS decrypt wrap → DEK → AEAD-decrypt
 ```
 
-Application roles call KMS with IAM least privilege. Prefer never persisting plaintext DEKs.
+Application roles call KMS with IAM (Identity and Access Management) least privilege. Prefer never persisting plaintext DEKs.
 
 ### Secrets management principles
 
@@ -47,7 +47,7 @@ Application roles call KMS with IAM least privilege. Prefer never persisting pla
 | **No secrets in images** | Build args and layers leak; inject at runtime |
 | **Short lifetime** | Rotate; prefer ephemeral cloud roles over static keys |
 | **Least privilege** | One secret per purpose / environment |
-| **TLS for distribution** | Never email or ticket plaintext secrets |
+| **TLS (Transport Layer Security) for distribution** | Never email or ticket plaintext secrets |
 | **Detect sprawl** | Scanning + revoke when found |
 
 ## Advanced
@@ -62,9 +62,20 @@ Application roles call KMS with IAM least privilege. Prefer never persisting pla
 
 If you must search encrypted fields, you are in specialized design territory (blind indexes, searchable encryption trade-offs). Do not invent clever crypto for search — change the product requirement or use proven patterns with expert review.
 
+### Tokenization vs encryption
+
+| | **Tokenization** | **Encryption** |
+|--|------------------|----------------|
+| Stored value | Surrogate token (random or vault-mapped) | Ciphertext of the real value |
+| Reversibility | Only via the token vault / mapping service | Anyone with the DEK/KEK path |
+| Fits | PAN/PCI-shaped data; “need the real value rarely” | General confidential fields |
+| Fail mode | Vault outage blocks detokenize | Key leak exposes ciphertext corpus |
+
+Tokenization is a **data-minimization** pattern, not a cipher mode. Prefer it when most systems should never see the raw secret; encrypt when the app must often recover plaintext under authZ.
+
 ### Associated data for stored ciphertext
 
-Bind ciphertext to **row id**, tenant id, or document version via AAD so attackers cannot swap ciphertext between rows. Store key version explicitly.
+Bind ciphertext to **row id**, tenant id, or document version via AAD (additional authenticated data) so attackers cannot swap ciphertext between rows. Store key version explicitly.
 
 ### Secret classes and handling
 
@@ -72,31 +83,31 @@ Bind ciphertext to **row id**, tenant id, or document version via AAD so attacke
 |-------|----------|
 | Third-party API keys | Vault; rotate on vendor schedule + on leak |
 | DB passwords | Vault + IAM auth when available (avoid static passwords) |
-| Private signing keys | HSM/KMS sign APIs; export rarely |
-| TLS private keys | Controlled stores; automate issuance (ACME) carefully |
+| Private signing keys | HSM (Hardware Security Module)/KMS sign APIs; export rarely |
+| TLS private keys | Controlled stores; automate issuance (ACME (Automatic Certificate Management Environment)) carefully |
 | Webhook HMAC secrets | Per-endpoint secrets; rotate with dual-verify window |
 
 ### Anti-patterns that keep showing up
 
 | Anti-pattern | Fix grain |
 |--------------|-----------|
-| Secrets in CI logs | Masking + OIDC to cloud roles |
+| Secrets in CI logs | Masking + OIDC (OpenID Connect) to cloud roles |
 | “Dev and prod share the same key” | Separate key rings and accounts |
-| Long-lived AK/SK on laptops | Short-lived credentials / SSO |
+| Long-lived AK/SK on laptops | Short-lived credentials / SSO (single sign-on) |
 | Encrypting then storing key beside ciphertext in the same table without wrap | Use KMS wrap / envelope |
 | Base64 “encryption” | Not encryption |
 
 ### Relationship to supply chain signing
 
-Signing build artifacts (Sigstore/cosign literacy) is delivery integrity — owned with [Cloud-Security/6](../Cloud-Security/6_Supply_Chain_And_Delivery_Integrity.md). This note owns **application secrets and data-at-rest crypto** for product data.
+Signing build artifacts (Sigstore/cosign) is delivery integrity — owned with [Cloud-Security/6](../Cloud-Security/6_Supply_Chain_And_Delivery_Integrity.md). This note owns **application secrets and data-at-rest crypto** for product data.
 
 ### Multi-tenant key isolation
 
 | Model | Trade-off |
 |-------|-----------|
 | One KMS key per tenant | Strong isolation; more keys to manage |
-| Shared KEK + per-tenant DEK | Common; enforce IAM + AAD binding to `tenant_id` |
-| Client-held keys (BYOK) | Customer custody; harder support/recovery |
+| Shared KEK (Key Encryption Key) + per-tenant DEK (Data Encryption Key) | Common; enforce IAM + AAD binding to `tenant_id` |
+| Client-held keys (BYOK (bring your own key)) | Customer custody; harder support/recovery |
 
 Always put `tenant_id` in AEAD AAD so ciphertext cannot be moved across tenants unnoticed ([2](./2_Symmetric_AEAD_And_Modes.md)).
 

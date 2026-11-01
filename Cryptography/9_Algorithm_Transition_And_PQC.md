@@ -4,13 +4,13 @@
 
 > **Progression:** concept → advanced → apply.
 
-Cryptographic algorithms **age**. This note is how programs retire weak algorithms and how to prepare for **PQC (post-quantum cryptography)** using NIST’s standardized KEMs and signatures — without turning the team into lattice researchers. Classical primitives: [2](./2_Symmetric_AEAD_And_Modes.md) · [3](./3_Asymmetric_Signatures_And_Certificates.md). Key lifecycle: [5](./5_Key_Management_And_Modules.md).
+Cryptographic algorithms **age**. This note is how programs retire weak algorithms and how to prepare for **PQC (post-quantum cryptography)** using NIST's standardized KEMs and signatures — without turning the team into lattice researchers. Classical primitives: [2](./2_Symmetric_AEAD_And_Modes.md) · [3](./3_Asymmetric_Signatures_And_Certificates.md). Key lifecycle: [5](./5_Key_Management_And_Modules.md).
 
 ## Concept
 
 ### Transition is a program, not a blog post
 
-NIST SP 800-131A provides guidance on transitioning cryptographic algorithms and key lengths (Rev. 2 is the current final at collection time; watch CSRC for newer revisions). Product implications:
+NIST SP 800-131A provides guidance on transitioning cryptographic algorithms and key lengths (Rev. 2 is the current final at collection time; watch CSRC for newer revisions). Pair it with a **cryptographic inventory** ([1](./1_Goals_Threat_Model_And_Misuse.md)) so migration tickets have owners. Product implications:
 
 | Habit | Why |
 |-------|-----|
@@ -28,10 +28,20 @@ Discover → Policy (new use banned) → Dual support → Primary switch → Rem
 | Area | Examples of debt |
 |------|------------------|
 | Hash / signature | SHA-1 signatures; MD5 anywhere security-critical |
-| RSA / DH sizes | Short moduli still hanging in old PKI or protocols |
-| TLS | Legacy versions and weak suites ([8](./8_TLS_And_PKI_Builder_Pitfalls.md)) |
+| RSA (Rivest–Shamir–Adleman) / DH sizes | Short moduli still hanging in old PKI (Public Key Infrastructure) or protocols |
+| TLS (Transport Layer Security) | Legacy versions and weak suites ([8](./8_TLS_And_PKI_Builder_Pitfalls.md)) |
 | Password hashing | Unsalted SHA-*; low work factors ([6](./6_Password_Verifiers_And_KDF.md)) |
-| Symmetric | Non-AEAD modes for new data ([2](./2_Symmetric_AEAD_And_Modes.md)) |
+| Symmetric | Non-AEAD (Authenticated Encryption with Associated Data) modes for new data ([2](./2_Symmetric_AEAD_And_Modes.md)) |
+
+### Security strength (128-bit floor)
+
+ASVS (Application Security Verification Standard)-style guidance: aim for at least **128 bits of security strength** from the algorithm + key size + configuration together. Rough builder intuition (not a substitute for current NIST tables):
+
+| Family | Ballpark for ~128-bit strength |
+|--------|--------------------------------|
+| AES | AES-128 or AES-256 in approved modes |
+| ECC (elliptic-curve cryptography) | ~256-bit curves (for example P-256 / X25519-class) |
+| RSA | On the order of **3072-bit** moduli (2048-bit is legacy/transition territory) |
 
 Symmetric AES-128/256 remains widely appropriate when used in AEAD; transition pressure today is often stronger on **public-key** algorithms and on protocol versions.
 
@@ -43,13 +53,13 @@ Attackers can record TLS or stored asymmetric-wrapped ciphertext today and decry
 
 ### NIST PQC standards (builder names)
 
-NIST standardized post-quantum algorithms as FIPS in 2024:
+NIST standardized post-quantum algorithms as FIPS (Federal Information Processing Standard) in 2024:
 
 | Standard | Algorithm name | Role |
 |----------|----------------|------|
-| **FIPS 203** | **ML-KEM** (Module-Lattice-Based Key-Encapsulation Mechanism) | Key establishment / encapsulation |
-| **FIPS 204** | **ML-DSA** (Module-Lattice-Based Digital Signature Algorithm) | Signatures |
-| **FIPS 205** | **SLH-DSA** (Stateless Hash-Based Digital Signature Algorithm) | Hash-based signatures |
+| **FIPS 203** | **ML-KEM (Module-Lattice-Based Key-Encapsulation Mechanism)** (Module-Lattice-Based Key-Encapsulation Mechanism) | Key establishment / encapsulation |
+| **FIPS 204** | **ML-DSA (Module-Lattice-Based Digital Signature Algorithm)** (Module-Lattice-Based Digital Signature Algorithm) | Signatures |
+| **FIPS 205** | **SLH-DSA (Stateless Hash-Based Digital Signature Algorithm)** (Stateless Hash-Based Digital Signature Algorithm) | Hash-based signatures |
 
 You do not need the math to plan: treat these as **new algorithm identifiers** your libraries, TLS stacks, PKI, and protocols must eventually speak.
 
@@ -67,14 +77,14 @@ ECDSA / RSA sign  →    hybrid or dual signatures         → ML-DSA / SLH-DSA
 |------|---------|
 | 1. Inventory public-key use | TLS, SSH, code signing, document signing, tokens, S/MIME, VPN, disk escrow |
 | 2. Rank by confidentiality lifetime | Archives and roots first |
-| 3. Track library/OS readiness | OpenSSL/BoringSSL, runtimes, HSMs, cloud KMS roadmaps |
+| 3. Track library/OS readiness | OpenSSL/BoringSSL, runtimes, HSMs, cloud KMS (Key Management Service) roadmaps |
 | 4. Pilot hybrid TLS / signing in non-prod | Measure size, CPU, fail modes |
 | 5. Update procurement language | Require PQC roadmaps from vendors |
-| 6. Plan cert/profile changes | Larger keys/signatures → packet MTU, smart cards, HSMs |
+| 6. Plan cert/profile changes | Larger keys/signatures → packet MTU (Maximum Transmission Unit), smart cards, HSMs |
 
 CISA’s quantum readiness materials frame operational planning for agencies and enterprises — use them for program language, not as a substitute for NIST algorithm specs.
 
-### CNSA / sector profiles
+### CNSA (Commercial National Security Algorithm) / sector profiles
 
 National security and some regulated sectors publish algorithm suites (for example CNSA 2.0 guidance from NSA). If you are in scope, follow that profile’s timelines; if not, still watch them as leading indicators of ecosystem direction. Fetch the current PDF from official defense/NSA channels when required (some CDNs block automated download).
 
@@ -89,7 +99,7 @@ National security and some regulated sectors publish algorithm suites (for examp
 
 ### Size and performance realities (plan for them)
 
-PQC public keys and signatures are often **larger** than classical ECDSA. That affects:
+PQC public keys and signatures are often **larger** than classical ECDSA (Elliptic Curve Digital Signature Algorithm). That affects:
 
 | Surface | Impact |
 |---------|--------|

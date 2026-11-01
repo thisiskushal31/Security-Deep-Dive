@@ -13,9 +13,9 @@ How to store passwords and similar secrets-at-rest so a database leak does not i
 | Approach | Recover password? | Use for login? |
 |----------|-------------------|----------------|
 | Store plaintext | Yes | Catastrophic |
-| Encrypt password (AES) | Yes with key | Attacker who gets key + DB wins; often unnecessary |
+| Encrypt password (AES (Advanced Encryption Standard)) | Yes with key | Attacker who gets key + DB wins; often unnecessary |
 | Fast hash (SHA-256 alone) | Offline cracking is cheap | Insufficient |
-| Slow, salted password hash (Argon2id / bcrypt / scrypt / PBKDF2) | Not by design | Correct pattern for verifiers |
+| Slow, salted password hash (Argon2id / bcrypt / scrypt / PBKDF2 (Password-Based Key Derivation Function 2)) | Not by design | Correct pattern for verifiers |
 
 Login check: hash the candidate with the same parameters and compare in constant time to the stored verifier. You never need the plaintext password after registration/reset.
 
@@ -36,7 +36,7 @@ Password hashing must be **intentionally slow** (and for Argon2id/scrypt, memory
 
 ## Advanced
 
-### Algorithm preference (OWASP Password Storage)
+### Algorithm preference (OWASP (Open Worldwide Application Security Project) Password Storage)
 
 Prefer maintained library defaults that implement:
 
@@ -45,15 +45,15 @@ Prefer maintained library defaults that implement:
 | **Argon2id** | Modern default recommendation when available |
 | **scrypt** | Memory-hard alternative |
 | **bcrypt** | Widely deployed; mind input length limits (~72 bytes for classic bcrypt) |
-| **PBKDF2** | Acceptable when required (for example FIPS-aligned stacks); use adequate iterations and HMAC-SHA-256 class PRF |
+| **PBKDF2** | Acceptable when required (for example FIPS (Federal Information Processing Standard)-aligned stacks); use adequate iterations and HMAC (Hash-based Message Authentication Code)-SHA-256 class PRF |
 
 Exact parameters change as hardware improves — follow the current OWASP Password Storage Cheat Sheet and your compliance profile rather than copying blog numbers forever.
 
 ### Pepper (optional defense in depth)
 
-A **pepper** is a secret added to password hashing that is **not** stored in the database (vault/HSM). Peppers can help when the DB leaks but the vault does not. They complicate rotation: changing a pepper requires re-hashing or dual-verify logic. Treat peppers as secrets under [5](./5_Key_Management_And_Modules.md) / [7](./7_Cryptographic_Storage_And_Secrets.md).
+A **pepper** is a secret added to password hashing that is **not** stored in the database (vault/HSM (Hardware Security Module)). Peppers can help when the DB leaks but the vault does not. They complicate rotation: changing a pepper requires re-hashing or dual-verify logic. Treat peppers as secrets under [5](./5_Key_Management_And_Modules.md) / [7](./7_Cryptographic_Storage_And_Secrets.md).
 
-### NIST SP 800-63B (verifiers) — literacy
+### NIST (National Institute of Standards and Technology) SP 800-63B (verifiers)
 
 NIST SP 800-63B (Digital Identity Guidelines — authentication and lifecycle management) discusses authenticator and verifier requirements for federal-aligned identity systems. For builders: store verifiers using approved techniques; do not impose arbitrary composition rules that push users into predictable patterns; prefer longer randomly generated secrets or modern authenticators where the product allows. Read the current 63B revision you must comply with; do not invent policy from memory.
 
@@ -64,8 +64,8 @@ NIST SP 800-132 discusses password-based key derivation for **storage applicatio
 | Goal | Mechanism family |
 |------|------------------|
 | Verify login password | Password hashing API (Argon2id/bcrypt/…) |
-| Derive an encryption key from a passphrase | PBKDF / Argon2 as KDF with salt; then use AEAD ([2](./2_Symmetric_AEAD_And_Modes.md)) |
-| Derive keys from **high-entropy** secrets (protocol IKM) | **HKDF** / SP 800-108 — not Argon2 — [10](./10_Hashing_MACs_And_Key_Derivation.md) |
+| Derive an encryption key from a passphrase | PBKDF / Argon2 as KDF (Key Derivation Function) with salt; then use AEAD ([2](./2_Symmetric_AEAD_And_Modes.md)) |
+| Derive keys from **high-entropy** secrets (protocol IKM (Input Keying Material)) | **HKDF (HMAC-based Key Derivation Function)** / SP 800-108 — not Argon2 — [10](./10_Hashing_MACs_And_Key_Derivation.md) |
 
 Do not use a single fast hash iteration as either a verifier or a KDF. Do not use HKDF as your password hasher.
 
@@ -88,7 +88,7 @@ Optionally wrap legacy hashes (“hash the old hash”) as an intermediate — p
 
 | Anti-pattern | Why |
 |--------------|-----|
-| Client-only hashing “so server never sees password” without a real auth protocol | Usually broken or redundant with TLS; easy to get wrong |
+| Client-only hashing “so server never sees password” without a real auth protocol | Usually broken or redundant with TLS (Transport Layer Security); easy to get wrong |
 | Decryptable password “for support” | Support needs reset flows, not password reveal |
 | Shared salt across tenants | Cross-user acceleration |
 | Truncating bcrypt inputs silently | Unexpected collisions / weakened secrets |
@@ -126,7 +126,7 @@ Modern guidance generally favors **longer passwords / passphrases** and breach c
 1. Confirm the login path uses a maintained password-hashing API with unique salts.  
 2. Document algorithm + parameters + pepper location (if any) in a security design note.  
 3. Schedule work-factor increases; add migration for dormant users.  
-4. Align SSO/passwordless roadmaps so fewer passwords are stored at all.  
+4. Align SSO (single sign-on)/passwordless roadmaps so fewer passwords are stored at all.  
 5. Test constant-time compare (or library verify) to avoid timing leaks on verifiers.
 
 ## Self-check

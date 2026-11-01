@@ -4,20 +4,20 @@
 
 > **Progression:** concept → advanced → apply.
 
-Keys are the crown jewels of cryptographic controls. This note is the **lifecycle**: generate, distribute, store, use, rotate, revoke, destroy — plus what KMS, HSM, and FIPS 140-3 (Federal Information Processing Standard) module validation mean for builders. Randomness: [4](./4_Randomness_And_Key_Generation.md). Using keys for storage envelopes: [7](./7_Cryptographic_Storage_And_Secrets.md).
+Keys are the crown jewels of cryptographic controls. This note is the **lifecycle**: generate, distribute, store, use, rotate, revoke, destroy — plus what KMS (Key Management Service), HSM (Hardware Security Module), and FIPS (Federal Information Processing Standard) 140-3 (Federal Information Processing Standard) module validation mean for builders. Randomness: [4](./4_Randomness_And_Key_Generation.md). Using keys for storage envelopes: [7](./7_Cryptographic_Storage_And_Secrets.md).
 
 ## Concept
 
 ### Why key management dominates outcomes
 
-A perfect AEAD implementation fails open if:
+A perfect AEAD (Authenticated Encryption with Associated Data) implementation fails open if:
 
 - the key is in a public container image,  
 - every environment shares one key,  
 - there is no rotation after staffing changes, or  
 - plaintext key material is readable by every microservice account.
 
-NIST SP 800-57 Part 1 is the general key-management recommendation: key types, protection requirements, cryptoperiods, and lifecycle functions. You do not memorize every table — you implement a **system** that matches your assurance needs.
+NIST (National Institute of Standards and Technology) SP 800-57 Part 1 is the general key-management recommendation: key types, protection requirements, cryptoperiods, and lifecycle functions. You do not memorize every table — you implement a **system** that matches your assurance needs.
 
 ### Lifecycle
 
@@ -29,7 +29,7 @@ Generate → Distribute / wrap → Store → Use → Rotate / replace
 
 | Phase | Builder questions |
 |-------|-------------------|
-| **Generate** | CSPRNG or KMS/HSM? Exportable? |
+| **Generate** | CSPRNG (Cryptographically Secure Pseudorandom Number Generator) or KMS/HSM? Exportable? |
 | **Distribute** | How does the key reach the service without chat/email? |
 | **Store** | Vault / KMS / HSM / OS keystore — never git |
 | **Use** | Which identities may encrypt, decrypt, sign? Logged? |
@@ -42,7 +42,7 @@ Generate → Distribute / wrap → Store → Use → Rotate / replace
 |------|------|
 | **DEK (Data Encryption Key)** | Encrypts data (often short-lived, many of them) |
 | **KEK (Key Encryption Key)** | Encrypts / wraps DEKs |
-| **Signing key** | Creates signatures; verify with public key or shared secret for MAC |
+| **Signing key** | Creates signatures; verify with public key or shared secret for MAC (Message Authentication Code) |
 | **Master / root keys** | Protect KEKs; highest custody (HSM / cloud KMS root) |
 
 Envelope encryption separates “many DEKs” from “few well-guarded KEKs”:
@@ -57,9 +57,9 @@ KMS/HSM holds KEK
 
 | Storage | When it fits |
 |---------|----------------|
-| **Cloud KMS / managed vault** | Default for cloud-hosted apps; IAM-controlled use without exporting raw KEK |
+| **Cloud KMS / managed vault** | Default for cloud-hosted apps; IAM (Identity and Access Management)-controlled use without exporting raw KEK |
 | **HSM** | High assurance; keys generated and used inside the module boundary |
-| **TPM / platform keys** | Device-bound keys, measured boot stories |
+| **TPM (Trusted Platform Module) / platform keys** | Device-bound keys, measured boot stories |
 | **OS keystore / sealed config** | Workstation and some app secrets — still manage rotation |
 | **Source repo / AMI / Docker layer** | Never for production private keys or DEKs |
 
@@ -74,7 +74,7 @@ A **cryptoperiod** is how long a key may be used for its purpose. Rotation trigg
 | Trigger | Example |
 |---------|---------|
 | Time | “Signing key replaced yearly” |
-| Volume | “DEK replaced after N GCM messages” ([2](./2_Symmetric_AEAD_And_Modes.md)) |
+| Volume | “DEK replaced after N GCM (Galois/Counter Mode) messages” ([2](./2_Symmetric_AEAD_And_Modes.md)) |
 | Personnel | Admin with key access leaves |
 | Suspicion | Possible exposure in logs or ticket |
 | Algorithm policy | Transition away from deprecated strength ([9](./9_Algorithm_Transition_And_PQC.md)) |
@@ -92,7 +92,7 @@ Treat KMS keys like production datastores:
 | Break-glass procedures | Logged, time-bounded |
 | Deny by default for CI | Pipelines get short-lived roles, not eternal decrypt |
 
-### FIPS 140-3 literacy (what builders need)
+### FIPS 140-3 — what builders need
 
 FIPS 140-3 specifies **security requirements for cryptographic modules**. Validation means a module was tested against that standard — not that your *application* is automatically secure.
 
@@ -102,7 +102,7 @@ FIPS 140-3 specifies **security requirements for cryptographic modules**. Valida
 | “FIPS mode” in a library | Configuration that restricts algorithms/parameters to approved sets — still need correct use |
 | “We are FIPS compliant” (marketing) | Ask: which module certificate? which level? is your deployment inside the validated boundary? |
 
-For high-assurance deployments, keep key use inside hardware-backed modules so plaintext keys are not extractable from app memory (aligned with strong ASVS-style key management expectations).
+For high-assurance deployments, keep key use inside hardware-backed modules so plaintext keys are not extractable from app memory (aligned with strong ASVS (Application Security Verification Standard)-style key management expectations).
 
 ### Compromise playbook (minimum)
 
@@ -129,7 +129,7 @@ Most product teams will not run shamir ceremonies weekly — but they **should**
 |--------|-----------------|
 | KEK export | Disabled |
 | DEK export | Ephemeral plaintext only inside the encrypting service memory |
-| BYOK / HYOK | Understand who holds ultimate custody; document trust |
+| BYOK (bring your own key) / HYOK (hold your own key) | Understand who holds ultimate custody; document trust |
 | Backup of key material | Encrypted with a higher KEK; tested restore; access-controlled |
 
 ### Mapping to SP 800-57 functions
@@ -152,11 +152,11 @@ Service ships with AES-GCM (good)
       → Attacker decrypts every row despite “strong crypto”
 ```
 
-The fix is key management ([this note](./5_Key_Management_And_Modules.md)) and secrets hygiene ([7](./7_Cryptographic_Storage_And_Secrets.md)), not a larger AES key.
+The fix is key management ([this note](./5_Key_Management_And_Modules.md)) and secrets hygiene ([7](./7_Cryptographic_Storage_And_Secrets.md)), not a larger AES (Advanced Encryption Standard) key.
 
 ### Service identity to keys
 
-Prefer workload identity (cloud role / OIDC to vault) over long-lived static API keys that can decrypt. Static decrypt credentials in CI are a recurring breach pattern — issue short-lived roles for migrate jobs only.
+Prefer workload identity (cloud role / OIDC (OpenID Connect) to vault) over long-lived static API keys that can decrypt. Static decrypt credentials in CI are a recurring breach pattern — issue short-lived roles for migrate jobs only.
 
 ## Apply
 

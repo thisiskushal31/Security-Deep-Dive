@@ -4,7 +4,7 @@
 
 > **Progression:** concept → advanced → apply.
 
-Why cryptography exists in products, what it **cannot** replace, and why most “crypto failures” are **misuse** — wrong goals, home-grown protocols, disabled checks — not someone factoring AES. Vocabulary seed: [Foundations/8](../Foundations/8_Cryptographic_Solutions_Literacy.md). Modes and AEAD (Authenticated Encryption with Associated Data) depth: [2](./2_Symmetric_AEAD_And_Modes.md). Keys: [4](./4_Randomness_And_Key_Generation.md) · [5](./5_Key_Management_And_Modules.md).
+Why cryptography exists in products, what it **cannot** replace, and why most “crypto failures” are **misuse** — wrong goals, home-grown protocols, disabled checks — not someone factoring AES (Advanced Encryption Standard). Vocabulary seed: [Foundations/8](../Foundations/8_Cryptographic_Solutions_Literacy.md). Modes and AEAD (Authenticated Encryption with Associated Data) depth: [2](./2_Symmetric_AEAD_And_Modes.md). Keys: [4](./4_Randomness_And_Key_Generation.md) · [5](./5_Key_Management_And_Modules.md).
 
 ## Concept
 
@@ -16,7 +16,7 @@ Cryptography is a set of mechanisms that, when used correctly, support security 
 |----------|------------------|--------------------|
 | **Confidentiality** | Unauthorized parties cannot read the data | Encryption (symmetric or hybrid) |
 | **Integrity** | Unauthorized modification is detectable | Hash + signature/MAC (Message Authentication Code); AEAD |
-| **Authenticity** | You can check origin / binding of data or a peer | Signatures; MAC with shared secret; TLS certificates |
+| **Authenticity** | You can check origin / binding of data or a peer | Signatures; MAC with shared secret; TLS (Transport Layer Security) certificates |
 | **Non-repudiation** (qualified) | A party cannot credibly deny an action *if* key custody and logging hold | Digital signatures + protected private keys + audit trail |
 
 These are **not** the same as authorization. Encryption does not decide whether *Alice* may open *Bob’s* record. If the app decrypts for any logged-in user, cryptography did its job and the product still leaked.
@@ -43,7 +43,7 @@ Threat → finds weakness in *how* crypto is used
 
 ### Builder threat model (minimum)
 
-Before picking AES or RSA, name the adversary and the asset:
+Before picking AES or RSA (Rivest–Shamir–Adleman), name the adversary and the asset:
 
 | Question | Forces a decision |
 |----------|-------------------|
@@ -61,7 +61,7 @@ Use **maintained, high-level libraries** and platform services (language crypto 
 
 | Do | Don’t |
 |----|-------|
-| Call AEAD encrypt/decrypt APIs that take plaintext + associated data | Copy Stack Overflow CBC + homemade HMAC glue |
+| Call AEAD encrypt/decrypt APIs that take plaintext + associated data | Copy Stack Overflow CBC (Cipher Block Chaining) + homemade HMAC (Hash-based Message Authentication Code) glue |
 | Use the platform TLS stack with modern defaults | Roll a custom “secure channel” over TCP |
 | Store passwords with a password-hashing API | `SHA256(password)` or encrypt passwords “so we can decrypt them” |
 | Generate keys with the library’s keygen / OS CSPRNG (Cryptographically Secure Pseudorandom Number Generator) | `Math.random`, timestamps, or “random” UUIDs as key material |
@@ -87,7 +87,7 @@ The cheapest cryptographic win is **not storing** sensitive data. Classify data;
 
 ### Encrypt-then-MAC vs AEAD (product view)
 
-Older designs sometimes encrypt, then compute a MAC over the ciphertext (encrypt-then-MAC). Modern default for new work: **AEAD modes** (AES-GCM, ChaCha20-Poly1305, AES-CCM) that provide confidentiality and authenticity in one construction when used as the library documents — especially IV/nonce uniqueness.
+Older designs sometimes encrypt, then compute a MAC over the ciphertext (encrypt-then-MAC). Modern default for new work: **AEAD modes** (AES-GCM (Advanced Encryption Standard in Galois/Counter Mode), ChaCha20-Poly1305, AES-CCM) that provide confidentiality and authenticity in one construction when used as the library documents — especially IV (Initialization Vector)/nonce uniqueness.
 
 ```text
 Prefer for new designs:
@@ -99,7 +99,7 @@ Avoid reinventing:
   plaintext ──ENC──▶ C ──MAC──▶ tag     (easy to get order/AD wrong)
 ```
 
-Associated authenticated data (**AAD**) is data you need integrity for but not secrecy (for example a record id or version header). Put stable identifiers in AAD so ciphertext cannot be relocated across rows unnoticed.
+Associated authenticated data (**AAD (additional authenticated data)**) is data you need integrity for but not secrecy (for example a record id or version header). Put stable identifiers in AAD so ciphertext cannot be relocated across rows unnoticed.
 
 ### Program placement (where this folder sits)
 
@@ -108,9 +108,22 @@ Associated authenticated data (**AAD**) is data you need integrity for but not s
 | “Should this endpoint even return the field?” | AppSec / product authZ |
 | “Is the TLS handshake correct on the wire?” | Networks depth |
 | “Which AEAD, how do we rotate DEKs?” | **This folder** |
-| “Is the cloud KMS policy least-privilege?” | Cloud-Security + IAM |
+| “Is the cloud KMS policy least-privilege?” | Cloud-Security + IAM (Identity and Access Management) |
 
-### Map to OWASP Top 10:2025 A04 — Cryptographic Failures
+### Cryptographic inventory (so you can migrate)
+
+You cannot rotate, deprecate, or go post-quantum what you cannot find. Keep a living inventory of:
+
+| Track | Examples |
+|-------|----------|
+| **Algorithms / modes** | AES-GCM, RSA-PSS, HMAC-SHA-256, Argon2id |
+| **Keys & certs** | KMS key ids, TLS certs, code-signing keys, JWT signing keys |
+| **Libraries** | OpenSSL/BoringSSL, language crypto, libsodium, cloud KMS SDKs |
+| **Where used** | Service, data class, cryptoperiod, owner |
+
+This matches the spirit of OWASP ASVS (Application Security Verification Standard) V11 inventory/documentation requirements. Discovery (secret scanning, library inventories, cert inventories) feeds the sheet; migration plans live with [9](./9_Algorithm_Transition_And_PQC.md).
+
+### Map to OWASP (Open Worldwide Application Security Project) Top 10:2025 A04 — Cryptographic Failures
 
 **A04 Cryptographic Failures** covers weak algorithms, broken key management, missing or botched TLS, secrets in source, and homemade crypto — typically leading to sensitive data exposure or compromise. Use this folder as the control depth behind AppSec’s A04 pointer.
 
@@ -123,8 +136,8 @@ Associated authenticated data (**AAD**) is data you need integrity for but not s
 | Fast password hashes | [6](./6_Password_Verifiers_And_KDF.md) |
 | Missing TLS / validation off | [8](./8_TLS_And_PKI_Builder_Pitfalls.md) |
 | Deprecated algorithms | [9](./9_Algorithm_Transition_And_PQC.md) |
-| Bare hash as “MAC”; bad KDF choice | [10](./10_Hashing_MACs_And_Key_Derivation.md) |
-| JWT `alg` confusion / webhook HMAC bugs | [11](./11_Applied_Patterns_Tokens_And_Signing.md) |
+| Bare hash as “MAC”; bad KDF (Key Derivation Function) choice | [10](./10_Hashing_MACs_And_Key_Derivation.md) |
+| JWT (JSON Web Token) `alg` confusion / webhook HMAC bugs | [11](./11_Applied_Patterns_Tokens_And_Signing.md) |
 
 ![OWASP Top 10:2025 category mapping context](../Assets/AppSec/OWASP_Top10_2025_Mappings.png)
 
