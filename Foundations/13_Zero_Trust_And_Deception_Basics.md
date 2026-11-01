@@ -6,7 +6,7 @@
 
 Do not treat network location as proof of trust. Use decoys that create high-signal alerts when touched.
 
-Product depth: [Identity/2](../Identity/2_Zero_Trust.md). Design trade-offs: [System-Design Security-Tradeoffs/2](https://github.com/thisiskushal31/System-Design-Concepts/blob/main/Security-Tradeoffs/2_Auth_Design_vs_Zero_Trust.md). Deception inventory: [2](./2_Controls_And_Physical.md). Network shape literacy: [14](./14_Defensible_Network_Architecture_Literacy.md).
+Product depth: [Identity/9](../Identity/9_Zero_Trust_Architecture.md) · [Identity/10](../Identity/10_Zero_Trust_Maturity_And_Identity_Pillar.md). Design trade-offs: [System-Design Security-Tradeoffs/2](https://github.com/thisiskushal31/System-Design-Concepts/blob/main/Security-Tradeoffs/2_Auth_Design_vs_Zero_Trust.md). Deception inventory: [2](./2_Controls_And_Physical.md). Network shape literacy: [14](./14_Defensible_Network_Architecture_Literacy.md).
 
 ## Concept
 

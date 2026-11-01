@@ -10,7 +10,7 @@ New here? Start at [Foundations](./Foundations/README.md) (21 notes, ordered con
 |--------|------|
 | [Foundations/](./Foundations/README.md) | Bedrock → program frame → technical literacy → design → operate → adversary/ops (concept → advanced → apply) |
 | [Threats/](./Threats/README.md) | Security+ Domain 2 + AI-era literacy: actors → … → mitigations → AI-era threats |
-| [Identity/](./Identity/README.md) | Federation and zero trust |
+| [Identity/](./Identity/README.md) | Assurance (IAL/AAL/FAL), OAuth/OIDC/SAML, WebAuthn, tokens, ZT, SCIM/IGA/PAM, authZ, tooling map |
 | [AppSec/](./AppSec/README.md) | Secure SDLC, Top 10:2025, access control, injection, API Top 10, ASVS, proactive/WSTG |
 | [AI-Security/](./AI-Security/README.md) | LLM/agent practice: defenses, RAG, agents, AIBOM/MCP, eval, shadow AI, attack mechanisms, model confidentiality / classical AML |
 | [Cryptography/](./Cryptography/README.md) | Builder crypto: A04/misuse, AEAD, keys/modules, passwords, storage/secrets, TLS, PQC, HMAC/HKDF, JWT/signing patterns |

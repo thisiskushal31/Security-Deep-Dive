@@ -29,7 +29,7 @@ Identify  →  Authenticate  →  Authorize  →  Account (audit)
 | RADIUS | Centralized authentication/authorization/accounting for network access (VPN, Wi-Fi, NAS) |
 | TACACS+ | Device administration AAA (often separate authZ for network device commands) |
 | Kerberos | Ticket-based authentication inside many enterprise domains |
-| Modern app federation | OAuth 2 / OIDC (OpenID Connect) / SAML (Security Assertion Markup Language) for applications — [Identity/1](../Identity/1_OAuth_OIDC_SAML.md) |
+| Modern app federation | OAuth 2 / OIDC (OpenID Connect) / SAML (Security Assertion Markup Language) for applications — [Identity](../Identity/README.md) |
 
 Protocol packet detail stays in Networks. Application federation how-to stays in Identity and Tooling.
 
@@ -55,7 +55,7 @@ Multi-factor authentication uses at least two different classes. Phishing-resist
 
 ### SSO (single sign-on) and federation
 
-**Single sign-on (SSO)** authenticates once into an identity provider, then grants access to many apps via federation. Strength comes from the IdP (MFA, logging, lifecycle). Weakness is concentration: IdP compromise or mis-federation affects many apps. Protocol how-to: [Identity/1](../Identity/1_OAuth_OIDC_SAML.md).
+**Single sign-on (SSO)** authenticates once into an identity provider, then grants access to many apps via federation. Strength comes from the IdP (MFA, logging, lifecycle). Weakness is concentration: IdP compromise or mis-federation affects many apps. Protocol depth: [Identity](../Identity/README.md) (OAuth / OIDC / SAML notes).
 
 ## Authenticating systems and workloads
 
@@ -115,8 +115,8 @@ Useful questions: password-only entry points still left; shared admin accounts; 
 
 ## Related homes
 
-- OAuth / OIDC / SAML → [Identity/1](../Identity/1_OAuth_OIDC_SAML.md)
-- Zero Trust → [13](./13_Zero_Trust_And_Deception_Basics.md) · [Identity/2](../Identity/2_Zero_Trust.md)
+- OAuth / OIDC / SAML → [Identity](../Identity/README.md) (notes 4–6)
+- Zero Trust → [13](./13_Zero_Trust_And_Deception_Basics.md) · [Identity/9](../Identity/9_Zero_Trust_Architecture.md)
 - Session and service-identity trade-offs → [System-Design Security-Tradeoffs/2](https://github.com/thisiskushal31/System-Design-Concepts/blob/main/Security-Tradeoffs/2_Auth_Design_vs_Zero_Trust.md)
 
 ## Apply
