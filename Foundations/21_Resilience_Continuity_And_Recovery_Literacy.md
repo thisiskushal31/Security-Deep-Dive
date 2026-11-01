@@ -6,7 +6,7 @@
 
 Availability is a CIA (Confidentiality, Integrity, Availability) objective ([1](./1_CIA_And_Risk.md)). Resilience is how you keep (or restore) critical functions when something fails — attack, outage, or operator error. BIA (Business Impact Analysis)/RTO/RPO first appeared in [5](./5_Risk_Management_Process_And_RMF.md); this note expands the foundation set Security+ architecture/operations expect.
 
-Design patterns: System-Design DR notes. IR (incident response) process: [Defensive-Ops/2](../Defensive-Ops/2_Incident_Response.md).
+Design patterns: System-Design DR notes. IR (incident response) process: [Defensive-Ops/7](../Defensive-Ops/7_Incident_Response_Lifecycle.md).
 
 ## Concept
 

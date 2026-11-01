@@ -65,7 +65,7 @@ Prefer **allowlisting** over endless blocklists when the environment supports it
 
 Maintain regular **known-good** backups stored **offline** or otherwise segmented from production. Many ransomware variants try to encrypt or delete online backups. **Test restores.** Victims with intact backups often recover without paying.
 
-Exercise a basic cyber incident response plan and communications plan — the ability to respond is part of mitigation ([Defensive-Ops/2](../Defensive-Ops/2_Incident_Response.md) · [Foundations/21](../Foundations/21_Resilience_Continuity_And_Recovery_Literacy.md)).
+Exercise a basic cyber incident response plan and communications plan — the ability to respond is part of mitigation ([Defensive-Ops/7](../Defensive-Ops/7_Incident_Response_Lifecycle.md) · [Foundations/21](../Foundations/21_Resilience_Continuity_And_Recovery_Literacy.md)).
 
 ### Mapping back across Threats
 

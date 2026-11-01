@@ -36,7 +36,7 @@ Auth surfaces ──▶ identity recon handoff ([8](./8_People_Org_And_Identity_
 |-----|------------|--------------|
 | Path / API discovery | Dir busting, crawlers | Gobuster, ffuf |
 | Vhost / DNS names | Wordlists | Gobuster dns/vhost; Amass for names |
-| Fingerprint | Header/HTML/plugin cues | Manual + WhatWeb-class tools if installed; Burp |
+| Fingerprint | Header/HTML/plugin cues | [WhatWeb](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance/WhatWeb); Burp |
 | Known misconfig / templates | Signature scanners | Nikto, Nuclei |
 | Manual map | Intercepting proxy | Burp / ZAP |
 
@@ -113,3 +113,4 @@ Prefer:
 - [Tooling — Gobuster](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance/Gobuster)
 - [Tooling — ffuf](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance/ffuf)
 - [Tooling — Nuclei](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance/Nuclei)
+- [Tooling — WhatWeb](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance/WhatWeb)

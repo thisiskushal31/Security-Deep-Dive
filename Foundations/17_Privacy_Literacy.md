@@ -51,7 +51,7 @@ This note is literacy, not legal advice. Map requirements with counsel and [GRC]
 2. State the purpose and retention.  
 3. Prefer minimization over “collect everything and decide later.”  
 4. Threat-model privacy harms (LINDDUN) when personal data is central ([12](./12_STRIDE_And_Threat_Modeling.md)).  
-5. Align breach notification clocks with IR ([Defensive-Ops/2](../Defensive-Ops/2_Incident_Response.md)).
+5. Align breach notification clocks with IR ([Defensive-Ops/7](../Defensive-Ops/7_Incident_Response_Lifecycle.md)).
 
 ## Self-check
 

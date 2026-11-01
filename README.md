@@ -16,7 +16,7 @@ New here? Start at [Foundations](./Foundations/README.md) (21 notes, ordered con
 | [Cryptography/](./Cryptography/README.md) | Builder crypto: A04/misuse, AEAD, keys/modules, passwords, storage/secrets, TLS, PQC, HMAC/HKDF, JWT/signing patterns |
 | [Cloud-Security/](./Cloud-Security/README.md) | Cloud models; IAM/firewalls/resources; posture (CSPM/CNAPP literacy); supply chain; IR; AI workloads in cloud |
 | [Reconnaissance/](./Reconnaissance/README.md) | Deep recon: OSINT, exposure/ASM, network/web/identity/cloud discovery, tooling map, detect & harden |
-| [Defensive-Ops/](./Defensive-Ops/README.md) | SIEM, IR, forensics |
+| [Defensive-Ops/](./Defensive-Ops/README.md) | SOC/telemetry, SIEM, detection engineering, triage/SOAR bounds, hunting, IR, forensics, cloud/IdP IR, comms, exercises, metrics |
 | [Offensive/](./Offensive/README.md) | PTES phases (OSINT → report), lab only — recon depth in Reconnaissance/ |
 | [Threat-Modeling/](./Threat-Modeling/README.md) | Workshop process, DFD/STRIDE, PASTA, trees/LINDDUN, tooling, AI/agentic TM |
 | [Threat-Intelligence/](./Threat-Intelligence/README.md) | Tradecraft, models, products, STIX/TAXII, detection handoff, malware RE for CTI |

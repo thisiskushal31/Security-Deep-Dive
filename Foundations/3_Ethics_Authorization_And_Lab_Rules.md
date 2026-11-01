@@ -66,7 +66,7 @@ All of them share: **authorize → discover → validate → report**.
 
 ## Event handling honesty
 
-Security events can affect people and customers. Coordinate with policy and counsel when disclosure or legal holds apply — [GRC](../GRC/README.md) and [Defensive-Ops IR (incident response)](../Defensive-Ops/2_Incident_Response.md).
+Security events can affect people and customers. Coordinate with policy and counsel when disclosure or legal holds apply — [GRC](../GRC/README.md) and [Defensive-Ops IR (incident response)](../Defensive-Ops/7_Incident_Response_Lifecycle.md).
 
 ## Apply
 

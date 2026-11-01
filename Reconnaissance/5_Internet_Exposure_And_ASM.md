@@ -4,7 +4,7 @@
 
 > **Progression:** concept → advanced → apply.
 
-Attack Surface Management (ASM) is continuous **self-recon**: discover what the internet can already see about you, then close or accept it. Tooling: [Shodan](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance/Shodan) under **exposure search** in [Tooling Reconnaissance](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance). Cloud posture products: [Cloud-Security/3](../Cloud-Security/3_CSPM_And_Posture.md).
+Attack Surface Management (ASM) is continuous **self-recon**: discover what the internet can already see about you, then close or accept it. Tooling: [Shodan](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance/Shodan) · [Censys](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance/Censys) under **exposure search** in [Tooling Reconnaissance](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance). Cloud posture products: [Cloud-Security/3](../Cloud-Security/3_CSPM_And_Posture.md).
 
 ## Concept
 
@@ -102,4 +102,5 @@ Unowned ASM becomes a dashboard nobody watches — [11](./11_Detect_Harden_And_C
 - [CISA — Directives and exposure-reduction guidance](https://www.cisa.gov/news-events/directives)
 - [MITRE ATT&CK — Search Open Technical Databases (T1596)](https://attack.mitre.org/techniques/T1596/)
 - [Tooling — Shodan](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance/Shodan)
+- [Tooling — Censys](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance/Censys)
 - [Cloud-Security — posture](../Cloud-Security/3_CSPM_And_Posture.md)

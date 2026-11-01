@@ -28,9 +28,9 @@ Methodology (here) ──▶ capability label (Tooling README) ──▶ existin
 | Capability (label in Tooling) | Existing product folders | Primary recon notes |
 |-------------------------------|--------------------------|---------------------|
 | **Network scanners** | [Nmap](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance/Nmap), [Masscan](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance/Masscan) | [6](./6_Network_And_Host_Discovery.md) |
-| **OSINT collectors** | [theHarvester](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance/theHarvester), [Amass](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance/Amass), Maltego, SpiderFoot, Recon-ng | [4](./4_Passive_OSINT_And_Public_Sources.md) · [8](./8_People_Org_And_Identity_Surface.md) |
-| **Web surface mappers** | [Gobuster](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance/Gobuster), [ffuf](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance/ffuf), [Nikto](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance/Nikto), [Nuclei](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance/Nuclei) | [7](./7_Web_And_App_Surface.md) |
-| **Exposure search** | [Shodan](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance/Shodan) | [5](./5_Internet_Exposure_And_ASM.md) |
+| **OSINT collectors** | theHarvester, Amass, **subfinder**, Maltego, SpiderFoot, Recon-ng — [Tooling Recon](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance) | [4](./4_Passive_OSINT_And_Public_Sources.md) · [8](./8_People_Org_And_Identity_Surface.md) |
+| **Web surface mappers** | Gobuster, ffuf, **feroxbuster**, Nikto, Nuclei, WhatWeb, **httpx** — same Tooling folder | [7](./7_Web_And_App_Surface.md) |
+| **Exposure search** | Shodan **or** Censys | [5](./5_Internet_Exposure_And_ASM.md) |
 | **Vuln overlap** | [GVM](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance/GVM), Nuclei | [Vulnerability-Management](../Vulnerability-Management/README.md) |
 
 ### Also used in recon (other Tooling areas — link, don’t fork)

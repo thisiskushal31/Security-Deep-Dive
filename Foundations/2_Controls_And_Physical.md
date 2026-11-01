@@ -86,7 +86,7 @@ A control catalog answers “what safeguard?” The [NIST Cybersecurity Framewor
 | **Identify** | Know assets, risks, suppliers | Inventory; BIA (Business Impact Analysis); threat modeling ([6](./6_Assets_Data_States_And_Assurance.md), [12](./12_STRIDE_And_Threat_Modeling.md)) |
 | **Protect** | Limit likelihood and impact | MFA; encryption; hardening; segmentation |
 | **Detect** | Find anomalies and events | Logging; SIEM; decoys |
-| **Respond** | Contain and eradicate | Incident process ([Defensive-Ops/2](../Defensive-Ops/2_Incident_Response.md)) |
+| **Respond** | Contain and eradicate | Incident process ([Defensive-Ops/7](../Defensive-Ops/7_Incident_Response_Lifecycle.md)) |
 | **Recover** | Restore operations and improve | Backups; DR drills ([21](./21_Resilience_Continuity_And_Recovery_Literacy.md)) |
 
 Use categories/types to classify a control; use CSF functions to check the program is not “all Protect, no Detect/Recover.”
