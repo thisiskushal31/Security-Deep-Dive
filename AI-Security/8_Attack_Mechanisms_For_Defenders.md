@@ -275,6 +275,10 @@ Author fixtures yourself for your product. Pass/fail on **telemetry**, not vibes
 - [ ] Place Rule of Two `[A,B,C]` on your agents  
 - [ ] Define pass/fail for three authorized fixtures using logs  
 
+## Next
+
+- [Model confidentiality and classical AML](./9_Model_Confidentiality_And_Classical_AML.md)
+
 ## Further reading
 
 - [OWASP Top 10 for LLM Applications 2026](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/)

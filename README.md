@@ -11,8 +11,8 @@ New here? Start at [Foundations](./Foundations/README.md) (21 notes, ordered con
 | [Foundations/](./Foundations/README.md) | Bedrock → program frame → technical literacy → design → operate → adversary/ops (concept → advanced → apply) |
 | [Threats/](./Threats/README.md) | Security+ Domain 2 + AI-era literacy: actors → … → mitigations → AI-era threats |
 | [Identity/](./Identity/README.md) | Federation and zero trust |
-| [AppSec/](./AppSec/README.md) | OWASP, API, secure SDLC |
-| [AI-Security/](./AI-Security/README.md) | LLM/agent practice: defenses, RAG, agents, AIBOM/MCP, eval, shadow AI, attack mechanisms for defenders |
+| [AppSec/](./AppSec/README.md) | Secure SDLC, Top 10:2025, access control, injection, API Top 10, ASVS, proactive/WSTG |
+| [AI-Security/](./AI-Security/README.md) | LLM/agent practice: defenses, RAG, agents, AIBOM/MCP, eval, shadow AI, attack mechanisms, model confidentiality / classical AML |
 | [Cryptography/](./Cryptography/README.md) | Practical pitfalls |
 | [Cloud-Security/](./Cloud-Security/README.md) | Posture, secrets/K8s, supply chain |
 | [Defensive-Ops/](./Defensive-Ops/README.md) | SIEM, IR, forensics |

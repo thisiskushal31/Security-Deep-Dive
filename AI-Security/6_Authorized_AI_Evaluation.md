@@ -77,6 +77,18 @@ Map techniques to [MITRE ATLAS](https://atlas.mitre.org/) (prompt injection vs j
 
 **Adaptive testing requirement:** disclose the deployed defense to red-teamers. Static attack packs that never see your filters produce misleading “near zero” success rates; adaptive attackers who know the marking scheme, strip list, and policy often succeed where static tests do not. Baseline public benches (e.g. AgentDojo, JailbreakBench) then layer your defense-aware scenarios. Map techniques to `AML.T0051` / `AML.T0054` (and ASI IDs for agents).
 
+### Authorized tooling literacy (pick for your stack)
+
+| Tool / class | Role in a program |
+|--------------|-------------------|
+| **garak** | LLM vulnerability scanning / probe automation |
+| **PyRIT** | Orchestrated AI red-team workflows |
+| **promptfoo** | Prompt/eval regression in CI-style loops |
+| **Inspect** (UK AISI class) | Structured eval / inspection frameworks |
+| Your policy unit tests | Schema, ACL-before-retrieve, tool-deny asserts — still mandatory |
+
+Tools do not replace authorization, scope, or log-based pass/fail. Classical AML / extraction tests: [9](./9_Model_Confidentiality_And_Classical_AML.md).
+
 ### Cadence (practical program)
 
 | Cadence | What |
@@ -134,7 +146,7 @@ When sharing AI security findings across orgs: use agreed channels, protect sens
 
 ## Next
 
-- [Shadow AI and private GenAI](./7_Shadow_AI_And_Private_GenAI.md)
+- [Shadow AI and private GenAI](./7_Shadow_AI_And_Private_GenAI.md) · later: [Model confidentiality / classical AML](./9_Model_Confidentiality_And_Classical_AML.md)
 
 ## Further reading
 
