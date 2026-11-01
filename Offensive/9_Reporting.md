@@ -26,4 +26,4 @@ For each finding, note: detection gap, ticket owner, and whether a pipeline gate
 
 ## Next
 
-- [Labs paths](../Labs/1_Paths.md) · return to [Defensive-Ops](../Defensive-Ops/README.md) for detection improvements
+- [Labs path map](../Labs/12_Path_Map.md) · return to [Defensive-Ops](../Defensive-Ops/README.md) for detection improvements
