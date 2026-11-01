@@ -13,7 +13,7 @@ New here? Start at [Foundations](./Foundations/README.md) (21 notes, ordered con
 | [Identity/](./Identity/README.md) | Federation and zero trust |
 | [AppSec/](./AppSec/README.md) | Secure SDLC, Top 10:2025, access control, injection, API Top 10, ASVS, proactive/WSTG |
 | [AI-Security/](./AI-Security/README.md) | LLM/agent practice: defenses, RAG, agents, AIBOM/MCP, eval, shadow AI, attack mechanisms, model confidentiality / classical AML |
-| [Cryptography/](./Cryptography/README.md) | Practical pitfalls |
+| [Cryptography/](./Cryptography/README.md) | Builder crypto: A04/misuse, AEAD, keys/modules, passwords, storage/secrets, TLS, PQC, HMAC/HKDF, JWT/signing patterns |
 | [Cloud-Security/](./Cloud-Security/README.md) | Cloud models; IAM/firewalls/resources; posture (CSPM/CNAPP literacy); supply chain; IR; AI workloads in cloud |
 | [Defensive-Ops/](./Defensive-Ops/README.md) | SIEM, IR, forensics |
 | [Offensive/](./Offensive/README.md) | PTES phases (OSINT → report), lab only |

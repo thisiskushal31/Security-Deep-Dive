@@ -48,7 +48,7 @@ Vague policy with no procedures produces inconsistent controls. Procedures with 
 
 Evidence of both often includes policies, risk decisions, monitoring results, and corrective actions.
 
-## Roles (literacy)
+## Roles
 
 Names vary by org size. The functions matter more than the title:
 

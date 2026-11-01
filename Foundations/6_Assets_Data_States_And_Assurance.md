@@ -47,7 +47,7 @@ A control that only covers “in transit” leaves backups and snapshots exposed
 | Sharing / DLP (data loss prevention) | Control egress for sensitive classes |
 | Anonymization / pseudonymization | Reduce identifiability when full identity is not required for the job |
 
-| Data flavor (literacy) | Why it matters |
+| Data flavor | Why it matters |
 |------------------------|----------------|
 | PII / personal data | Privacy duties and breach impact ([17](./17_Privacy_Literacy.md)) |
 | Secrets / credentials | Compromise impersonates people or workloads ([8](./8_Cryptographic_Solutions_Literacy.md)) |
@@ -55,7 +55,7 @@ A control that only covers “in transit” leaves backups and snapshots exposed
 
 Privacy overlays purpose limitation and individual rights on top of these technical handling rules ([4](./4_Security_Policy_Governance_And_Roles.md)).
 
-## Baselines and hardening (literacy)
+## Baselines and hardening
 
 A **secure baseline** is a documented, approved configuration for a platform (OS image, container, cloud account guardrails). Drift away from baseline is a detective signal. CIS-class benchmarks and cloud posture tools implement this idea. Endpoint/system literacy: [15](./15_Endpoint_And_System_Hardening_Literacy.md). Cloud posture: [Cloud-Security](../Cloud-Security/README.md).
 

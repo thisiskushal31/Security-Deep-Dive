@@ -45,7 +45,7 @@ An intrusion is often taught as a staged sequence. A widely used seven-stage fra
 
 Linear models help teaching and reporting. Real campaigns can skip, repeat, or parallelize stages — still name the stage you are disrupting.
 
-| Stage | Example disruption (literacy) |
+| Stage | Example disruption |
 |-------|-------------------------------|
 | Delivery | Block known-bad attachments; user reporting |
 | Exploitation | Patch; exploit mitigation |

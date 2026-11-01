@@ -35,7 +35,7 @@ Requirements → Collection → Processing → Analysis → Dissemination → Fe
 
 If nobody can state the **requirement**, everything downstream is expensive noise. Priority intelligence requirements (PIRs) are the short list of questions the program must answer first.
 
-### Source and confidence (literacy)
+### Source and confidence
 
 | Habit | Why |
 |-------|-----|

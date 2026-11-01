@@ -37,7 +37,7 @@ Four questions + DFD + STRIDE (notes 1–2)
 | **Component** | Chat UI, summarizer, classifier, RAG Q&A with limited tools | OWASP **LLM** Top 10 + STRIDE on host/API/stores |
 | **Actor (agentic)** | Plans steps, invokes tools, keeps memory, calls other agents, acts on systems | LLM Top 10 **plus** OWASP **ASI** Top 10 + MAESTRO layers |
 
-CCCS / Five Eyes program caution (literacy): prefer **low-risk, non-sensitive** agentic tasks; never grant broad unrestricted access; keep human gates for high-impact decisions; AI controls **add to** classic hygiene (patching, identity, logging), they do not replace it.
+CCCS / Five Eyes program caution: prefer **low-risk, non-sensitive** agentic tasks; never grant broad unrestricted access; keep human gates for high-impact decisions; AI controls **add to** classic hygiene (patching, identity, logging), they do not replace it.
 
 ### What STRIDE still covers — and what it misses
 

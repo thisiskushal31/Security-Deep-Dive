@@ -20,7 +20,7 @@ Policy boundary: [4](./4_Security_Policy_Governance_And_Roles.md). Data states: 
 
 You can have strong encryption and still violate privacy. You can have privacy policies and still fail security.
 
-## Core privacy ideas (literacy)
+## Core privacy ideas
 
 | Idea | Meaning |
 |------|---------|

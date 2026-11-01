@@ -91,7 +91,7 @@ A control catalog answers “what safeguard?” The [NIST Cybersecurity Framewor
 
 Use categories/types to classify a control; use CSF functions to check the program is not “all Protect, no Detect/Recover.”
 
-## Physical security (literacy)
+## Physical security
 
 | Control | Purpose |
 |---------|---------|

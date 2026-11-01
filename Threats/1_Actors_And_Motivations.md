@@ -89,7 +89,7 @@ Sophisticated actors sometimes use *simple* tools deliberately — they still wo
 | Opinions / reputation | Misinformation, disinformation, malinformation, influence campaigns — increasingly **AI-amplified** (synthetic media, scaled personas); see [8](./8_AI_Era_Threats.md) |
 | Safety | Disruption of industrial/medical/transport systems; abuse of personal IoT |
 
-### Attribution, obfuscation, false flags (literacy)
+### Attribution, obfuscation, false flags
 
 **Attribution** is determining which actor is responsible. It supports defense, law enforcement, deterrence, and diplomacy — and is often hard.
 

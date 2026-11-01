@@ -18,7 +18,7 @@ Vectors catalog: [Threats/2](../Threats/2_Vectors_And_Surfaces.md). Ethics bound
 | Urgency and authority bias work | Attacks abuse emotion and hierarchy |
 | Training alone is weak | Pair awareness with technical controls (MFA (multi-factor authentication), reporting, least privilege) |
 
-## Common techniques (literacy)
+## Common techniques
 
 | Technique | Idea |
 |-----------|------|

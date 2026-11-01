@@ -43,7 +43,7 @@ The RMF integrates security, privacy, and cyber supply-chain risk activities int
 
 Impact categorization commonly uses low/moderate/high impact for confidentiality, integrity, and availability of the information types involved. Higher impact → stronger baseline expectations.
 
-## Business impact and continuity (literacy)
+## Business impact and continuity
 
 | Concept | Meaning |
 |---------|---------|

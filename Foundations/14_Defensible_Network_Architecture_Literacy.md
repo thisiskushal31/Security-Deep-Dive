@@ -31,7 +31,7 @@ Internet / partners
    Egress control + monitoring
 ```
 
-## Building blocks (literacy)
+## Building blocks
 
 | Block | Role |
 |-------|------|

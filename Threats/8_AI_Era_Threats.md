@@ -1,4 +1,4 @@
-# AI-era threats (literacy)
+# AI-era threats
 
 [← Threats](./README.md)
 

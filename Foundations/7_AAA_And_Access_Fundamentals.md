@@ -22,7 +22,7 @@ Authentication without authorization checks is how broken access control stays c
 Identify  →  Authenticate  →  Authorize  →  Account (audit)
 ```
 
-### Common AAA protocol families (literacy)
+### Common AAA protocol families
 
 | Family | Role (grain) |
 |--------|----------------|
@@ -44,7 +44,7 @@ Protocol packet detail stays in Networks. Application federation how-to stays in
 
 Multi-factor authentication uses at least two different classes. Phishing-resistant methods (for example WebAuthn / hardware-backed passkeys) resist common real-time phishing better than SMS one-time codes alone. Shared “team passwords” are not authentication.
 
-### Credential hygiene (literacy)
+### Credential hygiene
 
 | Prefer | Avoid |
 |--------|-------|
@@ -53,7 +53,7 @@ Multi-factor authentication uses at least two different classes. Phishing-resist
 | Password manager + MFA (multi-factor authentication) | Secrets in chat, tickets, or screenshots |
 | Length over clever complexity theater | Writing secrets on sticky notes next to the laptop |
 
-### SSO (single sign-on) and federation (literacy)
+### SSO (single sign-on) and federation
 
 **Single sign-on (SSO)** authenticates once into an identity provider, then grants access to many apps via federation. Strength comes from the IdP (MFA, logging, lifecycle). Weakness is concentration: IdP compromise or mis-federation affects many apps. Protocol how-to: [Identity/1](../Identity/1_OAuth_OIDC_SAML.md).
 
@@ -81,7 +81,7 @@ Secrets practice in delivery: [DevOps-Handbook Security/1](https://github.com/th
 
 **Object-level authorization** checks the specific resource, not only the caller’s role. Role `user` plus `GET /orders/123` still requires that this user may see order `123`. API detail: [AppSec/5](../AppSec/5_API_Security_Top_10_2023.md).
 
-### Access control matrix (literacy)
+### Access control matrix
 
 | | Object A (payroll DB) | Object B (public wiki) |
 |--|----------------------|------------------------|

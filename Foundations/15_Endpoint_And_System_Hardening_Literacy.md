@@ -47,7 +47,7 @@ Windows, Linux, and macOS differ in tools; the jobs are the same.
 | Mobile | MDM/MAM policy; separate work data; remote wipe literacy |
 | Containers / VMs | Minimal images; no secrets in layers; runtime policy |
 
-## Malicious code mitigation (literacy)
+## Malicious code mitigation
 
 | Control | Role |
 |---------|------|
