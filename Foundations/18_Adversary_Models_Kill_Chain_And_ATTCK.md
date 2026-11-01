@@ -35,7 +35,7 @@ An intrusion is often taught as a staged sequence. A widely used seven-stage fra
 
 | Stage | Defender question |
 |-------|-------------------|
-| Reconnaissance | What can they learn about us without touching us hard? |
+| Reconnaissance | What can they learn about us without touching us hard? → depth: [Reconnaissance](../Reconnaissance/README.md) |
 | Weaponization | What packages or docs are they preparing? |
 | Delivery | How does the payload arrive (email, web, removable media)? |
 | Exploitation | Which vulnerability or weakness is triggered? |

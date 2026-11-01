@@ -4,6 +4,8 @@
 
 **Open-source intelligence**: public facts about the target *within scope* (domains, employees’ public profiles, leaked pastes you are allowed to use, certificate transparency). Lab OSINT often uses intentionally public lab brands.
 
+> **Depth lives in** [Reconnaissance/4](../Reconnaissance/4_Passive_OSINT_And_Public_Sources.md). Collectors install: [Tooling — OSINT collectors](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance) (theHarvester, Amass, Maltego, SpiderFoot, Recon-ng). This note is the PTES **phase** pointer.
+
 ## What you collect
 
 | Class | Example use |
@@ -15,7 +17,7 @@
 
 ## Tools (install elsewhere)
 
-theHarvester, Amass, Maltego, SpiderFoot, Shodan → [Tooling Reconnaissance](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance). This note is the **phase**, not the CLI.
+[theHarvester](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance/theHarvester) · [Amass](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance/Amass) · [Shodan](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance/Shodan) (exposure search) → full list in [Tooling Reconnaissance](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance).
 
 ## Boundaries
 
@@ -26,3 +28,4 @@ theHarvester, Amass, Maltego, SpiderFoot, Shodan → [Tooling Reconnaissance](ht
 ## Next
 
 - [Scanning and enumeration](./4_Scanning_And_Enumeration.md)
+- Full path: [Reconnaissance](../Reconnaissance/README.md) (`1 → 4 → 5 → 8`)

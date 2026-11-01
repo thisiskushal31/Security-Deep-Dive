@@ -4,6 +4,8 @@
 
 Ethical / **lab-only** path (PTES (Penetration Testing Execution Standard)-shaped). Tools have their own folders. This folder is the *phases*. Not exploit writeups for live third-party systems.
 
+**Recon depth** (OSINT, scanning methodology, ASM, defense): [Reconnaissance](../Reconnaissance/README.md). Installs (by capability): [Tooling Reconnaissance](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security/Reconnaissance).
+
 Purple: pair with [Defensive-Ops](../Defensive-Ops/README.md) — offense informs detection.
 
 ## Topic files

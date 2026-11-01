@@ -6,7 +6,7 @@
 
 Every offensive, purple, and many defensive practice paths start with the same rule: **authorization first**. This note is the foundation those courses assume before tools and exploits.
 
-Pentest phases and reporting: [Offensive](../Offensive/README.md). Tool installs: [Tooling Security](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security).
+Pentest phases and reporting: [Offensive](../Offensive/README.md). Recon methodology (how discovery works + defense): [Reconnaissance](../Reconnaissance/README.md). Tool installs: [Tooling Security](https://github.com/thisiskushal31/Tooling-and-Frameworks-Deep-Dive/tree/main/Security).
 
 ## Concept
 
