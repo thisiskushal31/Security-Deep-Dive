@@ -50,7 +50,7 @@ Learning path **1 → 7** complete for this folder.
 | Threat modeling workshops | [Threat-Modeling](../Threat-Modeling/README.md) |
 | Identity / OAuth / ZT | [Identity](../Identity/README.md) |
 | Crypto pitfalls | [Cryptography](../Cryptography/README.md) |
-| Cloud SBOM / secrets / K8s | [Cloud-Security](../Cloud-Security/README.md) |
+| Cloud resources, posture, runtimes, supply chain, cloud IR | [Cloud-Security](../Cloud-Security/README.md) |
 | Vuln prioritization | [Vulnerability-Management](../Vulnerability-Management/README.md) |
 | AI output → classic sinks | [AI-Security](../AI-Security/README.md) (LLM10) |
 | CI gate chain / AST tools | [DevOps-Handbook Security](https://github.com/thisiskushal31/DevOps-Handbook/tree/main/Security) |

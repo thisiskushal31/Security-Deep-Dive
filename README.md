@@ -14,7 +14,7 @@ New here? Start at [Foundations](./Foundations/README.md) (21 notes, ordered con
 | [AppSec/](./AppSec/README.md) | Secure SDLC, Top 10:2025, access control, injection, API Top 10, ASVS, proactive/WSTG |
 | [AI-Security/](./AI-Security/README.md) | LLM/agent practice: defenses, RAG, agents, AIBOM/MCP, eval, shadow AI, attack mechanisms, model confidentiality / classical AML |
 | [Cryptography/](./Cryptography/README.md) | Practical pitfalls |
-| [Cloud-Security/](./Cloud-Security/README.md) | Posture, secrets/K8s, supply chain |
+| [Cloud-Security/](./Cloud-Security/README.md) | What cloud is; how to secure it (IAM, firewalls, every resource/workload, any provider); posture; IR |
 | [Defensive-Ops/](./Defensive-Ops/README.md) | SIEM, IR, forensics |
 | [Offensive/](./Offensive/README.md) | PTES phases (OSINT → report), lab only |
 | [Threat-Modeling/](./Threat-Modeling/README.md) | Workshop process, DFD/STRIDE, PASTA, trees/LINDDUN, tooling, AI/agentic TM |

@@ -135,7 +135,7 @@ Breakdowns in **building, distributing, or updating** software — malicious or 
 
 **Scenario classes:** compromised vendor update (historic SolarWinds-class); conditional malicious vendor behavior; self-propagating package worms that harvest tokens from developer machines; high-impact component RCE (e.g. historical Struts / Log4Shell-class) running at app privilege.
 
-Infra depth: [Cloud-Security/3](../Cloud-Security/3_Supply_Chain.md). Prioritization: [Vulnerability-Management](../Vulnerability-Management/README.md).
+Infra depth: [Cloud-Security/6](../Cloud-Security/6_Supply_Chain_And_Delivery_Integrity.md). Prioritization: [Vulnerability-Management](../Vulnerability-Management/README.md).
 
 ### A04 — Cryptographic Failures
 

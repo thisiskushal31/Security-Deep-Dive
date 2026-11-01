@@ -56,7 +56,7 @@ Each note follows **concept → advanced → apply**. Official Further reading o
 | AI / agentic threat modeling (workshops) | [Threat-Modeling/6](../Threat-Modeling/6_AI_And_Agentic_Threat_Modeling.md) |
 | Classic AppSec / OWASP web | [AppSec](../AppSec/README.md) |
 | Non-human identity / federation | [Identity](../Identity/README.md) |
-| Supply chain (general) | [Cloud-Security/3](../Cloud-Security/3_Supply_Chain.md) |
+| Supply chain (general) | [Cloud-Security/6](../Cloud-Security/6_Supply_Chain_And_Delivery_Integrity.md) |
 | SIEM / IR / forensics | [Defensive-Ops](../Defensive-Ops/README.md) |
 | Human / social engineering | [Foundations/16](../Foundations/16_Human_Security_Literacy.md) |
 | ATT&CK / ATLAS nesting | [GRC/1](../GRC/1_NIST_ISO_And_ATTCK.md) · [atlas.mitre.org](https://atlas.mitre.org/) |

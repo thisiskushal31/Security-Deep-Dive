@@ -244,7 +244,7 @@ Still a **threat source** under NIST’s structural/accidental framing ([1](./1_
 | **Authorized AI red teaming** | Controlled collaborative testing — not unauthorized attack |
 | **Watermarking / content authentication (where available)** | Assist synthetic-media identification — not a silver bullet |
 
-Implementation homes: [7](./7_Mitigations.md) · [AI-Security](../AI-Security/README.md) · [AppSec](../AppSec/README.md) · [Defensive-Ops](../Defensive-Ops/README.md) · [Cloud-Security/3](../Cloud-Security/3_Supply_Chain.md).
+Implementation homes: [7](./7_Mitigations.md) · [AI-Security](../AI-Security/README.md) · [AppSec](../AppSec/README.md) · [Defensive-Ops](../Defensive-Ops/README.md) · [Cloud-Security/6](../Cloud-Security/6_Supply_Chain_And_Delivery_Integrity.md).
 
 ### F. How this maps onto the rest of Threats
 

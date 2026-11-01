@@ -4,7 +4,7 @@
 
 > **Progression:** concept → advanced → apply. *Apply* here means foundation literacy and builder habits — not a specialty lab.
 
-Risk vocabulary lives in [1](./1_CIA_And_Risk.md). This note is the **process**: how organizations categorize systems, pick controls, prove they work, authorize operation, and keep watching. Supply-chain depth: [Cloud-Security/3](../Cloud-Security/3_Supply_Chain.md). Continuity patterns in design: System-Design disaster-recovery notes.
+Risk vocabulary lives in [1](./1_CIA_And_Risk.md). This note is the **process**: how organizations categorize systems, pick controls, prove they work, authorize operation, and keep watching. Supply-chain depth: [Cloud-Security/6](../Cloud-Security/6_Supply_Chain_And_Delivery_Integrity.md). Continuity patterns in design: System-Design disaster-recovery notes.
 
 ## Concept
 
@@ -57,7 +57,7 @@ Security availability controls and backup/restore drills support these objective
 
 ## Supply-chain risk (foundation)
 
-Acquiring software, hardware, cloud services, and libraries imports someone else’s risk: tampering, counterfeits, vulnerable components, weak upstream identity. Mitigations at foundation level: inventory what you depend on, require minimum security in contracts/services, prefer signed artifacts and SBOMs, monitor vendors. Implementation: [Cloud-Security/3](../Cloud-Security/3_Supply_Chain.md) and Handbook supply-chain gates.
+Acquiring software, hardware, cloud services, and libraries imports someone else’s risk: tampering, counterfeits, vulnerable components, weak upstream identity. Mitigations at foundation level: inventory what you depend on, require minimum security in contracts/services, prefer signed artifacts and SBOMs, monitor vendors. Implementation: [Cloud-Security/6](../Cloud-Security/6_Supply_Chain_And_Delivery_Integrity.md) and Handbook supply-chain gates.
 
 ## Assurance
 
